@@ -1,0 +1,10 @@
+*
+
+!*/
+!*.c
+!*.h
+!Makefile
+!.gitignore
+!res/**
+!tests/**
+!README.txt
