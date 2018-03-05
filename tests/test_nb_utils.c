@@ -8,7 +8,7 @@
 #include <math.h>
 #include <criterion/criterion.h>
 
-#include "utils/nb_utils.h"
+#include "utils/nbr/nb_utils.h"
 
 Test(nb_utils, distance)
 {

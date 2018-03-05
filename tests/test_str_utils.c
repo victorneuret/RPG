@@ -31,16 +31,6 @@ Test(str_utils, is_pos_number)
 	cr_assert_eq(is_pos_number(NULL), false);
 }
 
-Test(str_utils, get_path)
-{
-	char *path = get_path("hello");
-
-	if (!path)
-		return;
-	cr_assert_str_eq(path, "maps/hello.legend");
-	free(path);
-}
-
 Test(str_utils, my_strncat)
 {
 	char str[128];
