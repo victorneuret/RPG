@@ -20,10 +20,9 @@ static sfText *init_text(void)
 	if (!fps_text)
 		return 0;
 	sfText_setColor(fps_text, MAIN_UI_COLOR);
-	sfText_setPosition(fps_text, (sfVector2f) {20, 50});
-	sfText_setRotation(fps_text, -15);
+	sfText_setPosition(fps_text, (sfVector2f) {20, 20});
 	sfText_setFont(fps_text,
-		sfFont_createFromFile("res/fonts/telegrama_render.otf"));
+		sfFont_createFromFile("res/fonts/space_mono_regular.ttf"));
 	return fps_text;
 }
 
