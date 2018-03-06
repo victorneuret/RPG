@@ -20,7 +20,8 @@ static void update_clock(win_t *win)
 
 static void draw(win_t *win)
 {
-	draw_fps(win);
+	if (win->settings->display_fps)
+		draw_fps(win);
 }
 
 bool my_rpg_loop(win_t *win)

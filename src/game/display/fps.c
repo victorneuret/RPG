@@ -20,7 +20,7 @@ static sfText *init_text(void)
 	if (!fps_text)
 		return 0;
 	sfText_setColor(fps_text, MAIN_UI_COLOR);
-	sfText_setPosition(fps_text, (sfVector2f) {20, 20});
+	sfText_setPosition(fps_text, (sfVector2f) {15, 15});
 	sfText_setFont(fps_text,
 		sfFont_createFromFile("res/fonts/space_mono_regular.ttf"));
 	return fps_text;
@@ -53,6 +53,7 @@ void draw_fps(win_t *win)
 		fps_text = init_text();
 		second_tick = sfClock_create();
 		initialized = true;
+		my_strncat(fps_content, "...", 3);
 	}
 	if (!fps_text || !second_tick)
 		return;

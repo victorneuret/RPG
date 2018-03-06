@@ -14,4 +14,5 @@
 typedef struct {
 	uint32_t fps_limit;
 	bool display_help;
+	bool display_fps;
 } settings_t;

@@ -34,6 +34,10 @@ static bool get_arg(char *arg, settings_t *settings, bool *valid_args)
 		settings->display_help = true;
 		return true;
 	}
+	if (str_eq(arg, ARG_SHOW_FPS)) {
+		settings->display_fps = true;
+		return true;
+	}
 	return false;
 }
 
@@ -41,7 +45,8 @@ static void init_settings(settings_t *settings)
 {
 	if (!settings)
 		return;
-	settings->fps_limit = 9999;
+	settings->fps_limit = 60;
+	settings->display_fps = false;
 	settings->display_help = false;
 }
 

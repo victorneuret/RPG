@@ -6,15 +6,15 @@
 */
 
 #include "game/events.h"
+#include "game/keyboard/keybinds.h"
+
 #include "utils/csfml/event_utils.h"
 
 static void key_pressed(win_t *win, sfEvent *event)
 {
-	switch (event->key.code)
-	{
-		case sfKeyEscape: sfRenderWindow_close(win->sf_win); break;
-		default: break;
-	}
+	for (size_t i = 0; keybinds[i].func != NULL; i++)
+		if (keybinds[i].keycode == event->key.code)
+			keybinds[i].func(win);
 }
 
 void process_event(win_t *win)
