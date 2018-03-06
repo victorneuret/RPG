@@ -23,7 +23,6 @@ static void render(win_t *win)
 	if (win->game_state == GAME) {
 		if (win->settings->display_fps)
 			draw_fps(win);
-		create_objects(win); //DEBUG
 	} else if (win->game_state == PAUSE) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 	}

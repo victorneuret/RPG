@@ -15,14 +15,10 @@
 static sfView *init_view(win_t *win)
 {
 	sfView *view = sfView_create();
-	int offset;
-	int newY;
 
 	if (!view)
 		return NULL;
-	newY = (1920 * win->height) / win->width;
-	offset = (newY - 1080) / (-2.f);
-	sfView_setViewport(view, (sfFloatRect) {0, offset, 1920, newY});
+	sfView_reset(view, (sfFloatRect) {0, 0, 1920, 1080});
 	sfRenderWindow_setView(win->sf_win, view);
 	return view;
 }

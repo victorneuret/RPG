@@ -18,6 +18,3 @@
 #include "game/display/drawer.h"
 
 bool my_rpg_loop(win_t *win);
-
-/* DEBUG */
-void create_objects(win_t *win);
