@@ -13,6 +13,7 @@
 
 #include "utils/nbr/getnbr.h"
 #include "utils/str_utils.h"
+#include "utils/my_calloc.h"
 
 static bool get_fps_limit(char const *arg, settings_t *settings)
 {
@@ -46,13 +47,11 @@ static void init_settings(settings_t *settings)
 	if (!settings)
 		return;
 	settings->fps_limit = 60;
-	settings->display_fps = false;
-	settings->display_help = false;
 }
 
 settings_t *get_settings(size_t ac, char **av)
 {
-	settings_t *settings = malloc(sizeof(settings_t));
+	settings_t *settings = my_calloc(1, sizeof(settings_t));
 	bool valid_args = true;
 
 	if (!settings)

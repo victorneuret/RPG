@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "macros.h"
+#include "utils/my_calloc.h"
 #include "utils/str_utils.h"
 
 static void recursive_append_nb(int nb, char *result, int *index)
@@ -36,8 +37,8 @@ size_t get_nb_len(int nb)
 char *int_to_str(int nb)
 {
 	int index = 0;
-	int length = get_nb_len(nb);
-	char *result = malloc(length + 1);
+	size_t length = get_nb_len(nb);
+	char *result = my_calloc(length + 1, sizeof(char));
 
 	if (!result)
 		return 0;
