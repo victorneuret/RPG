@@ -25,6 +25,7 @@ typedef struct render_window {
 	settings_t *settings;
 	sfClock *timer;
 	sfRenderWindow *sf_win;
+	sfView *view;
 	game_status game_state;
 } win_t;
 

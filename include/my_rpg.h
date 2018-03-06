@@ -14,6 +14,7 @@
 
 #include "window/render_window.h"
 #include "game/events.h"
-#include "game/fps.h"
+#include "game/display/fps.h"
+#include "game/display/drawer.h"
 
 bool my_rpg_loop(win_t *win);

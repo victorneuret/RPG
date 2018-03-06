@@ -5,6 +5,8 @@
 ** Event handler
 */
 
+#include "macros.h"
+
 #include "game/events.h"
 #include "game/keyboard/keybinds.h"
 
@@ -22,6 +24,25 @@ static void key_pressed(win_t *win, sfEvent *event)
 	}
 }
 
+// if (win->width < 800 || win->height < 600) {
+// 	win->width = MAX(win->width, 800);
+// 	win->height = MAX(win->height, 600);
+// 	sfRenderWindow_setSize(win->sf_win,
+// 		(sfVector2u) {win->width, win->height});
+// }
+void on_resize(win_t *win)
+{
+	sfVector2u size = sfRenderWindow_getSize(win->sf_win);
+	int offset;
+	int newY;
+
+	win->width = size.x;
+	win->height = size.y;
+	newY = (1920 * win->height) / win->width;
+	offset = (newY - 1080) / (-2.f);
+	sfView_setViewport(win->view, (sfFloatRect) {0, offset, 1920, newY});
+}
+
 void process_event(win_t *win)
 {
 	sfEvent event;
@@ -30,6 +51,7 @@ void process_event(win_t *win)
 		switch (event.type) {
 		case sfEvtClosed: sfRenderWindow_close(win->sf_win); break;
 		case sfEvtKeyPressed: key_pressed(win, &event); break;
+		case sfEvtResized: on_resize(win); break;
 		default: break;
 		}
 	}

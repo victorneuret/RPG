@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
+#include "game/display/drawer.h"
 #include "window/render_window.h"
 #include "utils/str_utils.h"
 #include "utils/csfml/color_utils.h"
@@ -61,5 +62,5 @@ void draw_fps(win_t *win)
 	if (sfTime_asSeconds(sfClock_getElapsedTime(second_tick)) >= 1.0)
 		update_framerate_text(second_tick, fps_content, &frames);
 	sfText_setString(fps_text, fps_content);
-	sfRenderWindow_drawText(win->sf_win, fps_text, NULL);
+	draw(win, fps_text, sfRenderWindow_drawText);
 }

@@ -53,7 +53,7 @@ int main(int ac, char **av, char **env)
 	settings = get_settings(ac, av);
 	if (settings && settings->display_help)
 		return print_help();
-	window = create_window(1920, 1080, settings);
+	window = create_window(1600, 900, settings);
 	if (!window || !settings)
 		return 84;
 	window->settings = settings;

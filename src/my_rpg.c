@@ -18,7 +18,7 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
-static void draw(win_t *win)
+static void render(win_t *win)
 {
 	if (win->game_state == GAME) {
 		if (win->settings->display_fps)
@@ -33,7 +33,7 @@ bool my_rpg_loop(win_t *win)
 	win->game_state = GAME;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {0, 41, 58, 0});
-		draw(win);
+		render(win);
 		process_event(win);
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
