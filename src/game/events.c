@@ -15,8 +15,8 @@
 static void key_pressed(win_t *win, sfEvent *event)
 {
 	for (size_t i = 0; keybinds[i].func != NULL; i++) {
-		if ((keybinds[i].game_state == win->game_state ||
-		keybinds[i].game_state == ALL) &&
+		if ((keybinds[i].game_state == ALL ||
+		keybinds[i].game_state == win->game_state) &&
 		keybinds[i].keycode == event->key.code) {
 			keybinds[i].func(win);
 			break;
@@ -24,12 +24,6 @@ static void key_pressed(win_t *win, sfEvent *event)
 	}
 }
 
-// if (win->width < 800 || win->height < 600) {
-// 	win->width = MAX(win->width, 800);
-// 	win->height = MAX(win->height, 600);
-// 	sfRenderWindow_setSize(win->sf_win,
-// 		(sfVector2u) {win->width, win->height});
-// }
 void on_resize(win_t *win)
 {
 	sfVector2u size = sfRenderWindow_getSize(win->sf_win);

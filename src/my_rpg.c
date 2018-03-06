@@ -21,11 +21,11 @@ static void update_clock(win_t *win)
 static void render(win_t *win)
 {
 	if (win->game_state == GAME) {
-		if (win->settings->display_fps)
-			draw_fps(win);
 	} else if (win->game_state == PAUSE) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 	}
+	if (win->settings->display_fps)
+		draw_fps(win);
 }
 
 bool my_rpg_loop(win_t *win)
