@@ -20,12 +20,17 @@ static void update_clock(win_t *win)
 
 static void draw(win_t *win)
 {
-	if (win->settings->display_fps)
-		draw_fps(win);
+	if (win->game_state == GAME) {
+		if (win->settings->display_fps)
+			draw_fps(win);
+	} else if (win->game_state == PAUSE) {
+		sfRenderWindow_clear(win->sf_win, sfBlack);
+	}
 }
 
 bool my_rpg_loop(win_t *win)
 {
+	win->game_state = GAME;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {0, 41, 58, 0});
 		draw(win);

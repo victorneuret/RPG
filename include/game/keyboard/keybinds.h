@@ -14,12 +14,15 @@
 #include "game/keyboard/key_pressed_functions.h"
 
 typedef struct {
+	game_status game_state;
 	sfKeyCode keycode;
 	bool (*func)(win_t *win);
 } keybind_t;
 
 static const keybind_t keybinds[] = {
-	{sfKeyEscape, &close_win},
-	{sfKeyF12, &toggle_fps},
-	{0, NULL}
+	{ALL,	sfKeyQ,		close_win},
+	{PAUSE,	sfKeyEscape,	pause_game},
+	{GAME,	sfKeyEscape,	pause_game},
+	{GAME,	sfKeyF12,	toggle_fps},
+	{0,	0,		NULL}
 };

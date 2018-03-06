@@ -11,6 +11,13 @@
 
 #include "settings.h"
 
+typedef enum {
+	TITLE,
+	GAME,
+	PAUSE,
+	ALL
+} game_status;
+
 typedef struct render_window {
 	float dt;
 	size_t width;
@@ -18,6 +25,7 @@ typedef struct render_window {
 	settings_t *settings;
 	sfClock *timer;
 	sfRenderWindow *sf_win;
+	game_status game_state;
 } win_t;
 
 #include "window/destroy.h"

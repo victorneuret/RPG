@@ -12,9 +12,14 @@
 
 static void key_pressed(win_t *win, sfEvent *event)
 {
-	for (size_t i = 0; keybinds[i].func != NULL; i++)
-		if (keybinds[i].keycode == event->key.code)
+	for (size_t i = 0; keybinds[i].func != NULL; i++) {
+		if ((keybinds[i].game_state == win->game_state ||
+		keybinds[i].game_state == ALL) &&
+		keybinds[i].keycode == event->key.code) {
 			keybinds[i].func(win);
+			break;
+		}
+	}
 }
 
 void process_event(win_t *win)
