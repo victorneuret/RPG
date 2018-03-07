@@ -30,5 +30,6 @@ bool toggle_fullscreen(win_t *win)
 		return false;
 	sfRenderWindow_setFramerateLimit(win->sf_win,
 					win->settings->fps_limit);
+	sfRenderWindow_setView(win->sf_win, win->view);
 	return true;
 }
