@@ -26,22 +26,23 @@ static sfView *init_view(win_t *win)
 win_t *create_window(size_t width, size_t height, settings_t *settings)
 {
 	win_t *win = my_calloc(1, sizeof(win_t));
-	sfVideoMode mode = {width, height, 32};
+	const sfVideoMode vm = settings->fullscreen
+					? (sfVideoMode) {1920, 1080, 32}
+					: (sfVideoMode) {width, height, 32};
+	const sfUint32 style = settings->fullscreen ? sfFullscreen : sfClose;
 
 	if (!win || !settings)
 		return 0;
 	win->width = width;
 	win->height = height;
 	win->dt = 0;
-	win->sf_win = sfRenderWindow_create(mode, "My RPG",
-					sfClose, NULL);
+	win->sf_win = sfRenderWindow_create(vm, "My RPG", style, NULL);
 	win->timer = sfClock_create();
 	win->view = init_view(win);
 	if (!win->sf_win || !win->timer) {
 		free(win);
 		return 0;
 	}
-	sfRenderWindow_setFramerateLimit(win->sf_win,
-					settings->fps_limit);
+	sfRenderWindow_setFramerateLimit(win->sf_win, settings->fps_limit);
 	return win;
 }

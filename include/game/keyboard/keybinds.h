@@ -21,6 +21,7 @@ typedef struct {
 
 static const keybind_t keybinds[] = {
 	{ALL,	sfKeyQ,		close_win},
+	{ALL,	sfKeyF11,	toggle_fullscreen},
 	{ALL,	sfKeyF12,	toggle_fps},
 	{PAUSE,	sfKeyEscape,	pause_game},
 	{GAME,	sfKeyEscape,	pause_game},

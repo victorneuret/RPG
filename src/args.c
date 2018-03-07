@@ -39,6 +39,10 @@ static bool get_arg(char *arg, settings_t *settings, bool *valid_args)
 		settings->display_fps = true;
 		return true;
 	}
+	if (str_eq(arg, ARG_FULLSCREEN)) {
+		settings->fullscreen = true;
+		return true;
+	}
 	return false;
 }
 

@@ -23,8 +23,8 @@ typedef struct render_window {
 	size_t width;
 	size_t height;
 	settings_t *settings;
-	sfClock *timer;
 	sfRenderWindow *sf_win;
+	sfClock *timer;
 	sfView *view;
 	game_status game_state;
 } win_t;
