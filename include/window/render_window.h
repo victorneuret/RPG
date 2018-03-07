@@ -11,6 +11,8 @@
 
 #include "settings.h"
 
+#define WINDOW_TITLE "My RPG"
+
 typedef enum {
 	TITLE,
 	GAME,

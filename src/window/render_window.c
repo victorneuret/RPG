@@ -36,7 +36,7 @@ win_t *create_window(size_t width, size_t height, settings_t *settings)
 	win->width = width;
 	win->height = height;
 	win->dt = 0;
-	win->sf_win = sfRenderWindow_create(vm, "My RPG", style, NULL);
+	win->sf_win = sfRenderWindow_create(vm, WINDOW_TITLE, style, NULL);
 	win->timer = sfClock_create();
 	win->view = init_view(win);
 	if (!win->sf_win || !win->timer) {
