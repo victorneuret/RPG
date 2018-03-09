@@ -18,7 +18,7 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
-static void update(win_t *win)
+static void update_fireworks(win_t *win)
 {
 	static sfClock *timer;
 	static uint16_t index = 0;
@@ -29,8 +29,8 @@ static void update(win_t *win)
 	};
 	uint32_t current_time = timer ? sfTime_asMilliseconds(
 				sfClock_getElapsedTime(timer)) : 0;
-	sfVector2f pos = (sfVector2f) {rand_int(0, win->width),
-					rand_int(0, win->height)};
+	sfVector2f pos = (sfVector2f) {rand_int(0, 1920),
+					rand_int(0, 1080)};
 
 	if (!timer)
 		timer = sfClock_create();
@@ -38,6 +38,11 @@ static void update(win_t *win)
 		create_explosion(win, 100, pos, colors[(++index) % 6]);
 		sfClock_restart(timer);
 	}
+}
+
+static void update(win_t *win)
+{
+	update_fireworks(win);
 	update_particles(win, win->particle_manager);
 }
 
