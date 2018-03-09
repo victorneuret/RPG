@@ -39,7 +39,7 @@ bool my_rpg_loop(win_t *win)
 	win->game_state = GAME;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {0, 41, 58, 0});
-		process_event(win);
+		process_events(win);
 		update(win);
 		render(win);
 		sfRenderWindow_display(win->sf_win);
