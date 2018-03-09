@@ -14,6 +14,7 @@
 
 #include "window/render_window.h"
 #include "utils/my_calloc.h"
+#include "utils/nbr/nb_utils.h"
 #include "utils/csfml/mouse_utils.h"
 
 #include "game/events.h"
@@ -22,5 +23,6 @@
 #include "game/particles/particle.h"
 #include "game/particles/particle_updater.h"
 #include "game/particles/particle_drawer.h"
+#include "game/particles/particle_explosion.h"
 
 bool my_rpg_loop(win_t *win);
