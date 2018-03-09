@@ -21,7 +21,7 @@ void destroy_particle_manager(particle_manager_t *manager)
 {
 	particle_manager_t *current = manager;
 
-	for (; current; current = (particle_manager_t *) current->next)
+	for (; current; current = current->next)
 		if (current->group)
 			destroy_particle_group(current->group);
 	free(manager);

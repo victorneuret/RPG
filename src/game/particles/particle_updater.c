@@ -31,7 +31,7 @@ void update_particles(win_t *win, particle_manager_t *manager)
 {
 	particle_manager_t *current = manager;
 
-	for (; current; current = (particle_manager_t *) current->next)
+	for (; current; current = current->next)
 		if (current->group && current->group->active &&
 					current->group->particles)
 			update_particle_group(win, current->group);

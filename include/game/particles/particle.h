@@ -12,22 +12,26 @@
 
 #include "window/render_window.h"
 
-typedef struct particle {
+typedef struct particle particle_t;
+typedef struct particle_group particle_group_t;
+typedef struct particle_manager particle_manager_t;
+
+struct particle {
 	sfVector2f pos;
 	sfVector2f speed;
 	sfColor color;
 	uint32_t size;
 	uint64_t lifetime_ms;
 	sfRectangleShape *shape;
-} particle_t;
+};
 
-typedef struct particle_group {
+struct particle_group {
 	particle_t **particles;
 	sfClock *timer;
 	bool active;
-} particle_group_t;
+};
 
-typedef struct particle_manager {
+struct particle_manager {
 	particle_group_t *group;
-	struct particle_all *next;
-} particle_manager_t;
+	particle_manager_t *next;
+};
