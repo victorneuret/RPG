@@ -18,6 +18,11 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
+static void update(win_t *win)
+{
+	update_particles(win, win->particle_manager);
+}
+
 static void render(win_t *win)
 {
 	if (win->game_state == GAME) {
@@ -33,8 +38,9 @@ bool my_rpg_loop(win_t *win)
 	win->game_state = GAME;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {0, 41, 58, 0});
-		render(win);
 		process_event(win);
+		update(win);
+		render(win);
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}

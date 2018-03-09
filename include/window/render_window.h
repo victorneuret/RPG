@@ -11,6 +11,8 @@
 
 #include "settings.h"
 
+#include "game/particles/particle.h"
+
 #define WINDOW_TITLE "My RPG"
 
 typedef enum {
@@ -29,6 +31,7 @@ typedef struct render_window {
 	sfClock *timer;
 	sfView *view;
 	game_status game_state;
+	struct particle_manager *particle_manager;
 } win_t;
 
 #include "window/destroy.h"

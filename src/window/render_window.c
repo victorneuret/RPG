@@ -11,6 +11,7 @@
 
 #include "utils/my_calloc.h"
 #include "window/render_window.h"
+#include "game/particles/particle.h"
 
 static sfView *init_view(win_t *win)
 {
@@ -39,7 +40,8 @@ win_t *create_window(size_t width, size_t height, settings_t *settings)
 	win->sf_win = sfRenderWindow_create(vm, WINDOW_TITLE, style, NULL);
 	win->timer = sfClock_create();
 	win->view = init_view(win);
-	if (!win->sf_win || !win->timer) {
+	win->particle_manager = my_calloc(1, sizeof(particle_manager_t));
+	if (!win->sf_win || !win->timer || !win->particle_manager) {
 		free(win);
 		return 0;
 	}
