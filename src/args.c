@@ -70,7 +70,7 @@ settings_t *get_settings(size_t ac, char **av)
 		}
 	if (!valid_args) {
 		free(settings);
-		return 0;
+		return NULL;
 	}
 	return settings;
 }

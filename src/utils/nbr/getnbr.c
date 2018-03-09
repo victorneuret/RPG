@@ -13,6 +13,8 @@ int getnbr(char const *str)
 	int nb = 0;
 	int j = 0;
 
+	if (!str)
+		return 0;
 	for (int i = 0; str[i] != '\0'; i++) {
 		for (j = j; str[i] == '+' || str[i] == '-'; i++)
 			(str[i] == '-') ? j++ : 0;

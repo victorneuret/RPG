@@ -51,10 +51,12 @@ int main(int ac, char **av, char **env)
 		return 84;
 	}
 	settings = get_settings(ac, av);
-	if (settings && settings->display_help)
+	if (!settings)
+		return 84;
+	if (settings->display_help)
 		return print_help();
 	window = create_window(1600, 900, settings);
-	if (!window || !settings)
+	if (!window)
 		return 84;
 	window->settings = settings;
 	my_rpg_loop(window);
