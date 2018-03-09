@@ -23,6 +23,7 @@ struct particle {
 	uint32_t size;
 	uint64_t lifetime_ms;
 	sfRectangleShape *shape;
+	bool alive;
 };
 
 struct particle_group {

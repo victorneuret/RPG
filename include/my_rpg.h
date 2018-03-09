@@ -21,5 +21,6 @@
 #include "game/display/drawer.h"
 #include "game/particles/particle.h"
 #include "game/particles/particle_updater.h"
+#include "game/particles/particle_drawer.h"
 
 bool my_rpg_loop(win_t *win);
