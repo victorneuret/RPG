@@ -16,7 +16,7 @@
 typedef struct {
 	game_status game_state;
 	sfKeyCode keycode;
-	bool (*func)(win_t *win);
+	void (*func)(win_t *win);
 } keybind_t;
 
 static const keybind_t keybinds[] = {

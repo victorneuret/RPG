@@ -14,7 +14,12 @@
 #include "utils/csfml/event_utils.h"
 #include "utils/csfml/mouse_utils.h"
 
-static void key_pressed(win_t *win, sfEvent *event)
+void close_win_evt(win_t *win, __attribute__((unused)) sfEvent *event)
+{
+	sfRenderWindow_close(win->sf_win);
+}
+
+void key_pressed(win_t *win, sfEvent *event)
 {
 	for (size_t i = 0; keybinds[i].func != NULL; i++) {
 		if ((keybinds[i].game_state == ALL ||
@@ -26,7 +31,7 @@ static void key_pressed(win_t *win, sfEvent *event)
 	}
 }
 
-static void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
+void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 {
 	static uint16_t index = 0;
 	const sfColor colors[] = {
@@ -39,7 +44,7 @@ static void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 	create_explosion(win, 100, pos, colors[(++index) % 6]);
 }
 
-void on_resize(win_t *win)
+void on_resize(win_t *win, __attribute__((unused)) sfEvent *event)
 {
 	sfVector2u size = sfRenderWindow_getSize(win->sf_win);
 
@@ -52,12 +57,13 @@ void process_event(win_t *win)
 	sfEvent event;
 
 	while (sfRenderWindow_pollEvent(win->sf_win, &event)) {
-		switch (event.type) {
-		case sfEvtClosed: sfRenderWindow_close(win->sf_win); break;
-		case sfEvtKeyPressed: key_pressed(win, &event); break;
-		case sfEvtMouseButtonPressed: mouse_click(win, &event); break;
-		case sfEvtResized: on_resize(win); break;
-		default: break;
+		for (size_t i = 0; events[i].func != NULL; i++) {
+			if ((events[i].game_state == ALL ||
+			events[i].game_state == win->game_state) &&
+			events[i].type == event.type) {
+				events[i].func(win, &event);
+				break;
+			}
 		}
 	}
 }

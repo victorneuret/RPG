@@ -9,8 +9,7 @@
 
 #include "window/render_window.h"
 
-bool toggle_fps(win_t *win)
+void toggle_fps(win_t *win)
 {
 	win->settings->display_fps = !win->settings->display_fps;
-	return true;
 }
