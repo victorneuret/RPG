@@ -11,7 +11,6 @@
 #include "game/keyboard/keybinds.h"
 #include "game/particles/particle_explosion.h"
 
-#include "utils/csfml/event_utils.h"
 #include "utils/csfml/mouse_utils.h"
 
 void close_win_evt(win_t *win, __attribute__((unused)) sfEvent *event)
