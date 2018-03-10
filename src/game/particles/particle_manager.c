@@ -9,6 +9,21 @@
 
 #include "game/particles/particle.h"
 
+sfRectangleShape *create_shape(particle_t *particle)
+{
+	sfRectangleShape *shape = sfRectangleShape_create();
+
+	if (!shape)
+		return NULL;
+	sfRectangleShape_setSize(shape, (sfVector2f)
+					{particle->size, particle->size});
+	sfRectangleShape_setOrigin(shape, (sfVector2f) {particle->size / 2.f,
+					particle->size / 2.f});
+	sfRectangleShape_setPosition(shape, particle->pos);
+	sfRectangleShape_setFillColor(shape, particle->color);
+	return shape;
+}
+
 particle_group_t *get_particle_group(particle_manager_t *head)
 {
 	particle_manager_t *current = head;

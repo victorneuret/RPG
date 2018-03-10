@@ -13,21 +13,6 @@
 #include "game/particles/particle.h"
 #include "game/particles/particle_manager.h"
 
-static sfRectangleShape *create_shape(particle_t *particle)
-{
-	sfRectangleShape *shape = sfRectangleShape_create();
-
-	if (!shape)
-		return NULL;
-	sfRectangleShape_setSize(shape, (sfVector2f)
-					{particle->size, particle->size});
-	sfRectangleShape_setOrigin(shape, (sfVector2f) {particle->size / 2.f,
-					particle->size / 2.f});
-	sfRectangleShape_setPosition(shape, particle->pos);
-	sfRectangleShape_setFillColor(shape, particle->color);
-	return shape;
-}
-
 static particle_t *create_particle(sfVector2f origin, sfColor color)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);

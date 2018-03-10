@@ -9,4 +9,5 @@
 
 #include "game/particles/particle.h"
 
+sfRectangleShape *create_shape(particle_t *particle);
 particle_group_t *get_particle_group(particle_manager_t *head);
