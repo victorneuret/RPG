@@ -7,7 +7,7 @@
 
 #include "game/particles/particle.h"
 
-static void destroy_particle_group(particle_group_t *group)
+void destroy_particle_group(particle_group_t *group)
 {
 	for (size_t i = 0; group->particles[i]; i++) {
 		sfRectangleShape_destroy(group->particles[i]->shape);

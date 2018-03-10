@@ -9,4 +9,5 @@
 
 #include "game/particles/particle.h"
 
+void destroy_particle_group(particle_group_t *group);
 void destroy_particle_manager(particle_manager_t *manager);

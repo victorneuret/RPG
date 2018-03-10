@@ -8,6 +8,24 @@
 #include "utils/my_calloc.h"
 #include "window/render_window.h"
 #include "game/particles/particle.h"
+#include "game/particles/particle_destroyer.h"
+
+static void remove_unactives(particle_manager_t *head)
+{
+	particle_manager_t *current = head;
+	particle_manager_t *previous = current;
+
+	for (; current; current = current->next) {
+		if (current->group && !current->group->active
+				&& current != head) {
+			destroy_particle_group(current->group);
+			previous->next = current->next;
+			free(current);
+			continue;
+		}
+		previous = current;
+	}
+}
 
 static void update_particle(win_t *win, sfClock *timer,
 			particle_t *particle)
@@ -51,6 +69,7 @@ void update_particles(win_t *win, particle_manager_t *manager)
 {
 	particle_manager_t *current = manager;
 
+	remove_unactives(manager);
 	for (; current; current = current->next)
 		if (current->group && current->group->active &&
 					current->group->particles)
