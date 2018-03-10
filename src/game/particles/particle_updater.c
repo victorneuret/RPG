@@ -7,6 +7,7 @@
 
 #include "utils/my_calloc.h"
 #include "window/render_window.h"
+#include "utils/csfml/color_utils.h"
 #include "game/particles/particle.h"
 #include "game/particles/particle_destroyer.h"
 
@@ -39,8 +40,8 @@ static void update_particle(win_t *win, sfClock *timer,
 		return;
 	particle->pos.x += particle->speed.x * win->dt;
 	particle->pos.y += particle->speed.y * win->dt;
-	particle->color.a = 255 -
-		((current_time / (float) particle->lifetime_ms) * 255.f);
+	particle->color.a = get_particle_alpha(particle->fade_in,
+		particle->fade_out, current_time, particle->lifetime_ms);
 	sfRectangleShape_setFillColor(particle->shape, particle->color);
 	sfRectangleShape_setPosition(particle->shape, particle->pos);
 }

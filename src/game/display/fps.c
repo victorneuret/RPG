@@ -20,7 +20,7 @@ static sfText *init_text(void)
 
 	if (!fps_text)
 		return 0;
-	sfText_setColor(fps_text, MAIN_UI_COLOR);
+	sfText_setColor(fps_text, sfCyan);
 	sfText_setPosition(fps_text, (sfVector2f) {15, 15});
 	sfText_setFont(fps_text,
 		sfFont_createFromFile("res/fonts/space_mono_regular.ttf"));

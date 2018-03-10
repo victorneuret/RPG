@@ -7,7 +7,11 @@
 
 #pragma once
 
-#include "game/color.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <SFML/Graphics.h>
 
-sfColor hex_to_rgb(unsigned int hex);
-sfColor hex_to_rgba(unsigned int hex);
+sfColor hex_to_rgb(int32_t hex);
+sfColor hex_to_rgba(int32_t hex);
+uint8_t get_particle_alpha(bool fade_in, bool fade_out,
+			uint32_t current, uint32_t lifetime);
