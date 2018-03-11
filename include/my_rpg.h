@@ -24,7 +24,7 @@
 #include "game/particles/particle.h"
 #include "game/particles/particle_updater.h"
 #include "game/particles/particle_drawer.h"
-#include "game/particles/particle_explosion.h"
-#include "game/particles/particle_stars.h"
+#include "game/particles/effects/particle_explosion.h"
+#include "game/particles/effects/particle_stars.h"
 
 bool my_rpg_loop(win_t *win);

@@ -9,7 +9,7 @@
 
 #include "game/events.h"
 #include "game/keyboard/keybinds.h"
-#include "game/particles/particle_explosion.h"
+#include "game/particles/effects/particle_explosion.h"
 
 #include "utils/csfml/mouse_utils.h"
 
