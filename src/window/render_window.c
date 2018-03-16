@@ -19,7 +19,7 @@ static sfView *init_view(win_t *win)
 
 	if (!view)
 		return NULL;
-	sfView_reset(view, (sfFloatRect) {0, 0, 1920, 1080});
+	sfView_reset(view, (sfFloatRect) {0, 0, WIN_MAX_W, WIN_MAX_H});
 	sfRenderWindow_setView(win->sf_win, view);
 	return view;
 }

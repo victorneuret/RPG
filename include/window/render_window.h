@@ -15,6 +15,9 @@
 
 #define WINDOW_TITLE "My RPG"
 
+static const uint16_t WIN_MAX_W = 1920;
+static const uint16_t WIN_MAX_H = 1080;
+
 typedef enum {
 	TITLE,
 	GAME,

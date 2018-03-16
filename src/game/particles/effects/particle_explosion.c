@@ -16,7 +16,7 @@
 static particle_t *create_particle(sfVector2f origin, sfColor color)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
-	const float speed = (float) rand_int(20, 100);
+	const float speed = (float) rand_int(5, 110);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
 
 	if (!particle)

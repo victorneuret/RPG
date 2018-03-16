@@ -18,8 +18,8 @@ void update_fireworks(win_t *win)
 	};
 	uint32_t current_time = timer ? sfTime_asMilliseconds(
 				sfClock_getElapsedTime(timer)) : 0;
-	sfVector2f pos = (sfVector2f) {rand_int(0, 1920),
-					rand_int(0, 1080)};
+	sfVector2f pos = (sfVector2f) {rand_int(0, WIN_MAX_W),
+					rand_int(0, WIN_MAX_H)};
 
 	if (!timer)
 		timer = sfClock_create();

@@ -21,7 +21,8 @@ static particle_t *create_particle(sfColor color)
 
 	if (!particle)
 		return NULL;
-	particle->pos = (sfVector2f) {rand_int(0, 1920), rand_int(0, 1080)};
+	particle->pos = (sfVector2f) {rand_int(0, WIN_MAX_W),
+					rand_int(0, WIN_MAX_H)};
 	particle->color = color;
 	particle->alive = true;
 	particle->fade_in = true;
