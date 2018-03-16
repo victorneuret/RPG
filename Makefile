@@ -129,4 +129,8 @@ tests_run:
 		@echo -e " Done"
 		./tests_run
 
-.PHONY:	all clean fclean re tests_run clean_coverage valgrind
+check_compilation:	re valgrind tests_run
+		@make --no-print-directory clean_coverage
+		@make --no-print-directory fclean
+
+.PHONY:	all clean fclean re tests_run clean_coverage valgrind check_compilation
