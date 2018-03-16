@@ -5,6 +5,7 @@
 ** particle_manager
 */
 
+#include "macros.h"
 #include "my_calloc.h"
 #include "render_window.h"
 #include "color_utils.h"
@@ -38,8 +39,15 @@ static void update_particle(win_t *win, sfClock *timer,
 		particle->alive = false;
 	if (!particle->alive)
 		return;
-	particle->pos.x += particle->speed.x * win->dt;
+	if (particle->update)
+		particle->update(particle, current_time);
+	if (particle->gravity)
+		particle->pos.y += (current_time /
+		(float) particle->lifetime_ms) * 1000 * win->dt;
 	particle->pos.y += particle->speed.y * win->dt;
+	particle->pos.x += particle->speed.x * win->dt;
+	particle->pos.x = MAX(0, MIN(particle->pos.x, WIN_MAX_W));
+	particle->pos.y = MAX(0, MIN(particle->pos.y, WIN_MAX_H));
 	particle->color.a = get_particle_alpha(particle->fade_in,
 		particle->fade_out, current_time, particle->lifetime_ms);
 	sfRectangleShape_setFillColor(particle->shape, particle->color);
