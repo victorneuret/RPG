@@ -10,7 +10,7 @@
 #include <SFML/Graphics.h>
 #include <stdint.h>
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 typedef struct particle particle_t;
 typedef struct particle_group particle_group_t;

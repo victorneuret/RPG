@@ -7,6 +7,6 @@
 
 #pragma once
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 void update_particles(win_t *win, particle_manager_t *manager);

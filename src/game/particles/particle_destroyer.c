@@ -5,7 +5,7 @@
 ** particle_destroyer
 */
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 void destroy_particle_group(particle_group_t *group)
 {

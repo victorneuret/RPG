@@ -9,10 +9,10 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
-#include "game/display/drawer.h"
-#include "window/render_window.h"
-#include "utils/str_utils.h"
-#include "utils/csfml/color_utils.h"
+#include "drawer.h"
+#include "render_window.h"
+#include "str_utils.h"
+#include "color_utils.h"
 
 static sfText *init_text(void)
 {

@@ -5,9 +5,9 @@
 ** particle_manager
 */
 
-#include "utils/my_calloc.h"
+#include "my_calloc.h"
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 sfRectangleShape *create_shape(particle_t *particle)
 {

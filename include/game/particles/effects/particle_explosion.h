@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 void create_explosion(win_t *win, uint16_t count,
 		sfVector2f origin, sfColor color);

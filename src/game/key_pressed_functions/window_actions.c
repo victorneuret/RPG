@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics.h>
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 void close_win(win_t *win)
 {

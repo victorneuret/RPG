@@ -11,7 +11,7 @@
 
 #include "settings.h"
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 #define WINDOW_TITLE "My RPG"
 
@@ -34,6 +34,6 @@ typedef struct render_window {
 	struct particle_manager *particle_manager;
 } win_t;
 
-#include "window/destroy.h"
+#include "destroy.h"
 
 win_t *create_window(size_t width, size_t height, settings_t *settings);

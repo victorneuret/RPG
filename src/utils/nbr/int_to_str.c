@@ -8,8 +8,8 @@
 #include <stdlib.h>
 
 #include "macros.h"
-#include "utils/my_calloc.h"
-#include "utils/str_utils.h"
+#include "my_calloc.h"
+#include "str_utils.h"
 
 static void recursive_append_nb(int nb, char *result, int *index)
 {

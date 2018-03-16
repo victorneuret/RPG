@@ -9,9 +9,9 @@
 
 #include "settings.h"
 
-#include "utils/my_calloc.h"
-#include "window/render_window.h"
-#include "game/particles/particle.h"
+#include "my_calloc.h"
+#include "render_window.h"
+#include "particle.h"
 
 static sfView *init_view(win_t *win)
 {

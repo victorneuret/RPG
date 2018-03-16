@@ -5,9 +5,9 @@
 ** destroy CSFML
 */
 
-#include "window/destroy.h"
+#include "destroy.h"
 
-#include "game/particles/particle_destroyer.h"
+#include "particle_destroyer.h"
 
 void destroy_window(win_t *win)
 {

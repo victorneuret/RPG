@@ -5,7 +5,7 @@
 ** mouse_utils
 */
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 sfVector2f get_mouse_pos(win_t *win)
 {

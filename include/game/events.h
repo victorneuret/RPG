@@ -10,8 +10,8 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
-#include "window/render_window.h"
-#include "game/keyboard/key_pressed_functions.h"
+#include "render_window.h"
+#include "key_pressed_functions.h"
 
 void on_resize(win_t *win, sfEvent *event);
 void key_pressed(win_t *win, sfEvent *event);

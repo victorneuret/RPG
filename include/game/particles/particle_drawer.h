@@ -7,6 +7,6 @@
 
 #pragma once
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 void draw_particles(win_t *win);

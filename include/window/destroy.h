@@ -9,6 +9,6 @@
 
 #include <stdlib.h>
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 void destroy_window(win_t *win);

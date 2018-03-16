@@ -7,6 +7,6 @@
 
 #pragma once
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 void create_star(win_t *win, sfColor color);

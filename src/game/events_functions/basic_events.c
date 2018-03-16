@@ -8,10 +8,10 @@
 #include "macros.h"
 
 #include "game/events.h"
-#include "game/keyboard/keybinds.h"
-#include "game/particles/effects/particle_explosion.h"
+#include "keybinds.h"
+#include "particle_explosion.h"
 
-#include "utils/csfml/mouse_utils.h"
+#include "mouse_utils.h"
 
 void close_win_evt(win_t *win, __attribute__((unused)) sfEvent *event)
 {

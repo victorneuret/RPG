@@ -7,6 +7,6 @@
 
 #pragma once
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 void draw(win_t *win, void *object, void (*draw_func)());

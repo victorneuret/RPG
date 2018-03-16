@@ -7,7 +7,7 @@
 
 #include <criterion/criterion.h>
 
-#include "utils/str_utils.h"
+#include "str_utils.h"
 
 Test(str_utils, my_strncmp)
 {

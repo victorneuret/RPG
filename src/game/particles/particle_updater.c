@@ -5,11 +5,11 @@
 ** particle_manager
 */
 
-#include "utils/my_calloc.h"
-#include "window/render_window.h"
-#include "utils/csfml/color_utils.h"
-#include "game/particles/particle.h"
-#include "game/particles/particle_destroyer.h"
+#include "my_calloc.h"
+#include "render_window.h"
+#include "color_utils.h"
+#include "particle.h"
+#include "particle_destroyer.h"
 
 static void remove_unactives(particle_manager_t *head)
 {

@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 
-#include "utils/str_utils.h"
+#include "str_utils.h"
 
 char *my_strncat(char *dest, char const *to_add, size_t n)
 {

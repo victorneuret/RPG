@@ -7,11 +7,11 @@
 
 #include <math.h>
 
-#include "utils/my_calloc.h"
-#include "utils/nbr/nb_utils.h"
-#include "window/render_window.h"
-#include "game/particles/particle.h"
-#include "game/particles/particle_manager.h"
+#include "my_calloc.h"
+#include "nb_utils.h"
+#include "render_window.h"
+#include "particle.h"
+#include "particle_manager.h"
 
 static particle_t *create_particle(sfColor color)
 {

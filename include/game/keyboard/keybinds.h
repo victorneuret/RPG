@@ -9,9 +9,9 @@
 
 #include <SFML/Graphics.h>
 
-#include "window/render_window.h"
+#include "render_window.h"
 
-#include "game/keyboard/key_pressed_functions.h"
+#include "key_pressed_functions.h"
 
 typedef struct {
 	game_status game_state;

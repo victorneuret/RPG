@@ -9,11 +9,11 @@
 
 #include "args.h"
 #include "settings.h"
-#include "window/render_window.h"
+#include "render_window.h"
 
-#include "utils/nbr/getnbr.h"
-#include "utils/str_utils.h"
-#include "utils/my_calloc.h"
+#include "getnbr.h"
+#include "str_utils.h"
+#include "my_calloc.h"
 
 static bool get_fps_limit(char const *arg, settings_t *settings)
 {

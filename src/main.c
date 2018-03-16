@@ -13,10 +13,10 @@
 #include "my_rpg.h"
 #include "args.h"
 #include "settings.h"
-#include "window/render_window.h"
+#include "render_window.h"
 
-#include "utils/nbr/getnbr.h"
-#include "utils/str_utils.h"
+#include "getnbr.h"
+#include "str_utils.h"
 
 static bool is_valid_env(char **env)
 {

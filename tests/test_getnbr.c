@@ -7,7 +7,7 @@
 
 #include <criterion/criterion.h>
 
-#include "utils/nbr/getnbr.h"
+#include "getnbr.h"
 
 Test(getnbr, getnbr)
 {

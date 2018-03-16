@@ -5,7 +5,7 @@
 ** particle_drawer
 */
 
-#include "game/particles/particle.h"
+#include "particle.h"
 
 static void draw_particle_group(win_t *win, particle_group_t *group)
 {

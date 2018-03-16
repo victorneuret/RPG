@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "window/render_window.h"
+#include "render_window.h"
 
 void close_win(win_t *win);
 void toggle_fullscreen(win_t *win);
