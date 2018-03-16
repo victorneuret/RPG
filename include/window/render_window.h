@@ -19,6 +19,8 @@
 static const uint16_t WIN_MAX_W = 1920;
 static const uint16_t WIN_MAX_H = 1080;
 
+typedef struct game game_t;
+
 typedef enum {
 	TITLE,
 	GAME,

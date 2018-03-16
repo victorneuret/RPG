@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "game.h"
 
 static void update_clock(win_t *win)
 {
@@ -35,18 +36,6 @@ static void render(win_t *win)
 	draw_particles(win);
 	if (win->settings->display_fps)
 		draw_fps(win);
-}
-
-static bool init_game(win_t *win)
-{
-	win->game = malloc(sizeof(game_t));
-	if (!win->game)
-		return false;
-	win->game->textures = load_textures();
-	if (!win->game->textures)
-		return false;
-	win->game_state = GAME;
-	return true;
 }
 
 bool my_rpg_loop(win_t *win)

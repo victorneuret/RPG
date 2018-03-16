@@ -18,6 +18,8 @@ SRC	=	src/main.c						\
 		src/utils/nbr/getnbr.c					\
 		src/utils/nbr/int_to_str.c				\
 		src/game/events_functions/basic_events.c		\
+		src/game/init/load_textures.c				\
+		src/game/init/init_game.c				\
 		src/game/particles/particle_updater.c			\
 		src/game/particles/particle_drawer.c			\
 		src/game/particles/effects/particle_explosion.c		\
@@ -27,7 +29,6 @@ SRC	=	src/main.c						\
 		src/game/particles/particle_manager.c			\
 		src/game/events.c					\
 		src/game/backgrounds.c					\
-		src/game/load_textures.c				\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
 		src/game/key_pressed_functions/window_actions.c		\

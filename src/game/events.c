@@ -7,7 +7,7 @@
 
 #include "macros.h"
 
-#include "game/events.h"
+#include "events.h"
 
 static void process_event(win_t *win, sfEvent *event)
 {
