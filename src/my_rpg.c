@@ -36,9 +36,22 @@ static void render(win_t *win)
 		draw_fps(win);
 }
 
+static bool init_game(win_t *win)
+{
+	win->game = malloc(sizeof(game_t));
+	if (!win->game)
+		return false;
+	win->game->textures = load_textures();
+	if (!win->game->textures)
+		return false;
+	win->game_state = GAME;
+	return true;
+}
+
 bool my_rpg_loop(win_t *win)
 {
-	win->game_state = GAME;
+	if (!init_game(win))
+		return false;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
 		process_events(win);

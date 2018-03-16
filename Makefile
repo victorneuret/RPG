@@ -26,6 +26,7 @@ SRC	=	src/main.c						\
 		src/game/particles/particle_manager.c			\
 		src/game/events.c					\
 		src/game/backgrounds.c					\
+		src/game/load_textures.c				\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
 		src/game/key_pressed_functions/window_actions.c		\
@@ -53,6 +54,7 @@ SRC_UNIT=	src/args.c						\
 		src/game/particles/particle_manager.c			\
 		src/game/events.c					\
 		src/game/backgrounds.c					\
+		src/game/load_textures.c				\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
 		src/game/key_pressed_functions/window_actions.c		\
