@@ -24,6 +24,7 @@ struct particle {
 	uint64_t lifetime_ms;
 	sfRectangleShape *shape;
 	bool alive;
+	bool gravity;
 	bool fade_in;
 	bool fade_out;
 };

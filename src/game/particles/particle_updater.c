@@ -38,8 +38,14 @@ static void update_particle(win_t *win, sfClock *timer,
 		particle->alive = false;
 	if (!particle->alive)
 		return;
-	particle->pos.x += particle->speed.x * win->dt;
-	particle->pos.y += particle->speed.y * win->dt;
+	if (particle->pos.x < WIN_MAX_W && particle->pos.x > 0)
+		particle->pos.x += particle->speed.x * win->dt;
+	if (particle->pos.y < WIN_MAX_H && particle->pos.y > 0) {
+		if (particle->gravity)
+			particle->pos.y += (current_time /
+			(float) particle->lifetime_ms) * 1000 * win->dt;
+		particle->pos.y += particle->speed.y * win->dt;
+	}
 	particle->color.a = get_particle_alpha(particle->fade_in,
 		particle->fade_out, current_time, particle->lifetime_ms);
 	sfRectangleShape_setFillColor(particle->shape, particle->color);
