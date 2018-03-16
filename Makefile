@@ -118,14 +118,14 @@ fclean:		clean
 re:		fclean all
 
 valgrind:
-		@$(CC) -o $(NAME) -g3 $(CFLAGS) $(LDFLAGS) $(SRC)
+		@$(CC) -o $(NAME) -g3 $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) $(SRC)
 
 clean_coverage:
 		@find . \( -name '*.gcda' -o -name '*.gcno' -o -name '*.gcov' \) -delete
 
 tests_run:
 		@echo -en "Compiling tests binary..."
-		@$(CC) $(SRC_UNIT) $(CFLAGS) $(LDFLAGS) -lcriterion -o tests_run --coverage
+		@$(CC) $(SRC_UNIT) $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) -lcriterion -o tests_run --coverage
 		@echo -e " Done"
 		./tests_run
 
