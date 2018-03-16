@@ -18,9 +18,10 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
+// update_fireworks(win);
+// update_campfire(win);
 static void update(win_t *win)
 {
-	//update_fireworks(win);
 	update_stars(win);
 	update_particles(win, win->particle_manager);
 }

@@ -21,6 +21,7 @@ SRC	=	src/main.c						\
 		src/game/particles/particle_updater.c			\
 		src/game/particles/particle_drawer.c			\
 		src/game/particles/effects/particle_explosion.c		\
+		src/game/particles/effects/particle_fire.c		\
 		src/game/particles/effects/particle_stars.c		\
 		src/game/particles/particle_destroyer.c			\
 		src/game/particles/particle_manager.c			\
@@ -48,6 +49,7 @@ SRC_UNIT=	src/args.c						\
 		src/game/particles/particle_updater.c			\
 		src/game/particles/particle_drawer.c			\
 		src/game/particles/effects/particle_explosion.c		\
+		src/game/particles/effects/particle_fire.c		\
 		src/game/particles/effects/particle_stars.c		\
 		src/game/particles/particle_destroyer.c			\
 		src/game/particles/particle_manager.c			\
@@ -97,7 +99,7 @@ endif
 all:	$(NAME)
 
 %.o:		%.c
-		@echo -e "[\e[34m$(NAME)\e[39m] : Compiling \e[94m$<\e[39m -> \e[92m$@\e[39m"
+		@echo -e "[\e[34m$(NAME)\e[39m] : Compiling \e[92m$<\e[39m"
 		@$(CC) -c $(CFLAGS) $(LDFLAGS) $(CPPFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)

@@ -23,6 +23,7 @@ struct particle {
 	uint32_t size;
 	uint64_t lifetime_ms;
 	sfRectangleShape *shape;
+	void (*update)(particle_t *particle, uint64_t current_time);
 	bool alive;
 	bool gravity;
 	bool fade_in;

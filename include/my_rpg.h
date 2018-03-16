@@ -26,5 +26,6 @@
 #include "particle_drawer.h"
 #include "particle_explosion.h"
 #include "particle_stars.h"
+#include "particle_fire.h"
 
 bool my_rpg_loop(win_t *win);
