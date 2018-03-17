@@ -9,6 +9,8 @@
 
 #include "render_window.h"
 
+typedef struct render_window win_t;
+
 void close_win(win_t *win);
 void toggle_fullscreen(win_t *win);
 

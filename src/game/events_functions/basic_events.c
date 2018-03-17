@@ -7,7 +7,7 @@
 
 #include "macros.h"
 
-#include "game/events.h"
+#include "events.h"
 #include "keybinds.h"
 #include "particle_explosion.h"
 
@@ -41,6 +41,12 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 	sfVector2f pos = get_mouse_pos(win);
 
 	create_explosion(win, 100, pos, colors[(++index) % 6]);
+	button_click_pressed(win, event);
+}
+
+void mouse_click_released(win_t *win, sfEvent *event)
+{
+	button_click_released(win, event);
 }
 
 void on_resize(win_t *win, __attribute__((unused)) sfEvent *event)

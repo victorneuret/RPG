@@ -16,6 +16,7 @@
 void on_resize(win_t *win, sfEvent *event);
 void key_pressed(win_t *win, sfEvent *event);
 void mouse_click(win_t *win, sfEvent *event);
+void mouse_click_released(win_t *win, sfEvent *event);
 void close_win_evt(win_t *win, sfEvent *event);
 void process_events(win_t *win);
 
@@ -31,5 +32,6 @@ static const event_t events[] = {
 	{ALL,	sfEvtResized,			&on_resize},
 	{ALL,	sfEvtMouseButtonPressed,	&mouse_click},
 	{ALL,	sfEvtMouseWheelScrolled,	&mouse_click},
+	{ALL,	sfEvtMouseButtonReleased,	&mouse_click_released},
 	{0,	0,				NULL}
 };

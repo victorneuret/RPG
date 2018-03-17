@@ -11,6 +11,7 @@ SRC	=	src/main.c						\
 		src/args.c						\
 		src/utils/csfml/color_utils.c				\
 		src/utils/csfml/mouse_utils.c				\
+		src/utils/csfml/sprite_utils.c				\
 		src/utils/my_calloc.c					\
 		src/utils/str/str_utils_2.c				\
 		src/utils/str/str_utils_1.c				\
@@ -31,6 +32,10 @@ SRC	=	src/main.c						\
 		src/game/backgrounds.c					\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
+		src/game/ui/button/init_button.c			\
+		src/game/ui/button/draw_buttons.c			\
+		src/game/ui/button/button_animation.c			\
+		src/game/ui/button/button_click.c			\
 		src/game/key_pressed_functions/window_actions.c		\
 		src/game/key_pressed_functions/pause_resume.c		\
 		src/game/key_pressed_functions/toggles.c		\
@@ -41,6 +46,7 @@ SRC	=	src/main.c						\
 SRC_UNIT=	src/args.c						\
 		src/utils/csfml/color_utils.c				\
 		src/utils/csfml/mouse_utils.c				\
+		src/utils/csfml/sprite_utils.c				\
 		src/utils/my_calloc.c					\
 		src/utils/str/str_utils_2.c				\
 		src/utils/str/str_utils_1.c				\
@@ -57,12 +63,17 @@ SRC_UNIT=	src/args.c						\
 		src/game/particles/particle_manager.c			\
 		src/game/events.c					\
 		src/game/backgrounds.c					\
-		src/game/load_textures.c				\
+		src/game/init/load_textures.c				\
+		src/game/init/init_game.c				\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
 		src/game/key_pressed_functions/window_actions.c		\
 		src/game/key_pressed_functions/pause_resume.c		\
 		src/game/key_pressed_functions/toggles.c		\
+		src/game/ui/button/init_button.c			\
+		src/game/ui/button/draw_buttons.c			\
+		src/game/ui/button/button_animation.c			\
+		src/game/ui/button/button_click.c			\
 		src/my_rpg.c						\
 		src/window/render_window.c				\
 		src/window/destroy.c					\
@@ -80,6 +91,8 @@ CPPFLAGS+=	-I include						\
 		-I include/game/particles/effects			\
 		-I include/game/display					\
 		-I include/game/keyboard				\
+		-I include/game/ui					\
+		-I include/game/ui/buttons				\
 		-I include/window
 
 OBJ	=	$(SRC:.c=.o)

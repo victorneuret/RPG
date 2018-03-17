@@ -9,12 +9,16 @@
 
 #include "render_window.h"
 #include "texture.h"
+#include "ui.h"
 
 typedef struct textures textures_t;
 typedef struct render_window win_t;
+typedef struct ui ui_t;
 
 typedef struct game {
 	textures_t *textures;
+	ui_t *ui;
 } game_t;
 
 bool init_game(win_t *win);
+void free_game(game_t *game);

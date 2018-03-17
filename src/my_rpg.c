@@ -33,6 +33,7 @@ static void render(win_t *win)
 	} else if (win->game_state == PAUSE) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 	}
+	draw_buttons(win);
 	draw_particles(win);
 	if (win->settings->display_fps)
 		draw_fps(win);
@@ -50,5 +51,6 @@ bool my_rpg_loop(win_t *win)
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}
+	free_game(win->game);
 	return true;
 }

@@ -12,7 +12,6 @@
 #include "settings.h"
 
 #include "particle.h"
-#include "game.h"
 
 #define WINDOW_TITLE "My RPG"
 
@@ -27,6 +26,8 @@ typedef enum {
 	PAUSE,
 	ALL
 } game_status;
+
+#include "game.h"
 
 typedef struct render_window {
 	float dt;

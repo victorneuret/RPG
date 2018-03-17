@@ -17,7 +17,7 @@ static textures_t *init_textures_list(textures_t *textures)
 			return NULL;
 		textures->next = NULL;
 	} else {
-		for(; tmp->next; tmp = tmp->next);
+		for (; tmp->next; tmp = tmp->next);
 		tmp->next = malloc(sizeof(textures_t));
 		if (!tmp->next)
 			return NULL;
