@@ -12,25 +12,17 @@
 #include "particle.h"
 #include "particle_destroyer.h"
 
-static void remove_unactives(particle_manager_t *head)
+static void update_particle_position(win_t *win, particle_t *particle)
 {
-	particle_manager_t *current = head;
-	particle_manager_t *previous = current;
-
-	for (; current; current = current->next) {
-		if (current->group && !current->group->active
-				&& current != head) {
-			destroy_particle_group(current->group);
-			previous->next = current->next;
-			free(current);
-			continue;
-		}
-		previous = current;
+	particle->pos.y += particle->speed.y * win->dt;
+	particle->pos.x += particle->speed.x * win->dt;
+	if (particle->screen_collision) {
+		particle->pos.x = MAX(0, MIN(particle->pos.x, WIN_MAX_W));
+		particle->pos.y = MAX(0, MIN(particle->pos.y, WIN_MAX_H));
 	}
 }
 
-static void update_particle(win_t *win, sfClock *timer,
-			particle_t *particle)
+static void update_particle(win_t *win, sfClock *timer, particle_t *particle)
 {
 	uint64_t current_time = sfTime_asMilliseconds(
 					sfClock_getElapsedTime(timer));
@@ -44,10 +36,7 @@ static void update_particle(win_t *win, sfClock *timer,
 	if (particle->gravity)
 		particle->pos.y += (current_time /
 		(float) particle->lifetime_ms) * 1000 * win->dt;
-	particle->pos.y += particle->speed.y * win->dt;
-	particle->pos.x += particle->speed.x * win->dt;
-	particle->pos.x = MAX(0, MIN(particle->pos.x, WIN_MAX_W));
-	particle->pos.y = MAX(0, MIN(particle->pos.y, WIN_MAX_H));
+	update_particle_position(win, particle);
 	particle->color.a = get_particle_alpha(particle->fade_in,
 		particle->fade_out, current_time, particle->lifetime_ms);
 	sfRectangleShape_setFillColor(particle->shape, particle->color);

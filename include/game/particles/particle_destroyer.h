@@ -9,5 +9,6 @@
 
 #include "particle.h"
 
+void remove_unactives(particle_manager_t *head);
 void destroy_particle_group(particle_group_t *group);
 void destroy_particle_manager(particle_manager_t *manager);
