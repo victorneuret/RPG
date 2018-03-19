@@ -21,9 +21,10 @@ static void update_clock(win_t *win)
 
 // update_fireworks(win);
 // update_campfire(win);
+// update_stars(win);
 static void update(win_t *win)
 {
-	update_stars(win);
+	update_weather(win);
 	update_particles(win, win->particle_manager);
 }
 

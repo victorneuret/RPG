@@ -10,7 +10,6 @@
 #include <SFML/Graphics.h>
 
 #include "settings.h"
-
 #include "particle.h"
 
 #define WINDOW_TITLE "My RPG"
