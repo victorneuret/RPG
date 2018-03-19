@@ -14,7 +14,7 @@
 #include "str_utils.h"
 #include "color_utils.h"
 
-static sfText *init_text(void)
+static sfText *init_text_fps(void)
 {
 	sfText *fps_text = sfText_create();
 
@@ -51,7 +51,7 @@ void draw_fps(win_t *win)
 	static sfClock *second_tick = 0;
 
 	if (!initialized) {
-		fps_text = init_text();
+		fps_text = init_text_fps();
 		second_tick = sfClock_create();
 		initialized = true;
 		my_strncat(fps_content, "...", 3);
