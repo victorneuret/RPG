@@ -6,6 +6,7 @@
 */
 
 #include "text_area.h"
+#include "my_calloc.h"
 
 static text_area_t *init_text_area_list(text_area_t *text_area)
 {
@@ -26,30 +27,46 @@ static text_area_t *init_text_area_list(text_area_t *text_area)
 	return text_area;
 }
 
-static bool fill_text_area_list(const text_area_declaration_t list,
-	text_area_t *text_area)
+static bool fill_text_area_list_two(const text_area_declaration_t list,
+	text_area_t *tmp)
 {
-	text_area_t *tmp = text_area;
-	sfVector2f text_pos = (sfVector2f) {list.pos.x + 5, list.pos.y / 2};
+	sfVector2f text_pos;
+	sfFloatRect pos;
 
-	for (; tmp->next; tmp = tmp->next);
-	tmp->game_state = list.game_state;
-	tmp->nb_char_max = list.font_size / list.size.x * 2 + 10;
-	tmp->box = sfRectangleShape_create();
-	tmp->font = sfFont_createFromFile(list.path_to_font);
-	tmp->box = init_rectangle(list.pos, list.size,
-				hex_to_rgba(list.text_area_color));
-	if (!tmp->box || !tmp->font)
-		return false;
+	pos = sfRectangleShape_getGlobalBounds(tmp->box);
+	text_pos = (sfVector2f) {pos.left + 5, pos.top + (list.size.y / 2.6)};
 	tmp->text = init_text(tmp->font, "", text_pos, list.font_size);
 	tmp->text_label = list.text_label;
 	tmp->label = init_text(tmp->font, tmp->text_label, text_pos,
 				list.font_size);
 	if (!tmp->text || !tmp->text_label)
 		return false;
-	tmp->input_text = malloc(sizeof(char) * tmp->nb_char_max);
+	sfText_setColor(tmp->text, hex_to_rgba(list.text_color));
+	sfText_setColor(tmp->label, hex_to_rgba(list.text_color));
 	tmp->text_label = list.text_label;
+	tmp->func = list.func;
+	tmp->active = false;
 	return true;
+}
+
+static bool fill_text_area_list(const text_area_declaration_t list,
+	text_area_t *text_area)
+{
+	text_area_t *tmp = text_area;
+
+	for (; tmp->next; tmp = tmp->next);
+	tmp->game_state = list.game_state;
+	tmp->nb_char_max = list.size.x / (list.font_size / 3 * 2);
+	tmp->box = sfRectangleShape_create();
+	tmp->font = sfFont_createFromFile(list.path_to_font);
+	tmp->input_text = my_calloc(tmp->nb_char_max + 1, sizeof(char));
+	tmp->box = init_rectangle(list.pos, list.size,
+				hex_to_rgba(list.text_area_color));
+	if (!tmp->box || !tmp->font || !tmp->input_text)
+		return false;
+	sfRectangleShape_setOrigin(tmp->box,
+			(sfVector2f) {list.size.x / 2, list.size.y / 2});
+	return fill_text_area_list_two(list, tmp);
 }
 
 text_area_t *load_text_area(void)

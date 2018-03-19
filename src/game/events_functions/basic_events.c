@@ -40,6 +40,8 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 	};
 	sfVector2f pos = get_mouse_pos(win);
 
+	if (text_area_click(win))
+		return;
 	create_explosion(win, 100, pos, colors[(++index) % 6]);
 	button_click_pressed(win, event);
 }

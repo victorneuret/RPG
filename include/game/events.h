@@ -33,5 +33,6 @@ static const event_t events[] = {
 	{ALL,	sfEvtMouseButtonPressed,	&mouse_click},
 	{ALL,	sfEvtMouseWheelScrolled,	&mouse_click},
 	{ALL,	sfEvtMouseButtonReleased,	&mouse_click_released},
+	{ALL,	sfEvtTextEntered,		&text_area_write},
 	{0,	0,				NULL}
 };

@@ -40,6 +40,9 @@ SRC	=	src/main.c						\
 		src/game/ui/button/button_animation.c			\
 		src/game/ui/button/button_click.c			\
 		src/game/ui/text_area/init_text_area.c			\
+		src/game/ui/text_area/draw_text_area.c			\
+		src/game/ui/text_area/text_area_write.c			\
+		src/game/ui/text_area/text_area_click.c			\
 		src/game/key_pressed_functions/window_actions.c		\
 		src/game/key_pressed_functions/pause_resume.c		\
 		src/game/key_pressed_functions/toggles.c		\
@@ -82,6 +85,9 @@ SRC_UNIT=	src/args.c						\
 		src/game/ui/button/button_animation.c			\
 		src/game/ui/button/button_click.c			\
 		src/game/ui/text_area/init_text_area.c			\
+		src/game/ui/text_area/draw_text_area.c			\
+		src/game/ui/text_area/text_area_write.c			\
+		src/game/ui/text_area/text_area_click.c			\
 		src/my_rpg.c						\
 		src/window/render_window.c				\
 		src/window/destroy.c					\
