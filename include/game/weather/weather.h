@@ -40,9 +40,11 @@ typedef struct weather {
 void update_weather(win_t *win);
 
 void update_rain(win_t *win);
+void update_snow(win_t *win);
 
 static const weather_t weather_list[] = {
 	{CLEAR,	&create_star},
 	{RAIN,	&update_rain},
+	{SNOW,	&update_snow},
 	{0,	NULL}
 };

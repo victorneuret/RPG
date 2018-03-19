@@ -28,6 +28,7 @@ SRC	=	src/main.c						\
 		src/game/particles/effects/particle_stars.c		\
 		src/game/particles/particle_destroyer.c			\
 		src/game/particles/particle_manager.c			\
+		src/game/weather/snow.c					\
 		src/game/weather/rain.c					\
 		src/game/weather/weather.c				\
 		src/game/events.c					\
@@ -69,6 +70,7 @@ SRC_UNIT=	src/args.c						\
 		src/game/particles/effects/particle_stars.c		\
 		src/game/particles/particle_destroyer.c			\
 		src/game/particles/particle_manager.c			\
+		src/game/weather/snow.c					\
 		src/game/weather/rain.c					\
 		src/game/weather/weather.c				\
 		src/game/events.c					\
