@@ -9,4 +9,4 @@
 
 #include "particle.h"
 
-void create_star(win_t *win, sfColor color);
+void create_star(win_t *win);

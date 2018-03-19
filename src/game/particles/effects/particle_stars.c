@@ -13,7 +13,7 @@
 #include "particle.h"
 #include "particle_manager.h"
 
-static particle_t *create_particle(sfColor color)
+static particle_t *create_particle(void)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
 	const float speed = (float) rand_int(3, 5);
@@ -23,7 +23,7 @@ static particle_t *create_particle(sfColor color)
 		return NULL;
 	particle->pos = (sfVector2f) {rand_int(0, WIN_MAX_W),
 					rand_int(0, WIN_MAX_H)};
-	particle->color = color;
+	particle->color = sfYellow;
 	particle->alive = true;
 	particle->fade_in = true;
 	particle->fade_out = true;
@@ -35,7 +35,7 @@ static particle_t *create_particle(sfColor color)
 	return particle;
 }
 
-void create_star(win_t *win, sfColor color)
+void create_star(win_t *win)
 {
 	particle_group_t *group = get_particle_group(win->particle_manager);
 	particle_t **p_list = my_calloc(2, sizeof(particle_t *));
@@ -43,7 +43,7 @@ void create_star(win_t *win, sfColor color)
 	if (!p_list || !group)
 		return;
 	group->particles = p_list;
-	p_list[0] = create_particle(color);
+	p_list[0] = create_particle();
 	if (!p_list[0]) {
 		free(p_list);
 		return;

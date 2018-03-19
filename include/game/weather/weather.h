@@ -8,6 +8,7 @@
 #pragma once
 
 #include "render_window.h"
+#include "particle_stars.h"
 
 typedef struct render_window win_t;
 
@@ -41,6 +42,7 @@ void update_weather(win_t *win);
 void update_rain(win_t *win);
 
 static const weather_t weather_list[] = {
+	{CLEAR,	&create_star},
 	{RAIN,	&update_rain},
 	{0,	NULL}
 };

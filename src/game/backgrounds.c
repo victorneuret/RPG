@@ -29,20 +29,6 @@ void update_fireworks(win_t *win)
 	}
 }
 
-void update_stars(win_t *win)
-{
-	static sfClock *timer;
-	uint32_t current_time = timer ? sfTime_asMilliseconds(
-				sfClock_getElapsedTime(timer)) : 0;
-
-	if (!timer)
-		timer = sfClock_create();
-	if (current_time >= 100) {
-		create_star(win, sfYellow);
-		sfClock_restart(timer);
-	}
-}
-
 void update_campfire(win_t *win)
 {
 	static sfClock *timer;
