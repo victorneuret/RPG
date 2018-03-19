@@ -34,9 +34,9 @@ static void render(win_t *win)
 	} else if (win->game_state == PAUSE) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 	}
+	draw_particles(win);
 	draw_buttons(win);
 	draw_text_area(win);
-	draw_particles(win);
 	if (win->settings->display_fps)
 		draw_fps(win);
 }
