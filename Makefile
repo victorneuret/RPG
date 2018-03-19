@@ -92,6 +92,7 @@ CPPFLAGS+=	-I include						\
 		-I include/game/particles				\
 		-I include/game/particles/effects			\
 		-I include/game/display					\
+		-I include/game/weather					\
 		-I include/game/keyboard				\
 		-I include/game/ui					\
 		-I include/game/ui/buttons				\
