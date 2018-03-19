@@ -22,7 +22,7 @@ static particle_t *create_particle(sfVector2f origin, float angle, float speed)
 	particle->pos = origin;
 	particle->color = sfWhite;
 	particle->alive = true;
-	particle->lifetime_ms = -1;
+	particle->lifetime_ms = 40000;
 	particle->size = rand_int(3, 5);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
 					sin(angle) * speed};
