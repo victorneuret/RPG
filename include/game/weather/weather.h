@@ -26,7 +26,6 @@ typedef enum weather_intensity {
 typedef enum weather_type {
 	CLEAR,
 	RAIN,
-	THUNDER,
 	SNOW,
 
 	WEATHER_COUNT
