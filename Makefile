@@ -39,6 +39,7 @@ SRC	=	src/main.c						\
 		src/game/ui/button/button_click.c			\
 		src/game/key_pressed_functions/window_actions.c		\
 		src/game/key_pressed_functions/pause_resume.c		\
+		src/game/key_pressed_functions/weather_modifiers.c	\
 		src/game/key_pressed_functions/toggles.c		\
 		src/my_rpg.c						\
 		src/window/render_window.c				\
@@ -70,6 +71,7 @@ SRC_UNIT=	src/args.c						\
 		src/game/display/fps.c					\
 		src/game/display/drawer.c				\
 		src/game/key_pressed_functions/window_actions.c		\
+		src/game/key_pressed_functions/weather_modifiers.c	\
 		src/game/key_pressed_functions/pause_resume.c		\
 		src/game/key_pressed_functions/toggles.c		\
 		src/game/ui/button/init_button.c			\

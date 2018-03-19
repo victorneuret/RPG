@@ -7,18 +7,22 @@
 
 #pragma once
 
-typedef enum {
-	LOWEST = 1,
+typedef enum weather_intensity {
+	LOWEST,
 	LOW,
 	NORMAL,
 	HIGH,
 	HIGHEST,
-	INSANE
-} weather_intensity;
+	INSANE,
 
-typedef enum {
+	INTENSITY_COUNT
+} weather_intensity_t;
+
+typedef enum weather_type {
 	CLEAR,
 	RAIN,
 	THUNDER,
-	SNOW
-} weather_type;
+	SNOW,
+
+	WEATHER_COUNT
+} weather_type_t;

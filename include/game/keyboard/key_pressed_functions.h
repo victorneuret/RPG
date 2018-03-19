@@ -17,3 +17,8 @@ void toggle_fullscreen(win_t *win);
 void toggle_fps(win_t *win);
 
 void pause_game(win_t *win);
+
+void next_weather(win_t *win);
+void previous_weather(win_t *win);
+void next_intensity(win_t *win);
+void previous_intensity(win_t *win);

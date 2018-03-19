@@ -6,6 +6,7 @@
 */
 
 #include "game.h"
+#include "weather.h"
 
 bool init_game(win_t *win)
 {
@@ -19,6 +20,8 @@ bool init_game(win_t *win)
 	win->game->ui->buttons = load_buttons(win->game->textures);
 	if (!win->game->ui->buttons)
 		return false;
+	win->game->weather_type = CLEAR;
+	win->game->weather_intensity = NORMAL;
 	win->game_state = GAME;
 	return true;
 }
