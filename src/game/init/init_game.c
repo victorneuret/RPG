@@ -17,7 +17,8 @@ bool init_game(win_t *win)
 	if (!win->game->textures)
 		return false;
 	win->game->ui->buttons = load_buttons(win->game->textures);
-	if (!win->game->ui->buttons)
+	win->game->ui->text_area = load_text_area();
+	if (!win->game->ui->buttons || !win->game->ui->text_area)
 		return false;
 	win->game_state = GAME;
 	return true;
@@ -26,6 +27,7 @@ bool init_game(win_t *win)
 void free_game(game_t *game)
 {
 	free_buttons(game->ui->buttons);
+	free_text_area(game->ui->text_area);
 	free_textures(game->textures);
 	free(game->ui);
 }

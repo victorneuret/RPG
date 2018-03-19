@@ -12,6 +12,8 @@ SRC	=	src/main.c						\
 		src/utils/csfml/color_utils.c				\
 		src/utils/csfml/mouse_utils.c				\
 		src/utils/csfml/sprite_utils.c				\
+		src/utils/csfml/rectangle_utils.c			\
+		src/utils/csfml/text_utils.c				\
 		src/utils/my_calloc.c					\
 		src/utils/str/str_utils_2.c				\
 		src/utils/str/str_utils_1.c				\
@@ -36,6 +38,7 @@ SRC	=	src/main.c						\
 		src/game/ui/button/draw_buttons.c			\
 		src/game/ui/button/button_animation.c			\
 		src/game/ui/button/button_click.c			\
+		src/game/ui/text_area/init_text_area.c			\
 		src/game/key_pressed_functions/window_actions.c		\
 		src/game/key_pressed_functions/pause_resume.c		\
 		src/game/key_pressed_functions/toggles.c		\
@@ -47,6 +50,8 @@ SRC_UNIT=	src/args.c						\
 		src/utils/csfml/color_utils.c				\
 		src/utils/csfml/mouse_utils.c				\
 		src/utils/csfml/sprite_utils.c				\
+		src/utils/csfml/rectangle_utils.c			\
+		src/utils/csfml/text_utils.c				\
 		src/utils/my_calloc.c					\
 		src/utils/str/str_utils_2.c				\
 		src/utils/str/str_utils_1.c				\
@@ -74,6 +79,7 @@ SRC_UNIT=	src/args.c						\
 		src/game/ui/button/draw_buttons.c			\
 		src/game/ui/button/button_animation.c			\
 		src/game/ui/button/button_click.c			\
+		src/game/ui/text_area/init_text_area.c			\
 		src/my_rpg.c						\
 		src/window/render_window.c				\
 		src/window/destroy.c					\
@@ -93,6 +99,7 @@ CPPFLAGS+=	-I include						\
 		-I include/game/keyboard				\
 		-I include/game/ui					\
 		-I include/game/ui/buttons				\
+		-I include/game/ui/text_area				\
 		-I include/window
 
 OBJ	=	$(SRC:.c=.o)
