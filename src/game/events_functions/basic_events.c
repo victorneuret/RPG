@@ -40,6 +40,8 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 	};
 	sfVector2f pos = get_mouse_pos(win);
 
+	if (text_area_click(win))
+		return;
 	if (event->mouseButton.button == sfMouseRight ||
 			event->type == sfEvtMouseWheelScrolled)
 		create_explosion(win, 100, pos, colors[(++index) % 6]);

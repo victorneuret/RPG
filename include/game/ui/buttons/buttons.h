@@ -43,7 +43,7 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		GAME | PAUSE,
 		(sfIntRect) {64, 0, 64, 64},
-		(sfVector2f) {10, 10},
+		(sfVector2f) {-100, -100},
 		"load",
 		0x26A69AFF,
 		0x26A69ABF,
