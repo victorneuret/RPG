@@ -26,6 +26,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color)
 	particle->alive = true;
 	particle->fade_in = false;
 	particle->fade_out = true;
+	particle->screen_collision = true;
 	particle->lifetime_ms = rand_int(2500, 3500);
 	particle->size = rand_int(3, 6);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
