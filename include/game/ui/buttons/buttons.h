@@ -23,6 +23,7 @@ typedef struct buttons {
 	sfSprite *sprite;
 	sfColor color;
 	sfColor hover_color;
+	bool reset_scale;
 	char *text_hover;
 	void (*func)(win_t *win);
 	sfClock *button_clock;
@@ -43,7 +44,7 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		GAME | PAUSE,
 		(sfIntRect) {64, 0, 64, 64},
-		(sfVector2f) {-100, -100},
+		(sfVector2f) {100, 100},
 		"load",
 		0x26A69AFF,
 		0x26A69ABF,
@@ -67,3 +68,4 @@ void button_animation(win_t *win);
 void button_click_animation(buttons_t *button);
 void button_click_released(win_t *win, const sfEvent *event);
 void button_click_pressed(win_t *win, const sfEvent *event);
+void update_button(buttons_t *button, win_t *win);

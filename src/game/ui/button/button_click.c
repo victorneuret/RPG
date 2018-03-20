@@ -18,6 +18,7 @@ static void button_click_released_action(win_t *win, buttons_t *button)
 			button->func(win);
 		button_click_animation(button);
 		sfClock_restart(button->button_clock);
+		button->reset_scale = true;
 	}
 }
 
@@ -32,10 +33,16 @@ void button_click_released(win_t *win, const sfEvent *event)
 	}
 }
 
-static void button_click_pressed_action(__attribute__((unused)) win_t *win,
-	__attribute__((unused)) buttons_t *button)
+static void button_click_pressed_action(win_t *win, buttons_t *button)
 {
+	sfFloatRect rect = sfSprite_getGlobalBounds(button->sprite);
+	sfVector2f mouse = get_mouse_pos(win);
+	sfVector2f scale = (sfVector2f) {0.9, 0.9};
 
+	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
+		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
+		sfSprite_setScale(button->sprite, scale);
+	}
 }
 
 void button_click_pressed(win_t *win, const sfEvent *event)
