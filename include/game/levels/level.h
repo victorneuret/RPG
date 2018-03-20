@@ -25,7 +25,9 @@ typedef struct {
 } tile_t;
 
 typedef struct {
-	sfTexture *texture;
-	sfSprite *sprite;
+	sfImage *level_src;
 	sfVector2f size;
+	tile_t **tiles;
 } level_t;
+
+bool load_level(win_t *win, char const *path);
