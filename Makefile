@@ -13,6 +13,7 @@ SRC	=	src/game/events_functions/basic_events.c			\
 		src/game/backgrounds.c						\
 		src/game/ui/button/init_button.c				\
 		src/game/ui/button/button_click.c				\
+		src/game/ui/button/button_text_hover.c				\
 		src/game/ui/button/draw_buttons.c				\
 		src/game/ui/button/button_animation.c				\
 		src/game/ui/text_area/init_text_area.c				\
@@ -59,6 +60,7 @@ SRC_UNIT=	src/game/events_functions/basic_events.c			\
 		src/game/backgrounds.c						\
 		src/game/ui/button/init_button.c				\
 		src/game/ui/button/button_click.c				\
+		src/game/ui/button/button_text_hover.c				\
 		src/game/ui/button/draw_buttons.c				\
 		src/game/ui/button/button_animation.c				\
 		src/game/ui/text_area/init_text_area.c				\

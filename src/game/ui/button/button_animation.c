@@ -22,8 +22,12 @@ static void button_hover(win_t *win, buttons_t *button)
 		&& sfClock_getElapsedTime(button->button_clock).microseconds
 		/ 60000 > 2) {
 		sfSprite_setColor(button->sprite, button->hover_color);
+		sfText_setString(win->game->ui->hover_text_button->text,
+				button->text_hover);
+		button->hover = true;
 		return;
 	}
+	button->hover = false;
 	sfSprite_setColor(button->sprite, button->color);
 }
 
@@ -50,12 +54,13 @@ void button_animation(win_t *win)
 
 void update_button(buttons_t *button, win_t *win)
 {
-	sfFloatRect rect = sfSprite_getGlobalBounds(button->sprite);
+	sfFloatRect rect;
 	sfVector2f mouse = get_mouse_pos(win);
 
 	for (buttons_t *tmp = button; tmp; tmp = tmp->next) {
 		if (tmp->reset_scale)
 			continue;
+		rect = sfSprite_getGlobalBounds(tmp->sprite);
 		if (mouse.x <= rect.left || mouse.x >= rect.left + rect.width
 			|| mouse.y <= rect.top
 			|| mouse.y >= rect.top + rect.height)

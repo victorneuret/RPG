@@ -42,6 +42,7 @@ static void button_click_pressed_action(win_t *win, buttons_t *button)
 	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
 		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
 		sfSprite_setScale(button->sprite, scale);
+		button->reset_scale = false;
 	}
 }
 

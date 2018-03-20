@@ -19,7 +19,9 @@ bool init_game(win_t *win)
 		return false;
 	win->game->ui->buttons = load_buttons(win->game->textures);
 	win->game->ui->text_area = load_text_area();
-	if (!win->game->ui->buttons || !win->game->ui->text_area)
+	win->game->ui->hover_text_button = init_text_button();
+	if (!win->game->ui->buttons || !win->game->ui->text_area
+		|| !win->game->ui->hover_text_button)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
@@ -30,6 +32,7 @@ bool init_game(win_t *win)
 void free_game(game_t *game)
 {
 	free_buttons(game->ui->buttons);
+	free_hover_text_button(game->ui->hover_text_button);
 	free_text_area(game->ui->text_area);
 	free_textures(game->textures);
 	free(game->ui);

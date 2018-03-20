@@ -48,6 +48,7 @@ static bool fill_buttons_list(const button_declaration_t list,
 	tmp->func = list.func;
 	tmp->button_clock = sfClock_create();
 	tmp->reset_scale = false;
+	tmp->hover = false;
 	return true;
 }
 
@@ -73,4 +74,12 @@ void free_buttons(buttons_t *buttons)
 	sfSprite_destroy(buttons->sprite);
 	sfClock_destroy(buttons->button_clock);
 	free(buttons);
+}
+
+void free_hover_text_button(text_hover_button_t *hover)
+{
+	sfRectangleShape_destroy(hover->rect);
+	sfFont_destroy(hover->font);
+	sfText_destroy(hover->text);
+	free(hover);
 }

@@ -26,6 +26,7 @@ static void update(win_t *win)
 {
 	update_weather(win);
 	update_button(win->game->ui->buttons, win);
+	update_text_hover(win->game->ui->hover_text_button, win);
 	update_particles(win, win->particle_manager);
 }
 
@@ -37,6 +38,7 @@ static void render(win_t *win)
 	}
 	draw_particles(win);
 	draw_buttons(win);
+	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
 	if (win->settings->display_fps)
 		draw_fps(win);
