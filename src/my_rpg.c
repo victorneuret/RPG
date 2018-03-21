@@ -32,9 +32,11 @@ static void update(win_t *win)
 
 static void render(win_t *win)
 {
-	if (win->game_state == GAME) {
-	} else if (win->game_state == PAUSE) {
-		sfRenderWindow_clear(win->sf_win, sfBlack);
+	switch (win->game_state) {
+	case TITLE: sfRenderWindow_clear(win->sf_win, sfWhite); break;
+	case GAME: break;
+	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
+	default: break;
 	}
 	draw_particles(win);
 	draw_buttons(win);

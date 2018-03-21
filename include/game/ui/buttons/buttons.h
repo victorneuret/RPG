@@ -47,15 +47,26 @@ typedef struct {
 	void (*func)(win_t *win);
 } button_declaration_t;
 
+#include "menu_button_functions.h"
+
 static const button_declaration_t buttons_declaration[] = {
 	{
-		GAME | PAUSE,
+		GAME,
 		(sfIntRect) {64, 0, 64, 64},
 		(sfVector2f) {1879, 1038},
 		"Pause menu",
 		0x26A69AFF,
 		0x26A69ABF,
 		&pause_game
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {960, 540},
+		"",
+		0x26A69AFF,
+		0x26A69ABF,
+		&start_game
 	},
 	{
 		ALL,
