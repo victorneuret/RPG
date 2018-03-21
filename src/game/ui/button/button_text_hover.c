@@ -24,7 +24,7 @@ text_hover_button_t *init_text_button(void)
 				(sfVector2f) {5, 5}, 20);
 	if (!hover->text)
 		return NULL;
-	sfText_setColor(hover->text, hex_to_rgba(0xFFFFFF6C));
+	sfText_setColor(hover->text, hex_to_rgba(0xFFFFFFCC));
 	return hover;
 }
 
@@ -81,6 +81,8 @@ void update_text_hover(text_hover_button_t *hover, win_t *win)
 
 void draw_text_hover_button(text_hover_button_t *hover, win_t *win)
 {
+	if (my_strlen(sfText_getString(hover->text)) == 0)
+		return;
 	if (is_over_button(win->game->ui->buttons)) {
 		sfRenderWindow_drawRectangleShape(win->sf_win, hover->rect, 0);
 		sfRenderWindow_drawText(win->sf_win, hover->text, 0);
