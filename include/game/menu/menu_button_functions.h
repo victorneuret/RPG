@@ -10,3 +10,4 @@
 #include "render_window.h"
 
 void start_game(win_t *win);
+void to_option_menu(win_t *win);

@@ -16,6 +16,7 @@ SRC	=	src/args.c								\
 		src/game/init/init_game.c						\
 		src/game/init/load_textures.c						\
 		src/game/key_pressed_functions/pause_resume.c				\
+		src/game/key_pressed_functions/to_title_page.c				\
 		src/game/key_pressed_functions/toggles.c				\
 		src/game/key_pressed_functions/weather_modifiers.c			\
 		src/game/key_pressed_functions/window_actions.c				\
@@ -65,6 +66,7 @@ SRC_UNIT=	src/args.c								\
 		src/game/init/init_game.c						\
 		src/game/init/load_textures.c						\
 		src/game/key_pressed_functions/pause_resume.c				\
+		src/game/key_pressed_functions/to_title_page.c				\
 		src/game/key_pressed_functions/toggles.c				\
 		src/game/key_pressed_functions/weather_modifiers.c			\
 		src/game/key_pressed_functions/window_actions.c				\

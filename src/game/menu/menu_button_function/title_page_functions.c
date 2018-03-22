@@ -11,3 +11,8 @@ void start_game(win_t *win)
 {
 	win->game_state = GAME;
 }
+
+void to_option_menu(win_t *win)
+{
+	win->game_state = OPTION;
+}

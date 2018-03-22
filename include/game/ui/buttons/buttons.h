@@ -51,6 +51,42 @@ typedef struct {
 
 static const button_declaration_t buttons_declaration[] = {
 	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 700},
+		"Start game",
+		0x26A69AFF,
+		0x26A69ABF,
+		&start_game
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 780},
+		"",
+		0x26A69AFF,
+		0x26A69ABF,
+		NULL
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 860},
+		"Options",
+		0x26A69AFF,
+		0x26A69ABF,
+		&to_option_menu
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 940},
+		"Exit game",
+		0x26A69AFF,
+		0x26A69ABF,
+		&close_win
+	},
+	{
 		GAME,
 		(sfIntRect) {64, 0, 64, 64},
 		(sfVector2f) {1879, 1038},
@@ -58,15 +94,6 @@ static const button_declaration_t buttons_declaration[] = {
 		0x26A69AFF,
 		0x26A69ABF,
 		&pause_game
-	},
-	{
-		TITLE,
-		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {960, 540},
-		"",
-		0x26A69AFF,
-		0x26A69ABF,
-		&start_game
 	},
 	{
 		ALL,

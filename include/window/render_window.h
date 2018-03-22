@@ -23,6 +23,7 @@ typedef enum {
 	TITLE,
 	GAME,
 	PAUSE,
+	OPTION,
 	ALL
 } game_status;
 
