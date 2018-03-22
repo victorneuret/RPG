@@ -24,6 +24,8 @@ static void update_clock(win_t *win)
 // update_stars(win);
 static void update(win_t *win)
 {
+	if (win->game_state == TITLE)
+		return;
 	update_weather(win);
 	update_button(win->game->ui->buttons, win);
 	update_text_hover(win->game->ui->hover_text_button, win);
@@ -32,11 +34,12 @@ static void update(win_t *win)
 
 static void render(win_t *win)
 {
-	if (win->game_state == GAME) {
+	draw_particles(win);
+	if (win->game_state == TITLE) {
+		sfRenderWindow_clear(win->sf_win, (sfColor) {42, 42, 42, 255});
 	} else if (win->game_state == PAUSE) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 	}
-	draw_particles(win);
 	draw_buttons(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);

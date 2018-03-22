@@ -19,11 +19,12 @@ static const uint16_t WIN_MAX_H = 1080;
 
 typedef struct game game_t;
 
-typedef enum {
-	TITLE,
-	GAME,
-	PAUSE,
-	ALL
+typedef enum game_state {
+	TITLE = 1,
+	GAME = 1 << 1,
+	PAUSE = 1 << 2,
+
+	ALL = -1
 } game_status;
 
 #include "game.h"

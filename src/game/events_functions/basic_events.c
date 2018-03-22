@@ -21,9 +21,9 @@ void close_win_evt(win_t *win, __attribute__((unused)) sfEvent *event)
 void key_pressed(win_t *win, sfEvent *event)
 {
 	for (size_t i = 0; keybinds[i].func != NULL; i++) {
-		if ((keybinds[i].game_state == ALL ||
-		keybinds[i].game_state == win->game_state) &&
-		keybinds[i].keycode == event->key.code) {
+		if (((keybinds[i].game_state & win->game_state)
+		== win->game_state || keybinds[i].game_state == ALL) &&
+				keybinds[i].keycode == event->key.code) {
 			keybinds[i].func(win);
 			break;
 		}

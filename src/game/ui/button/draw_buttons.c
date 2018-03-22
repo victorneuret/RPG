@@ -10,9 +10,9 @@
 void draw_buttons(win_t *win)
 {
 	button_animation(win);
-	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
-		if (tmp->game_state == win->game_state
-			|| tmp->game_state == ALL)
-			sfRenderWindow_drawSprite(win->sf_win, tmp->sprite, 0);
+	for (buttons_t *btn = win->game->ui->buttons; btn; btn = btn->next) {
+		if ((btn->game_state & win->game_state) == win->game_state
+			|| btn->game_state == ALL)
+			sfRenderWindow_drawSprite(win->sf_win, btn->sprite, 0);
 	}
 }
