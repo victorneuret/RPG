@@ -12,6 +12,8 @@ static bool check_text_box_hit_box(text_area_t *text_area, win_t *win)
 	sfFloatRect rect = sfRectangleShape_getGlobalBounds(text_area->box);
 	sfVector2f mouse = get_mouse_pos(win);
 
+	if (text_area->game_state != win->game_state)
+		return false;
 	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
 		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
 		return true;

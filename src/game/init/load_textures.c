@@ -36,6 +36,7 @@ static bool fill_textures_list(const textures_path_t textures_path,
 	tmp->texture = sfTexture_createFromFile(textures_path.path, NULL);
 	if (!tmp->texture)
 		return false;
+	sfTexture_setSmooth(tmp->texture, sfTrue);
 	return true;
 }
 

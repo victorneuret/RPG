@@ -23,7 +23,7 @@ typedef enum game_state {
 	TITLE = 1,
 	GAME = 1 << 1,
 	PAUSE = 1 << 2,
-
+	OPTION = 1 << 3,
 	ALL = -1
 } game_status;
 

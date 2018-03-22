@@ -28,10 +28,10 @@ text_hover_button_t *init_text_button(void)
 	return hover;
 }
 
-static bool is_over_button(buttons_t *buttons)
+static bool is_over_button(buttons_t *buttons, win_t *win)
 {
 	for (buttons_t *tmp = buttons; tmp; tmp = tmp->next)
-		if (tmp->hover)
+		if (tmp->hover && tmp->game_state == win->game_state)
 			return true;
 	return false;
 }
@@ -41,9 +41,6 @@ static void update_text_hover_box_position(text_hover_button_t *hover,
 {
 	sfVector2f mouse = get_mouse_pos(win);
 
-	sfRectangleShape_setPosition(hover->rect,
-				(sfVector2f) {mouse.x - 5 - rect.width,
-						mouse.y - 5 - rect.height});
 	if (mouse.x - 10 - rect.width <= 0
 		&& mouse.y - 10 - rect.height > 0)
 		sfRectangleShape_setPosition(hover->rect,
@@ -65,8 +62,13 @@ void update_text_hover(text_hover_button_t *hover, win_t *win)
 	sfVector2f size = sfRectangleShape_getSize(hover->rect);
 	size_t text_size = my_strlen(sfText_getString(hover->text))
 			* (sfText_getCharacterSize(hover->text) / 3 * 2);
+	sfVector2f mouse = get_mouse_pos(win);
 
-	if (!is_over_button(win->game->ui->buttons))
+	sfRectangleShape_setPosition(hover->rect,
+				(sfVector2f) {mouse.x - 5 - rect.width,
+						mouse.y - 5 - rect.height});
+	if (!is_over_button(win->game->ui->buttons, win)
+		|| my_strlen(sfText_getString(hover->text)) == 0)
 		return;
 	if (size.x != text_size + 10) {
 		size.x = text_size + 10;
@@ -83,7 +85,8 @@ void draw_text_hover_button(text_hover_button_t *hover, win_t *win)
 {
 	if (my_strlen(sfText_getString(hover->text)) == 0)
 		return;
-	if (is_over_button(win->game->ui->buttons)) {
+	if (is_over_button(win->game->ui->buttons, win)) {
+		update_text_hover(hover, win);
 		sfRenderWindow_drawRectangleShape(win->sf_win, hover->rect, 0);
 		sfRenderWindow_drawText(win->sf_win, hover->text, 0);
 	}
