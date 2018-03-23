@@ -41,30 +41,45 @@ typedef struct {
 	char *text_label;
 	uint32_t text_area_color;
 	uint32_t text_color;
+	uint32_t label_color;
 	void (*func)(win_t *win, char *str);
 } text_area_declaration_t;
 
 static const text_area_declaration_t text_area_declaration[] = {
 	{
 		GAME,
-		(sfVector2f) {750, 500},
+		(sfVector2f) {810, 500},
 		(sfVector2f) {300, 30},
 		"res/fonts/space_mono_regular.ttf",
 		26,
-		"write_here",
+		"write here",
 		0xFFFFFFFF,
-		0x000000FF,
+		0x212121FF,
+		0x0000006C,
 		NULL
 	},
 	{
 		GAME,
-		(sfVector2f) {750, 550},
+		(sfVector2f) {810, 550},
 		(sfVector2f) {300, 30},
 		"res/fonts/telegrama_render.otf",
 		26,
-		"write_here",
+		"Boop!",
 		0xFFFFFFFF,
-		0x000000FF,
+		0x212121FF,
+		0x0000006C,
+		NULL
+	},
+	{
+		PAUSE,
+		(sfVector2f) {960, 540},
+		(sfVector2f) {300, 30},
+		"res/fonts/telegrama_render.otf",
+		26,
+		"pause text area",
+		0xFFFFFFFF,
+		0x212121FF,
+		0x0000006C,
 		NULL
 	},
 	{
@@ -74,6 +89,7 @@ static const text_area_declaration_t text_area_declaration[] = {
 		NULL,
 		0,
 		NULL,
+		0,
 		0,
 		0,
 		NULL

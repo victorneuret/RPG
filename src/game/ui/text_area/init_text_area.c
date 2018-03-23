@@ -42,7 +42,7 @@ static bool fill_text_area_list_two(const text_area_declaration_t list,
 	if (!tmp->text || !tmp->text_label)
 		return false;
 	sfText_setColor(tmp->text, hex_to_rgba(list.text_color));
-	sfText_setColor(tmp->label, hex_to_rgba(list.text_color));
+	sfText_setColor(tmp->label, hex_to_rgba(list.label_color));
 	tmp->text_label = list.text_label;
 	tmp->func = list.func;
 	tmp->active = false;

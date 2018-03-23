@@ -24,19 +24,32 @@ static void update_clock(win_t *win)
 // update_stars(win);
 static void update(win_t *win)
 {
-	update_weather(win);
-	update_particles(win, win->particle_manager);
+	switch (win->game_state) {
+	case GAME: update_weather(win);
+		update_particles(win, win->particle_manager); break;
+	case TITLE: update_title_page(win); update_weather(win);
+		update_particles(win, win->particle_manager); break;
+	default: break;
+	}
+	update_button(win->game->ui->buttons, win);
+	update_text_hover(win->game->ui->hover_text_button, win);
+	update_popups(win->game->ui->popup_list);
 }
 
 static void render(win_t *win)
 {
-	if (win->game_state == GAME) {
-	} else if (win->game_state == PAUSE) {
-		sfRenderWindow_clear(win->sf_win, sfBlack);
+	switch (win->game_state) {
+	case TITLE: sfRenderWindow_clear(win->sf_win, sfBlack);
+		draw_particles(win); sfRenderWindow_drawSprite(win->sf_win,
+		win->game->ui->title_page->earth, 0); break;
+	case GAME: draw_particles(win); break;
+	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
+	default: break;
 	}
-	draw_particles(win);
 	draw_buttons(win);
+	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
+	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);
 }

@@ -22,3 +22,4 @@ void next_weather(win_t *win);
 void previous_weather(win_t *win);
 void next_intensity(win_t *win);
 void previous_intensity(win_t *win);
+void to_title_page(win_t *win);

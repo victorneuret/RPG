@@ -12,9 +12,9 @@
 static void process_event(win_t *win, sfEvent *event)
 {
 	for (size_t i = 0; events[i].func != NULL; i++) {
-		if ((events[i].game_state == ALL ||
-		events[i].game_state == win->game_state) &&
-		events[i].type == event->type) {
+		if (((events[i].game_state & win->game_state)
+			== win->game_state || events[i].game_state == ALL) &&
+				events[i].type == event->type) {
 			events[i].func(win, event);
 			break;
 		}

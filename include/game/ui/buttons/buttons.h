@@ -18,11 +18,19 @@ typedef struct textures textures_t;
 
 #include "mouse_utils.h"
 
+typedef struct hover_text_button {
+	sfRectangleShape *rect;
+	sfFont *font;
+	sfText *text;
+} text_hover_button_t;
+
 typedef struct buttons {
 	game_status game_state;
 	sfSprite *sprite;
 	sfColor color;
 	sfColor hover_color;
+	bool reset_scale;
+	bool hover;
 	char *text_hover;
 	void (*func)(win_t *win);
 	sfClock *button_clock;
@@ -39,12 +47,50 @@ typedef struct {
 	void (*func)(win_t *win);
 } button_declaration_t;
 
+#include "menu_button_functions.h"
+
 static const button_declaration_t buttons_declaration[] = {
 	{
-		GAME | PAUSE,
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 700},
+		"Start game",
+		0x26A69AFF,
+		0x26A69ABF,
+		&start_game
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 780},
+		"Error message",
+		0x26A69AFF,
+		0x26A69ABF,
+		&error_test
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 860},
+		"Options",
+		0x26A69AFF,
+		0x26A69ABF,
+		&to_option_menu
+	},
+	{
+		TITLE,
+		(sfIntRect) {0, 0, 64, 64},
+		(sfVector2f) {1700, 940},
+		"Exit game",
+		0x26A69AFF,
+		0x26A69ABF,
+		&close_win
+	},
+	{
+		GAME,
 		(sfIntRect) {64, 0, 64, 64},
-		(sfVector2f) {-100, -100},
-		"load",
+		(sfVector2f) {1879, 1038},
+		"Pause menu",
 		0x26A69AFF,
 		0x26A69ABF,
 		&pause_game
@@ -67,3 +113,8 @@ void button_animation(win_t *win);
 void button_click_animation(buttons_t *button);
 void button_click_released(win_t *win, const sfEvent *event);
 void button_click_pressed(win_t *win, const sfEvent *event);
+void update_button(buttons_t *button, win_t *win);
+void update_text_hover(text_hover_button_t *hover, win_t *win);
+text_hover_button_t *init_text_button(void);
+void draw_text_hover_button(text_hover_button_t *hover, win_t *win);
+void free_hover_text_button(text_hover_button_t *hover);

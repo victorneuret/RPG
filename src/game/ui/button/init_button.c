@@ -38,6 +38,8 @@ static bool fill_buttons_list(const button_declaration_t list,
 	tmp->sprite = get_sprite_texture_rect(tex->texture, &list.rect);
 	if (!tmp->sprite)
 		return false;
+	sfSprite_setOrigin(tmp->sprite,
+		(sfVector2f) {list.rect.width / 2, list.rect.height / 2});
 	sfSprite_setPosition(tmp->sprite, list.pos);
 	tmp->color = hex_to_rgba(list.color);
 	tmp->hover_color = hex_to_rgba(list.hover_color);
@@ -45,6 +47,8 @@ static bool fill_buttons_list(const button_declaration_t list,
 	tmp->text_hover = list.text_hover;
 	tmp->func = list.func;
 	tmp->button_clock = sfClock_create();
+	tmp->reset_scale = false;
+	tmp->hover = false;
 	return true;
 }
 
@@ -70,4 +74,12 @@ void free_buttons(buttons_t *buttons)
 	sfSprite_destroy(buttons->sprite);
 	sfClock_destroy(buttons->button_clock);
 	free(buttons);
+}
+
+void free_hover_text_button(text_hover_button_t *hover)
+{
+	sfRectangleShape_destroy(hover->rect);
+	sfFont_destroy(hover->font);
+	sfText_destroy(hover->text);
+	free(hover);
 }
