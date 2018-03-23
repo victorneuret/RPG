@@ -33,6 +33,7 @@ static void update(win_t *win)
 	}
 	update_button(win->game->ui->buttons, win);
 	update_text_hover(win->game->ui->hover_text_button, win);
+	update_popups(win->game->ui->popup_list);
 }
 
 static void render(win_t *win)
@@ -48,6 +49,7 @@ static void render(win_t *win)
 	draw_buttons(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
+	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);
 }

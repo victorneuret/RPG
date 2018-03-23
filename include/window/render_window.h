@@ -27,8 +27,6 @@ typedef enum game_state {
 	ALL = -1
 } game_status;
 
-#include "game.h"
-
 typedef struct render_window {
 	float dt;
 	size_t width;
@@ -42,6 +40,7 @@ typedef struct render_window {
 	struct particle_manager *particle_manager;
 } win_t;
 
+#include "game.h"
 #include "destroy.h"
 
 win_t *create_window(size_t width, size_t height, settings_t *settings);
