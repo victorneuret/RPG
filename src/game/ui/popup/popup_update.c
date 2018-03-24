@@ -12,8 +12,8 @@ static void set_popup_opacity(popup_t *popup, double factor)
 {
 	sfColor rect = sfRectangleShape_getFillColor(popup->rect);
 	sfColor brdr = sfRectangleShape_getOutlineColor(popup->rect);
-	sfColor type = sfText_getFillColor(popup->header);
-	sfColor msgs = sfText_getFillColor(popup->message);
+	sfColor type = sfText_getColor(popup->header);
+	sfColor msgs = sfText_getColor(popup->message);
 
 	rect.a = factor * 255.f;
 	brdr.a = factor * 255.f;
@@ -21,8 +21,8 @@ static void set_popup_opacity(popup_t *popup, double factor)
 	msgs.a = factor * 255.f;
 	sfRectangleShape_setFillColor(popup->rect, rect);
 	sfRectangleShape_setOutlineColor(popup->rect, brdr);
-	sfText_setFillColor(popup->header, type);
-	sfText_setFillColor(popup->message, msgs);
+	sfText_setColor(popup->header, type);
+	sfText_setColor(popup->message, msgs);
 }
 
 static void update_popup(popup_t *popup)

@@ -144,15 +144,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm
-
-ifeq ($(USER), hmaxime)
-	LDFLAGS +=	-lcsfml-audio
-	LDFLAGS +=	-lcsfml-window
-	LDFLAGS +=	-lcsfml-system
-	LDFLAGS +=	-lcsfml-graphics
-else
-	LDFLAGS +=	-lc_graph_prog
-endif
+LDFLAGS +=	-lc_graph_prog
 
 all:	$(NAME)
 

@@ -50,7 +50,7 @@ static popup_t *init_popup(char const *text, sfVector2f pos, popup_type type)
 		(sfVector2f) {pos.x + 20, pos.y + 60}, 21);
 	if (!popup->rect || !popup->header || !popup->message || !popup->timer)
 		return NULL;
-	sfText_setFillColor(popup->header, get_popup_color(type));
+	sfText_setColor(popup->header, get_popup_color(type));
 	sfRectangleShape_setOutlineColor(popup->rect, get_popup_color(type));
 	sfRectangleShape_setOutlineThickness(popup->rect, 2.f);
 	return popup;
