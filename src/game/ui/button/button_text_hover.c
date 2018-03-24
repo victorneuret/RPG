@@ -25,6 +25,7 @@ text_hover_button_t *init_text_button(void)
 	if (!hover->text)
 		return NULL;
 	sfText_setColor(hover->text, hex_to_rgba(0xFFFFFFCC));
+	sfText_setOrigin(hover->text, (sfVector2f) {0, 10});
 	return hover;
 }
 
