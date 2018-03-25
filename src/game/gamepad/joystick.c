@@ -65,3 +65,10 @@ void update_joystick(win_t *win)
 	if (win->joystick->diry >= 60 || win->joystick->diry <= -60)
 		update_ui_joystick(win->joystick, win);
 }
+
+void free_joystick(joystick_t *joystick)
+{
+	sfClock_destroy(joystick->switch_gamepad->clock);
+	free(joystick->switch_gamepad);
+	free(joystick);
+}
