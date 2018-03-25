@@ -27,10 +27,10 @@ void button_start(win_t *win, bool press)
 
 	if (!press && pressed) {
 		pressed = false;
-		pause_game(win);
 		return;
 	} else if (!pressed && press) {
 		pressed = true;
+		pause_game(win);
 		putstr("Start\n");
 	}
 }
@@ -41,10 +41,10 @@ void button_menu(win_t *win, bool press)
 
 	if (!press && pressed) {
 		pressed = false;
-		to_title_page(win);
 		return;
 	} else if (!pressed && press) {
 		pressed = true;
+		to_title_page(win);
 		putstr("Menu\n");
 	}
 }
