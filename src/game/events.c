@@ -39,13 +39,13 @@ void process_events(win_t *win)
 
 	while (sfRenderWindow_pollEvent(win->sf_win, &event)) {
 		process_event(win, &event);
-		if (sfJoystick_isConnected(win->game->joystick->id))
+		if (sfJoystick_isConnected(win->joystick->id))
 			joystick_event(win, &event);
-		if (win->game->joystick->rt >= 60)
+		if (win->joystick->rt >= 60)
 			button_rt(win, true);
 		else
 			button_rt(win, false);
-		if (win->game->joystick->lt >= 60)
+		if (win->joystick->lt >= 60)
 			button_lt(win, true);
 		else
 			button_lt(win, false);

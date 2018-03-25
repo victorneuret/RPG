@@ -28,7 +28,7 @@ void joystick_connected(win_t *win, sfEvent *event)
 	create_popup(win->game->ui, "Controller connected", INFO);
 	putstr(sfJoystick_getIdentification(
 		event->joystickConnect.joystickId).name);
-	win->game->joystick->id = event->joystickConnect.joystickId;
+	win->joystick->id = event->joystickConnect.joystickId;
 	putstr("\n");
 }
 
@@ -49,17 +49,19 @@ static void update_joystick_pos(joystick_t *joystick, win_t *win)
 	sfJoystick_getAxisPosition(joystick->id, JOYSTICK_DIRY);
 	joystick->lt = sfJoystick_getAxisPosition(joystick->id, JOYSTICK_LT);
 	joystick->rt = sfJoystick_getAxisPosition(joystick->id, JOYSTICK_RT);
-	update_mouse_pos_joystick(win->game->joystick, win);
+	update_mouse_pos_joystick(win->joystick, win);
 }
 
 void update_joystick(win_t *win)
 {
 	for (uint8_t i = 0; gamepad_button_state[i].button != BTN_COUNT; i++) {
-		if (sfJoystick_isButtonPressed(win->game->joystick->id,
+		if (sfJoystick_isButtonPressed(win->joystick->id,
 					gamepad_button_state[i].button))
 			gamepad_button_state[i].state = true;
 		else
 			gamepad_button_state[i].state = false;
 	}
-	update_joystick_pos(win->game->joystick, win);
+	update_joystick_pos(win->joystick, win);
+	if (win->joystick->diry >= 60 || win->joystick->diry <= -60)
+		update_ui_joystick(win->joystick, win);
 }

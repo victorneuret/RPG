@@ -22,6 +22,8 @@ void process_events(win_t *win);
 
 void joystick_connected(win_t *win, sfEvent *event);
 void joystick_disconnected(win_t *win, sfEvent *event);
+void mouse_moved(win_t *win, sfEvent *event);
+void joystick_moved(win_t *win, sfEvent *event);
 
 typedef struct {
 	game_status game_state;
@@ -39,5 +41,6 @@ static const event_t events[] = {
 	{ALL, sfEvtTextEntered,			&text_area_write},
 	{ALL, sfEvtJoystickConnected,		&joystick_connected},
 	{ALL, sfEvtJoystickDisconnected,	&joystick_disconnected},
+	{ALL, sfEvtJoystickMoved,		&joystick_moved},
 	{0, 0,					NULL}
 };

@@ -14,13 +14,15 @@ SRC	=	src/args.c                                                                
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
 		src/game/events_functions/joystick_events.c                                                         \
-		src/game/gamepad/joystick_button_abxy.c                                                             \
-		src/game/gamepad/joystick_button_LB_RB.c                                                            \
-		src/game/gamepad/joystick_button_rt_lt.c                                                            \
-		src/game/gamepad/joystick_button_special.c                                                          \
-		src/game/gamepad/joystick_button_stick.c                                                            \
+		src/game/gamepad/buttons/joystick_button_abxy.c                                                     \
+		src/game/gamepad/buttons/joystick_button_LB_RB.c                                                    \
+		src/game/gamepad/buttons/joystick_button_rt_lt.c                                                    \
+		src/game/gamepad/buttons/joystick_button_special.c                                                  \
+		src/game/gamepad/buttons/joystick_button_stick.c                                                    \
 		src/game/gamepad/joystick.c                                                                         \
 		src/game/gamepad/move_joystick.c                                                                    \
+		src/game/gamepad/switch_gamepad.c                                                                   \
+		src/game/gamepad/update_joystick_ui.c                                                               \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
@@ -76,13 +78,15 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
 		src/game/events_functions/joystick_events.c                                                         \
-		src/game/gamepad/joystick_button_abxy.c                                                             \
-		src/game/gamepad/joystick_button_LB_RB.c                                                            \
-		src/game/gamepad/joystick_button_rt_lt.c                                                            \
-		src/game/gamepad/joystick_button_special.c                                                          \
-		src/game/gamepad/joystick_button_stick.c                                                            \
+		src/game/gamepad/buttons/joystick_button_abxy.c                                                     \
+		src/game/gamepad/buttons/joystick_button_LB_RB.c                                                    \
+		src/game/gamepad/buttons/joystick_button_rt_lt.c                                                    \
+		src/game/gamepad/buttons/joystick_button_special.c                                                  \
+		src/game/gamepad/buttons/joystick_button_stick.c                                                    \
 		src/game/gamepad/joystick.c                                                                         \
 		src/game/gamepad/move_joystick.c                                                                    \
+		src/game/gamepad/switch_gamepad.c                                                                   \
+		src/game/gamepad/update_joystick_ui.c                                                               \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
@@ -145,6 +149,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
+		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \

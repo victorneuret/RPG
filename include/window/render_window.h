@@ -11,6 +11,7 @@
 
 #include "settings.h"
 #include "particle.h"
+#include "joystick.h"
 
 #define WINDOW_TITLE "My RPG"
 
@@ -33,6 +34,7 @@ typedef struct render_window {
 	size_t height;
 	settings_t *settings;
 	game_t *game;
+	joystick_t *joystick;
 	sfRenderWindow *sf_win;
 	sfClock *timer;
 	sfView *view;

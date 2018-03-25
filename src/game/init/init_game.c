@@ -27,13 +27,24 @@ static bool init_ui(win_t *win)
 	return true;
 }
 
+static bool init_gamepad(win_t *win)
+{
+	win->joystick->switch_gamepad = my_calloc(1, sizeof(switch_gamepad_t));
+	if (!win->joystick->switch_gamepad)
+		return false;
+	win->joystick->switch_gamepad->clock = sfClock_create();
+	if (!win->joystick->switch_gamepad)
+		return false;
+	return true;
+}
+
 bool init_game(win_t *win)
 {
 	win->game = my_calloc(1, sizeof(game_t));
 	win->game->ui = my_calloc(1, sizeof(ui_t));
-	win->game->joystick = my_calloc(1, sizeof(joystick_t));
-	if (!win->game || !win->game->ui || !win->game->joystick
-		|| !init_ui(win))
+	win->joystick = my_calloc(1, sizeof(joystick_t));
+	if (!win->game || !win->game->ui || !win->joystick
+		|| !init_ui(win) || !init_gamepad(win))
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
