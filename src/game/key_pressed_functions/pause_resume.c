@@ -13,6 +13,6 @@ void pause_game(win_t *win)
 {
 	if (win->game_state == PAUSE)
 		win->game_state = GAME;
-	else
+	else if (win->game_state == GAME)
 		win->game_state = PAUSE;
 }

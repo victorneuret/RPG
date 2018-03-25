@@ -29,9 +29,11 @@ static bool init_ui(win_t *win)
 
 bool init_game(win_t *win)
 {
-	win->game = malloc(sizeof(game_t));
-	win->game->ui = malloc(sizeof(ui_t));
-	if (!win->game || !win->game->ui || !init_ui(win))
+	win->game = my_calloc(1, sizeof(game_t));
+	win->game->ui = my_calloc(1, sizeof(ui_t));
+	win->game->joystick = my_calloc(1, sizeof(joystick_t));
+	if (!win->game || !win->game->ui || !win->game->joystick
+		|| !init_ui(win))
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;

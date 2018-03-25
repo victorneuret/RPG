@@ -31,6 +31,7 @@ static void update(win_t *win)
 		update_particles(win, win->particle_manager); break;
 	default: break;
 	}
+	update_joystick(win);
 	update_button(win->game->ui->buttons, win);
 	update_text_hover(win->game->ui->hover_text_button, win);
 	update_popups(win->game->ui->popup_list);
@@ -60,8 +61,8 @@ bool my_rpg_loop(win_t *win)
 		return false;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
-		process_events(win);
 		update(win);
+		process_events(win);
 		render(win);
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);

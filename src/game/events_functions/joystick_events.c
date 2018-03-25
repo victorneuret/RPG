@@ -9,12 +9,13 @@
 #include "popup.h"
 #include "render_window.h"
 
-void joystick_connected(win_t *win, __attribute__((unused)) sfEvent *event)
-{
-	create_popup(win->game->ui, "Controller connected", INFO);
-}
+// void joystick_connected(win_t *win, __attribute__((unused)) sfEvent *event)
+// {
+// 	create_popup(win->game->ui, "Controller connected", INFO);
+// }
 
-void joystick_disconnected(win_t *win, __attribute__((unused)) sfEvent *event)
-{
-	create_popup(win->game->ui, "Controller disconnected", WARNING);
-}
+// void joystick_disconnected(win_t *win,
+			// __attribute__((unused)) sfEvent *event)
+// {
+// 	create_popup(win->game->ui, "Controller disconnected", WARNING);
+// }

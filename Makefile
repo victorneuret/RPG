@@ -14,6 +14,13 @@ SRC	=	src/args.c                                                                
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
 		src/game/events_functions/joystick_events.c                                                         \
+		src/game/gamepad/joystick_button_abxy.c                                                             \
+		src/game/gamepad/joystick_button_LB_RB.c                                                            \
+		src/game/gamepad/joystick_button_rt_lt.c                                                            \
+		src/game/gamepad/joystick_button_special.c                                                          \
+		src/game/gamepad/joystick_button_stick.c                                                            \
+		src/game/gamepad/joystick.c                                                                         \
+		src/game/gamepad/move_joystick.c                                                                    \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
@@ -69,6 +76,13 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
 		src/game/events_functions/joystick_events.c                                                         \
+		src/game/gamepad/joystick_button_abxy.c                                                             \
+		src/game/gamepad/joystick_button_LB_RB.c                                                            \
+		src/game/gamepad/joystick_button_rt_lt.c                                                            \
+		src/game/gamepad/joystick_button_special.c                                                          \
+		src/game/gamepad/joystick_button_stick.c                                                            \
+		src/game/gamepad/joystick.c                                                                         \
+		src/game/gamepad/move_joystick.c                                                                    \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
@@ -144,15 +158,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm
-
-ifeq ($(USER), hmaxime)
-	LDFLAGS +=	-lcsfml-audio
-	LDFLAGS +=	-lcsfml-window
-	LDFLAGS +=	-lcsfml-system
-	LDFLAGS +=	-lcsfml-graphics
-else
-	LDFLAGS +=	-lc_graph_prog
-endif
+LDFLAGS +=	-lc_graph_prog
 
 all:	$(NAME)
 
