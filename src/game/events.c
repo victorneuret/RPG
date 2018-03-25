@@ -27,7 +27,7 @@ static void joystick_event(win_t *win, __attribute__ ((unused)) sfEvent *event)
 	for (uint8_t i = 0; gamepad_button_state[i].button != BTN_COUNT; i++) {
 		if (gamepad_button_state[i].state == true
 			&& gamepad_button_state[i].func)
-		 	gamepad_button_state[i].func(win, true);
+			gamepad_button_state[i].func(win, true);
 		else if (gamepad_button_state[i].func)
 			gamepad_button_state[i].func(win, false);
 	}
