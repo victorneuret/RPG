@@ -10,5 +10,5 @@
 #include <SFML/Graphics.h>
 #include <stdint.h>
 
-sfText *init_text(sfFont *font, char *string, sfVector2f pos,
+sfText *init_text(sfFont *font, char const *string, sfVector2f pos,
 		uint8_t font_size);

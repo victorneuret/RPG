@@ -63,10 +63,10 @@ static const button_declaration_t buttons_declaration[] = {
 		TITLE,
 		(sfIntRect) {0, 0, 64, 64},
 		(sfVector2f) {1700, 780},
-		"",
+		"Error message",
 		0x26A69AFF,
 		0x26A69ABF,
-		NULL
+		&error_test
 	},
 	{
 		TITLE,

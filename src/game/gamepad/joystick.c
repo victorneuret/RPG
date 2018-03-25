@@ -25,16 +25,16 @@ struct_gamepad_button_state_t gamepad_button_state[] = {
 
 void joystick_connected(win_t *win, sfEvent *event)
 {
-	putstr("connected\n");
+	create_popup(win->game->ui, "Controller connected", INFO);
 	putstr(sfJoystick_getIdentification(
 		event->joystickConnect.joystickId).name);
 	win->game->joystick->id = event->joystickConnect.joystickId;
+	putstr("\n");
 }
 
-void joystick_disconnected(__attribute__((unused)) win_t *win,
-	__attribute__((unused)) sfEvent *event)
+void joystick_disconnected(win_t *win, __attribute__((unused)) sfEvent *event)
 {
-	putstr("disconnected\n");
+	create_popup(win->game->ui, "Controller disconnected", WARNING);
 }
 
 static void update_joystick_pos(joystick_t *joystick, win_t *win)

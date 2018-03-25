@@ -13,6 +13,7 @@ SRC	=	src/args.c                                                                
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
+		src/game/events_functions/joystick_events.c                                                         \
 		src/game/gamepad/joystick_button_abxy.c                                                             \
 		src/game/gamepad/joystick_button_LB_RB.c                                                            \
 		src/game/gamepad/joystick_button_rt_lt.c                                                            \
@@ -41,6 +42,10 @@ SRC	=	src/args.c                                                                
 		src/game/ui/button/button_text_hover.c                                                              \
 		src/game/ui/button/draw_buttons.c                                                                   \
 		src/game/ui/button/init_button.c                                                                    \
+		src/game/ui/popup/popup_create.c                                                                    \
+		src/game/ui/popup/popup_destroy.c                                                                   \
+		src/game/ui/popup/popup_render.c                                                                    \
+		src/game/ui/popup/popup_update.c                                                                    \
 		src/game/ui/text_area/draw_text_area.c                                                              \
 		src/game/ui/text_area/init_text_area.c                                                              \
 		src/game/ui/text_area/text_area_click.c                                                             \
@@ -70,6 +75,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
+		src/game/events_functions/joystick_events.c                                                         \
 		src/game/gamepad/joystick_button_abxy.c                                                             \
 		src/game/gamepad/joystick_button_LB_RB.c                                                            \
 		src/game/gamepad/joystick_button_rt_lt.c                                                            \
@@ -98,6 +104,10 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/ui/button/button_text_hover.c                                                              \
 		src/game/ui/button/draw_buttons.c                                                                   \
 		src/game/ui/button/init_button.c                                                                    \
+		src/game/ui/popup/popup_create.c                                                                    \
+		src/game/ui/popup/popup_destroy.c                                                                   \
+		src/game/ui/popup/popup_render.c                                                                    \
+		src/game/ui/popup/popup_update.c                                                                    \
 		src/game/ui/text_area/draw_text_area.c                                                              \
 		src/game/ui/text_area/init_text_area.c                                                              \
 		src/game/ui/text_area/text_area_click.c                                                             \
@@ -133,8 +143,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
 		-I./include/game/ui/buttons                                                                         \
+		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
-		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
@@ -148,15 +158,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm
-
-ifeq ($(USER), hmaxime)
-	LDFLAGS +=	-lcsfml-audio
-	LDFLAGS +=	-lcsfml-window
-	LDFLAGS +=	-lcsfml-system
-	LDFLAGS +=	-lcsfml-graphics
-else
-	LDFLAGS +=	-lc_graph_prog
-endif
+LDFLAGS +=	-lc_graph_prog
 
 all:	$(NAME)
 

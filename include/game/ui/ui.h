@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "popup.h"
 #include "buttons.h"
 #include "text_area.h"
 #include "title_page.h"
@@ -21,4 +22,5 @@ typedef struct ui {
 	text_hover_button_t *hover_text_button;
 	text_area_t *text_area;
 	title_page_t *title_page;
+	popup_list_t *popup_list;
 } ui_t;

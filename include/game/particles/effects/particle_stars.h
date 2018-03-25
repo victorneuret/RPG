@@ -9,4 +9,6 @@
 
 #include "particle.h"
 
+typedef struct render_window win_t;
+
 void create_star(win_t *win);

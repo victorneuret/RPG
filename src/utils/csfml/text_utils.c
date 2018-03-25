@@ -7,7 +7,7 @@
 
 #include "text_utils.h"
 
-sfText *init_text(sfFont *font, char *string, sfVector2f pos,
+sfText *init_text(sfFont *font, char const *string, sfVector2f pos,
 		uint8_t font_size)
 {
 	sfText *text = sfText_create();
@@ -18,7 +18,6 @@ sfText *init_text(sfFont *font, char *string, sfVector2f pos,
 	sfText_setFont(text, font);
 	sfText_setCharacterSize(text, font_size);
 	sfText_setColor(text, sfWhite);
-	sfText_setOrigin(text, (sfVector2f) {0, font_size / 2});
 	sfText_setPosition(text, pos);
 	return text;
 }
