@@ -34,8 +34,8 @@ win_t *create_window(size_t width, size_t height, settings_t *settings)
 
 	if (!win || !settings)
 		return 0;
-	win->width = width;
-	win->height = height;
+	win->size.x = width;
+	win->size.y = height;
 	win->dt = 0;
 	win->sf_win = sfRenderWindow_create(vm, WINDOW_TITLE, style, NULL);
 	win->timer = sfClock_create();

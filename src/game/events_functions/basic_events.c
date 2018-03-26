@@ -57,6 +57,6 @@ void on_resize(win_t *win, __attribute__((unused)) sfEvent *event)
 {
 	sfVector2u size = sfRenderWindow_getSize(win->sf_win);
 
-	win->width = size.x;
-	win->height = size.y;
+	win->size.x = size.x;
+	win->size.y = size.y;
 }

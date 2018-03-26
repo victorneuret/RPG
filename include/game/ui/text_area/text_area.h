@@ -47,30 +47,6 @@ typedef struct {
 
 static const text_area_declaration_t text_area_declaration[] = {
 	{
-		GAME,
-		(sfVector2f) {810, 500},
-		(sfVector2f) {300, 30},
-		"res/fonts/space_mono_regular.ttf",
-		26,
-		"write here",
-		0xFFFFFFFF,
-		0x212121FF,
-		0x0000006C,
-		NULL
-	},
-	{
-		GAME,
-		(sfVector2f) {810, 550},
-		(sfVector2f) {300, 30},
-		"res/fonts/telegrama_render.otf",
-		26,
-		"Boop!",
-		0xFFFFFFFF,
-		0x212121FF,
-		0x0000006C,
-		NULL
-	},
-	{
 		PAUSE,
 		(sfVector2f) {960, 540},
 		(sfVector2f) {300, 30},

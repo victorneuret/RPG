@@ -18,6 +18,7 @@ static const uint16_t WIN_MAX_W = 1920;
 static const uint16_t WIN_MAX_H = 1080;
 
 typedef struct game game_t;
+typedef struct particle_manager particle_manager_t;
 
 typedef enum game_state {
 	TITLE = 1,
@@ -28,16 +29,15 @@ typedef enum game_state {
 } game_status;
 
 typedef struct render_window {
-	float dt;
-	size_t width;
-	size_t height;
 	settings_t *settings;
 	game_t *game;
+	particle_manager_t *particle_manager;
 	sfRenderWindow *sf_win;
 	sfClock *timer;
 	sfView *view;
+	sfVector2f size;
 	game_status game_state;
-	struct particle_manager *particle_manager;
+	float dt;
 } win_t;
 
 #include "game.h"

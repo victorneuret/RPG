@@ -13,21 +13,26 @@
 #include <stddef.h>
 
 typedef enum {
-	EMPTY,
-	BLOCK,
-	SPAWN
+	EMPTY = 0xffffffff,
+	BLOCK = 0x000000ff,
+	DECO = 0x424242ff,
+	SPAWN = 0xffff00ff,
+
+	UNKNOWN = 0
 } tile_type_t;
 
 typedef struct {
-	sfSprite *sprite;
-	sfVector2f pos;
+	sfRectangleShape *block;
+	sfVector2u pos;
 	tile_type_t tile_type;
 } tile_t;
 
 typedef struct {
 	sfImage *level_src;
-	sfVector2f size;
+	sfVector2u size;
 	tile_t **tiles;
 } level_t;
 
-bool load_level(win_t *win, char const *path);
+void unload_level(game_t *game);
+bool load_level(game_t *game, char const *path);
+void draw_level(sfRenderWindow *sf_win, level_t *level);

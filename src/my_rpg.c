@@ -40,10 +40,16 @@ static void update(win_t *win)
 static void render(win_t *win)
 {
 	switch (win->game_state) {
-	case TITLE: sfRenderWindow_clear(win->sf_win, sfBlack);
-		draw_particles(win); sfRenderWindow_drawSprite(win->sf_win,
-		win->game->ui->title_page->earth, 0); break;
-	case GAME: draw_particles(win); break;
+	case TITLE:
+		sfRenderWindow_clear(win->sf_win, sfBlack);
+		draw_particles(win);
+		sfRenderWindow_drawSprite(win->sf_win,
+					win->game->ui->title_page->earth, 0);
+		break;
+	case GAME:
+		draw_particles(win);
+		draw_level(win->sf_win, win->game->level);
+		break;
 	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
 	default: break;
 	}
@@ -59,6 +65,7 @@ bool my_rpg_loop(win_t *win)
 {
 	if (!init_game(win))
 		return false;
+	load_level(win->game, "res/levels/debug_1.png");
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
 		update(win);
@@ -67,6 +74,7 @@ bool my_rpg_loop(win_t *win)
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}
+	unload_level(win->game);
 	free_game(win->game);
 	return true;
 }
