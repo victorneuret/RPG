@@ -6,14 +6,18 @@
 */
 
 #include "joystick.h"
+#include "coord_utils.h"
 
-static bool is_coord_equal(sfVector2f one, sfVector2f two)
+static sfVector2i mouse_pos_round_up_to_2i(win_t *win)
 {
-	if (one.x != two.x)
-		return false;
-	if (one.y != two.y)
-		return false;
-	return true;
+	sfVector2i mouse_pos_i;
+	sfVector2f mouse_pos_f = get_mouse_pos(win);
+
+	mouse_pos_i.x = (int) mouse_pos_f.x +
+			((mouse_pos_f.x != (int) mouse_pos_f.x) ? 1 : 0);
+	mouse_pos_i.y = (int) mouse_pos_f.y +
+			((mouse_pos_f.y != (int) mouse_pos_f.y) ? 1 : 0);
+	return mouse_pos_i;
 }
 
 static void ui_gamepad_move_mouse(win_t *win, sfVector2f orig_pos)
@@ -74,6 +78,9 @@ void update_ui_joystick(joystick_t *joystick, win_t *win)
 		joystick->switch_gamepad->clock).microseconds < 140000)
 		return;
 	sfClock_restart(joystick->switch_gamepad->clock);
+	if (!is_coord_equal_i(mouse_pos_round_up_to_2i(win),
+		joystick->switch_gamepad->gamepad_pos))
+		joystick->switch_gamepad->gamepad_pos = (sfVector2i) {0, 0};
 	if (joystick->diry <= -60)
 		return (to_prev_button(joystick, win));
 	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
