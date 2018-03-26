@@ -62,7 +62,7 @@ static void to_prev_button(joystick_t *joystick, win_t *win)
 		if (tmp->game_state == win->game_state)
 			pos = sfSprite_getPosition(tmp->sprite);
 	}
-	if (pos.x <= 0 && pos.y <= 0 && last_pos.x != 0 && last_pos.y != 0)
+	if (pos.x <= 0.001 && pos.y <= 0.001)
 		ui_gamepad_move_mouse(win, last_pos);
 	else if (pos.x != 0 && pos.y != 0)
 		ui_gamepad_move_mouse(win, pos);
