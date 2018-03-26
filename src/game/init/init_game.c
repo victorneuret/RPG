@@ -9,6 +9,7 @@
 #include "weather.h"
 #include "my_calloc.h"
 #include "title_page.h"
+#include "change_state.h"
 
 static bool init_ui(win_t *win)
 {
@@ -48,7 +49,7 @@ bool init_game(win_t *win)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
-	win->game_state = TITLE;
+	change_state(win, TITLE);
 	return true;
 }
 

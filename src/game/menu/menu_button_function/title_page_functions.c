@@ -6,11 +6,12 @@
 */
 
 #include "popup.h"
+#include "change_state.h"
 #include "render_window.h"
 
 void start_game(win_t *win)
 {
-	win->game_state = GAME;
+	change_state(win, GAME);
 }
 
 void error_test(win_t *win)
@@ -20,5 +21,5 @@ void error_test(win_t *win)
 
 void to_option_menu(win_t *win)
 {
-	win->game_state = OPTION;
+	change_state(win, OPTION);
 }

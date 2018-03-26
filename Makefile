@@ -72,6 +72,7 @@ SRC	=	src/args.c                                                                
 		src/utils/nbr/nb_utils.c                                                                            \
 		src/utils/str/str_utils_1.c                                                                         \
 		src/utils/str/str_utils_2.c                                                                         \
+		src/window/change_state.c                                                                           \
 		src/window/destroy.c                                                                                \
 		src/window/render_window.c
 
@@ -139,6 +140,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/utils/nbr/nb_utils.c                                                                            \
 		src/utils/str/str_utils_1.c                                                                         \
 		src/utils/str/str_utils_2.c                                                                         \
+		src/window/change_state.c                                                                           \
 		src/window/destroy.c                                                                                \
 		src/window/render_window.c                                                                          \
 		tests/test_getnbr.c                                                                                 \
@@ -158,7 +160,6 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
-		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \

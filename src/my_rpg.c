@@ -25,11 +25,16 @@ static void update_clock(win_t *win)
 static void update(win_t *win)
 {
 	switch (win->game_state) {
-	case GAME: update_weather(win);
+	case GAME:
+		update_weather(win);
+		update_particles(win, win->particle_manager);
+		sfView_move(win->view, (sfVector2f) {1, 1});
+		break;
+	case TITLE:
+		update_title_page(win);
+		update_weather(win);
 		update_particles(win, win->particle_manager);
 		break;
-	case TITLE: update_title_page(win); update_weather(win);
-		update_particles(win, win->particle_manager); break;
 	default: break;
 	}
 	update_text_hover(win->game->ui->hover_text_button, win);

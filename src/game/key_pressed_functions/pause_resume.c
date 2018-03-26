@@ -7,12 +7,13 @@
 
 #include <SFML/Graphics.h>
 
+#include "change_state.h"
 #include "render_window.h"
 
 void pause_game(win_t *win)
 {
 	if (win->game_state == PAUSE)
-		win->game_state = GAME;
+		change_state(win, GAME);
 	else if (win->game_state == GAME)
-		win->game_state = PAUSE;
+		change_state(win, PAUSE);
 }

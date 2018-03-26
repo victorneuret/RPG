@@ -13,8 +13,3 @@ void toggle_fps(win_t *win)
 {
 	win->settings->display_fps = !win->settings->display_fps;
 }
-
-void show_title(win_t *win)
-{
-	win->game_state = win->game_state == TITLE ? GAME : TITLE;
-}
