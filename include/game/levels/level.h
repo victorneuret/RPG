@@ -24,12 +24,14 @@ typedef enum {
 typedef struct {
 	sfRectangleShape *block;
 	sfVector2u pos;
+	sfVector2u screen_pos;
 	tile_type_t tile_type;
 } tile_t;
 
 typedef struct {
 	sfImage *level_src;
 	sfVector2u size;
+	double block_size;
 	tile_t **tiles;
 } level_t;
 

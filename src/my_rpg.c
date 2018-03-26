@@ -26,7 +26,8 @@ static void update(win_t *win)
 {
 	switch (win->game_state) {
 	case GAME: update_weather(win);
-		update_particles(win, win->particle_manager); break;
+		update_particles(win, win->particle_manager);
+		break;
 	case TITLE: update_title_page(win); update_weather(win);
 		update_particles(win, win->particle_manager); break;
 	default: break;
