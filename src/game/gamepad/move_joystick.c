@@ -24,7 +24,8 @@ static void set_joystick_limit(sfVector2i new_pos, win_t *win)
 	if (sfRenderWindow_mapPixelToCoords(win->sf_win, new_pos, win->view).y
 		> WIN_MAX_H)
 		new_pos = (sfVector2i) {new_pos.x, max_y};
-	sfMouse_setPositionRenderWindow(new_pos, win->sf_win);
+	if (win->game_state != GAME)
+		sfMouse_setPositionRenderWindow(new_pos, win->sf_win);
 }
 
 void update_mouse_pos_joystick(joystick_t *joystick, win_t *win)
@@ -33,8 +34,11 @@ void update_mouse_pos_joystick(joystick_t *joystick, win_t *win)
 	sfVector2i new_pos;
 
 	if ((joystick->lx > -30 && joystick->lx < 30)
-		&& (joystick->ly > -30 && joystick->ly < 30))
+		&& (joystick->ly > -30 && joystick->ly < 30)) {
+		joystick->lx = 0;
+		joystick->ly = 0;
 		return;
+	}
 	new_pos = (sfVector2i) {pos.x + (int) joystick->lx / 4,
 				pos.y + (int) joystick->ly / 4};
 	set_joystick_limit(new_pos, win);

@@ -54,6 +54,7 @@ static void update_joystick_pos(joystick_t *joystick, win_t *win)
 
 void update_joystick(win_t *win)
 {
+	sfJoystick_update();
 	for (uint8_t i = 0; gamepad_button_state[i].button != BTN_COUNT; i++) {
 		if (sfJoystick_isButtonPressed(win->joystick->id,
 					gamepad_button_state[i].button))

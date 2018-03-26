@@ -61,6 +61,7 @@ SRC	=	src/args.c                                                                
 		src/main.c                                                                                          \
 		src/my_rpg.c                                                                                        \
 		src/player/player.c                                                                                 \
+		src/player/update_player.c                                                                          \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
@@ -130,6 +131,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
 		src/player/player.c                                                                                 \
+		src/player/update_player.c                                                                          \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \

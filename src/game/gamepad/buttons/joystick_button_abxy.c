@@ -16,10 +16,14 @@ void button_a(win_t *win, bool press)
 	event.mouseButton.button = sfMouseLeft;
 	if (!press && pressed) {
 		pressed = false;
-		return;
 	} else if (!pressed && press) {
 		putstr("A\n");
 		button_click_released(win, &event);
+		if (press && win->game_state == GAME && (
+			sfSprite_getPosition(win->game->player->sprite).y +
+			sfSprite_getGlobalBounds(win->game->player->sprite)
+			.height >= WIN_MAX_H - 10))
+			win->game->player->y_speed = 60;
 		pressed = true;
 	}
 }
