@@ -11,6 +11,23 @@
 #include "text_utils.h"
 #include "rectangle_utils.h"
 
+static void reset_alpha(popup_t *popup)
+{
+	sfColor rect = sfRectangleShape_getFillColor(popup->rect);
+	sfColor brdr = sfRectangleShape_getOutlineColor(popup->rect);
+	sfColor head = sfText_getColor(popup->header);
+	sfColor msgs = sfText_getColor(popup->message);
+
+	rect.a = 0;
+	brdr.a = 0;
+	head.a = 0;
+	msgs.a = 0;
+	sfRectangleShape_setFillColor(popup->rect, rect);
+	sfRectangleShape_setOutlineColor(popup->rect, brdr);
+	sfText_setColor(popup->header, head);
+	sfText_setColor(popup->message, msgs);
+}
+
 static sfColor get_popup_color(popup_type type)
 {
 	switch (type) {
@@ -65,6 +82,7 @@ void create_popup(ui_t *ui, char const *text, popup_type type)
 	if (!popup)
 		return;
 	for (; current && current->next; current = current->next);
+	reset_alpha(popup);
 	current->popup = popup;
 	current->next = my_calloc(1, sizeof(popup_list_t));
 	if (!current->next) {
