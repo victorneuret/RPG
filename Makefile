@@ -60,6 +60,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/weather.c                                                                          \
 		src/main.c                                                                                          \
 		src/my_rpg.c                                                                                        \
+		src/player/player.c                                                                                 \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
@@ -128,6 +129,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
+		src/player/player.c                                                                                 \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
@@ -160,7 +162,9 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
+		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \

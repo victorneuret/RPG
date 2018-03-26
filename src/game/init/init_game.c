@@ -10,6 +10,7 @@
 #include "my_calloc.h"
 #include "title_page.h"
 #include "change_state.h"
+#include "player.h"
 
 static bool init_ui(win_t *win)
 {
@@ -47,6 +48,9 @@ bool init_game(win_t *win)
 	if (!win->game || !win->game->ui || !win->joystick
 		|| !init_ui(win) || !init_gamepad(win))
 		return false;
+	win->game->player = init_player(win);
+	if (!win->game->player)
+		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
 	change_state(win, TITLE);
@@ -58,6 +62,7 @@ void free_game(game_t *game)
 	free_buttons(game->ui->buttons);
 	free_hover_text_button(game->ui->hover_text_button);
 	free_text_area(game->ui->text_area);
+	destroy_player(game->player);
 	free_textures(game->textures);
 	free(game->ui);
 }

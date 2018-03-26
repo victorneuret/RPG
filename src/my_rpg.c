@@ -52,6 +52,7 @@ static void render(win_t *win)
 	case GAME:
 		draw_particles(win);
 		draw_level(win->sf_win, win->game->level);
+		draw_player(win, win->game->player);
 		break;
 	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
 	default: break;
