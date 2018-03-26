@@ -9,6 +9,16 @@
 
 #include <SFML/Graphics.h>
 #include <stdint.h>
+#include <stdbool.h>
+
+typedef struct render_window win_t;
+
+typedef struct switch_gamepad {
+	sfVector2i mouse_pos;
+	sfVector2i gamepad_pos;
+	bool gamepad;
+	sfClock *clock;
+} switch_gamepad_t;
 
 typedef struct joystick {
 	uint32_t id;
@@ -20,6 +30,7 @@ typedef struct joystick {
 	float diry;
 	float lt;
 	float rt;
+	switch_gamepad_t *switch_gamepad;
 } joystick_t;
 
 #include "render_window.h"
@@ -77,3 +88,5 @@ extern struct_gamepad_button_state_t gamepad_button_state[];
 
 void update_joystick(win_t *win);
 void update_mouse_pos_joystick(joystick_t *joystick, win_t *win);
+void update_ui_joystick(joystick_t *joystick, win_t *win);
+void free_joystick(joystick_t *joystick);

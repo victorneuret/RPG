@@ -71,7 +71,7 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		TITLE,
 		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {1700, 860},
+		(sfVector2f) {1400, 860},
 		"Options",
 		0x26A69AFF,
 		0x26A69ABF,

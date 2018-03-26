@@ -12,6 +12,7 @@
 #include "my_calloc.h"
 #include "render_window.h"
 #include "particle.h"
+#include "joystick.h"
 
 static sfView *init_view(win_t *win)
 {

@@ -23,7 +23,6 @@ typedef struct game {
 	ui_t *ui;
 	weather_type_t weather_type;
 	weather_intensity_t weather_intensity;
-	joystick_t *joystick;
 	level_t *level;
 } game_t;
 

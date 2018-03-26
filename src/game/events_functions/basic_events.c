@@ -34,6 +34,7 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 {
 	if (text_area_click(win))
 		return;
+	mouse_moved(win, event);
 	button_click_pressed(win, event);
 }
 

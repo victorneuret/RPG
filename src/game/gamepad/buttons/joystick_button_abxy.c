@@ -15,12 +15,11 @@ void button_a(win_t *win, bool press)
 
 	event.mouseButton.button = sfMouseLeft;
 	if (!press && pressed) {
-		button_click_released(win, &event);
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
 		putstr("A\n");
-		button_click_pressed(win, &event);
+		button_click_released(win, &event);
 		pressed = true;
 	}
 }

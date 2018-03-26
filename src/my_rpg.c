@@ -32,8 +32,6 @@ static void update(win_t *win)
 		update_particles(win, win->particle_manager); break;
 	default: break;
 	}
-	update_joystick(win);
-	update_button(win->game->ui->buttons, win);
 	update_text_hover(win->game->ui->hover_text_button, win);
 	update_popups(win->game->ui->popup_list);
 }
