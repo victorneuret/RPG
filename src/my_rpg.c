@@ -28,7 +28,6 @@ static void update(win_t *win)
 	case GAME:
 		update_weather(win);
 		update_particles(win, win->particle_manager);
-		sfView_move(win->view, (sfVector2f) {1, 1});
 		break;
 	case TITLE:
 		update_title_page(win);
