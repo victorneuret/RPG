@@ -41,25 +41,32 @@ static int print_help(void)
 	return 0;
 }
 
-int main(int ac, char **av, char **env)
+static bool start_rpg(int ac, char **av, char **env)
 {
 	win_t *window = 0;
 	settings_t *settings = 0;
 
 	if (!is_valid_env(env)) {
 		puterr("Invalid environment: Missing DISPLAY variable.\n");
-		return 84;
+		return false;
 	}
 	settings = get_settings(ac, av);
 	if (!settings)
-		return 84;
+		return false;
 	if (settings->display_help)
 		return print_help();
 	window = create_window(1600, 900, settings);
 	if (!window)
-		return 84;
+		return false;
 	window->settings = settings;
 	my_rpg_loop(window);
 	destroy_window(window);
+	return true;
+}
+
+int main(int ac, char **av, char **env)
+{
+	if (!start_rpg(ac, av, env))
+		return 84;
 	return 0;
 }
