@@ -19,6 +19,8 @@ typedef struct textures textures_t;
 typedef struct render_window win_t;
 typedef struct ui ui_t;
 
+static const float GRAVITY = 500;
+
 typedef struct game {
 	textures_t *textures;
 	ui_t *ui;

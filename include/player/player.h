@@ -9,6 +9,8 @@
 
 #include <SFML/Graphics.h>
 
+static const float X_SPEED = 1000.f;
+
 typedef struct player {
 	sfClock *clock;
 	sfSprite *sprite;

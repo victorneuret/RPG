@@ -55,7 +55,7 @@ static void wall_on_player(player_t *player, sfVector2f *pos)
 			sfSprite_getGlobalBounds(player->sprite).width;
 }
 
-static void gravity_on_player(player_t *player, sfVector2f *pos)
+static void gravity_on_player(player_t *player, sfVector2f *pos, win_t *win)
 {
 	sfVector2f bottom_pos = (sfVector2f) {0,
 		pos->y + sfSprite_getGlobalBounds(player->sprite).height};
@@ -65,9 +65,9 @@ static void gravity_on_player(player_t *player, sfVector2f *pos)
 		pos->y = WIN_MAX_H -
 			sfSprite_getGlobalBounds(player->sprite).height;
 	else if (bottom_pos.y < WIN_MAX_H)
-		pos->y += 9.81 * 2;
+		pos->y += GRAVITY * 2.f * win->dt;
 	if (player->y_speed > 0)
-		player->y_speed -= 9.81 / 2;
+		player->y_speed -= GRAVITY * win->dt;
 	if (player->y_speed < 0)
 		player->y_speed = 0;
 
@@ -77,13 +77,14 @@ void update_player(win_t *win, player_t *player)
 {
 	sfVector2f pos = sfSprite_getPosition(player->sprite);
 
-	if (sfClock_getElapsedTime(player->clock).microseconds < 30000)
-		return;
+	// if (sfClock_getElapsedTime(player->clock).microseconds < 30000)
+	// 	return;
 	sfClock_restart(player->clock);
-	pos.x += win->joystick->lx / 4;
-	gravity_on_player(player, &pos);
+	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
+	gravity_on_player(player, &pos, win);
 	wall_on_player(player, &pos);
 	if (win->joystick->lx != 0)
 		update_player_direction_anim(player, win);
 	sfSprite_setPosition(player->sprite, pos);
+	printf("%f\n", win->dt);
 }
