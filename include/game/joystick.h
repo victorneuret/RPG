@@ -88,5 +88,6 @@ extern struct_gamepad_button_state_t gamepad_button_state[];
 
 void update_joystick(win_t *win);
 void update_mouse_pos_joystick(joystick_t *joystick, win_t *win);
+void update_deadzone_joystick(joystick_t *joystick);
 void update_ui_joystick(joystick_t *joystick, win_t *win);
 void free_joystick(joystick_t *joystick);

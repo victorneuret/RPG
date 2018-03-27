@@ -32,9 +32,7 @@ void update_mouse_pos_joystick(joystick_t *joystick, win_t *win)
 	sfVector2i pos = sfMouse_getPositionRenderWindow(win->sf_win);
 	sfVector2i new_pos;
 
-	if ((joystick->lx > -30 && joystick->lx < 30)
-		&& (joystick->ly > -30 && joystick->ly < 30))
-		return;
+	update_deadzone_joystick(win->joystick);
 	new_pos = (sfVector2i) {pos.x + (int) joystick->lx / 4,
 				pos.y + (int) joystick->ly / 4};
 	set_joystick_limit(new_pos, win);
