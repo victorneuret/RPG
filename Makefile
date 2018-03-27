@@ -33,6 +33,7 @@ SRC	=	src/args.c                                                                
 		src/game/levels/level_draw.c                                                                        \
 		src/game/levels/level_load.c                                                                        \
 		src/game/levels/level_unload.c                                                                      \
+		src/game/levels/level_update.c                                                                      \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
@@ -102,6 +103,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/levels/level_draw.c                                                                        \
 		src/game/levels/level_load.c                                                                        \
 		src/game/levels/level_unload.c                                                                      \
+		src/game/levels/level_update.c                                                                      \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \

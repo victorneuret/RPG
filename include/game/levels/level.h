@@ -35,6 +35,7 @@ typedef struct {
 	tile_t **tiles;
 } level_t;
 
-void unload_level(game_t *game);
-bool load_level(game_t *game, char const *path);
+void update_level(win_t *win);
 void draw_level(sfRenderWindow *sf_win, level_t *level);
+bool load_level(game_t *game, char const *path);
+void unload_level(game_t *game);
