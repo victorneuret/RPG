@@ -22,6 +22,7 @@ SRC	=	src/args.c                                                                
 		src/game/gamepad/joystick.c                                                                         \
 		src/game/gamepad/move_joystick.c                                                                    \
 		src/game/gamepad/switch_gamepad.c                                                                   \
+		src/game/gamepad/update_deadzone_joystick.c                                                         \
 		src/game/gamepad/update_joystick_ui.c                                                               \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
@@ -33,6 +34,7 @@ SRC	=	src/args.c                                                                
 		src/game/levels/level_draw.c                                                                        \
 		src/game/levels/level_load.c                                                                        \
 		src/game/levels/level_unload.c                                                                      \
+		src/game/levels/level_update.c                                                                      \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
@@ -93,6 +95,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/gamepad/joystick.c                                                                         \
 		src/game/gamepad/move_joystick.c                                                                    \
 		src/game/gamepad/switch_gamepad.c                                                                   \
+		src/game/gamepad/update_deadzone_joystick.c                                                         \
 		src/game/gamepad/update_joystick_ui.c                                                               \
 		src/game/init/init_game.c                                                                           \
 		src/game/init/load_textures.c                                                                       \
@@ -104,6 +107,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/game/levels/level_draw.c                                                                        \
 		src/game/levels/level_load.c                                                                        \
 		src/game/levels/level_unload.c                                                                      \
+		src/game/levels/level_update.c                                                                      \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \

@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "game.h"
+#include "level.h"
 
 static void update_clock(win_t *win)
 {
@@ -29,6 +30,7 @@ static void update(win_t *win)
 		update_player(win, win->game->player);
 		update_weather(win);
 		update_particles(win, win->particle_manager);
+		update_level(win);
 		break;
 	case TITLE:
 		update_title_page(win);
