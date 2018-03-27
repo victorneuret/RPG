@@ -13,11 +13,10 @@ static void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 
 	if (rect.left < max_val)
 		rect.left += offset;
-	else if (rect.left == max_val && rect.top == 0) {
+	else if (rect.left == max_val && rect.top == 0)
 		rect.left = 0;
-	} else {
+	else
 		rect.left = 0;
-	}
 	sfSprite_setTextureRect(player->sprite, rect);
 }
 
@@ -57,20 +56,24 @@ static void wall_on_player(player_t *player, sfVector2f *pos)
 
 static void gravity_on_player(player_t *player, sfVector2f *pos)
 {
+	static double acceleration = 1.f;
 	sfVector2f bottom_pos = (sfVector2f) {0,
 		pos->y + sfSprite_getGlobalBounds(player->sprite).height};
 
 	pos->y -= player->y_speed;
-	if (bottom_pos.y >= WIN_MAX_H && player->y_speed <= 0)
+	if (bottom_pos.y >= WIN_MAX_H && player->y_speed <= 0) {
 		pos->y = WIN_MAX_H -
 			sfSprite_getGlobalBounds(player->sprite).height;
-	else if (bottom_pos.y < WIN_MAX_H)
-		pos->y += 9.81 * 2;
+	} else if (bottom_pos.y < WIN_MAX_H) {
+		pos->y += 9.81 * 2 * acceleration;
+		acceleration += 0.05;
+	}
 	if (player->y_speed > 0)
 		player->y_speed -= 9.81 / 2;
-	if (player->y_speed < 0)
+	if (player->y_speed < 0) {
 		player->y_speed = 0;
-
+		acceleration = 1;
+	}
 }
 
 void update_player(win_t *win, player_t *player)
