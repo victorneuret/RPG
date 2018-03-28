@@ -21,13 +21,13 @@ static sfVector2f get_move_factor(win_t *win, level_t *level)
 	bottom_right_corner.y += level->block_size;
 	move_factor.x = -win->joystick->rx * 7.5f * win->dt;
 	move_factor.y = -win->joystick->ry * 7.5f * win->dt;
-	if (top_left_corner.x > 0)
+	if (top_left_corner.x + move_factor.x > 0)
 		move_factor.x = -top_left_corner.x;
-	if (top_left_corner.y > 0)
+	if (top_left_corner.y + move_factor.y > 0)
 		move_factor.y = -top_left_corner.y;
-	if (bottom_right_corner.x < WIN_MAX_W)
+	if (bottom_right_corner.x + move_factor.x < WIN_MAX_W)
 		move_factor.x = WIN_MAX_W - bottom_right_corner.x;
-	if (bottom_right_corner.y < WIN_MAX_H)
+	if (bottom_right_corner.y + move_factor.y < WIN_MAX_H)
 		move_factor.y = WIN_MAX_H - bottom_right_corner.y;
 	return move_factor;
 }
@@ -35,8 +35,11 @@ static sfVector2f get_move_factor(win_t *win, level_t *level)
 void update_level(win_t *win)
 {
 	level_t *level = win->game->level;
-	sfVector2f move_factor = get_move_factor(win, level);
+	sfVector2f move_factor = (sfVector2f) {0, 0};
 
+	if (win->joystick->rx == 0 && win->joystick->ry == 0)
+		return;
+	move_factor = get_move_factor(win, level);
 	for (size_t y = 0; y < level->size.y; y++)
 		for (size_t x = 0; x < level->size.x; x++)
 			sfRectangleShape_move(level->tiles[y][x].block,

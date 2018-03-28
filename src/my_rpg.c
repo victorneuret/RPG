@@ -28,17 +28,15 @@ static void update(win_t *win)
 	switch (win->game_state) {
 	case GAME:
 		update_player(win, win->game->player);
-		update_weather(win);
-		update_particles(win, win->particle_manager);
 		update_level(win);
 		break;
 	case TITLE:
 		update_title_page(win);
 		update_weather(win);
-		update_particles(win, win->particle_manager);
 		break;
 	default: break;
 	}
+	update_particles(win, win->particle_manager);
 	update_text_hover(win->game->ui->hover_text_button, win);
 	update_popups(win->game->ui->popup_list);
 }
@@ -53,6 +51,7 @@ static void render(win_t *win)
 					win->game->ui->title_page->earth, 0);
 		break;
 	case GAME:
+		sfRenderWindow_clear(win->sf_win, hex_to_rgb(0x7EC0EE));
 		draw_particles(win);
 		draw_level(win->sf_win, win->game->level);
 		draw_player(win, win->game->player);

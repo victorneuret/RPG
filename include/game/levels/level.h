@@ -30,6 +30,7 @@ typedef struct {
 
 typedef struct {
 	sfImage *level_src;
+	sfTexture *texture;
 	sfVector2u size;
 	double block_size;
 	tile_t **tiles;
