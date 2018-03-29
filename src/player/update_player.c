@@ -54,8 +54,7 @@ static void wall_on_player(player_t *player, sfVector2f *pos)
 			sfSprite_getGlobalBounds(player->sprite).width;
 }
 
-static void gravity_on_player(player_t *player, sfVector2f *pos,
-			__attribute__((unused)) win_t *win)
+static void gravity_on_player(player_t *player, sfVector2f *pos)
 {
 	static double acceleration = 1.f;
 	sfVector2f bottom_pos = (sfVector2f) {0,
