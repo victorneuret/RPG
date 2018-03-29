@@ -85,7 +85,7 @@ void update_player(win_t *win, player_t *player)
 	// 	return;
 	sfClock_restart(player->clock);
 	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
-	gravity_on_player(player, &pos, win);
+	gravity_on_player(player, &pos);
 	wall_on_player(player, &pos);
 	if (win->joystick->lx != 0)
 		update_player_direction_anim(player, win);
