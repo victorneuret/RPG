@@ -20,7 +20,6 @@
 #include "game/events.h"
 #include "game/backgrounds.h"
 #include "fps.h"
-#include "drawer.h"
 #include "particle.h"
 #include "particle_updater.h"
 #include "particle_drawer.h"

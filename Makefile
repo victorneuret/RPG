@@ -9,7 +9,6 @@ NAME	=	my_rpg
 
 SRC	=	src/args.c                                                                                          \
 		src/game/backgrounds.c                                                                              \
-		src/game/display/drawer.c                                                                           \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
@@ -64,6 +63,7 @@ SRC	=	src/args.c                                                                
 		src/my_rpg.c                                                                                        \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
+		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
@@ -82,7 +82,6 @@ SRC	=	src/args.c                                                                
 
 SRC_UNIT=	src/args.c                                                                                          \
 		src/game/backgrounds.c                                                                              \
-		src/game/display/drawer.c                                                                           \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
@@ -136,6 +135,7 @@ SRC_UNIT=	src/args.c                                                            
 		src/my_rpg.c                                                                                        \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
+		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
@@ -168,7 +168,6 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
-		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \

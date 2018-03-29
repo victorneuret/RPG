@@ -5,6 +5,7 @@
 ** Main game logic
 */
 
+#include "render.h"
 #include "my_rpg.h"
 #include "game.h"
 #include "level.h"
@@ -47,8 +48,8 @@ static void render(win_t *win)
 	case TITLE:
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 		draw_particles(win);
-		sfRenderWindow_drawSprite(win->sf_win,
-					win->game->ui->title_page->earth, 0);
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->earth);
 		break;
 	case GAME:
 		sfRenderWindow_clear(win->sf_win, hex_to_rgb(0x7EC0EE));

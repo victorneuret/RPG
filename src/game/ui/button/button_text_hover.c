@@ -5,6 +5,7 @@
 ** button_text_hover
 */
 
+#include "render.h"
 #include "buttons.h"
 
 text_hover_button_t *init_text_button(void)
@@ -88,7 +89,7 @@ void draw_text_hover_button(text_hover_button_t *hover, win_t *win)
 		return;
 	if (is_over_button(win->game->ui->buttons, win)) {
 		update_text_hover(hover, win);
-		sfRenderWindow_drawRectangleShape(win->sf_win, hover->rect, 0);
-		sfRenderWindow_drawText(win->sf_win, hover->text, 0);
+		render_object(win->sf_win, RECTANGLE, hover->rect);
+		render_object(win->sf_win, TEXT, hover->text);
 	}
 }
