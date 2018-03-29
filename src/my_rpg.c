@@ -47,19 +47,18 @@ static void render(win_t *win)
 	switch (win->game_state) {
 	case TITLE:
 		sfRenderWindow_clear(win->sf_win, sfBlack);
-		draw_particles(win);
 		render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->earth);
 		break;
 	case GAME:
 		sfRenderWindow_clear(win->sf_win, hex_to_rgb(0x7EC0EE));
-		draw_particles(win);
 		draw_level(win->sf_win, win->game->level);
 		draw_player(win, win->game->player);
 		break;
 	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
 	default: break;
 	}
+	draw_particles(win);
 	draw_buttons(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
