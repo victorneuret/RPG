@@ -8,7 +8,6 @@
 #include "render_window.h"
 #include "render.h"
 
-
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 {
 	const sfFloatRect screen = (sfFloatRect) {0, 0, WIN_MAX_W, WIN_MAX_H};
