@@ -5,13 +5,14 @@
 ** player
 */
 
+#include "render.h"
 #include "player.h"
 #include "render_window.h"
 #include "my_calloc.h"
 
 void draw_player(win_t *win, player_t *player)
 {
-	sfRenderWindow_drawSprite(win->sf_win, player->sprite, NULL);
+	render_object(win->sf_win, SPRITE, player->sprite);
 }
 
 player_t *init_player(win_t *win)

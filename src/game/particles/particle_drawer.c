@@ -5,14 +5,15 @@
 ** particle_drawer
 */
 
+#include "render.h"
 #include "particle.h"
 
 static void draw_particle_group(win_t *win, particle_group_t *group)
 {
 	for (size_t i = 0; group->particles[i]; i++)
 		if (group->particles[i]->alive)
-			sfRenderWindow_drawRectangleShape(win->sf_win,
-					group->particles[i]->shape, NULL);
+			render_object(win->sf_win, RECTANGLE,
+					group->particles[i]->shape);
 }
 
 void draw_particles(win_t *win)

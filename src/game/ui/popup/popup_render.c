@@ -7,6 +7,7 @@
 
 #include "ui.h"
 #include "popup.h"
+#include "render.h"
 
 static void change_y(popup_t *popup, ssize_t offset)
 {
@@ -25,9 +26,9 @@ static void change_y(popup_t *popup, ssize_t offset)
 static void render_popup(win_t *win, popup_t *popup, size_t offset)
 {
 	change_y(popup, offset);
-	sfRenderWindow_drawRectangleShape(win->sf_win, popup->rect, NULL);
-	sfRenderWindow_drawText(win->sf_win, popup->header, NULL);
-	sfRenderWindow_drawText(win->sf_win, popup->message, NULL);
+	render_object(win->sf_win, RECTANGLE, popup->rect);
+	render_object(win->sf_win, TEXT, popup->header);
+	render_object(win->sf_win, TEXT, popup->message);
 	change_y(popup, -offset);
 }
 
