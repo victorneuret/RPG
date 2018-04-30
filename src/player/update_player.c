@@ -32,7 +32,6 @@ static void switch_direction(sfSprite *player, uint8_t dir)
 {
 	sfIntRect rect = sfSprite_getTextureRect(player);
 
-	printf("DIR: %d\n", dir);
 	switch (dir) {
 	case LEFT:
 		rect.top = 128;
