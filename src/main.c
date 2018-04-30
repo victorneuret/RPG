@@ -14,6 +14,7 @@
 #include "args.h"
 #include "settings.h"
 #include "render_window.h"
+#include "xml.h"
 
 #include "getnbr.h"
 #include "str_utils.h"
