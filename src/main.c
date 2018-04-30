@@ -14,6 +14,7 @@
 #include "args.h"
 #include "settings.h"
 #include "render_window.h"
+#include "xml.h"
 
 #include "getnbr.h"
 #include "str_utils.h"
@@ -67,6 +68,8 @@ static bool start_rpg(int ac, char **av, char **env)
 int main(int ac, char **av, char **env)
 {
 	if (!start_rpg(ac, av, env))
+		return 84;
+	if (!xml_exemple())
 		return 84;
 	return 0;
 }

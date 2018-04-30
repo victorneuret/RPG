@@ -3,6 +3,7 @@
 !*/
 !*.c
 !*.h
+!*.xml
 !Makefile
 !.gitignore
 !res/**

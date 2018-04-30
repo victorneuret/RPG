@@ -73,7 +73,11 @@ SRC	=	src/args.c                                                                
 		src/utils/str/str_utils_2.c                                                                         \
 		src/window/change_state.c                                                                           \
 		src/window/destroy.c                                                                                \
-		src/window/render_window.c
+		src/window/render_window.c                                                                          \
+		src/xml/get_node_by_name.c                                                                          \
+		src/xml/load_xml.c                                                                                  \
+		src/xml/node_utils.c										    \
+		src/xml/xml_exemple.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \
@@ -100,13 +104,19 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
-		-I./include/window
+		-I./include/window                                                                                  \
+		-I./include/xml
+
+CPPFLAGS +=	$(shell xml2-config --cflags)
 
 OBJ	=	$(SRC:.c=.o)
 
 CC	=	gcc
 
-LDFLAGS	+=	-lc_graph_prog -lm
+CFLAGS	+=	-Wall -Wextra
+
+LDFLAGS	+=	-lm -lc_graph_prog
+LDFLAGS +=	$(shell xml2-config --libs)
 
 all:	$(NAME)
 
