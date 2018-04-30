@@ -12,7 +12,6 @@
 #include "ui.h"
 #include "weather.h"
 #include "joystick.h"
-#include "level.h"
 #include "player.h"
 
 typedef struct textures textures_t;
@@ -26,7 +25,6 @@ typedef struct game {
 	ui_t *ui;
 	weather_type_t weather_type;
 	weather_intensity_t weather_intensity;
-	level_t *level;
 	player_t *player;
 } game_t;
 

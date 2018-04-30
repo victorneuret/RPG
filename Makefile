@@ -30,10 +30,6 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/weather_modifiers.c                                                  \
 		src/game/key_pressed_functions/window_actions.c                                                     \
-		src/game/levels/level_draw.c                                                                        \
-		src/game/levels/level_load.c                                                                        \
-		src/game/levels/level_unload.c                                                                      \
-		src/game/levels/level_update.c                                                                      \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
@@ -92,7 +88,6 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \
-		-I./include/game/levels                                                                             \
 		-I./include/game/menu                                                                               \
 		-I./include/game/particles                                                                          \
 		-I./include/game/particles/effects                                                                  \

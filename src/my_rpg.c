@@ -8,7 +8,6 @@
 #include "render.h"
 #include "my_rpg.h"
 #include "game.h"
-#include "level.h"
 
 static void update_clock(win_t *win)
 {
@@ -21,15 +20,11 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
-// update_fireworks(win);
-// update_campfire(win);
-// update_stars(win);
 static void update(win_t *win)
 {
 	switch (win->game_state) {
 	case GAME:
 		update_player(win, win->game->player);
-		update_level(win);
 		break;
 	case TITLE:
 		update_title_page(win);
@@ -44,18 +39,16 @@ static void update(win_t *win)
 
 static void render(win_t *win)
 {
+	sfRenderWindow_clear(win->sf_win, sfBlack);
 	switch (win->game_state) {
 	case TITLE:
-		sfRenderWindow_clear(win->sf_win, sfBlack);
 		render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->earth);
 		break;
 	case GAME:
-		sfRenderWindow_clear(win->sf_win, hex_to_rgb(0x7EC0EE));
-		draw_level(win->sf_win, win->game->level);
 		draw_player(win, win->game->player);
 		break;
-	case PAUSE: sfRenderWindow_clear(win->sf_win, sfBlack); break;
+	case PAUSE: break;
 	default: break;
 	}
 	draw_particles(win);
@@ -71,7 +64,6 @@ bool my_rpg_loop(win_t *win)
 {
 	if (!init_game(win))
 		return false;
-	load_level(win->game, "res/levels/debug_1.png");
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
 		update(win);
@@ -80,7 +72,6 @@ bool my_rpg_loop(win_t *win)
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}
-	unload_level(win->game);
 	free_game(win->game);
 	return true;
 }
