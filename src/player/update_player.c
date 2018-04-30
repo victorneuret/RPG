@@ -6,6 +6,14 @@
 */
 
 #include "player.h"
+#include "macros.h"
+
+typedef enum {
+	LEFT,
+	RIGHT,
+	TOP,
+	BOTTOM
+} direction_t;
 
 static void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 {
@@ -20,73 +28,62 @@ static void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 	sfSprite_setTextureRect(player->sprite, rect);
 }
 
-static void update_player_direction_anim(player_t *player, win_t *win)
+static void switch_direction(sfSprite *player, uint8_t dir)
 {
-	static uint8_t anim_sprite_time = 0;
+	sfIntRect rect = sfSprite_getTextureRect(player);
 
-	sfIntRect rect = (sfIntRect) {0,
-		sfSprite_getLocalBounds(player->sprite).height + 1,
-		sfSprite_getLocalBounds(player->sprite).width,
-		sfSprite_getLocalBounds(player->sprite).height};
-
-	if (win->joystick->lx < 0
-		&& sfSprite_getTextureRect(player->sprite).top == 0)
-		sfSprite_setTextureRect(player->sprite, rect);
-	rect.top = 0;
-	if (win->joystick->lx > 0
-		&& sfSprite_getTextureRect(player->sprite).top != 0)
-		sfSprite_setTextureRect(player->sprite, rect);
-	anim_sprite_time++;
-	if (anim_sprite_time > 4) {
-		animate_sprite(player,
-			sfSprite_getGlobalBounds(player->sprite).width, 3);
-		anim_sprite_time = 0;
+	printf("DIR: %d\n", dir);
+	switch (dir) {
+	case LEFT:
+		rect.top = 128;
+		break;
+	case RIGHT:
+		rect.top = 0;
+		break;
 	}
+	sfSprite_setTextureRect(player, rect);
 }
 
-static void wall_on_player(player_t *player, sfVector2f *pos)
+static uint8_t get_direction(float lx, float ly)
 {
-	if (pos->x < 0)
-		pos->x = 0;
-	if (pos->x + sfSprite_getGlobalBounds(player->sprite).width >
-								WIN_MAX_W)
-		pos->x = WIN_MAX_W -
-			sfSprite_getGlobalBounds(player->sprite).width;
+	uint8_t x = ABS(lx);
+	uint8_t y = ABS(ly);
+
+	if (x > y)
+		return (lx < 0) ? LEFT : RIGHT;
+	else if (x < y)
+		return (ly < 0) ? BOTTOM : TOP;
+	return 0;
 }
 
-static void gravity_on_player(player_t *player, sfVector2f *pos)
+static void move_player(win_t *win, sfSprite *player)
 {
-	static double acceleration = 1.f;
-	sfVector2f bottom_pos = (sfVector2f) {0,
-		pos->y + sfSprite_getGlobalBounds(player->sprite).height};
+	sfVector2f pos = sfSprite_getPosition(player);
+	sfFloatRect rect = sfSprite_getGlobalBounds(player);
 
-	pos->y -= player->y_speed;
-	if (bottom_pos.y >= WIN_MAX_H && player->y_speed <= 0) {
-		pos->y = WIN_MAX_H -
-			sfSprite_getGlobalBounds(player->sprite).height;
-	} else if (bottom_pos.y < WIN_MAX_H) {
-		pos->y += 9.81 * 2 * acceleration;
-		acceleration += 0.05;
-	}
-	if (player->y_speed > 0)
-		player->y_speed -= 9.81 / 2;
-	if (player->y_speed < 0) {
-		player->y_speed = 0;
-		acceleration = 1;
-	}
+	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
+	pos.y += X_SPEED * (win->joystick->ly / 100.f) * win->dt;
+	if (pos.x + rect.width > WIN_MAX_W)
+		pos.x = WIN_MAX_W - rect.width;
+	if (pos.x < 0)
+		pos.x = 0;
+	if (pos.y + rect.height > WIN_MAX_H)
+		pos.y = WIN_MAX_H - rect.height;
+	if (pos.y < 0)
+		pos.y = 0;
+	sfSprite_setPosition(player, pos);
 }
 
 void update_player(win_t *win, player_t *player)
 {
-	sfVector2f pos = sfSprite_getPosition(player->sprite);
+	uint8_t dir = get_direction(win->joystick->lx, win->joystick->ly);
 
-	// if (sfClock_getElapsedTime(player->clock).microseconds < 30000)
-	// 	return;
-	sfClock_restart(player->clock);
-	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
-	gravity_on_player(player, &pos);
-	wall_on_player(player, &pos);
-	if (win->joystick->lx != 0)
-		update_player_direction_anim(player, win);
-	sfSprite_setPosition(player->sprite, pos);
+	if ((win->joystick->lx != 0 || win->joystick->ly != 0) &&
+		sfClock_getElapsedTime(player->clock).microseconds > 60000) {
+		switch_direction(player->sprite, dir);
+		animate_sprite(player,
+			sfSprite_getGlobalBounds(player->sprite).width, 3);
+		sfClock_restart(player->clock);
+	}
+	move_player(win, player->sprite);
 }
