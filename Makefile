@@ -78,7 +78,11 @@ SRC	=	src/args.c                                                                
 		src/utils/str/str_utils_2.c                                                                         \
 		src/window/change_state.c                                                                           \
 		src/window/destroy.c                                                                                \
-		src/window/render_window.c
+		src/window/render_window.c                                                                          \
+		src/xml/get_node_by_name.c                                                                          \
+		src/xml/load_xml.c                                                                                  \
+		src/xml/node_utils.c										    \
+		src/xml/xml_exemple.c
 
 SRC_UNIT=	src/args.c                                                                                          \
 		src/game/backgrounds.c                                                                              \
@@ -151,6 +155,10 @@ SRC_UNIT=	src/args.c                                                            
 		src/window/change_state.c                                                                           \
 		src/window/destroy.c                                                                                \
 		src/window/render_window.c                                                                          \
+		src/xml/get_node_by_name.c                                                                          \
+		src/xml/load_xml.c                                                                                  \
+		src/xml/node_utils.c                                                                                \
+		src/xml/xml_exemple.c										    \
 		tests/test_getnbr.c                                                                                 \
 		tests/test_nb_utils.c                                                                               \
 		tests/test_str_utils_2.c                                                                            \
@@ -174,7 +182,10 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
-		-I./include/window
+		-I./include/window                                                                                  \
+		-I./include/xml
+
+CPPFLAGS +=	$(shell xml2-config --cflags)
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -184,6 +195,7 @@ CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm
 LDFLAGS +=	-lc_graph_prog
+LDFLAGS +=	$(shell xml2-config --libs)
 
 all:	$(NAME)
 

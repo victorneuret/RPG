@@ -74,15 +74,12 @@ static void gravity_on_player(player_t *player, sfVector2f *pos, win_t *win)
 		player->y_speed = 0;
 		acceleration = 1;
 	}
-	printf("%f\n", win->dt);
 }
 
 void update_player(win_t *win, player_t *player)
 {
 	sfVector2f pos = sfSprite_getPosition(player->sprite);
 
-	// if (sfClock_getElapsedTime(player->clock).microseconds < 30000)
-	// 	return;
 	sfClock_restart(player->clock);
 	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
 	gravity_on_player(player, &pos, win);
