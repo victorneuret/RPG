@@ -23,7 +23,7 @@ void button_a(win_t *win, bool press)
 			sfSprite_getPosition(win->game->player->sprite).y +
 			sfSprite_getGlobalBounds(win->game->player->sprite)
 			.height >= WIN_MAX_H - 10))
-			win->game->player->y_speed = 60;
+			win->game->player->y_speed = 80;
 		pressed = true;
 	}
 }
