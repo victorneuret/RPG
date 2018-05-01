@@ -8,14 +8,7 @@
 #include "player.h"
 #include "macros.h"
 
-typedef enum {
-	LEFT,
-	RIGHT,
-	TOP,
-	BOTTOM
-} direction_t;
-
-static void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
+void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 {
 	sfIntRect rect = sfSprite_getTextureRect(player->sprite);
 
@@ -34,10 +27,16 @@ static void switch_direction(sfSprite *player, uint8_t dir)
 
 	switch (dir) {
 	case LEFT:
-		rect.top = 128;
+		rect.top = 132;
 		break;
 	case RIGHT:
 		rect.top = 0;
+		break;
+	case TOP:
+		rect.top = 264;
+		break;
+	case BOTTOM:
+		rect.top = 396;
 		break;
 	}
 	sfSprite_setTextureRect(player, rect);
@@ -75,13 +74,18 @@ static void move_player(win_t *win, sfSprite *player)
 
 void update_player(win_t *win, player_t *player)
 {
-	uint8_t dir = get_direction(win->joystick->lx, win->joystick->ly);
+	static uint8_t dir = TOP;
 
 	if ((win->joystick->lx != 0 || win->joystick->ly != 0) &&
 		sfClock_getElapsedTime(player->clock).microseconds > 60000) {
+		dir = get_direction(win->joystick->lx, win->joystick->ly);
 		switch_direction(player->sprite, dir);
 		animate_sprite(player,
-			sfSprite_getGlobalBounds(player->sprite).width, 3);
+			sfSprite_getGlobalBounds(player->sprite).width, 10);
+		sfClock_restart(player->clock);
+	} else if (sfClock_getElapsedTime(player->clock).microseconds
+							> 300000) {
+		update_idle(player, dir);
 		sfClock_restart(player->clock);
 	}
 	move_player(win, player->sprite);

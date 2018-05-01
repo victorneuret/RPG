@@ -57,6 +57,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
+		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
 		src/render.c                                                                                        \
