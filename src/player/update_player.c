@@ -12,10 +12,8 @@ void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 {
 	sfIntRect rect = sfSprite_getTextureRect(player->sprite);
 
-	if (rect.left < max_val)
+	if (rect.left < (max_val - 1) * offset)
 		rect.left += offset;
-	else if (rect.left == max_val && rect.top == 0)
-		rect.left = 0;
 	else
 		rect.left = 0;
 	sfSprite_setTextureRect(player->sprite, rect);
@@ -23,6 +21,7 @@ void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 
 static void switch_direction(sfSprite *player, uint8_t dir)
 {
+	static uint8_t prev_dir = 0;
 	sfIntRect rect = sfSprite_getTextureRect(player);
 
 	switch (dir) {
@@ -39,6 +38,9 @@ static void switch_direction(sfSprite *player, uint8_t dir)
 		rect.top = 396;
 		break;
 	}
+	if (dir != prev_dir)
+		rect.left = 0;
+	prev_dir = dir;
 	sfSprite_setTextureRect(player, rect);
 }
 
