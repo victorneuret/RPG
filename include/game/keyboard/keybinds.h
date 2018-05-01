@@ -12,6 +12,7 @@
 #include "render_window.h"
 
 #include "key_pressed_functions.h"
+#include "dir_arrow.h"
 
 typedef struct {
 	game_status game_state;
@@ -25,9 +26,9 @@ static const keybind_t keybinds[] = {
 	{ALL,	sfKeyF12,	&toggle_fps},
 	{PAUSE,	sfKeyEscape,	&pause_game},
 	{GAME,	sfKeyEscape,	&pause_game},
-	{GAME,	sfKeyUp,	&next_intensity},
-	{GAME,	sfKeyDown,	&previous_intensity},
-	{GAME,	sfKeyRight,	&next_weather},
-	{GAME,	sfKeyLeft,	&previous_weather},
+	{GAME,	sfKeyUp,	&arrow_up},
+	{GAME,	sfKeyDown,	&arrow_down},
+	{GAME,	sfKeyRight,	&arrow_right},
+	{GAME,	sfKeyLeft,	&arrow_left},
 	{0,	0,		NULL}
 };
