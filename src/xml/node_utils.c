@@ -8,6 +8,7 @@
 #include <libxml/parser.h>
 
 #include "xml.h"
+#include "getnbr.h"
 
 char *get_node_string(xmlNode *root, char *node_name)
 {
@@ -27,7 +28,7 @@ int get_node_int(xmlNode *root, char *node_name)
 	if (!node)
 		return 0;
 	string = (char *) xmlNodeGetContent(node);
-	value = atoi(string);
+	value = getnbr(string);
 	free(string);
 	return (value);
 }

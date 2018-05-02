@@ -27,6 +27,10 @@ static const textures_path_t textures_path[] = {
 		"player",
 		"res/textures/new_player.png"
 	},
+	{
+		"aim",
+		"res/textures/aim.png"
+	},
 	{NULL, NULL}
 };
 
@@ -38,3 +42,4 @@ typedef struct textures {
 
 textures_t *load_textures(void);
 void free_textures(textures_t *textures);
+textures_t *get_texture(textures_t *textures, char const *name);

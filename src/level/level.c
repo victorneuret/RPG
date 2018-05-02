@@ -72,6 +72,8 @@ bool load_level(level_t **level, env_name_t env_name)
 
 void unload_level(level_t *level)
 {
+	if (!level)
+		return;
 	sfSprite_destroy(level->top_l);
 	sfSprite_destroy(level->top_r);
 	sfSprite_destroy(level->bot_l);

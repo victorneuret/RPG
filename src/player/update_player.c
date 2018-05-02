@@ -5,19 +5,10 @@
 ** update_player
 */
 
+#include <math.h>
+
 #include "player.h"
 #include "macros.h"
-
-void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
-{
-	sfIntRect rect = sfSprite_getTextureRect(player->sprite);
-
-	if (rect.left < (max_val - 1) * offset)
-		rect.left += offset;
-	else
-		rect.left = 0;
-	sfSprite_setTextureRect(player->sprite, rect);
-}
 
 static void switch_direction(sfSprite *player, uint8_t dir)
 {
@@ -56,11 +47,25 @@ static uint8_t get_direction(float lx, float ly)
 	return 0;
 }
 
-static void move_player(win_t *win, sfSprite *player)
+static void update_aim_orientation(win_t *win, player_t *player)
 {
-	sfVector2f pos = sfSprite_getPosition(player);
-	sfFloatRect rect = sfSprite_getGlobalBounds(player);
+	const float rx = win->joystick->rx / 100.f;
+	const float ry = win->joystick->ry / 100.f;
+	const float rad = acos(rx);
+	const float deg = rad * 180.f / (float) M_PI;
+	const int8_t neg = ry < 0 ? -1 : 1;
 
+	if (rx != 0 && ry != 0)
+		sfSprite_setRotation(player->aim, deg * neg + 45);
+}
+
+static void move_player(win_t *win, player_t *player)
+{
+	sfVector2f pos = sfSprite_getPosition(player->sprite);
+	sfFloatRect rect = sfSprite_getGlobalBounds(player->sprite);
+
+	pos.x -= rect.width / 2.f;
+	pos.y -= rect.height / 2.f;
 	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
 	pos.y += X_SPEED * (win->joystick->ly / 100.f) * win->dt;
 	if (pos.x + rect.width > WIN_MAX_W)
@@ -71,7 +76,10 @@ static void move_player(win_t *win, sfSprite *player)
 		pos.y = WIN_MAX_H - rect.height;
 	if (pos.y < 0)
 		pos.y = 0;
-	sfSprite_setPosition(player, pos);
+	pos.x += rect.width / 2.f;
+	pos.y += rect.height / 2.f;
+	sfSprite_setPosition(player->sprite, pos);
+	sfSprite_setPosition(player->aim, pos);
 }
 
 void update_player(win_t *win, player_t *player)
@@ -90,5 +98,6 @@ void update_player(win_t *win, player_t *player)
 		update_idle(player, dir);
 		sfClock_restart(player->clock);
 	}
-	move_player(win, player->sprite);
+	move_player(win, player);
+	update_aim_orientation(win, player);
 }
