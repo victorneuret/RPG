@@ -10,5 +10,6 @@
 #include <SFML/Graphics.h>
 #include <stdint.h>
 
+void center_text(sfText *text, float x);
 sfText *init_text(sfFont *font, char const *string, sfVector2f pos,
 		uint8_t font_size);

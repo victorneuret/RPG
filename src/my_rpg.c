@@ -5,18 +5,16 @@
 ** Main game logic
 */
 
-#include <SFML/Graphics.h>
-#include <stdlib.h>
 #include <stdbool.h>
 
-#include "fps.h"
-#include "level.h"
 #include "render.h"
+#include "my_rpg.h"
+#include "game.h"
+#include "intro.h"
 #include "events.h"
-#include "particle.h"
-#include "particle_drawer.h"
 #include "particle_updater.h"
-#include "render_window.h"
+#include "particle_drawer.h"
+#include "fps.h"
 
 static void update_clock(win_t *win)
 {
@@ -29,9 +27,13 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
-static void update(win_t *win)
+static bool update(win_t *win)
 {
 	switch (win->game_state) {
+	case INTRO:
+		if (!update_intro(win, win->intro))
+			return false;
+		break;
 	case GAME:
 		update_player(win, win->game->player);
 		break;
@@ -44,12 +46,16 @@ static void update(win_t *win)
 	update_particles(win, win->particle_manager);
 	update_text_hover(win->game->ui->hover_text_button, win);
 	update_popups(win->game->ui->popup_list);
+	return true;
 }
 
 static void render(win_t *win)
 {
 	sfRenderWindow_clear(win->sf_win, sfBlack);
 	switch (win->game_state) {
+	case INTRO:
+		render_intro(win, win->intro);
+		break;
 	case TITLE:
 		render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->earth);
@@ -76,7 +82,8 @@ bool my_rpg_loop(win_t *win)
 		return false;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
-		update(win);
+		if (!update(win))
+			return false;
 		process_events(win);
 		render(win);
 		sfRenderWindow_display(win->sf_win);
