@@ -5,9 +5,17 @@
 ** Main game logic
 */
 
+#include <SFML/Graphics.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#include "fps.h"
 #include "render.h"
-#include "my_rpg.h"
-#include "game.h"
+#include "events.h"
+#include "particle.h"
+#include "particle_drawer.h"
+#include "particle_updater.h"
+#include "render_window.h"
 
 static void update_clock(win_t *win)
 {

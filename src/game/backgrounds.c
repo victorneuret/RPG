@@ -6,6 +6,9 @@
 */
 
 #include "my_rpg.h"
+#include "nb_utils.h"
+#include "particle_fire.h"
+#include "particle_explosion.h"
 
 void update_fireworks(win_t *win)
 {
