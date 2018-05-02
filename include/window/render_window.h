@@ -12,6 +12,7 @@
 #include "settings.h"
 #include "particle.h"
 #include "joystick.h"
+#include "intro_struct.h"
 
 #define WINDOW_TITLE "My RPG"
 
@@ -26,6 +27,7 @@ typedef enum game_state {
 	GAME = 1 << 1,
 	PAUSE = 1 << 2,
 	OPTION = 1 << 3,
+	INTRO = 1 << 4,
 	ALL = -1
 } game_status;
 
@@ -34,6 +36,7 @@ typedef struct render_window {
 	game_t *game;
 	joystick_t *joystick;
 	particle_manager_t *particle_manager;
+	intro_t *intro;
 	sfRenderWindow *sf_win;
 	sfClock *timer;
 	sfView *view;

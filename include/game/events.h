@@ -25,6 +25,8 @@ void joystick_disconnected(win_t *win, sfEvent *event);
 void mouse_moved(win_t *win, sfEvent *event);
 void joystick_moved(win_t *win, sfEvent *event);
 
+void exit_intro(win_t *win, sfEvent *event);
+
 typedef struct {
 	game_status game_state;
 	sfEventType type;
@@ -32,6 +34,7 @@ typedef struct {
 } event_t;
 
 static const event_t events[] = {
+	{INTRO, sfEvtKeyPressed,		&exit_intro},
 	{ALL, sfEvtClosed,			&close_win_evt},
 	{ALL, sfEvtKeyPressed,			&key_pressed},
 	{ALL, sfEvtResized,			&on_resize},
