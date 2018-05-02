@@ -28,7 +28,6 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/pause_resume.c                                                       \
 		src/game/key_pressed_functions/toggles.c                                                            \
 		src/game/key_pressed_functions/to_title_page.c                                                      \
-		src/game/key_pressed_functions/weather_modifiers.c                                                  \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
@@ -56,6 +55,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
+		src/level/level.c                                                                                 \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
 		src/render.c                                                                                        \
@@ -87,8 +87,8 @@ SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 
 SRC	+=	src/main.c
 
-CPPFLAGS+=	-Wall -Wextra
-CPPFLAGS+=	-I./include                                                                                         \
+CPPFLAGS+=	-Wall -Wextra											    \
+		-I./include                                                                                         \
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \
@@ -101,6 +101,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/weather                                                                            \
 		-I./include/player                                                                                  \
+		-I./include/level                                                                                   \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \

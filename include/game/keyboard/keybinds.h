@@ -25,9 +25,5 @@ static const keybind_t keybinds[] = {
 	{ALL,	sfKeyF12,	&toggle_fps},
 	{PAUSE,	sfKeyEscape,	&pause_game},
 	{GAME,	sfKeyEscape,	&pause_game},
-	{GAME,	sfKeyUp,	&next_intensity},
-	{GAME,	sfKeyDown,	&previous_intensity},
-	{GAME,	sfKeyRight,	&next_weather},
-	{GAME,	sfKeyLeft,	&previous_weather},
 	{0,	0,		NULL}
 };
