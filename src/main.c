@@ -73,9 +73,5 @@ int main(int ac, char **av, char **env)
 		return 84;
 	if (!xml_exemple())
 		return 84;
-	dungeon_t *dungeon = init_dungeon();
-	if (!dungeon)
-		return 84;
-	print_dungeon(dungeon);
 	return 0;
 }

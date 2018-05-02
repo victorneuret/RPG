@@ -10,6 +10,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "render_window.h"
+#include "player.h"
+
 static const uint8_t ROOM_WIDTH = 12;
 static const uint8_t ROOM_HEIGHT = 8;
 
@@ -29,5 +32,5 @@ typedef struct dungeon {
 	int8_t **rooms;
 } dungeon_t;
 
-dungeon_t *init_dungeon(void);
+bool init_dungeon(win_t *win);
 void print_dungeon(dungeon_t *dungeon);

@@ -12,13 +12,7 @@
 
 #include "dungeon.h"
 #include "nb_utils.h"
-
-enum {
-	UP,
-	DOWN,
-	RIGHT,
-	LEFT
-};
+#include "render_window.h"
 
 static void place_neighbor_room(dungeon_t *dungeon, uint8_t x, uint8_t y,
 				uint8_t *room_nb)
@@ -45,9 +39,9 @@ static void place_neighbor_room(dungeon_t *dungeon, uint8_t x, uint8_t y,
 
 static bool check_dir(uint8_t x, uint8_t y, uint8_t dir)
 {
-	if (dir == UP && y == 0)
+	if (dir == TOP && y == 0)
 		return false;
-	if (dir == DOWN && y == NB_ROOMS_HEIGHT - 1)
+	if (dir == BOTTOM && y == NB_ROOMS_HEIGHT - 1)
 		return false;
 	if (dir == LEFT && x == 0)
 		return false;
@@ -62,9 +56,9 @@ static bool next_room(uint8_t *x, uint8_t *y)
 
 	if (!check_dir(*x, *y, dir))
 		return false;
-	if (dir == UP)
+	if (dir == TOP)
 		*y -= 1;
-	if (dir == DOWN)
+	if (dir == BOTTOM)
 		*y += 1;
 	if (dir == LEFT)
 		*x -= 1;
@@ -78,6 +72,7 @@ static void place_rooms(dungeon_t *dungeon)
 	uint8_t room_nb = 0;
 	uint8_t x = rand_int(0, NB_ROOMS_WIDTH - 1);
 	uint8_t y = rand_int(0, NB_ROOMS_HEIGHT - 1);
+	int8_t **cells = dungeon->rooms;
 
 	printf("x: %d\ty: %d\n", x, y);
 	while (room_nb < 8) {
@@ -89,23 +84,23 @@ static void place_rooms(dungeon_t *dungeon)
 		if (!next_room(&x, &y))
 			break;
 	}
+	if (room_nb < 3) {
+		dungeon->rooms = cells;
+		place_rooms(dungeon);
+	}
 }
 
-dungeon_t *init_dungeon(void)
+bool init_dungeon(win_t *win)
 {
-	dungeon_t *dungeon = malloc(sizeof(dungeon_t));
-
-	if (!dungeon)
-		return NULL;
-	dungeon->rooms = malloc(sizeof(int8_t *) * NB_ROOMS_HEIGHT);
-	if (!dungeon->rooms)
-		return NULL;
+	win->game->dungeon->rooms = malloc(sizeof(int8_t *) * NB_ROOMS_HEIGHT);
+	if (!win->game->dungeon->rooms)
+		return false;
 	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++) {
-		dungeon->rooms[i] = malloc(sizeof(int8_t) * NB_ROOMS_WIDTH);
-		if (!dungeon->rooms[i])
-			return NULL;
-		memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
+		win->game->dungeon->rooms[i] = malloc(sizeof(int8_t) * NB_ROOMS_WIDTH);
+		if (!win->game->dungeon->rooms[i])
+			return false;
+		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	}
-	place_rooms(dungeon);
-	return dungeon;
+	place_rooms(win->game->dungeon);
+	return true;
 }

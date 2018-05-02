@@ -20,6 +20,7 @@ static const uint16_t WIN_MAX_H = 1080;
 
 typedef struct game game_t;
 typedef struct particle_manager particle_manager_t;
+typedef struct dungeon dungeon_t;
 
 typedef enum game_state {
 	TITLE = 1,
