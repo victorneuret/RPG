@@ -12,6 +12,7 @@
 void start_game(win_t *win)
 {
 	change_state(win, GAME);
+	load_level(&win->game->level, DUNGEON);
 }
 
 void error_test(win_t *win)

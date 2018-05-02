@@ -24,7 +24,7 @@ void toggle_fullscreen(win_t *win)
 	win->settings->fullscreen = fullscreen;
 	sfRenderWindow_close(win->sf_win);
 	sfRenderWindow_destroy(win->sf_win);
-	win->sf_win = sfRenderWindow_create(vm, WINDOW_TITLE, style, NULL);
+	win->sf_win = sfRenderWindow_create(vm, "My RPG", style, NULL);
 	if (!win->sf_win)
 		return;
 	sfRenderWindow_setFramerateLimit(win->sf_win,

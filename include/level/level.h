@@ -11,30 +11,32 @@
 #include <SFML/Graphics.h>
 
 typedef enum env_name {
-	BOAT, DONGEON, HELL, VOLCANO,
+	BOAT, DUNGEON, HELL, VOLCANO,
 	NIGHTMARE, DEEP_CAVE, CAVE, DESERT,
 	CASTLE, CANYON, COAL_MINE, HAUNTED,
 	OLDER_HOUSE, OLD_HOUSE, EMPTY_LIBRARY, LIBRARY,
 
 	ENV_COUNT
-} env_name;
+} env_name_t;
 
 typedef struct env {
-	env_name name;
+	env_name_t name;
 	sfIntRect texture_rect;
 } env_t;
 
 typedef struct level {
-	sfTexture *texture;
-	sfSprite *top_left;
-	sfSprite *top_right;
-	sfSprite *bot_left;
-	sfSprite *bot_right;
+	sfSprite *top_l;
+	sfSprite *top_r;
+	sfSprite *bot_l;
+	sfSprite *bot_r;
 } level_t;
+
+static const size_t ENV_W = 960;
+static const size_t ENV_H = 540;
 
 static const env_t env_list[] = {
 	{ BOAT,			(sfIntRect) {0, 0, 960, 540} },
-	{ DONGEON,		(sfIntRect) {960, 0, 960, 540} },
+	{ DUNGEON,		(sfIntRect) {960, 0, 960, 540} },
 	{ HELL,			(sfIntRect) {1920, 0, 960, 540} },
 	{ VOLCANO,		(sfIntRect) {2880, 0, 960, 540} },
 	{ NIGHTMARE,		(sfIntRect) {0, 540, 960, 540} },
@@ -50,3 +52,7 @@ static const env_t env_list[] = {
 	{ EMPTY_LIBRARY,	(sfIntRect) {1920, 1620, 960, 540} },
 	{ LIBRARY,		(sfIntRect) {2880, 1620, 960, 540} }
 };
+
+void unload_level(level_t *level);
+bool load_level(level_t **level, env_name_t env_name);
+void draw_level(sfRenderWindow *window, level_t const *level);

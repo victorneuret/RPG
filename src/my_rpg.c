@@ -10,6 +10,7 @@
 #include <stdbool.h>
 
 #include "fps.h"
+#include "level.h"
 #include "render.h"
 #include "events.h"
 #include "particle.h"
@@ -54,6 +55,7 @@ static void render(win_t *win)
 					win->game->ui->title_page->earth);
 		break;
 	case GAME:
+		draw_level(win->sf_win, win->game->level);
 		draw_player(win, win->game->player);
 		break;
 	case PAUSE: break;
@@ -80,6 +82,7 @@ bool my_rpg_loop(win_t *win)
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}
+	unload_level(win->game->level);
 	free_game(win->game);
 	return true;
 }
