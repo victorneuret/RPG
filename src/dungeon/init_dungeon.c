@@ -72,9 +72,7 @@ static void place_rooms(dungeon_t *dungeon)
 	uint8_t room_nb = 0;
 	uint8_t x = rand_int(0, NB_ROOMS_WIDTH - 1);
 	uint8_t y = rand_int(0, NB_ROOMS_HEIGHT - 1);
-	int8_t **cells = dungeon->rooms;
 
-	printf("x: %d\ty: %d\n", x, y);
 	while (room_nb < 8) {
 		if (dungeon->rooms[y][x] == -1) {
 			dungeon->rooms[y][x] = room_nb;
@@ -85,9 +83,11 @@ static void place_rooms(dungeon_t *dungeon)
 			break;
 	}
 	if (room_nb < 3) {
-		dungeon->rooms = cells;
+		for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
+			memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 		place_rooms(dungeon);
 	}
+	dungeon->nb_rooms = room_nb;
 }
 
 bool init_dungeon(win_t *win)
@@ -96,11 +96,16 @@ bool init_dungeon(win_t *win)
 	if (!win->game->dungeon->rooms)
 		return false;
 	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++) {
-		win->game->dungeon->rooms[i] = malloc(sizeof(int8_t) * NB_ROOMS_WIDTH);
+		win->game->dungeon->rooms[i] = malloc(sizeof(int8_t)
+							* NB_ROOMS_WIDTH);
 		if (!win->game->dungeon->rooms[i])
 			return false;
 		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	}
 	place_rooms(win->game->dungeon);
+	print_dungeon(win->game->dungeon);
+	if (!init_rooms(win))
+		return false;
+	print_dungeon(win->game->dungeon);
 	return true;
 }

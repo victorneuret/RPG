@@ -64,7 +64,6 @@ bool my_rpg_loop(win_t *win)
 {
 	if (!init_game(win))
 		return false;
-	print_dungeon(win->game->dungeon);
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
 		update(win);

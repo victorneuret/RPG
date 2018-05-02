@@ -22,7 +22,7 @@ static const uint8_t NB_ROOMS_HEIGHT = 4;
 typedef struct room {
 	uint8_t id;
 	char **cells;
-	bool door_up;
+	int8_t door_up;
 	bool door_down;
 	bool door_left;
 	bool door_right;
@@ -30,7 +30,10 @@ typedef struct room {
 
 typedef struct dungeon {
 	int8_t **rooms;
+	uint8_t nb_rooms;
 } dungeon_t;
 
 bool init_dungeon(win_t *win);
 void print_dungeon(dungeon_t *dungeon);
+
+bool init_rooms(win_t *win);
