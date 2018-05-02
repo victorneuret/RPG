@@ -31,6 +31,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/weather_modifiers.c                                                  \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
+		src/game/menu/options.c                                                                          \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \

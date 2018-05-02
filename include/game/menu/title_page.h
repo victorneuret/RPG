@@ -16,7 +16,7 @@ typedef enum title_menu {
 	TITLE_OVERLAY,
 	TITLE_BG,
 	TITLE_MAIN,
-	TITLE_PAUSE
+	TITLE_OPTIONS
 } title_menu;
 
 static const sfIntRect title_rect[] = {
@@ -32,6 +32,7 @@ typedef struct title_page {
 	sfSprite *background;
 	sfSprite *menu_paper;
 	sfSprite *pause;
+	sfSprite *options;
 } title_page_t;
 
 title_page_t *init_title_page(textures_t *texture);

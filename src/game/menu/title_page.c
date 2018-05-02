@@ -8,6 +8,7 @@
 #include <stdbool.h>
 
 #include "title_page.h"
+#include "options.h"
 
 static sfSprite *init_title_sprite(sfTexture *texture, int menu_rect,
 	bool move)
@@ -38,11 +39,14 @@ title_page_t *init_title_page(textures_t *texture)
 		false);
 	title_page->background = init_title_sprite(tmp->texture, TITLE_BG,
 		true);
-	title_page->pause = init_title_sprite(tmp->texture, TITLE_PAUSE,
+	title_page->options = init_title_sprite(tmp->texture, TITLE_OPTIONS,
 		false);
 	title_page->menu_paper = init_title_sprite(tmp->texture, TITLE_MAIN,
 		true);
 	sfSprite_setScale(title_page->background, (sfVector2f){1.05, 1.05});
+	sfSprite_setScale(title_page->options, (sfVector2f){0, 0});
+	sfSprite_setColor(title_page->options,
+					sfColor_fromRGBA(255, 255, 255, 0));
 	return title_page;
 }
 
@@ -51,6 +55,7 @@ void update_title_page(win_t *win)
 	sfVector2f mouse = get_mouse_pos(win);
 	sfVector2f vect = {900, 420};
 
+	options_animation(win->game->ui->title_page->options, win);
 	sfSprite_setPosition(win->game->ui->title_page->menu_paper,
 	(sfVector2f) {mouse.x / 75 * -1 + 960, mouse.y / 75 * -1 + 540});
 	sfSprite_setPosition(win->game->ui->title_page->background,

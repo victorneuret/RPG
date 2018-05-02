@@ -8,6 +8,8 @@
 #include "render.h"
 #include "my_rpg.h"
 #include "game.h"
+#include "options.h"
+
 
 static void update_clock(win_t *win)
 {
@@ -28,7 +30,10 @@ static void update(win_t *win)
 		break;
 	case TITLE:
 		update_title_page(win);
-		update_weather(win);
+		break;
+	case OPTION:
+		update_title_page(win);
+		update_options_page(win);
 		break;
 	default: break;
 	}
@@ -46,6 +51,16 @@ static void render(win_t *win)
 					win->game->ui->title_page->background);
 		render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->menu_paper);
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->options);
+		break;
+	case OPTION:
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->background);
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->menu_paper);
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->options);
 		break;
 	case GAME:
 		draw_player(win, win->game->player);
