@@ -19,6 +19,8 @@
 #include "getnbr.h"
 #include "str_utils.h"
 
+#include "dungeon.h"
+
 static bool is_valid_env(char **env)
 {
 	for (size_t i = 0; env && env[i]; i++)
@@ -71,5 +73,9 @@ int main(int ac, char **av, char **env)
 		return 84;
 	if (!xml_exemple())
 		return 84;
+	dungeon_t *dungeon = init_dungeon();
+	if (!dungeon)
+		return 84;
+	print_dungeon(dungeon);
 	return 0;
 }
