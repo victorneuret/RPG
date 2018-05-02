@@ -8,11 +8,13 @@
 NAME	=	my_rpg
 
 SRC	=	src/args.c                                                                                          \
+		src/intro/intro.c										    \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
 		src/game/events_functions/basic_events.c                                                            \
 		src/game/events_functions/joystick_events.c                                                         \
+		src/game/events_functions/exit_intro.c								    \
 		src/game/gamepad/buttons/joystick_button_abxy.c                                                     \
 		src/game/gamepad/buttons/joystick_button_lb_rb.c                                                    \
 		src/game/gamepad/buttons/joystick_button_rt_lt.c                                                    \
@@ -89,8 +91,9 @@ SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 
 SRC	+=	src/main.c
 
-CPPFLAGS+=	-Wall -Wextra											    \
-		-I./include                                                                                         \
+CPPFLAGS+=	-Wall -Wextra
+CPPFLAGS+=	-I./include                                                                                         \
+		-I./include/intro										    \
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \

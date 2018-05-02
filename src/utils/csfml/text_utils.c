@@ -5,7 +5,20 @@
 ** text_utils
 */
 
+#include <SFML/Graphics.h>
+#include <stdint.h>
+
 #include "text_utils.h"
+
+void center_text(sfText *text, float x)
+{
+	sfFloatRect rect;
+
+	rect = sfText_getLocalBounds(text);
+	sfText_setOrigin(text, (sfVector2f) {rect.left + rect.width / 2,
+		rect.top + rect.height / 2});
+	sfText_setPosition(text, (sfVector2f) {1920 / 2, x});
+}
 
 sfText *init_text(sfFont *font, char const *string, sfVector2f pos,
 		uint8_t font_size)
