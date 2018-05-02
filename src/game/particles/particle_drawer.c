@@ -20,6 +20,8 @@ void draw_particles(win_t *win)
 {
 	particle_manager_t *current = win->particle_manager;
 
+	if (win->game_state == TITLE || win->game_state == OPTION)
+		return;
 	for (; current; current = current->next)
 		if (current->group && current->group->active)
 			draw_particle_group(win, current->group);

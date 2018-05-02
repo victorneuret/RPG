@@ -43,7 +43,9 @@ static void render(win_t *win)
 	switch (win->game_state) {
 	case TITLE:
 		render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->earth);
+					win->game->ui->title_page->background);
+		render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->menu_paper);
 		break;
 	case GAME:
 		draw_player(win, win->game->player);
@@ -55,6 +57,8 @@ static void render(win_t *win)
 	draw_buttons(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
+	render_object(win->sf_win, SPRITE,
+					win->game->ui->title_page->overlay);
 	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);
