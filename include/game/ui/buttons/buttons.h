@@ -24,6 +24,16 @@ typedef struct hover_text_button {
 	sfText *text;
 } text_hover_button_t;
 
+typedef struct checkbox {
+	game_status game_state;
+	sfText *text;
+	sfColor color;
+	sfColor hover_color;
+	bool value;
+	bool hover;
+	struct checkbox *next;
+} checkbox_t;
+
 typedef struct slider {
 	game_status game_state;
 	sfText *selected;
