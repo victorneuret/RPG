@@ -55,10 +55,12 @@ typedef struct buttons {
 	sfColor hover_color;
 	bool reset_scale;
 	bool hover;
+	bool selected;
 	char *text_hover;
 	void (*func)(win_t *win);
 	sfClock *button_clock;
 	struct buttons *next;
+	struct buttons *prev;
 } buttons_t;
 
 typedef struct {

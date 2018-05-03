@@ -6,22 +6,25 @@
 */
 
 #include "buttons.h"
+#include "my_calloc.h"
 
 static buttons_t *init_buttons_list(buttons_t *buttons)
 {
 	buttons_t *tmp = buttons;
 
 	if (!tmp) {
-		buttons = malloc(sizeof(buttons_t));
+		buttons = my_calloc(1, sizeof(buttons_t));
 		if (!buttons)
 			return NULL;
 		buttons->next = NULL;
+		buttons->prev = NULL;
 	} else {
 		for (; tmp->next; tmp = tmp->next);
-		tmp->next = malloc(sizeof(buttons_t));
+		tmp->next = my_calloc(1, sizeof(buttons_t));
 		if (!tmp->next)
 			return NULL;
 		tmp->next->next = NULL;
+		tmp->next->prev = tmp;
 	}
 	return buttons;
 }
@@ -47,8 +50,6 @@ static bool fill_buttons_list(const button_declaration_t list,
 	tmp->text_hover = list.text_hover;
 	tmp->func = list.func;
 	tmp->button_clock = sfClock_create();
-	tmp->reset_scale = false;
-	tmp->hover = false;
 	return true;
 }
 
