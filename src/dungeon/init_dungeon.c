@@ -103,9 +103,7 @@ bool init_dungeon(win_t *win)
 		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	}
 	place_rooms(win->game->dungeon);
-	print_dungeon(win->game->dungeon);
 	if (!init_rooms(win))
 		return false;
-	print_dungeon(win->game->dungeon);
 	return true;
 }

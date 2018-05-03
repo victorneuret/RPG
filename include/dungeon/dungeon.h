@@ -13,8 +13,8 @@
 #include "render_window.h"
 #include "player.h"
 
-static const uint8_t ROOM_WIDTH = 12;
-static const uint8_t ROOM_HEIGHT = 8;
+#define ROOM_WIDTH 13
+#define ROOM_HEIGHT 7
 
 static const uint8_t NB_ROOMS_WIDTH = 8;
 static const uint8_t NB_ROOMS_HEIGHT = 4;
@@ -22,7 +22,7 @@ static const uint8_t NB_ROOMS_HEIGHT = 4;
 typedef struct room {
 	uint8_t id;
 	char **cells;
-	int8_t door_up;
+	bool door_up;
 	bool door_down;
 	bool door_left;
 	bool door_right;
@@ -35,5 +35,5 @@ typedef struct dungeon {
 
 bool init_dungeon(win_t *win);
 void print_dungeon(dungeon_t *dungeon);
-
 bool init_rooms(win_t *win);
+void free_dungeon(game_t *game);

@@ -66,5 +66,6 @@ void free_game(game_t *game)
 	free_text_area(game->ui->text_area);
 	destroy_player(game->player);
 	free_textures(game->textures);
+	free_dungeon(game);
 	free(game->ui);
 }

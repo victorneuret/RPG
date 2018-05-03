@@ -11,6 +11,7 @@ SRC	=	src/args.c                                                                
 		src/dungeon/init_dungeon.c									    \
 		src/dungeon/init_rooms.c									    \
 		src/dungeon/print_dungeon.c									    \
+		src/dungeon/free_dungeon.c									    \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
