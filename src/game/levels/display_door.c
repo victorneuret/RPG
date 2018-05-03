@@ -47,6 +47,16 @@ bool display_door(room_t *room, win_t *win)
 			return false;
 	}
 	if (room->door_up)
-		draw_at_pos(win, door_sprite, (sfVector2f) {x_door_up, y_door_up}, 0);
+		draw_at_pos(win, door_sprite,
+				(sfVector2f) {x_door_up, y_door_up}, 0);
+	if (room->door_down)
+		draw_at_pos(win, door_sprite,
+				(sfVector2f) {x_door_down, y_door_down}, 180);
+	if (room->door_right)
+		draw_at_pos(win, door_sprite,
+				(sfVector2f) {x_door_right, y_door_right}, 90);
+	if (room->door_left)
+		draw_at_pos(win, door_sprite,
+				(sfVector2f) {x_door_left, y_door_left}, -90);
 	return true;
 }
