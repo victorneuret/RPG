@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2017
+** EPITECH PROJECT, 2018
 ** mysh
 ** File description:
 ** Int to string

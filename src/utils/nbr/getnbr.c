@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2017
+** EPITECH PROJECT, 2018
 ** my_getnbr
 ** File description:
 ** send string return number
