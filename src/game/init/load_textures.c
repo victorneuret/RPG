@@ -54,6 +54,14 @@ textures_t *load_textures(void)
 	return textures;
 }
 
+textures_t *get_texture(textures_t *textures, char const *name)
+{
+	for (textures_t *current = textures; current; current = current->next)
+		if (str_eq(current->name, name))
+			return current;
+	return NULL;
+}
+
 void free_textures(textures_t *textures)
 {
 	if (textures && textures->next)

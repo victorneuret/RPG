@@ -38,7 +38,7 @@ win_t *create_window(size_t width, size_t height, settings_t *settings)
 	win->size.x = width;
 	win->size.y = height;
 	win->dt = 0;
-	win->sf_win = sfRenderWindow_create(vm, WINDOW_TITLE, style, NULL);
+	win->sf_win = sfRenderWindow_create(vm, "My RPG", style, NULL);
 	win->timer = sfClock_create();
 	win->view = init_view(win);
 	win->particle_manager = my_calloc(1, sizeof(particle_manager_t));

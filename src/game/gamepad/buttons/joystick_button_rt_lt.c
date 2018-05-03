@@ -15,10 +15,8 @@ void button_lt(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	}
-	if (!pressed && press) {
+	if (!pressed && press)
 		pressed = true;
-		putstr("LT\n");
-	}
 }
 
 void button_rt(__attribute__((unused)) win_t *win, bool press)
@@ -29,8 +27,6 @@ void button_rt(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	}
-	if (!pressed && press) {
+	if (!pressed && press)
 		pressed = true;
-		putstr("RT\n");
-	}
 }

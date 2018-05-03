@@ -21,6 +21,7 @@ typedef enum {
 typedef struct player {
 	sfClock *clock;
 	sfSprite *sprite;
+	sfSprite *aim;
 	float y_speed;
 } player_t;
 

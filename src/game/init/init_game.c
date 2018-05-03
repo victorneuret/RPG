@@ -55,7 +55,7 @@ bool init_game(win_t *win)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
-	change_state(win, TITLE);
+	change_state(win, INTRO);
 	return true;
 }
 

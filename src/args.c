@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "args.h"
+#include "args_consts.h"
 #include "settings.h"
 #include "render_window.h"
 

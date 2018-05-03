@@ -11,6 +11,10 @@
 
 #include "xml.h"
 
+// printf("desc: %s\n", desc);
+// printf("name: %s\n", name);
+// printf("level: %d\n", get_node_int(player_node, "level"));
+// printf("health: %d\n", get_node_int(player_node, "health"));
 bool parse_player(xmlNode *root)
 {
 	xmlNode *player_node = get_node_by_name(root, "player");
@@ -20,11 +24,7 @@ bool parse_player(xmlNode *root)
 	if (!player_node)
 		return false;
 	desc = get_prop(player_node, "desc");
-	printf("desc: %s\n", desc);
 	name = get_node_string(player_node, "name");
-	printf("name: %s\n", name);
-	printf("level: %d\n", get_node_int(player_node, "level"));
-	printf("health: %d\n", get_node_int(player_node, "health"));
 	free(desc);
 	free(name);
 	return true;
