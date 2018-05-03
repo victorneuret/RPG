@@ -61,7 +61,7 @@ static void render_game(win_t *win)
 			render_intro(win, win->intro);
 			break;
 		case GAME:
-			draw_level(win->sf_win, win->game->level);
+			draw_level(win->sf_win, win->game->level, win);
 			draw_player(win, win->game->player);
 			break;
 		case PAUSE: break;

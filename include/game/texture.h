@@ -35,6 +35,10 @@ static const textures_path_t textures_path[] = {
 		"menu",
 		"res/textures/menu.png"
 	},
+	{
+		"door",
+		"res/textures/door.png"
+	},
 	{NULL, NULL}
 };
 

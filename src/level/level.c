@@ -43,12 +43,13 @@ static bool load_sprites(sfTexture const *texture,
 	return true;
 }
 
-void draw_level(sfRenderWindow *window, level_t const *level)
+void draw_level(sfRenderWindow *window, level_t const *level, win_t *win)
 {
 	sfRenderWindow_drawSprite(window, level->top_l, NULL);
 	sfRenderWindow_drawSprite(window, level->top_r, NULL);
 	sfRenderWindow_drawSprite(window, level->bot_l, NULL);
 	sfRenderWindow_drawSprite(window, level->bot_r, NULL);
+	display_door(win->game->rooms[0], win);
 }
 
 bool load_level(level_t **level, env_name_t env_name)

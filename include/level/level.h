@@ -10,6 +10,8 @@
 #include <stddef.h>
 #include <SFML/Graphics.h>
 
+#include "dungeon.h"
+
 typedef enum env_name {
 	BOAT, DUNGEON, HELL, VOLCANO,
 	NIGHTMARE, DEEP_CAVE, CAVE, DESERT,
@@ -53,6 +55,13 @@ static const env_t env_list[] = {
 	{ LIBRARY,		(sfIntRect) {2880, 1620, 960, 540} }
 };
 
+static const uint16_t x_door_up = 1920 / 2;
+static const uint16_t y_door_up = 112;
+
+typedef struct room room_t;
+
+bool display_door(room_t *room, win_t *win);
+
 void unload_level(level_t *level);
 bool load_level(level_t **level, env_name_t env_name);
-void draw_level(sfRenderWindow *window, level_t const *level);
+void draw_level(sfRenderWindow *window, level_t const *level, win_t *win);
