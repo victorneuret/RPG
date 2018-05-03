@@ -97,6 +97,7 @@ SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 SRC	+=	src/main.c
 
 CPPFLAGS+=	-Wall -Wextra
+
 CPPFLAGS+=	-I./include                                                                                         \
 		-I./include/dungeon                                                                                 \
 		-I./include/intro										    \
