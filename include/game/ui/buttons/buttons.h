@@ -24,6 +24,30 @@ typedef struct hover_text_button {
 	sfText *text;
 } text_hover_button_t;
 
+typedef struct checkbox {
+	game_status game_state;
+	sfText *text;
+	sfColor color;
+	sfColor hover_color;
+	bool value;
+	bool hover;
+	struct checkbox *next;
+} checkbox_t;
+
+typedef struct slider {
+	game_status game_state;
+	sfText *selected;
+	sfText *unselected;
+	sfColor color;
+	sfColor hover_color;
+	uint8_t size;
+	uint64_t elements;
+	float max_value;
+	float value;
+	bool hover;
+	struct slider *next;
+} slider_t;
+
 typedef struct buttons {
 	game_status game_state;
 	sfSprite *sprite;
@@ -52,36 +76,36 @@ typedef struct {
 static const button_declaration_t buttons_declaration[] = {
 	{
 		TITLE,
-		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {1700, 700},
-		"Start game",
+		(sfIntRect) {0, 0, 300, 70},
+		(sfVector2f) {900, 420},
+		"",
 		0x26A69AFF,
 		0x26A69ABF,
 		&start_game
 	},
 	{
 		TITLE,
-		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {1700, 780},
-		"Error message",
+		(sfIntRect) {300, 0, 300, 70},
+		(sfVector2f) {900, 500},
+		"",
 		0x26A69AFF,
 		0x26A69ABF,
 		&error_test
 	},
 	{
 		TITLE,
-		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {1400, 860},
-		"Options",
+		(sfIntRect) {600, 0, 300, 70},
+		(sfVector2f) {900, 580},
+		"",
 		0x26A69AFF,
 		0x26A69ABF,
 		&to_option_menu
 	},
 	{
 		TITLE,
-		(sfIntRect) {0, 0, 64, 64},
-		(sfVector2f) {1700, 940},
-		"Exit game",
+		(sfIntRect) {900, 0, 300, 70},
+		(sfVector2f) {900, 660},
+		"",
 		0x26A69AFF,
 		0x26A69ABF,
 		&close_win
