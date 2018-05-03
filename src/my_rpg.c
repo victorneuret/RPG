@@ -84,13 +84,6 @@ static void render(win_t *win)
 	sfRenderWindow_clear(win->sf_win, sfBlack);
 	switch (win->game_state) {
 	case TITLE:
-		render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->background);
-		render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->menu_paper);
-		render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->options);
-		break;
 	case OPTION:
 		render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->background);
