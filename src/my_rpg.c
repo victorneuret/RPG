@@ -40,6 +40,7 @@ static void update(win_t *win)
 static void render(win_t *win)
 {
 	sfRenderWindow_clear(win->sf_win, sfBlack);
+	draw_particles(win);
 	switch (win->game_state) {
 	case TITLE:
 		render_object(win->sf_win, SPRITE,
@@ -51,7 +52,6 @@ static void render(win_t *win)
 	case PAUSE: break;
 	default: break;
 	}
-	draw_particles(win);
 	draw_buttons(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);

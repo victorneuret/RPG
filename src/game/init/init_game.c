@@ -44,9 +44,11 @@ bool init_game(win_t *win)
 {
 	win->game = my_calloc(1, sizeof(game_t));
 	win->game->ui = my_calloc(1, sizeof(ui_t));
+	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
 	win->joystick = my_calloc(1, sizeof(joystick_t));
-	if (!win->game || !win->game->ui || !win->joystick
-		|| !init_ui(win) || !init_gamepad(win))
+	if (!win->game || !win->game->ui || !win->game->dungeon
+		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
+		|| !init_gamepad(win))
 		return false;
 	win->game->player = init_player(win);
 	if (!win->game->player)
@@ -64,5 +66,6 @@ void free_game(game_t *game)
 	free_text_area(game->ui->text_area);
 	destroy_player(game->player);
 	free_textures(game->textures);
+	free_dungeon(game);
 	free(game->ui);
 }

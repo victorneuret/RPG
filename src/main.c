@@ -19,6 +19,8 @@
 #include "getnbr.h"
 #include "str_utils.h"
 
+#include "dungeon.h"
+
 static bool is_valid_env(char **env)
 {
 	for (size_t i = 0; env && env[i]; i++)

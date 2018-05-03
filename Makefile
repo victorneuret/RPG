@@ -8,6 +8,10 @@
 NAME	=	my_rpg
 
 SRC	=	src/args.c                                                                                          \
+		src/dungeon/init_dungeon.c									    \
+		src/dungeon/init_rooms.c									    \
+		src/dungeon/print_dungeon.c									    \
+		src/dungeon/free_dungeon.c									    \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
@@ -30,6 +34,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/weather_modifiers.c                                                  \
 		src/game/key_pressed_functions/window_actions.c                                                     \
+		src/game/key_pressed_functions/dir_arrow.c							    \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/title_page.c                                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
@@ -56,6 +61,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
+		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
 		src/render.c                                                                                        \
@@ -89,6 +95,7 @@ SRC	+=	src/main.c
 
 CPPFLAGS+=	-Wall -Wextra
 CPPFLAGS+=	-I./include                                                                                         \
+		-I./include/dungeon                                                                                 \
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \
@@ -99,6 +106,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
+		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \
