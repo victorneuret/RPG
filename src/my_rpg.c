@@ -56,7 +56,6 @@ static bool update(win_t *win)
 
 static void render_game(win_t *win)
 {
-	sfRenderWindow_clear(win->sf_win, sfBlack);
 	switch (win->game_state) {
 		case INTRO:
 			render_intro(win, win->intro);
@@ -81,7 +80,6 @@ static void render_game(win_t *win)
 
 static void render(win_t *win)
 {
-	sfRenderWindow_clear(win->sf_win, sfBlack);
 	switch (win->game_state) {
 	case TITLE:
 		render_object(win->sf_win, SPRITE,
@@ -109,7 +107,7 @@ bool my_rpg_loop(win_t *win)
 	if (!init_game(win))
 		return false;
 	while (sfRenderWindow_isOpen(win->sf_win)) {
-		sfRenderWindow_clear(win->sf_win, (sfColor) {25, 25, 25, 255});
+		sfRenderWindow_clear(win->sf_win, sfBlack);
 		if (!update(win))
 			return false;
 		process_events(win);
