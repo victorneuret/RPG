@@ -57,7 +57,7 @@ static void update_aim_orientation(win_t *win, player_t *player)
 	const int8_t neg = ry < 0 ? -1 : 1;
 	const float new_angle = approximate_angle(deg * neg) + 45;
 
-	if (rx != 0 && ry != 0) {
+	if (rx != 0 || ry != 0) {
 		sfSprite_setRotation(player->aim, new_angle);
 		player->aim_angle = new_angle;
 	}

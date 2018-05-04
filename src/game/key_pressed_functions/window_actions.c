@@ -21,6 +21,7 @@ void toggle_fullscreen(win_t *win)
 					: (sfVideoMode) {1200, 675, 32};
 	const sfUint32 style = fullscreen ? sfFullscreen : sfClose;
 
+	win->game->ui->checkbox->value = fullscreen;
 	win->settings->fullscreen = fullscreen;
 	sfRenderWindow_close(win->sf_win);
 	sfRenderWindow_destroy(win->sf_win);
