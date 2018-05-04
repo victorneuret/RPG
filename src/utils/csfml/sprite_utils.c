@@ -5,7 +5,7 @@
 ** sprite_utils
 */
 
-#include "sprite_utils.h"
+#include <SFML/Graphics.h>
 
 sfSprite *get_sprite_texture_rect(const sfTexture *texture,
 	const sfIntRect *rect)
