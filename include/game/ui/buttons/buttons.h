@@ -12,6 +12,7 @@
 #include "str_utils.h"
 #include "color_utils.h"
 #include "key_pressed_functions.h"
+#include "checkbox_functions.h"
 
 typedef struct render_window win_t;
 typedef struct textures textures_t;
@@ -29,10 +30,50 @@ typedef struct checkbox {
 	sfText *text;
 	sfColor color;
 	sfColor hover_color;
+	sfSprite *selected;
+	sfSprite *unselected;
 	bool value;
+	bool reset_scale;
 	bool hover;
+	sfClock *checkbox_clock;
 	struct checkbox *next;
+	struct checkbox *prev;
+	void (*func)(win_t *win, checkbox_t *checkbox);
 } checkbox_t;
+
+typedef struct {
+	game_status game_state;
+	sfIntRect selected;
+	sfIntRect unselected;
+	sfVector2f pos;
+	uint32_t color;
+	uint32_t hover_color;
+	bool value;
+	void (*func)(win_t *win, checkbox_t *checkbox);
+} checkbox_declaration_t;
+
+static const checkbox_declaration_t checkbox_declaration[] = {
+	{
+		OPTION,
+		(sfIntRect) {0, 0, 300, 70},
+		(sfIntRect) {300, 0, 300, 70},
+		(sfVector2f) {1000, 420},
+		0x26A69AFF,
+		0x26A69ABF,
+		false,
+		&checkbox_fullscreen
+	},
+	{
+		0,
+		(sfIntRect) {0, 0, 0, 0},
+		(sfIntRect) {0, 0, 0, 0},
+		(sfVector2f) {0, 0},
+		0,
+		0,
+		false,
+		NULL
+	}
+};
 
 typedef struct slider {
 	game_status game_state;
@@ -132,8 +173,10 @@ static const button_declaration_t buttons_declaration[] = {
 	}
 };
 
+/* Buttons */
 buttons_t *load_buttons(textures_t *textures);
 void free_buttons(buttons_t *buttons);
+void box(win_t *win);
 void draw_buttons(win_t *win);
 void button_animation(win_t *win);
 void button_click_animation(buttons_t *button);

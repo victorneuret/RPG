@@ -63,6 +63,7 @@ static intro_t *init_intro(intro_t *intro)
 static void animate_text(win_t *win, intro_t *intro)
 {
 	static float elapsed_time = 0.f;
+	sfVector2f mouse = get_mouse_pos(win);
 
 	if (elapsed_time > 1.f) {
 		intro->i = ((elapsed_time - 1.f) / 2.f) * 255.f;
@@ -75,6 +76,10 @@ static void animate_text(win_t *win, intro_t *intro)
 	elapsed_time = get_time(intro->timer);
 	if (elapsed_time > 7.f)
 		win->game_state = TITLE;
+	sfText_setPosition(intro->text[TEAM],
+	(sfVector2f) {mouse.x / 150 * -1 + 960, mouse.y / 150 * -1 + 540});
+	sfText_setPosition(intro->text[PRESENT],
+	(sfVector2f) {mouse.x / 40 * -1 + 960, mouse.y / 40 * -1 + 680});
 }
 
 bool update_intro(win_t *win, intro_t *intro)

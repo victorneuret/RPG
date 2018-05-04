@@ -36,11 +36,13 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 		return;
 	mouse_moved(win, event);
 	button_click_pressed(win, event);
+	checkbox_click_pressed(win, event);
 }
 
 void mouse_click_released(win_t *win, sfEvent *event)
 {
 	button_click_released(win, event);
+	checkbox_click_released(win, event);
 }
 
 void on_resize(win_t *win, __attribute__((unused)) sfEvent *event)

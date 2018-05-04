@@ -37,9 +37,9 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/key_pressed_functions/dir_arrow.c							    \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
-		src/game/menu/options.c                                                                          \
+		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \
-		src/game/particles/effects/particle_shot.c                                                     \
+		src/game/particles/effects/particle_shot.c                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
 		src/game/particles/effects/particle_stars.c                                                         \
@@ -47,6 +47,10 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_drawer.c                                                                \
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
+		src/game/ui/button/checkbox_animation.c                                                             \
+		src/game/ui/button/checkbox_click.c                                                                 \
+		src/game/ui/button/init_checkbox.c                                                                  \
+		src/game/ui/button/checkbox_functions.c                                                             \
 		src/game/ui/button/button_animation.c                                                               \
 		src/game/ui/button/button_click.c                                                                   \
 		src/game/ui/button/button_text_hover.c                                                              \
@@ -64,7 +68,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
-		src/level/level.c                                                                                 \
+		src/level/level.c                                                                                   \
 		src/player/actions.c										    \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
@@ -77,7 +81,7 @@ SRC	=	src/args.c                                                                
 		src/utils/csfml/sprite_utils.c                                                                      \
 		src/utils/csfml/text_utils.c                                                                        \
 		src/utils/my_calloc.c                                                                               \
-		src/utils/nbr/angle_utils.c                                                                              \
+		src/utils/nbr/angle_utils.c                                                                         \
 		src/utils/nbr/getnbr.c                                                                              \
 		src/utils/nbr/int_to_str.c                                                                          \
 		src/utils/nbr/nb_utils.c                                                                            \
