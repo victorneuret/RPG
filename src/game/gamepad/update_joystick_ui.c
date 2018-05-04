@@ -43,7 +43,7 @@ static void to_prev_button(win_t *win, bool one_selected)
 	buttons_t *current = win->game->ui->buttons;
 	buttons_t *last = win->game->ui->buttons;
 
-	for(buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next)
+	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next)
 		if (tmp->game_state == win->game_state)
 			last = tmp;
 	if (!one_selected)
