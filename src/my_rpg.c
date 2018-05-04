@@ -17,7 +17,6 @@
 #include "fps.h"
 #include "options.h"
 
-
 static void update_clock(win_t *win)
 {
 	static sfClock *frame_clock = 0;
