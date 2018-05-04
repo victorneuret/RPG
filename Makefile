@@ -39,6 +39,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                          \
 		src/game/menu/title_page.c                                                                          \
+		src/game/particles/effects/particle_shot.c                                                     \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
 		src/game/particles/effects/particle_stars.c                                                         \
@@ -64,6 +65,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/weather.c                                                                          \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                 \
+		src/player/actions.c										    \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
@@ -75,6 +77,7 @@ SRC	=	src/args.c                                                                
 		src/utils/csfml/sprite_utils.c                                                                      \
 		src/utils/csfml/text_utils.c                                                                        \
 		src/utils/my_calloc.c                                                                               \
+		src/utils/nbr/angle_utils.c                                                                              \
 		src/utils/nbr/getnbr.c                                                                              \
 		src/utils/nbr/int_to_str.c                                                                          \
 		src/utils/nbr/nb_utils.c                                                                            \
