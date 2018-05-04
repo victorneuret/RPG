@@ -26,9 +26,9 @@ static const keybind_t keybinds[] = {
 	{ALL,	sfKeyF12,	&toggle_fps},
 	{PAUSE,	sfKeyEscape,	&pause_game},
 	{GAME,	sfKeyEscape,	&pause_game},
-	{GAME,	sfKeyUp,	&arrow_up},
-	{GAME,	sfKeyDown,	&arrow_down},
-	{GAME,	sfKeyRight,	&arrow_right},
-	{GAME,	sfKeyLeft,	&arrow_left},
+	{GAME,	sfKeyZ,		&arrow_up},
+	{GAME,	sfKeyS,		&arrow_down},
+	{GAME,	sfKeyD,		&arrow_right},
+	{GAME,	sfKeyQ,		&arrow_left},
 	{0,	0,		NULL}
 };
