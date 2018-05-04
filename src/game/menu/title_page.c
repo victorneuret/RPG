@@ -50,22 +50,48 @@ title_page_t *init_title_page(textures_t *texture)
 	return title_page;
 }
 
-void update_title_page(win_t *win)
+float get_paralax_speed(game_status state)
+{
+	switch (state) {
+		case TITLE: return TITLE_SPEED;
+		case OPTION: return OPTION_SPEED;
+		default: return DEFAULT_SPEED;
+	}
+}
+
+void buttons_paralax(win_t *win)
 {
 	sfVector2f mouse = get_mouse_pos(win);
 	sfVector2f vect = {900, 420};
+	int speed = get_paralax_speed(win->game_state);
+
+	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
+		if (tmp->game_state == win->game_state) {
+			sfSprite_setPosition(tmp->sprite,
+				(sfVector2f) {mouse.x / speed * -1 + vect.x,
+				mouse.y / speed * -1 + vect.y});
+			vect.y += 80;
+		}
+	}
+	vect = (sfVector2f){1000, 420};
+	for (checkbox_t *tmp = win->game->ui->checkbox; tmp; tmp = tmp->next) {
+		if (tmp->game_state == win->game_state) {
+			sfSprite_setPosition(get_checkbox_sprite(tmp),
+				(sfVector2f) {mouse.x / speed * -1 + vect.x,
+				mouse.y / speed * -1 + vect.y});
+			vect.y += 80;
+		}
+	}
+}
+
+void update_title_page(win_t *win)
+{
+	sfVector2f mouse = get_mouse_pos(win);
 
 	options_animation(win->game->ui->title_page->options, win);
 	sfSprite_setPosition(win->game->ui->title_page->menu_paper,
 	(sfVector2f) {mouse.x / 75 * -1 + 960, mouse.y / 75 * -1 + 540});
 	sfSprite_setPosition(win->game->ui->title_page->background,
 	(sfVector2f) {mouse.x / 150 * -1 + 960, mouse.y / 150 * -1 + 540});
-	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
-		if (tmp->game_state == TITLE) {
-			sfSprite_setPosition(tmp->sprite,
-				(sfVector2f) {mouse.x / 75 * -1 + vect.x,
-				mouse.y / 75 * -1 + vect.y});
-			vect.y += 80;
-		}
-	}
+	buttons_paralax(win);
 }
