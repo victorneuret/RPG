@@ -49,7 +49,10 @@ void draw_level(sfRenderWindow *window, level_t const *level, win_t *win)
 	sfRenderWindow_drawSprite(window, level->top_r, NULL);
 	sfRenderWindow_drawSprite(window, level->bot_l, NULL);
 	sfRenderWindow_drawSprite(window, level->bot_r, NULL);
-	display_door(win->game->rooms[0], win);
+	if (!display_door(win->game->rooms[0], win))
+		return;
+	if (!draw_obstacle(win->game->rooms[0], win))
+		return;
 }
 
 bool load_level(level_t **level, env_name_t env_name)

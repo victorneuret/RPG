@@ -28,7 +28,7 @@ static sfSprite *init_door_sprite(textures_t *texture)
 	return sprite;
 }
 
-static void draw_at_pos(win_t *win, sfSprite *sprite, sfVector2f pos,
+void draw_at_pos(win_t *win, sfSprite *sprite, sfVector2f pos,
 			int16_t rotation)
 {
 	sfSprite_setPosition(sprite, pos);
@@ -48,15 +48,15 @@ bool display_door(room_t *room, win_t *win)
 	}
 	if (room->door_up)
 		draw_at_pos(win, door_sprite,
-				(sfVector2f) {x_door_up, y_door_up}, 0);
+				(sfVector2f) {X_DOOR_UP, Y_DOOR_UP}, 0);
 	if (room->door_down)
 		draw_at_pos(win, door_sprite,
-				(sfVector2f) {x_door_down, y_door_down}, 180);
+				(sfVector2f) {X_DOOR_DOWN, Y_DOOR_DOWN}, 180);
 	if (room->door_right)
 		draw_at_pos(win, door_sprite,
-				(sfVector2f) {x_door_right, y_door_right}, 90);
+				(sfVector2f) {X_DOOR_RIGHT, Y_DOOR_RIGHT}, 90);
 	if (room->door_left)
 		draw_at_pos(win, door_sprite,
-				(sfVector2f) {x_door_left, y_door_left}, -90);
+				(sfVector2f) {X_DOOR_LEFT, Y_DOOR_LEFT}, -90);
 	return true;
 }

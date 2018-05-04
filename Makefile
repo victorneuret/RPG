@@ -36,6 +36,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
+		src/game/levels/obstacle.c									    \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \

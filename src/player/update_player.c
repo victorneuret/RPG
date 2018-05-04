@@ -68,14 +68,14 @@ static void move_player(win_t *win, player_t *player)
 	pos.y -= rect.height / 2.f;
 	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
 	pos.y += X_SPEED * (win->joystick->ly / 100.f) * win->dt;
-	if (pos.x + rect.width > WIN_MAX_W)
-		pos.x = WIN_MAX_W - rect.width;
-	if (pos.x < 0)
-		pos.x = 0;
-	if (pos.y + rect.height > WIN_MAX_H)
-		pos.y = WIN_MAX_H - rect.height;
-	if (pos.y < 0)
-		pos.y = 0;
+	if (pos.x + rect.width > WIN_MAX_W - WALL_SIZE)
+		pos.x = WIN_MAX_W - rect.width - WALL_SIZE;
+	if (pos.x < WALL_SIZE)
+		pos.x = WALL_SIZE;
+	if (pos.y + rect.height > WIN_MAX_H - WALL_SIZE - 16)
+		pos.y = WIN_MAX_H - rect.height - WALL_SIZE - 16;
+	if (pos.y < WALL_SIZE)
+		pos.y = WALL_SIZE;
 	pos.x += rect.width / 2.f;
 	pos.y += rect.height / 2.f;
 	sfSprite_setPosition(player->sprite, pos);

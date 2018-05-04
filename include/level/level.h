@@ -55,18 +55,21 @@ static const env_t env_list[] = {
 	{ LIBRARY,		(sfIntRect) {2880, 1620, 960, 540} }
 };
 
-static const uint16_t x_door_up = 1920 / 2;
-static const uint16_t y_door_up = 112;
-static const uint16_t x_door_down = 1920 / 2;
-static const uint16_t y_door_down = 1080 - 112;
-static const uint16_t x_door_left = 112;
-static const uint16_t y_door_left = 1080 / 2;
-static const uint16_t x_door_right = 1920 - 112;
-static const uint16_t y_door_right = 1080 / 2;
+static const uint16_t X_DOOR_UP = 1920 / 2;
+static const uint16_t Y_DOOR_UP = 112;
+static const uint16_t X_DOOR_DOWN = 1920 / 2;
+static const uint16_t Y_DOOR_DOWN = 1080 - 112;
+static const uint16_t X_DOOR_LEFT = 112;
+static const uint16_t Y_DOOR_LEFT = 1080 / 2;
+static const uint16_t X_DOOR_RIGHT = 1920 - 112;
+static const uint16_t Y_DOOR_RIGHT = 1080 / 2;
 
 typedef struct room room_t;
 
 bool display_door(room_t *room, win_t *win);
+bool draw_obstacle(room_t *room, win_t *win);
+void draw_at_pos(win_t *win, sfSprite *sprite, sfVector2f pos,
+		int16_t rotation);
 
 void unload_level(level_t *level);
 bool load_level(level_t **level, env_name_t env_name);

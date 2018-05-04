@@ -9,7 +9,10 @@
 
 #include <SFML/Graphics.h>
 
+#include <stdint.h>
+
 static const float X_SPEED = 1000.f;
+static const uint8_t WALL_SIZE = 140;
 
 typedef enum {
 	LEFT,
