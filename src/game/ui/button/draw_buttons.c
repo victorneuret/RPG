@@ -8,6 +8,20 @@
 #include "render.h"
 #include "buttons.h"
 
+void draw_checkbox(win_t *win)
+{
+	checkbox_animation(win);
+	for (checkbox_t *btn = win->game->ui->checkbox; btn; btn = btn->next) {
+		if ((btn->game_state & win->game_state) != win->game_state
+			&& btn->game_state != ALL)
+			continue;
+		if (btn->value)
+			render_object(win->sf_win, SPRITE, btn->selected);
+		else
+			render_object(win->sf_win, SPRITE, btn->unselected);
+	}
+}
+
 void draw_buttons(win_t *win)
 {
 	button_animation(win);

@@ -17,7 +17,6 @@
 #include "fps.h"
 #include "options.h"
 
-
 static void update_clock(win_t *win)
 {
 	static sfClock *frame_clock = 0;
@@ -69,6 +68,7 @@ static void render_game(win_t *win)
 	}
 	draw_particles(win);
 	draw_buttons(win);
+	draw_checkbox(win);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
 	render_object(win->sf_win, SPRITE,

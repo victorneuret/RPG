@@ -9,6 +9,7 @@
 
 #include "player.h"
 #include "macros.h"
+#include "angle_utils.h"
 
 static void switch_direction(sfSprite *player, uint8_t dir)
 {
@@ -54,9 +55,12 @@ static void update_aim_orientation(win_t *win, player_t *player)
 	const float rad = acos(rx);
 	const float deg = rad * 180.f / (float) M_PI;
 	const int8_t neg = ry < 0 ? -1 : 1;
+	const float new_angle = approximate_angle(deg * neg) + 45;
 
-	if (rx != 0 && ry != 0)
-		sfSprite_setRotation(player->aim, deg * neg + 45);
+	if (rx != 0 || ry != 0) {
+		sfSprite_setRotation(player->aim, new_angle);
+		player->aim_angle = new_angle;
+	}
 }
 
 static void move_player(win_t *win, player_t *player)

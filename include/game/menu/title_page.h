@@ -12,6 +12,10 @@
 #include "buttons.h"
 #include "texture.h"
 
+static const float TITLE_SPEED = 75.0;
+static const float OPTION_SPEED = 25.0;
+static const float DEFAULT_SPEED = 25.0;
+
 typedef enum title_menu {
 	TITLE_OVERLAY,
 	TITLE_BG,
@@ -37,3 +41,4 @@ typedef struct title_page {
 
 title_page_t *init_title_page(textures_t *texture);
 void update_title_page(win_t *win);
+void buttons_paralax(win_t *win);

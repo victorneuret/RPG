@@ -13,6 +13,7 @@
 
 #include "key_pressed_functions.h"
 #include "dir_arrow.h"
+#include "shoot_arrow.h"
 
 typedef struct {
 	game_status game_state;
@@ -26,9 +27,14 @@ static const keybind_t keybinds[] = {
 	{ALL,	sfKeyF12,	&toggle_fps},
 	{PAUSE,	sfKeyEscape,	&pause_game},
 	{GAME,	sfKeyEscape,	&pause_game},
-	{GAME,	sfKeyUp,	&arrow_up},
-	{GAME,	sfKeyDown,	&arrow_down},
-	{GAME,	sfKeyRight,	&arrow_right},
-	{GAME,	sfKeyLeft,	&arrow_left},
+	{GAME,	sfKeyZ,		&arrow_up},
+	{GAME,	sfKeyS,		&arrow_down},
+	{GAME,	sfKeyD,		&arrow_right},
+	{GAME,	sfKeyQ,		&arrow_left},
+	{GAME,	sfKeyUp, 	&shoot_up},
+	{GAME, 	sfKeyDown, 	&shoot_down},
+	{GAME, 	sfKeyRight, 	&shoot_right},
+	{GAME, 	sfKeyLeft, 	&shoot_left},
+	{GAME, 	sfKeySpace, 	&keyboard_shoot},
 	{0,	0,		NULL}
 };

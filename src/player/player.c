@@ -45,6 +45,7 @@ player_t *init_player(win_t *win)
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
 	sfSprite_setOrigin(player->aim, (sfVector2f) {25, 25});
+	sfSprite_setRotation(player->aim, 45.f);
 	sfSprite_setPosition(player->sprite, (sfVector2f) {200, 200});
 	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
 	sfSprite_setScale(player->aim, (sfVector2f) {3, 3});

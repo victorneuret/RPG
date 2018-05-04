@@ -18,6 +18,7 @@ static bool init_ui(win_t *win)
 	if (!win->game->textures)
 		return false;
 	win->game->ui->buttons = load_buttons(win->game->textures);
+	win->game->ui->checkbox = load_checkbox(win->game->textures);
 	win->game->ui->text_area = load_text_area();
 	win->game->ui->hover_text_button = init_text_button();
 	win->game->ui->title_page = init_title_page(win->game->textures);
