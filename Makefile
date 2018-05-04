@@ -37,7 +37,6 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
 		src/game/levels/obstacle.c									    \
-		src/game/key_pressed_functions/dir_arrow.c							    \
 		src/game/key_pressed_functions/shoot_arrow.c							    \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                             \
@@ -73,7 +72,6 @@ SRC	=	src/args.c                                                                
 		src/intro/intro.c                                                                                   \
 		src/level/level.c                                                                                   \
 		src/my_rpg.c                                                                                        \
-		src/level/level.c                                                                                   \
 		src/player/actions.c										    \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
