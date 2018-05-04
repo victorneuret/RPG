@@ -13,4 +13,3 @@ void shoot_up(win_t *win);
 void shoot_down(win_t *win);
 void shoot_left(win_t *win);
 void shoot_right(win_t *win);
-void keyboard_shoot(win_t *win);

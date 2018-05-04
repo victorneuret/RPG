@@ -21,7 +21,7 @@ void checkbox_fullscreen(win_t *win, checkbox_t *checkbox);
 typedef struct checkbox {
 	game_status game_state;
 	sfText *text;
-	sfC<s<solor color;
+	sfColor color;
 	sfColor hover_color;
 	sfSprite *selected;
 	sfSprite *unselected;
