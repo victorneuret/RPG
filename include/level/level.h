@@ -56,12 +56,12 @@ static const env_t env_list[] = {
 };
 
 static const uint16_t X_DOOR_UP = 1920 / 2;
-static const uint16_t Y_DOOR_UP = 112;
+static const uint16_t Y_DOOR_UP = 83;
 static const uint16_t X_DOOR_DOWN = 1920 / 2;
-static const uint16_t Y_DOOR_DOWN = 1080 - 112;
-static const uint16_t X_DOOR_LEFT = 112;
+static const uint16_t Y_DOOR_DOWN = 1080 - 83;
+static const uint16_t X_DOOR_LEFT = 83;
 static const uint16_t Y_DOOR_LEFT = 1080 / 2;
-static const uint16_t X_DOOR_RIGHT = 1920 - 112;
+static const uint16_t X_DOOR_RIGHT = 1920 - 83;
 static const uint16_t Y_DOOR_RIGHT = 1080 / 2;
 
 typedef struct room room_t;

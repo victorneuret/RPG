@@ -19,6 +19,10 @@
 static const uint8_t NB_ROOMS_WIDTH = 8;
 static const uint8_t NB_ROOMS_HEIGHT = 4;
 
+static const float ROCK_W = 118.5;
+static const float ROCK_H = 100;
+static const uint8_t WALL_SIZE_ROCK = 190;
+
 typedef struct room {
 	uint8_t id;
 	char **cells;

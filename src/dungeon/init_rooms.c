@@ -39,7 +39,7 @@ static void set_room_cells(room_t *room)
 
 	while (rooms_setup[nb_generated_maps][0])
 		nb_generated_maps++;
-	room->cells = (char **) rooms_setup[rand_int(0, nb_generated_maps)];
+	room->cells = (char **) rooms_setup[rand_int(0, nb_generated_maps - 1)];
 }
 
 static uint8_t find_room_pos(game_t *game, uint8_t id, uint8_t y)

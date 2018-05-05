@@ -76,6 +76,7 @@ SRC	=	src/args.c                                                                
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
+		src/player/check_obstacle.c									    \
 		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \

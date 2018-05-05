@@ -80,6 +80,7 @@ static void move_player(win_t *win, player_t *player)
 		pos.y = WIN_MAX_H - rect.height - WALL_SIZE - 16;
 	if (pos.y < WALL_SIZE)
 		pos.y = WALL_SIZE;
+	check_obstacle(&pos, win, 0);
 	pos.x += rect.width / 2.f;
 	pos.y += rect.height / 2.f;
 	sfSprite_setPosition(player->sprite, pos);

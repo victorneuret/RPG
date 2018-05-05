@@ -27,6 +27,14 @@ void draw_player(win_t *win, player_t *player)
 	render_object(win->sf_win, SPRITE, player->sprite);
 }
 
+static void init_player_aim(player_t *player)
+{
+	sfSprite_setOrigin(player->aim, (sfVector2f) {25, 25});
+	sfSprite_setRotation(player->aim, 45.f);
+	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
+	sfSprite_setScale(player->aim, (sfVector2f) {3, 3});
+}
+
 player_t *init_player(win_t *win)
 {
 	player_t *player = my_calloc(1, sizeof(player_t));
@@ -44,11 +52,8 @@ player_t *init_player(win_t *win)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
-	sfSprite_setOrigin(player->aim, (sfVector2f) {25, 25});
-	sfSprite_setRotation(player->aim, 45.f);
 	sfSprite_setPosition(player->sprite, (sfVector2f) {200, 200});
-	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
-	sfSprite_setScale(player->aim, (sfVector2f) {3, 3});
+	init_player_aim(player);
 	return player;
 }
 
