@@ -24,6 +24,17 @@ static sfSprite *init_obstacle_sprite(textures_t *texture)
 	return sprite;
 }
 
+static void check_position(char **map, sfVector2i pos, sfSprite *sprite,
+				win_t *win)
+{
+	if (map[pos.y][pos.x] == 'X') {
+		sfSprite_setPosition(sprite, (sfVector2f)
+			{pos.x * ROCK_W + WALL_SIZE_ROCK,
+			pos.y * ROCK_H + WALL_SIZE_ROCK});
+		sfRenderWindow_drawSprite(win->sf_win, sprite, 0);
+	}
+}
+
 bool draw_obstacle(room_t *room, win_t *win)
 {
 	static sfSprite *sprite = NULL;
@@ -35,9 +46,7 @@ bool draw_obstacle(room_t *room, win_t *win)
 	}
 	for (size_t i = 0; room->cells[i]; i++)
 		for (size_t j = 0; room->cells[i][j]; j++)
-			if (room->cells[i][j] == 'X') {
-				sfSprite_setPosition(sprite, (sfVector2f) {j * 118.5 + 190, i * 100 + 190});
-				sfRenderWindow_drawSprite(win->sf_win, sprite, 0);
-			}
+			check_position(room->cells, (sfVector2i) {j, i},
+					sprite, win);
 	return true;
 }

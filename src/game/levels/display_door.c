@@ -21,7 +21,8 @@ static sfSprite *init_door_sprite(textures_t *texture)
 		door = door->next;
 	if (!door)
 		return NULL;
-	sprite = get_sprite_texture_rect(door->texture, &(sfIntRect) {245, 0, 245, 165});
+	sprite = get_sprite_texture_rect(door->texture,
+			&(sfIntRect) {245, 0, 245, 165});
 	sfSprite_setOrigin(sprite, (sfVector2f) {
 			sfSprite_getGlobalBounds(sprite).width / 2,
 			sfSprite_getGlobalBounds(sprite).height / 2});

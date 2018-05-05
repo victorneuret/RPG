@@ -13,25 +13,25 @@
 
 #include "nb_utils.h"
 
-static void print_room(game_t *game)
-{
-	for (size_t i = 0; i < game->dungeon->nb_rooms; i++) {
-		printf("room: %ld\n", i);
-		for (size_t j = 0; game->rooms[i]->cells[j]; j++) {
-			putstr(game->rooms[i]->cells[j]);
-			putstr("\n");
-		}
-		if (game->rooms[i]->door_up)
-			putstr("door up\n");
-		if (game->rooms[i]->door_down)
-			putstr("door down\n");
-		if (game->rooms[i]->door_left)
-			putstr("door left\n");
-		if (game->rooms[i]->door_right)
-			putstr("door right\n");
-		putstr("\n\n");
-	}
-}
+// static void print_room(game_t *game)
+// {
+// 	for (size_t i = 0; i < game->dungeon->nb_rooms; i++) {
+// 		printf("room: %ld\n", i);
+// 		for (size_t j = 0; game->rooms[i]->cells[j]; j++) {
+// 			putstr(game->rooms[i]->cells[j]);
+// 			putstr("\n");
+// 		}
+// 		if (game->rooms[i]->door_up)
+// 			putstr("door up\n");
+// 		if (game->rooms[i]->door_down)
+// 			putstr("door down\n");
+// 		if (game->rooms[i]->door_left)
+// 			putstr("door left\n");
+// 		if (game->rooms[i]->door_right)
+// 			putstr("door right\n");
+// 		putstr("\n\n");
+// 	}
+// }
 
 static void set_room_cells(room_t *room)
 {
@@ -109,6 +109,5 @@ bool init_rooms(win_t *win)
 		return false;
 	if (!init_all_rooms(win, map))
 		return false;
-	print_room(win->game);
 	return true;
 }
