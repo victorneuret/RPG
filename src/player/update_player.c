@@ -92,16 +92,16 @@ void update_player(win_t *win, player_t *player)
 	static uint8_t dir = TOP;
 
 	if ((win->joystick->lx != 0 || win->joystick->ly != 0) &&
-		sfClock_getElapsedTime(player->clock).microseconds > 60000) {
+		sfClock_getElapsedTime(player->timer).microseconds > 60000) {
 		dir = get_direction(win->joystick->lx, win->joystick->ly);
 		switch_direction(player->sprite, dir);
 		animate_sprite(player,
 			sfSprite_getGlobalBounds(player->sprite).width, 10);
-		sfClock_restart(player->clock);
-	} else if (sfClock_getElapsedTime(player->clock).microseconds
+		sfClock_restart(player->timer);
+	} else if (sfClock_getElapsedTime(player->timer).microseconds
 							> 300000) {
 		update_idle(player, dir);
-		sfClock_restart(player->clock);
+		sfClock_restart(player->timer);
 	}
 	move_player(win, player);
 	update_aim_orientation(win, player);

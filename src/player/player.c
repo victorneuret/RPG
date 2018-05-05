@@ -47,8 +47,8 @@ player_t *init_player(win_t *win)
 	player->sprite = get_sprite_texture_rect(text->texture, &rect);
 	player->aim = create_sprite(
 		get_texture(win->game->textures, "aim")->texture);
-	player->clock = sfClock_create();
-	if (!player->sprite || !player->aim || !player->clock)
+	player->timer = sfClock_create();
+	if (!player->sprite || !player->aim || !player->timer)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
@@ -60,6 +60,6 @@ player_t *init_player(win_t *win)
 void destroy_player(player_t *player)
 {
 	sfSprite_destroy(player->sprite);
-	sfClock_destroy(player->clock);
+	sfClock_destroy(player->timer);
 	free(player);
 }
