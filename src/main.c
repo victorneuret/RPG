@@ -58,7 +58,7 @@ static bool start_rpg(int ac, char **av, char **env)
 		return false;
 	if (settings->display_help)
 		return print_help();
-	window = create_window(1200, 675, settings);
+	window = create_window(1600, 900, settings);
 	if (!window)
 		return false;
 	window->settings = settings;

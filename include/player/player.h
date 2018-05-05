@@ -25,7 +25,7 @@ typedef enum {
 } direction_t;
 
 typedef struct player {
-	sfClock *clock;
+	sfClock *timer;
 	sfSprite *sprite;
 	sfSprite *aim;
 	float y_speed;
