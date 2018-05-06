@@ -9,12 +9,66 @@
 
 #include "render_window.h"
 #include "sprite_utils.h"
+#include "buttons.h"
 
-typedef struct checkbox checkbox_t;
 typedef struct render_window win_t;
 typedef struct textures textures_t;
+typedef struct checkbox checkbox_t;
 
-/* CheckBox */
+/* Functions */
+void checkbox_fullscreen(win_t *win, checkbox_t *checkbox);
+
+typedef struct checkbox {
+	game_status game_state;
+	sfText *text;
+	sfColor color;
+	sfColor hover_color;
+	sfSprite *selected;
+	sfSprite *unselected;
+	bool value;
+	bool reset_scale;
+	bool hover;
+	sfClock *checkbox_clock;
+	struct checkbox *next;
+	struct checkbox *prev;
+	void (*func)(win_t *win, checkbox_t *checkbox);
+} checkbox_t;
+
+typedef struct {
+	game_status game_state;
+	sfIntRect selected;
+	sfIntRect unselected;
+	sfVector2f pos;
+	uint32_t color;
+	uint32_t hover_color;
+	bool value;
+	void (*func)(win_t *win, checkbox_t *checkbox);
+} checkbox_declaration_t;
+
+static const checkbox_declaration_t checkbox_declaration[] = {
+	{
+		OPTION,
+		(sfIntRect) {0, 0, 300, 70},
+		(sfIntRect) {300, 0, 300, 70},
+		(sfVector2f) {1000, 420},
+		0x26A69AFF,
+		0x26A69ABF,
+		false,
+		&checkbox_fullscreen
+	},
+	{
+		0,
+		(sfIntRect) {0, 0, 0, 0},
+		(sfIntRect) {0, 0, 0, 0},
+		(sfVector2f) {0, 0},
+		0,
+		0,
+		false,
+		NULL
+	}
+};
+
+/* Checkbox */
 void checkbox_click_animation(checkbox_t *checkbox);
 void checkbox_click_released(win_t *win, const sfEvent *event);
 void checkbox_click_pressed(win_t *win, const sfEvent *event);
@@ -24,4 +78,3 @@ void checkbox_animation(win_t *win);
 void draw_checkbox(win_t *win);
 void checkbox_click_animation(checkbox_t *checkbox);
 sfSprite *get_checkbox_sprite(checkbox_t *checkbox);
-void checkbox_fullscreen(win_t *win, checkbox_t *checkbox);

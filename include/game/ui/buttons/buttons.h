@@ -13,9 +13,11 @@
 #include "color_utils.h"
 #include "key_pressed_functions.h"
 #include "checkbox_functions.h"
+#include "checkbox_functions.h"
 
 typedef struct render_window win_t;
 typedef struct textures textures_t;
+typedef struct checkbox checkbox_t;
 
 #include "mouse_utils.h"
 
@@ -24,70 +26,6 @@ typedef struct hover_text_button {
 	sfFont *font;
 	sfText *text;
 } text_hover_button_t;
-
-typedef struct checkbox {
-	game_status game_state;
-	sfText *text;
-	sfColor color;
-	sfColor hover_color;
-	sfSprite *selected;
-	sfSprite *unselected;
-	bool value;
-	bool reset_scale;
-	bool hover;
-	sfClock *checkbox_clock;
-	struct checkbox *next;
-	struct checkbox *prev;
-	void (*func)(win_t *win, checkbox_t *checkbox);
-} checkbox_t;
-
-typedef struct {
-	game_status game_state;
-	sfIntRect selected;
-	sfIntRect unselected;
-	sfVector2f pos;
-	uint32_t color;
-	uint32_t hover_color;
-	bool value;
-	void (*func)(win_t *win, checkbox_t *checkbox);
-} checkbox_declaration_t;
-
-static const checkbox_declaration_t checkbox_declaration[] = {
-	{
-		OPTION,
-		(sfIntRect) {0, 0, 300, 70},
-		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1000, 420},
-		0x26A69AFF,
-		0x26A69ABF,
-		false,
-		&checkbox_fullscreen
-	},
-	{
-		0,
-		(sfIntRect) {0, 0, 0, 0},
-		(sfIntRect) {0, 0, 0, 0},
-		(sfVector2f) {0, 0},
-		0,
-		0,
-		false,
-		NULL
-	}
-};
-
-typedef struct slider {
-	game_status game_state;
-	sfText *selected;
-	sfText *unselected;
-	sfColor color;
-	sfColor hover_color;
-	uint8_t size;
-	uint64_t elements;
-	float max_value;
-	float value;
-	bool hover;
-	struct slider *next;
-} slider_t;
 
 typedef struct buttons {
 	game_status game_state;

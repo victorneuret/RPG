@@ -35,6 +35,5 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyDown, 	&shoot_down},
 	{GAME, 	sfKeyRight, 	&shoot_right},
 	{GAME, 	sfKeyLeft, 	&shoot_left},
-	{GAME, 	sfKeySpace, 	&keyboard_shoot},
 	{0,	0,		NULL}
 };
