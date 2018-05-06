@@ -11,6 +11,7 @@
 #include "title_page.h"
 #include "change_state.h"
 #include "player.h"
+#include "music.h"
 
 static bool init_ui(win_t *win)
 {
@@ -47,6 +48,8 @@ bool init_game(win_t *win)
 	win->game->ui = my_calloc(1, sizeof(ui_t));
 	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
 	win->joystick = my_calloc(1, sizeof(joystick_t));
+	if (!init_music(win->game->sounds))
+		return false;
 	if (!win->game || !win->game->ui || !win->game->dungeon
 		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
 		|| !init_gamepad(win))

@@ -15,9 +15,11 @@
 #include "player.h"
 #include "dungeon.h"
 #include "level.h"
+#include "music.h"
 
 typedef struct textures textures_t;
 typedef struct render_window win_t;
+typedef struct sounds sounds_t;
 typedef struct ui ui_t;
 typedef struct dungeon dungeon_t;
 typedef struct room room_t;
@@ -27,6 +29,7 @@ static const float GRAVITY = 500;
 typedef struct game {
 	textures_t *textures;
 	ui_t *ui;
+	sounds_t *sounds;
 	weather_type_t weather_type;
 	weather_intensity_t weather_intensity;
 	player_t *player;

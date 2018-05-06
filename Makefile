@@ -68,6 +68,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/rain.c                                                                             \
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
+		src/game/music/init_music.c                                                                         \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
 		src/player/actions.c										    \
@@ -121,6 +122,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \
 		-I./include/level                                                                                   \
 		-I./include/utils                                                                                   \
