@@ -7,16 +7,18 @@
 
 #include "joystick.h"
 
-void button_select(__attribute__((unused)) win_t *win, bool press)
+void button_select(win_t *win, bool press)
 {
 	static bool pressed = false;
 
 	if (!press) {
 		pressed = false;
 		return;
-	}
-	if (!pressed && press)
+	} else if (!pressed && press) {
+		win->game->dungeon->door_open =
+			(win->game->dungeon->door_open) ? false : true;
 		pressed = true;
+	}
 }
 
 void button_start(win_t *win, bool press)

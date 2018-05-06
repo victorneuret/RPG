@@ -74,9 +74,9 @@ static void is_obstacle(win_t *win, sfVector2f *pos, char **map,
 	}
 }
 
-void check_obstacle(sfVector2f *pos, win_t *win, uint8_t room_id)
+void check_obstacle(sfVector2f *pos, win_t *win)
 {
-	char **map = win->game->rooms[room_id]->cells;
+	char **map = win->game->rooms[win->game->dungeon->act_room]->cells;
 
 	for (size_t i = 0; map[i]; i++)
 		for (size_t j = 0; map[i][j]; j++)

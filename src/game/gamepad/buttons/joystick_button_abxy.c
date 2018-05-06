@@ -17,6 +17,8 @@ void button_a(win_t *win, bool press)
 	if (!press && pressed) {
 		pressed = false;
 	} else if (!pressed && press) {
+		if (win->game_state == INTRO)
+			exit_intro(win, NULL);
 		button_click_released(win, &event);
 		if (press && win->game_state == GAME && (
 			sfSprite_getPosition(win->game->player->sprite).y +
@@ -46,9 +48,9 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	}
-	if (!pressed && press)
+	} else if (!pressed && press) {
 		pressed = true;
+	}
 }
 
 void button_y(__attribute__((unused)) win_t *win, bool press)
@@ -58,7 +60,7 @@ void button_y(__attribute__((unused)) win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	}
-	if (!pressed && press)
+	} else if (!pressed && press) {
 		pressed = true;
+	}
 }

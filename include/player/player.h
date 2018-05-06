@@ -11,6 +11,7 @@
 
 #include <stdint.h>
 
+
 static const float X_SPEED = 900.f;
 static const uint8_t WALL_SIZE = 140;
 
@@ -33,6 +34,9 @@ typedef struct player {
 } player_t;
 
 #include "render_window.h"
+#include "dungeon.h"
+
+typedef struct room room_t;
 
 player_t *init_player(win_t *win);
 void update_player(win_t *win, player_t *player);
@@ -40,6 +44,8 @@ void update_idle(player_t *player, uint8_t dir);
 void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val);
 void draw_player(win_t *win, player_t *player);
 void destroy_player(player_t *player);
-void check_obstacle(sfVector2f *pos, win_t *win, uint8_t room_id);
+void check_obstacle(sfVector2f *pos, win_t *win);
 
 void player_shoot(win_t *win, player_t *player);
+void player_door(win_t *win, sfVector2f *pos, room_t *room);
+void door_action(win_t *win, sfVector2f *pos, room_t *room);

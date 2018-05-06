@@ -19,6 +19,7 @@
 typedef struct textures textures_t;
 typedef struct render_window win_t;
 typedef struct ui ui_t;
+typedef struct player player_t;
 typedef struct dungeon dungeon_t;
 typedef struct room room_t;
 

@@ -12,17 +12,19 @@
 #include "sprite_utils.h"
 #include "level.h"
 
-static sfSprite *init_door_sprite(textures_t *texture)
+static sfSprite *init_door_sprite(textures_t *texture, dungeon_t *dungeon)
 {
 	textures_t *door = texture;
 	sfSprite *sprite;
+	sfIntRect rect = (dungeon->door_open) ? (sfIntRect) {0, 0, 245, 165}
+					: (sfIntRect) {245, 0, 245, 165};
 
 	while (door && !str_eq(door->name, "door"))
 		door = door->next;
 	if (!door)
 		return NULL;
 	sprite = get_sprite_texture_rect(door->texture,
-			&(sfIntRect) {245, 0, 245, 165});
+			&rect);
 	sfSprite_setOrigin(sprite, (sfVector2f) {
 			sfSprite_getGlobalBounds(sprite).width / 2,
 			sfSprite_getGlobalBounds(sprite).height / 2});
@@ -38,15 +40,8 @@ void draw_at_pos(win_t *win, sfSprite *sprite, sfVector2f pos,
 	sfSprite_rotate(sprite, rotation * -1);
 }
 
-bool display_door(room_t *room, win_t *win)
+void draw_doors(room_t *room, win_t *win, sfSprite *door_sprite)
 {
-	static sfSprite *door_sprite = NULL;
-
-	if (!door_sprite) {
-		door_sprite = init_door_sprite(win->game->textures);
-		if (!door_sprite)
-			return false;
-	}
 	if (room->door_up)
 		draw_at_pos(win, door_sprite,
 				(sfVector2f) {X_DOOR_UP, Y_DOOR_UP}, 0);
@@ -59,5 +54,21 @@ bool display_door(room_t *room, win_t *win)
 	if (room->door_left)
 		draw_at_pos(win, door_sprite,
 				(sfVector2f) {X_DOOR_LEFT, Y_DOOR_LEFT}, -90);
+}
+
+bool display_door(room_t *room, win_t *win)
+{
+	static sfSprite *door_sprite = NULL;
+	sfIntRect rect = (win->game->dungeon->door_open) ?
+		(sfIntRect) {0, 0, 245, 165} : (sfIntRect) {245, 0, 245, 165};
+
+	if (!door_sprite) {
+		door_sprite = init_door_sprite(win->game->textures,
+						win->game->dungeon);
+		if (!door_sprite)
+			return false;
+	}
+	sfSprite_setTextureRect(door_sprite, rect);
+	draw_doors(room, win, door_sprite);
 	return true;
 }

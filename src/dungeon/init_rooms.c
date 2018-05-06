@@ -32,7 +32,8 @@
 
 char **create_map(void)
 {
-	char **map = malloc(sizeof(char *) * ROOM_HEIGHT + 1);
+	char **map = malloc(sizeof(char *) * ROOM_HEIGHT + sizeof(char *));
+
 	if (!map)
 		return NULL;
 	for (size_t i = 0; i < ROOM_HEIGHT; i++) {
@@ -61,7 +62,7 @@ bool init_rooms(win_t *win)
 		free(win->game->rooms);
 	}
 	win->game->rooms = malloc(sizeof(room_t *)
-					* win->game->dungeon->nb_rooms + 1);
+			* win->game->dungeon->nb_rooms + sizeof(room_t));
 	if (!win->game->rooms)
 		return false;
 	win->game->rooms[0] = NULL;

@@ -88,8 +88,8 @@ void place_rooms(dungeon_t *dungeon)
 		for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
 			memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 		place_rooms(dungeon);
-	}
-	dungeon->nb_rooms = room_nb;
+	} else
+		dungeon->nb_rooms = room_nb;
 }
 
 bool init_dungeon(win_t *win)
@@ -103,5 +103,7 @@ bool init_dungeon(win_t *win)
 		if (!win->game->dungeon->rooms[i])
 			return false;
 	}
+	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
+		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	return true;
 }
