@@ -10,26 +10,36 @@
 
 #include "music.h"
 
+void free_music_struct(sounds_t *sounds)
+{
+	for (size_t i = 0; sounds->music[i].music; i++) {
+		sfMusic_stop(sounds->music[i].music);
+		sfMusic_destroy(sounds->music[i].music);
+	}
+	for (size_t i = 0; sounds->sfx[i].music; i++) {
+		sfMusic_stop(sounds->sfx[i].music);
+		sfMusic_destroy(sounds->sfx[i].music);
+	}
+}
+
 static size_t music_len(const music_declaration_t *music)
 {
 	size_t i = 0;
 
 	while (music[i].path)
 		i++;
-	return i;
+	return i + 1;
 }
 
-static bool init_sounds_sfx(music_t *music)
+static bool init_sounds_sfx(music_t *sfx)
 {
 	for (size_t i = 0; sfx_declaration[i].path; i++) {
-		music = malloc(sizeof(music_t));
-		if (!music)
+		sfx[i].music = sfMusic_createFromFile(sfx_declaration[i].path);
+		if (!sfx[i].music)
 			return false;
-		music->music = sfMusic_createFromFile(sfx_declaration[i].path);
-		if (!music->music)
-			return false;
-		sfMusic_setVolume(music->music, sfx_declaration[i].volume);
-		music->game_state = sfx_declaration[i].game_state;
+		sfMusic_setVolume(sfx[i].music, sfx_declaration[i].volume);
+		sfx[i].max_volume = sfx_declaration[i].volume;
+		sfx[i].game_state = sfx_declaration[i].game_state;
 	}
 	return true;
 }
@@ -37,31 +47,29 @@ static bool init_sounds_sfx(music_t *music)
 static bool init_sounds_music(music_t *music)
 {
 	for (size_t i = 0; music_declaration[i].path; i++) {
-		music = malloc(sizeof(music_t));
-		if (!music)
+		music[i].music = sfMusic_createFromFile(music_declaration[i].path);
+		if (!music[i].music)
 			return false;
-		music->music = sfMusic_createFromFile(music_declaration[i].path);
-		if (!music->music)
-			return false;
-		sfMusic_setVolume(music->music, music_declaration[i].volume);
-		music->game_state = music_declaration[i].game_state;
+		sfMusic_setVolume(music[i].music, 0);
+		music[i].max_volume = music_declaration[i].volume;
+		music[i].game_state = music_declaration[i].game_state;
 	}
 	return true;
 }
 
-bool init_music(sounds_t *sounds)
+sounds_t *init_music()
 {
-	sounds = malloc(sizeof(sounds_t));
+	sounds_t *sounds = malloc(sizeof(sounds_t));
 
 	if (!sounds)
 		return false;
-	sounds->sfx_vol = 100;
-	sounds->music_vol = 100;
 	sounds->music = malloc(sizeof(music_t) * music_len(music_declaration));
 	sounds->sfx = malloc(sizeof(music_t) * music_len(sfx_declaration));
 	if (!sounds->music || !sounds->sfx)
-		return false;
+		return NULL;
+	sounds->sfx_vol = default_sfx_vol;
+	sounds->music_vol = default_music_vol;
 	if (!init_sounds_music(sounds->music) || !init_sounds_sfx(sounds->sfx))
-		return false;
-	return true;
+		return NULL;
+	return sounds;
 }

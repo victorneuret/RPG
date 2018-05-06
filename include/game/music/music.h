@@ -10,9 +10,13 @@
 #include "render_window.h"
 #include <SFML/Audio/Types.h>
 
+static const float default_sfx_vol = 100;
+static const float default_music_vol = 100;
+
 typedef struct music {
 	game_status game_state;
 	sfMusic *music;
+	float max_volume;
 } music_t;
 
 typedef struct music_declaration {
@@ -30,14 +34,14 @@ typedef struct sounds {
 
 static const music_declaration_t music_declaration[] = {
 	{
-		TITLE,
-		"res/sounds/menu.ogg",
-		100
+		INTRO | TITLE | OPTION | PAUSE,
+		"res/sounds/musics/title.ogg",
+		50
 	},
 	{
 		GAME,
-		"res/sounds/menu.ogg",
-		100
+		"res/sounds/musics/boss.ogg",
+		50
 	},
 	{
 		0,
@@ -49,7 +53,7 @@ static const music_declaration_t music_declaration[] = {
 static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
-		"res/sounds/click.ogg",
+		"res/sounds/sfx/switch_title.ogg",
 		100
 	},
 	{
@@ -59,4 +63,5 @@ static const music_declaration_t sfx_declaration[] = {
 	}
 };
 
-bool init_music(sounds_t *sounds);
+sounds_t *init_music();
+void free_music_struct(sounds_t *sounds);
