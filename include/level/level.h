@@ -72,5 +72,5 @@ void draw_at_pos(win_t *win, sfSprite *sprite, sfVector2f pos,
 		int16_t rotation);
 
 void unload_level(level_t *level);
-bool load_level(level_t **level, env_name_t env_name);
+bool load_level(level_t **level, env_name_t env_name, win_t *win);
 void draw_level(sfRenderWindow *window, level_t const *level, win_t *win);

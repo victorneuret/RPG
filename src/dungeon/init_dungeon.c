@@ -67,12 +67,14 @@ static bool next_room(uint8_t *x, uint8_t *y)
 	return true;
 }
 
-static void place_rooms(dungeon_t *dungeon)
+void place_rooms(dungeon_t *dungeon)
 {
 	uint8_t room_nb = 0;
 	uint8_t x = rand_int(0, NB_ROOMS_WIDTH - 1);
 	uint8_t y = rand_int(0, NB_ROOMS_HEIGHT - 1);
 
+	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
+		memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	while (room_nb < 8) {
 		if (dungeon->rooms[y][x] == -1) {
 			dungeon->rooms[y][x] = room_nb;
@@ -82,7 +84,7 @@ static void place_rooms(dungeon_t *dungeon)
 		if (!next_room(&x, &y))
 			break;
 	}
-	if (room_nb < 3) {
+	if (room_nb < 4) {
 		for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
 			memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 		place_rooms(dungeon);
@@ -100,10 +102,6 @@ bool init_dungeon(win_t *win)
 							* NB_ROOMS_WIDTH);
 		if (!win->game->dungeon->rooms[i])
 			return false;
-		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 	}
-	place_rooms(win->game->dungeon);
-	if (!init_rooms(win))
-		return false;
 	return true;
 }

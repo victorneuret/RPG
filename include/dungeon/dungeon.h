@@ -37,7 +37,11 @@ typedef struct dungeon {
 	uint8_t nb_rooms;
 } dungeon_t;
 
+
 bool init_dungeon(win_t *win);
-void print_dungeon(dungeon_t *dungeon);
-bool init_rooms(win_t *win);
 void free_dungeon(game_t *game);
+
+bool init_rooms(win_t *win);
+void place_rooms(dungeon_t *dungeon);
+
+void print_dungeon(dungeon_t *dungeon);

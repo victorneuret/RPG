@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "level.h"
+#include "dungeon.h"
 
 static const char *TEXTURE_PATH = "res/levels/level_textures.png";
 
@@ -55,7 +56,7 @@ void draw_level(sfRenderWindow *window, level_t const *level, win_t *win)
 		return;
 }
 
-bool load_level(level_t **level, env_name_t env_name)
+bool load_level(level_t **level, env_name_t env_name, win_t *win)
 {
 	static sfTexture *texture = NULL;
 
@@ -70,6 +71,9 @@ bool load_level(level_t **level, env_name_t env_name)
 	free(*level);
 	*level = malloc(sizeof(level_t));
 	if (!*level)
+		return false;
+	place_rooms(win->game->dungeon);
+	if (!init_rooms(win))
 		return false;
 	return load_sprites(texture, *level, env_name);
 }

@@ -20,14 +20,12 @@ static void check_cell_horizontal(sfVector2f *pos, uint8_t y_pos, uint8_t x_pos)
 		&& ((pos->y + PLAYER_H / 2 > y
 		&& pos->y + PLAYER_H / 2 < y + ROCK_H)
 		|| (pos->y + PLAYER_H > y && pos->y + PLAYER_H < y + ROCK_H))) {
-		puts("left");
 		pos->x = x + ROCK_W - 31;
 	}
 	if (pos->x + PLAYER_W - 32 > x && pos->x + PLAYER_W - 32 < x + ROCK_W
 		&& ((pos->y + PLAYER_H / 2 > y
 		&& pos->y + PLAYER_H / 2 < y + ROCK_H)
 		|| (pos->y + PLAYER_H > y && pos->y + PLAYER_H < y + ROCK_H))) {
-		puts("right");
 		pos->x = x - PLAYER_W + 32;
 	}
 }
@@ -41,14 +39,12 @@ static void check_cell_vertical(sfVector2f *pos, uint8_t y_pos, uint8_t x_pos)
 		&& ((pos->x + 32 > x && pos->x + 32 < x + ROCK_W)
 		|| (pos->x + PLAYER_W - 32 > x
 		&& pos->x + PLAYER_W - 32 < x + ROCK_W))) {
-		puts("top");
 		pos->y = y + ROCK_H - PLAYER_H / 2;
 	}
 	if (pos->y + PLAYER_H < y + ROCK_H && pos->y + PLAYER_H > y
 		&& ((pos->x + 32 > x && pos->x + 32 < x + ROCK_W)
 		|| (pos->x + PLAYER_W - 32 > x
 		&& pos->x + PLAYER_W - 32 < x + ROCK_W))) {
-		puts("bottom");
 		pos->y = y - PLAYER_H;
 	}
 }

@@ -5,15 +5,17 @@
 ** title_page_functions
 */
 
+#include <SFML/Graphics.h>
+
 #include "popup.h"
 #include "change_state.h"
 #include "render_window.h"
-#include <SFML/Graphics.h>
+#include "level.h"
 
 void start_game(win_t *win)
 {
 	change_state(win, GAME);
-	load_level(&win->game->level, DUNGEON);
+	load_level(&win->game->level, DUNGEON, win);
 }
 
 void error_test(win_t *win)
