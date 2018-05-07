@@ -31,6 +31,22 @@ static slider_t *init_slider_list(slider_t *slider)
 	return slider;
 }
 
+static void set_slider_text(slider_t *tmp)
+{
+	sfFont *font = sfFont_createFromFile("res/fonts/isaac_sans.ttf");
+
+	sfText_setFont(tmp->selected, font);
+	sfText_setFont(tmp->unselected, font);
+	sfText_setString(tmp->selected, "| | | | | | | | | |");
+	sfText_setString(tmp->unselected, "| | | | | | | | | |");
+	sfText_setCharacterSize(tmp->selected, 50);
+	sfText_setCharacterSize(tmp->unselected, 50);
+	sfText_setColor(tmp->selected, tmp->color);
+	sfText_setColor(tmp->unselected, tmp->hover_color);
+	sfText_setPosition(tmp->selected, (sfVector2f){200, 500});
+	sfText_setPosition(tmp->unselected, (sfVector2f){200, 500});
+}
+
 static bool fill_slider_list(const slider_declaration_t list, slider_t *slider)
 {
 	slider_t *tmp = slider;
@@ -40,13 +56,11 @@ static bool fill_slider_list(const slider_declaration_t list, slider_t *slider)
 	tmp->unselected = sfText_create();
 	if (!tmp->selected || !tmp->unselected)
 		return false;
-	sfText_setString(tmp->unselected, "llllllllll");
-	sfText_setCharacterSize(tmp->unselected, 50);
-	sfText_setColor(tmp->unselected, sfBlue);
-	sfText_setPosition(tmp->unselected, (sfVector2f){500, 500});
-	tmp->game_state = list.game_state;
 	tmp->color = list.color;
 	tmp->hover_color = list.hover_color;
+	set_slider_text(tmp);
+	tmp->unselected = tmp->selected;
+	tmp->game_state = list.game_state;
 	tmp->size = list.size;
 	tmp->elements = list.elements;
 	tmp->max_value = list.max_value;

@@ -7,17 +7,23 @@
 
 #include "render.h"
 #include "buttons.h"
+#include "mouse_utils.h"
 
 void draw_slider(win_t *win, slider_t *slider)
 {
 	slider_t *tmp = slider;
+	sfFloatRect rect = sfText_getGlobalBounds(tmp->unselected);
+	sfVector2f mouse = get_mouse_pos(win);
 
 	for (slider_t *tmp = slider; tmp; tmp = tmp->next) {
 		if ((tmp->game_state & win->game_state) != win->game_state
 			&& tmp->game_state != ALL)
 			continue;
-		render_object(win->sf_win, TEXT, tmp->unselected);
-		//render_object(win->sf_win, TEXT, slider[i].unselected);
+		render_object(win->sf_win, TEXT, tmp->selected);
+		if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
+		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
+			render_object(win->sf_win, TEXT, tmp->unselected);
+		}
 	}
 }
 

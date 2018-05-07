@@ -43,7 +43,7 @@ typedef struct slider_declaration {
 static const slider_declaration_t slider_declaration[] = {
 	{
 		OPTION,
-		{0, 0, 0, 100},
+		{0, 0, 0, 50},
 		{0, 0, 0, 255},
 		50,
 		8,
@@ -62,3 +62,4 @@ static const slider_declaration_t slider_declaration[] = {
 };
 
 slider_t *init_slider(void);
+void draw_slider(win_t *win, slider_t *slider);
