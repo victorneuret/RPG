@@ -95,8 +95,13 @@ void place_rooms(dungeon_t *dungeon)
 bool init_dungeon(win_t *win)
 {
 	win->game->dungeon->rooms = malloc(sizeof(int8_t *) * NB_ROOMS_HEIGHT);
-	if (!win->game->dungeon->rooms)
+	win->game->dungeon->shade = sfRectangleShape_create();
+	win->game->dungeon->transition = false;
+	if (!win->game->dungeon->rooms || !win->game->dungeon->shade)
 		return false;
+	sfRectangleShape_setFillColor(win->game->dungeon->shade, sfBlack);
+	sfRectangleShape_setSize(win->game->dungeon->shade,
+						(sfVector2f){1920, 1080});
 	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++) {
 		win->game->dungeon->rooms[i] = malloc(sizeof(int8_t)
 							* NB_ROOMS_WIDTH);

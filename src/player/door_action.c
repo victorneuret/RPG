@@ -6,9 +6,11 @@
 */
 
 #include <SFML/Graphics.h>
+#include <stdbool.h>
 
 #include "render_window.h"
 #include "dungeon.h"
+#include "music.h"
 
 static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 {
@@ -26,9 +28,10 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			i++;
 		}
 	}
+	win->game->dungeon->transition = true;
 }
 
-static void set_sprite_pos(sfVector2f *pos, uint8_t dir)
+static void set_sprite_pos(sfVector2f *pos, uint8_t dir, sounds_t *sounds)
 {
 	switch (dir) {
 	case LEFT:
@@ -47,6 +50,7 @@ static void set_sprite_pos(sfVector2f *pos, uint8_t dir)
 		pos->y = WIN_MAX_H / 2 + PLAYER_H / 2;
 		pos->x = WIN_MAX_W / 2 + PLAYER_W / 2;
 	}
+	play_sfx(sounds, UNLOCKED);
 }
 
 static bool check_y_door(sfVector2f *pos)
@@ -68,20 +72,20 @@ void door_action(win_t *win, sfVector2f *pos, room_t *room)
 {
 	if (room->door_left && pos->x < WALL_SIZE && check_y_door(pos)) {
 		move_room(win, room, -1, 0);
-		set_sprite_pos(pos, LEFT);
+		set_sprite_pos(pos, LEFT, win->game->sounds);
 	}
 	if (room->door_right && pos->x + PLAYER_W > WIN_MAX_W - WALL_SIZE
 		&& check_y_door(pos)) {
 		move_room(win, room, 1, 0);
-		set_sprite_pos(pos, RIGHT);
+		set_sprite_pos(pos, RIGHT, win->game->sounds);
 	}
 	if (room->door_up && pos->y < WALL_SIZE && check_x_door(pos)) {
 		move_room(win, room, 0, -1);
-		set_sprite_pos(pos, TOP);
+		set_sprite_pos(pos, TOP, win->game->sounds);
 	}
 	if (room->door_down && pos->y + PLAYER_H > WIN_MAX_H - WALL_SIZE
 		&& check_x_door(pos)) {
 		move_room(win, room, 0, 1);
-		set_sprite_pos(pos, BOTTOM);
+		set_sprite_pos(pos, BOTTOM, win->game->sounds);
 	}
 }

@@ -57,14 +57,12 @@ static bool update(win_t *win)
 static void render_game(win_t *win)
 {
 	switch (win->game_state) {
-		case INTRO:
-			render_intro(win, win->intro);
-			break;
 		case GAME:
 			draw_level(win->sf_win, win->game->level, win);
 			draw_player(win, win->game->player);
+			render_transition(win);
 			break;
-		case PAUSE: break;
+		case OPTION: break;
 		default: break;
 	}
 	draw_particles(win);
@@ -83,16 +81,19 @@ static void render_game(win_t *win)
 static void render(win_t *win)
 {
 	switch (win->game_state) {
-	case TITLE:
-	case OPTION:
-		render_object(win->sf_win, SPRITE,
+		case TITLE:
+		case OPTION:
+			render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->background);
-		render_object(win->sf_win, SPRITE,
+			render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->menu_paper);
-		render_object(win->sf_win, SPRITE,
+			render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->options);
-		break;
-	default: break;
+			break;
+		case INTRO:
+			render_intro(win, win->intro);
+			break;
+		default: break;
 	}
 	music_management(win->game->sounds, win->game_state);
 	render_game(win);
