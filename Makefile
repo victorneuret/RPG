@@ -99,7 +99,8 @@ SRC	=	src/args.c                                                                
 		src/xml/get_node_by_name.c                                                                          \
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
-		src/xml/xml_exemple.c
+		src/xml/xml_exemple.c										    \
+		src/xml/parse_xml_player.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \

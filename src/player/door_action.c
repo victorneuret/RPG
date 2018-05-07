@@ -79,7 +79,7 @@ void door_action(win_t *win, sfVector2f *pos, room_t *room)
 		move_room(win, room, 0, -1);
 		set_sprite_pos(pos, TOP);
 	}
-	if (room->door_down && pos->y + PLAYER_H > WIN_MAX_H - WALL_SIZE
+	if (room->door_down && pos->y + PLAYER_H > WIN_MAX_H - WALL_SIZE - 16
 		&& check_x_door(pos)) {
 		move_room(win, room, 0, 1);
 		set_sprite_pos(pos, BOTTOM);

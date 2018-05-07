@@ -9,6 +9,7 @@
 #include "player.h"
 #include "render_window.h"
 #include "my_calloc.h"
+#include "xml.h"
 
 void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
 {
@@ -52,7 +53,8 @@ player_t *init_player(win_t *win)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
-	sfSprite_setPosition(player->sprite, (sfVector2f) {200, 200});
+	sfSprite_setPosition(player->sprite, (sfVector2f) {1024, 609});
+	xml_player(player);
 	init_player_aim(player);
 	return player;
 }

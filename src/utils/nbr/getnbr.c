@@ -29,3 +29,27 @@ int getnbr(char const *str)
 		nb = nb * -1;
 	return nb;
 }
+
+float str_to_float(char *str)
+{
+	int len = 0;
+	int n = 0;
+	int i = 0;
+	float f = 1.0;
+	float val = 0.0;
+
+	while (str[len])
+		len++;
+	if (!len)
+		return 0;
+	while (i < len && str[i] != '.')
+		n = 10 * n + (str[i++] - '0');
+	if (i == len)
+		return n;
+	i++;
+	while (i < len) {
+		f *= 0.1;
+		val += f * (str[i++] - '0');
+	}
+	return (val + n);
+}
