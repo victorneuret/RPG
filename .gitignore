@@ -4,6 +4,7 @@
 !*.c
 !*.h
 !*.xml
+!config/*.xml
 !Makefile
 !.gitignore
 !res/**

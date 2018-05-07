@@ -1,0 +1,17 @@
+<weapons>
+	<shotgun>
+		<name>The Shotgun</name>
+		<damages>42</damages>
+		<delay>0.8</delay>
+	</shotgun>
+	<gun>
+		<name>Bubble</name>
+		<damages>12</damages>
+		<delay>0.3</delay>
+	</gun>
+	<flamethrower>
+		<name>Fiiiiiiiiire</name>
+		<damages>21</damages>
+		<delay>0.01</delay>
+	</flamethrower>
+</weapons>

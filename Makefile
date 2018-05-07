@@ -34,6 +34,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/dir_arrow.c                                                          \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
 		src/game/key_pressed_functions/toggles.c                                                            \
+		src/game/key_pressed_functions/special_actions.c                                                    \
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
@@ -71,10 +72,14 @@ SRC	=	src/args.c                                                                
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
 		src/intro/intro.c                                                                                   \
-		src/level/level.c                                                                                   \
+		src/game/music/init_music.c                                                                         \
+		src/game/music/music_manager.c                                                                      \
+		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
+		src/level/level.c                                                                                   \
 		src/player/actions.c										    \
 		src/player/door_action.c									    \
+		src/player/door_transition.c                                                                        \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
@@ -129,6 +134,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
 		-I./include/intro                                                                                   \
+		-I./include/game/music                                                                              \
+		-I./include/player                                                                                  \
 		-I./include/level                                                                                   \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \

@@ -1,0 +1,17 @@
+<enemies>
+	<bob>
+		<name>Bob</name>
+		<health>42</health>
+		<damages>12</damages>
+	</bob>
+	<tank>
+		<name>Tank</name>
+		<health>121</health>
+		<damages>4</damages>
+	</tank>
+	<sbires>
+		<name>Sbire</name>
+		<health>12</health>
+		<damages>6</damages>
+	</tank>
+</enemies>

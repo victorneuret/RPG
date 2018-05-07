@@ -20,7 +20,6 @@ xmlDoc *load_xml_file(char *file_name)
 	return document;
 }
 
-
 xmlNode *load_xml_node(xmlDoc *document)
 {
 	xmlNode *root;
