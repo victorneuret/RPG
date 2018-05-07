@@ -9,7 +9,7 @@
 
 static void checkbox_click_released_action(win_t *win, checkbox_t *checkbox)
 {
-	sfFloatRect rect =sfSprite_getGlobalBounds(
+	sfFloatRect rect = sfSprite_getGlobalBounds(
 		get_checkbox_sprite(checkbox));
 	sfVector2f mouse = get_mouse_pos(win);
 
