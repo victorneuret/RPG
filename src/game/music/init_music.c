@@ -47,7 +47,8 @@ static bool init_sounds_sfx(music_t *sfx)
 static bool init_sounds_music(music_t *music)
 {
 	for (size_t i = 0; music_declaration[i].path; i++) {
-		music[i].music = sfMusic_createFromFile(music_declaration[i].path);
+		music[i].music =
+			sfMusic_createFromFile(music_declaration[i].path);
 		if (!music[i].music)
 			return false;
 		sfMusic_setVolume(music[i].music, 0);
