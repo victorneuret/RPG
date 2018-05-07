@@ -50,6 +50,7 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_drawer.c                                                                \
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
+		src/game/ui/hud/hp_bar.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
 		src/game/ui/button/init_checkbox.c                                                                  \
@@ -123,6 +124,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/particles                                                                          \
 		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
+		-I./include/game/ui/hud										    \
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \

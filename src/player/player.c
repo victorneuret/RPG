@@ -53,8 +53,10 @@ player_t *init_player(win_t *win)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
-	sfSprite_setPosition(player->sprite, (sfVector2f) {1024, 609});
-	xml_player(player);
+	sfSprite_setPosition(player->sprite, (sfVector2f) {200, 200});
+	player->level = 1;
+	if (!xml_player(player) || !init_hud(player))
+		return false;
 	init_player_aim(player);
 	return player;
 }

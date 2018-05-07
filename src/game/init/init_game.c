@@ -11,6 +11,7 @@
 #include "title_page.h"
 #include "change_state.h"
 #include "player.h"
+#include "hud.h"
 
 static bool init_ui(win_t *win)
 {

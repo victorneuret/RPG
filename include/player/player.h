@@ -11,6 +11,7 @@
 
 #include <stdint.h>
 
+#include "hud.h"
 
 static const float X_SPEED = 900.f;
 static const uint8_t WALL_SIZE = 140;
@@ -29,11 +30,12 @@ typedef struct player {
 	sfClock *timer;
 	sfSprite *sprite;
 	float speed;
-	uin8_t level;
+	uint8_t level;
 	uint16_t hp;
 	float hp_mult;
 	uint16_t xp;
 	float xp_multi;
+	hud_t *hud;
 	sfSprite *aim;
 	float aim_angle;
 } player_t;
