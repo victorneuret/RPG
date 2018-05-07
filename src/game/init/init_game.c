@@ -5,6 +5,8 @@
 ** init_game
 */
 
+#include <SFML/Graphics.h>
+
 #include "game.h"
 #include "weather.h"
 #include "my_calloc.h"

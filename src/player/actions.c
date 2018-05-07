@@ -22,6 +22,7 @@ void player_shoot(win_t *win, player_t *player)
 
 void player_door(win_t *win, sfVector2f *pos, room_t *room)
 {
+	door_transition(win->game->dungeon);
 	if (!win->game->dungeon->door_open)
 		return;
 	door_action(win, pos, room);
