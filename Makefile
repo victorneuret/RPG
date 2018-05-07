@@ -73,6 +73,7 @@ SRC	=	src/args.c                                                                
 		src/intro/intro.c                                                                                   \
 		src/game/music/init_music.c                                                                         \
 		src/game/music/music_manager.c                                                                      \
+		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
 		src/player/actions.c										    \

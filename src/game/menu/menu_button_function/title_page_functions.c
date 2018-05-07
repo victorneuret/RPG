@@ -11,6 +11,7 @@
 #include "change_state.h"
 #include "render_window.h"
 #include "level.h"
+#include "music.h"
 
 void start_game(win_t *win)
 {
@@ -25,6 +26,7 @@ void error_test(win_t *win)
 
 void to_option_menu(win_t *win)
 {
+	play_sfx(win->game->sounds, SWITCH_TITLE);
 	sfSprite_setScale(win->game->ui->title_page->options,
 					(sfVector2f){0, 0});
 	sfSprite_setColor(win->game->ui->title_page->options,
