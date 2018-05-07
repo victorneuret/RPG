@@ -34,6 +34,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/dir_arrow.c                                                          \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
 		src/game/key_pressed_functions/toggles.c                                                            \
+		src/game/key_pressed_functions/special_actions.c                                                    \
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
