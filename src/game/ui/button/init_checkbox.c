@@ -57,6 +57,7 @@ static bool fill_checkbox_list(const checkbox_declaration_t list,
 	if (!tmp->selected || !tmp->unselected)
 		return false;
 	tmp->color = hex_to_rgba(list.color);
+	tmp->pos = list.pos;
 	tmp->func = list.func;
 	tmp->hover_color = hex_to_rgba(list.hover_color);
 	tmp->checkbox_clock = sfClock_create();

@@ -71,7 +71,5 @@ int main(int ac, char **av, char **env)
 {
 	if (!start_rpg(ac, av, env))
 		return 84;
-	if (!xml_exemple())
-		return 84;
 	return 0;
 }

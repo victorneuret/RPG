@@ -30,6 +30,7 @@ typedef struct checkbox {
 	sfColor hover_color;
 	sfSprite *selected;
 	sfSprite *unselected;
+	sfVector2f pos;
 	bool value;
 	bool reset_scale;
 	bool hover;
@@ -55,7 +56,7 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 		OPTION,
 		(sfIntRect) {0, 0, 300, 70},
 		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1000, 420},
+		(sfVector2f) {1200, 420},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
@@ -65,7 +66,7 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 		OPTION,
 		(sfIntRect) {0, 0, 300, 70},
 		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {0, 0},
+		(sfVector2f) {1200, 520},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,

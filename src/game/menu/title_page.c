@@ -62,24 +62,20 @@ float get_paralax_speed(game_status state)
 void buttons_paralax(win_t *win)
 {
 	sfVector2f mouse = get_mouse_pos(win);
-	sfVector2f vect = {900, 420};
 	int speed = get_paralax_speed(win->game_state);
 
 	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
 		if (tmp->game_state == win->game_state) {
 			sfSprite_setPosition(tmp->sprite,
-				(sfVector2f) {mouse.x / speed * -1 + vect.x,
-				mouse.y / speed * -1 + vect.y});
-			vect.y += 80;
+				(sfVector2f) {mouse.x / speed * -1 + tmp->pos.x,
+				mouse.y / speed * -1 + tmp->pos.y});
 		}
 	}
-	vect = (sfVector2f){1000, 420};
 	for (checkbox_t *tmp = win->game->ui->checkbox; tmp; tmp = tmp->next) {
 		if (tmp->game_state == win->game_state) {
 			sfSprite_setPosition(get_checkbox_sprite(tmp),
-				(sfVector2f) {mouse.x / speed * -1 + vect.x,
-				mouse.y / speed * -1 + vect.y});
-			vect.y += 80;
+				(sfVector2f) {mouse.x / speed * -1 + tmp->pos.x,
+				mouse.y / speed * -1 + tmp->pos.y});
 		}
 	}
 }

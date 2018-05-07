@@ -33,20 +33,26 @@ static size_t music_len(const music_declaration_t *music)
 
 static bool init_sounds_sfx(music_t *sfx)
 {
-	for (size_t i = 0; sfx_declaration[i].path; i++) {
+	size_t i = 0;
+
+	while (sfx_declaration[i].path) {
 		sfx[i].music = sfMusic_createFromFile(sfx_declaration[i].path);
 		if (!sfx[i].music)
 			return false;
 		sfMusic_setVolume(sfx[i].music, sfx_declaration[i].volume);
 		sfx[i].max_volume = sfx_declaration[i].volume;
 		sfx[i].game_state = sfx_declaration[i].game_state;
+		i++;
 	}
+	sfx[i].music = NULL;
 	return true;
 }
 
 static bool init_sounds_music(music_t *music)
 {
-	for (size_t i = 0; music_declaration[i].path; i++) {
+	size_t i = 0;
+
+	while (music_declaration[i].path) {
 		music[i].music =
 			sfMusic_createFromFile(music_declaration[i].path);
 		if (!music[i].music)
@@ -54,7 +60,9 @@ static bool init_sounds_music(music_t *music)
 		sfMusic_setVolume(music[i].music, 0);
 		music[i].max_volume = music_declaration[i].volume;
 		music[i].game_state = music_declaration[i].game_state;
+		i++;
 	}
+	music[i].music = NULL;
 	return true;
 }
 

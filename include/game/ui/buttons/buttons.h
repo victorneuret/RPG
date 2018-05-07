@@ -12,8 +12,8 @@
 #include "str_utils.h"
 #include "color_utils.h"
 #include "key_pressed_functions.h"
-#include "checkbox_functions.h"
-#include "checkbox_functions.h"
+#include "checkbox.h"
+#include "checkbox.h"
 
 typedef struct render_window win_t;
 typedef struct textures textures_t;
@@ -31,6 +31,7 @@ typedef struct buttons {
 	game_status game_state;
 	sfSprite *sprite;
 	sfColor color;
+	sfVector2f pos;
 	sfColor hover_color;
 	bool reset_scale;
 	bool hover;
