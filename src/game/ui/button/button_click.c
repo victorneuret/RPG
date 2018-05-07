@@ -6,6 +6,7 @@
 */
 
 #include "buttons.h"
+#include "music.h"
 
 static void button_click_released_action(win_t *win, buttons_t *button)
 {
@@ -14,6 +15,7 @@ static void button_click_released_action(win_t *win, buttons_t *button)
 
 	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
 		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
+		play_sfx(win->game->sounds, CLICK);
 		if (button->func)
 			button->func(win);
 		button_click_animation(button);
