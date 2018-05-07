@@ -6,7 +6,9 @@
 */
 
 #include <stdbool.h>
+#include <SFML/Graphics.h>
 
+#include "render_window.h"
 #include "options.h"
 
 void options_animation(sfSprite *sprite, win_t *win)
