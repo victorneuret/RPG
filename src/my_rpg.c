@@ -16,6 +16,7 @@
 #include "particle_drawer.h"
 #include "fps.h"
 #include "options.h"
+#include "music_management.h"
 
 static void update_clock(win_t *win)
 {
@@ -92,6 +93,7 @@ static void render(win_t *win)
 		break;
 	default: break;
 	}
+	music_management(win->game->sounds, win->game_state);
 	render_game(win);
 }
 

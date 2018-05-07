@@ -8,28 +8,60 @@
 #pragma once
 
 #include "render_window.h"
+#include <SFML/Audio/Types.h>
 
-typedef struct {
+static const float default_sfx_vol = 100;
+static const float default_music_vol = 100;
+
+typedef struct music {
 	game_status game_state;
-	sf *;
-	struct *next;
-} _t;
+	sfMusic *music;
+	float max_volume;
+} music_t;
 
-typedef struct {
+typedef struct music_declaration {
 	game_status game_state;
 	char *path;
 	float volume;
 } _declaration_t;
 
-static const _declaration_t s_declaration[] = {
+typedef struct sounds {
+	float sfx_vol;
+	float music_vol;
+	music_t *music;
+	music_t *sfx;
+} sounds_t;
+
+static const music_declaration_t music_declaration[] = {
 	{
-		TITLE,
-		"res/s/menu.mp3",
-		100
+		INTRO | TITLE | OPTION | PAUSE,
+		"res/sounds/musics/title.ogg",
+		50
 	},
 	{
 		GAME,
-		"res/s/game.mp3",
-		100
+		"res/sounds/musics/boss.ogg",
+		50
+	},
+	{
+		0,
+		NULL,
+		0
 	}
 };
+
+static const music_declaration_t sfx_declaration[] = {
+	{
+		GAME,
+		"res/sounds/sfx/switch_title.ogg",
+		100
+	},
+	{
+		0,
+		NULL,
+		0
+	}
+};
+
+sounds_t *init_music();
+void free_music_struct(sounds_t *sounds);
