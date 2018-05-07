@@ -48,6 +48,7 @@ player_t *init_player(win_t *win)
 	player->aim = create_sprite(
 		get_texture(win->game->textures, "aim")->texture);
 	player->timer = sfClock_create();
+	player->aim_angle = 45;
 	if (!player->sprite || !player->aim || !player->timer)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
