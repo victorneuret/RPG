@@ -23,12 +23,6 @@ void change_resolution(win_t *win, __attribute__((unused))
 	sfRenderWindow_setSize(win->sf_win, resolution);
 }
 
-void manage_music(__attribute__((unused)) win_t *win, __attribute__((unused))
-	checkbox_t *checkbox)
-{
-	return;
-}
-
 void checkbox_fullscreen(win_t *win, __attribute__((unused))
 	checkbox_t *checkbox)
 {
