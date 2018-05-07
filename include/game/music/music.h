@@ -7,8 +7,9 @@
 
 #pragma once
 
-#include "render_window.h"
 #include <SFML/Audio/Types.h>
+
+#include "render_window.h"
 
 static const float default_sfx_vol = 100;
 static const float default_music_vol = 100;
@@ -23,7 +24,7 @@ typedef struct music_declaration {
 	game_status game_state;
 	char *path;
 	float volume;
-} _declaration_t;
+} music_declaration_t;
 
 typedef struct sounds {
 	float sfx_vol;
