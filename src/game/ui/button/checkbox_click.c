@@ -16,7 +16,6 @@ static void checkbox_click_released_action(win_t *win, checkbox_t *checkbox)
 	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
 		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
 		checkbox->value = checkbox->value ? false : true;
-		play_sfx(win->game->sounds, CLICK);
 		if (checkbox->func)
 			checkbox->func(win, checkbox);
 		checkbox_click_animation(checkbox);
@@ -45,6 +44,7 @@ static void checkbox_click_pressed_action(win_t *win, checkbox_t *checkbox)
 	rect = sfSprite_getGlobalBounds(get_checkbox_sprite(checkbox));
 	if (mouse.x >= rect.left && mouse.x <= rect.left + rect.width
 		&& mouse.y >= rect.top && mouse.y <= rect.top + rect.height) {
+		play_sfx(win->game->sounds, CLICK);
 		sfSprite_setScale(checkbox->selected, scale);
 		sfSprite_setScale(checkbox->unselected, scale);
 		checkbox->reset_scale = false;
