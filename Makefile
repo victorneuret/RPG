@@ -20,6 +20,7 @@ SRC	=	src/args.c                                                                
 		src/game/events_functions/exit_intro.c                                                              \
 		src/game/events_functions/joystick_events.c                                                         \
 		src/game/gamepad/buttons/joystick_button_abxy.c                                                     \
+		src/game/gamepad/buttons/joystick_button_arrow.c                                                    \
 		src/game/gamepad/buttons/joystick_button_lb_rb.c                                                    \
 		src/game/gamepad/buttons/joystick_button_rt_lt.c                                                    \
 		src/game/gamepad/buttons/joystick_button_special.c                                                  \

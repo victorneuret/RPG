@@ -42,8 +42,10 @@ void draw_inventory(win_t *win, item_t *item)
 
 void drop_item(inventory_t *inventory, uint8_t place)
 {
+	if (!inventory->item[place].name)
+		return;
 	inventory->item[place].droped = true;
-	inventory->item[place] = inventory->item[EMPTY];
+	inventory->item[place].name = NULL;
 }
 
 inventory_t *init_inventory(win_t *win)
@@ -52,6 +54,7 @@ inventory_t *init_inventory(win_t *win)
 
 	inventory->item_list = malloc(sizeof(item_t) * NB_ITEMS);
 	inventory->item = malloc(sizeof(item_t) * INVENTORY_NB);
+	inventory->selected = 0;
 	if (!inventory->item_list || !inventory->item)
 		return NULL;
 	if (!xml_item(inventory->item_list, win->game->textures))

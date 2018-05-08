@@ -6,6 +6,19 @@
 */
 
 #include "render_window.h"
+#include "inventory.h"
+
+void add_gun(win_t *win)
+{
+	add_item(win->game->player->inventory,
+				win->game->player->inventory->selected, GUN);
+}
+
+void drop_gun(win_t *win)
+{
+	drop_item(win->game->player->inventory,
+				win->game->player->inventory->selected);
+}
 
 void open_door(win_t *win)
 {

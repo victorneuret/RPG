@@ -8,6 +8,7 @@
 #include "joystick.h"
 #include "events.h"
 #include "render_window.h"
+#include "key_pressed_functions.h"
 
 void button_a(win_t *win, bool press)
 {
@@ -20,6 +21,8 @@ void button_a(win_t *win, bool press)
 	} else if (!pressed && press) {
 		if (win->game_state == INTRO)
 			exit_intro(win, NULL);
+		else if (win->game_state == GAME)
+			add_gun(win);
 		button_click_released(win, &event);
 		pressed = true;
 	}
@@ -62,5 +65,7 @@ void button_y(__attribute__((unused)) win_t *win, bool press)
 		return;
 	} else if (!pressed && press) {
 		pressed = true;
+		if (win->game_state == GAME)
+			drop_gun(win);
 	}
 }

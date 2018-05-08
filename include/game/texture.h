@@ -41,15 +41,15 @@ static const textures_path_t textures_path[] = {
 	},
 	{
 		"gun",
-		"res/textures/aim.png"
+		"res/textures/items/gun.png"
 	},
 	{
 		"shotgun",
-		"res/textures/aim.png"
+		"res/textures/items/shotgun.png"
 	},
 	{
 		"flamethrower",
-		"res/textures/aim.png"
+		"res/textures/items/flamethrower.png"
 	},
 	{NULL, NULL}
 };
