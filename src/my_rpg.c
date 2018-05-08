@@ -41,7 +41,7 @@ static bool update(win_t *win)
 		break;
 	case GAME:
 		update_player(win, win->game->player);
-		update_enemies(win->game->enemy_list,
+		update_enemies(win->game->enemy_list, win->game->sounds,
 					&win->game->dungeon->door_open);
 		break;
 	case TITLE:
@@ -64,9 +64,9 @@ static void render_game(win_t *win)
 	switch (win->game_state) {
 		case GAME:
 			draw_level(win->sf_win, win->game->level, win);
+			draw_inventory(win, win->game->player->inventory);
 			draw_enemies(win->sf_win, win->game->enemy_list);
 			draw_player(win, win->game->player);
-			draw_inventory(win, win->game->player->inventory->item);
 			render_transition(win);
 			break;
 		case OPTION: break;

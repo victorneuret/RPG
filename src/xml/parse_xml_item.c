@@ -7,6 +7,7 @@
 
 #include <libxml/parser.h>
 #include <stdbool.h>
+#include <SFML/Graphics.h>
 
 #include "xml.h"
 #include "getnbr.h"
@@ -28,7 +29,8 @@ static bool parse_xml_item(xmlNode *root, item_t *item,
 	item->delay = get_node_float(weapon_node, "delay");
 	item->sprite = create_sprite(tmp->texture);
 	item->pos = (sfVector2f){0, 0};
-	item->droped = false;
+	sfSprite_setOrigin(item->sprite, (sfVector2f){ITEM_SIZE / 2, ITEM_SIZE / 2});
+	item->droped = true;
 	return true;
 }
 

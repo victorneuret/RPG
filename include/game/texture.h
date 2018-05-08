@@ -9,6 +9,8 @@
 
 #include "render_window.h"
 
+static const int ITEM_SIZE = 112;
+
 typedef struct textures_path {
 	char *name;
 	char *path;

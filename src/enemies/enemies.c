@@ -13,6 +13,7 @@
 #include "enemies.h"
 #include "nb_utils.h"
 #include "my_calloc.h"
+#include "music.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos)
 {
@@ -38,13 +39,14 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 			render_object(win, RECTANGLE, current->enemy->shape);
 }
 
-void update_enemies(enemy_list_t *enemy_list, bool *door_open)
+void update_enemies(enemy_list_t *enemy_list, sounds_t *sounds, bool *door_open)
 {
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *current = enemy_list; current;
 						current = current->next) {
 		if (current->enemy && current->enemy->hp <= 0) {
+			play_sfx(sounds, DEATH);
 			rm_enemy_from_list(&enemy_list, current->enemy);
 			break;
 		}

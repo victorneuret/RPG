@@ -34,7 +34,7 @@ typedef struct item {
 
 typedef struct inventory {
 	uint8_t selected;
-	item_t *item;
+	item_t **item;
 	item_t *item_list;
 } inventory_t;
 
@@ -46,6 +46,6 @@ typedef enum item_type {
 } item_type;
 
 inventory_t *init_inventory(win_t *win);
-void drop_item(inventory_t *inventory, uint8_t place);
+void drop_item(win_t *win, inventory_t *inventory, uint8_t place);
 void add_item(inventory_t *inventory, uint8_t place, item_type item_nb);
-void draw_inventory(win_t *win, item_t *item);
+void draw_inventory(win_t *win, inventory_t *inventory);
