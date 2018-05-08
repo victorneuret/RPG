@@ -40,7 +40,7 @@ static bool update(win_t *win)
 		break;
 	case GAME:
 		update_player(win, win->game->player);
-		update_enemies(win->game->enemy_list,
+		update_enemies(win, win->game->enemy_list,
 					&win->game->dungeon->door_open);
 		break;
 	case TITLE:

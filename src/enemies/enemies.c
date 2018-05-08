@@ -13,16 +13,20 @@
 #include "enemies.h"
 #include "nb_utils.h"
 #include "my_calloc.h"
+#include "particle_xp.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos)
 {
+	const sfVector2f size = (sfVector2f) {100, 100};
 	sfRectangleShape *shape = sfRectangleShape_create();
 
 	if (!shape)
 		return NULL;
 	sfRectangleShape_setPosition(shape, pos);
 	sfRectangleShape_setFillColor(shape, sfCyan);
-	sfRectangleShape_setSize(shape, (sfVector2f) {100, 100});
+	sfRectangleShape_setSize(shape, size);
+	sfRectangleShape_setOrigin(shape,
+				(sfVector2f) {size.x / 2.f, size.y / 2.f});
 	sfRectangleShape_setOutlineColor(shape, sfBlue);
 	sfRectangleShape_setOutlineThickness(shape, 2);
 	return shape;
@@ -38,13 +42,15 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 			render_object(win, RECTANGLE, current->enemy->shape);
 }
 
-void update_enemies(enemy_list_t *enemy_list, bool *door_open)
+void update_enemies(win_t *win, enemy_list_t *enemy_list, bool *door_open)
 {
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *current = enemy_list; current;
 						current = current->next) {
 		if (current->enemy && current->enemy->hp <= 0) {
+			particle_xp(win, 50, current->enemy->pos,
+					hex_to_rgb(0xFFEB3B));
 			rm_enemy_from_list(&enemy_list, current->enemy);
 			break;
 		}

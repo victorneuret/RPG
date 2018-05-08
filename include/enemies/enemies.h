@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+typedef struct render_window win_t;
+
 typedef struct enemy {
 	sfRectangleShape *shape;
 	sfVector2f pos;
@@ -24,7 +26,7 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
-void update_enemies(enemy_list_t *enemy_list, bool *door_open);
+void update_enemies(win_t *win, enemy_list_t *enemy_list, bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos);
 void create_enemy_group(enemy_list_t **enemy_list);
