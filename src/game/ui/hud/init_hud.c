@@ -61,5 +61,6 @@ bool init_hud(player_t *player)
 	sfRectangleShape_setFillColor(player->xp->bar, hex_to_rgb(0xFFEB3B));
 	sfRectangleShape_setFillColor(player->xp->back_bar,
 					hex_to_rgba(0xFFFFFF55));
+	sfRectangleShape_setSize(player->xp->bar, (sfVector2f) {0, XP_HEIGHT});
 	return true;
 }

@@ -10,7 +10,7 @@
 #include "color_utils.h"
 #include "str_utils.h"
 
-void update_hp_bar(player_t *player)
+static void update_hp_bar(player_t *player)
 {
 	if (player->hp->value < 0)
 		player->hp->value = 0;
@@ -23,9 +23,14 @@ void update_hp_bar(player_t *player)
 
 void display_hp_bar(win_t *win)
 {
+	static int16_t value = 0;
+
+	if (value != win->game->player->hp->value)
+		update_hp_bar(win->game->player);
 	sfRenderWindow_drawRectangleShape(win->sf_win,
 		win->game->player->hp->back_bar, 0);
 	sfRenderWindow_drawRectangleShape(win->sf_win,
 		win->game->player->hp->bar, 0);
 	sfRenderWindow_drawText(win->sf_win, win->game->player->hp->text, 0);
+	value = win->game->player->hp->value;
 }
