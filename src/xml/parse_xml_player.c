@@ -27,7 +27,7 @@ static bool parse_xml_player(xmlNode *root, player_t *player)
 
 bool xml_player(player_t *player)
 {
-	xmlDoc *document = load_xml_file("player.xml");
+	xmlDoc *document = load_xml_file("config/player.xml");
 	xmlNode *root;
 
 	if (!document)
