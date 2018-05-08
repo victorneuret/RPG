@@ -8,6 +8,7 @@
 #include "joystick.h"
 #include "events.h"
 #include "render_window.h"
+#include "hud.h"
 
 void button_a(win_t *win, bool press)
 {
@@ -41,7 +42,7 @@ void button_b(win_t *win, bool press)
 	}
 }
 
-void button_x(__attribute__((unused)) win_t *win, bool press)
+void button_x(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -49,11 +50,16 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
+		win->game->player->hp->hp += 1;
+		update_hp_bar(win->game->player);
 		pressed = true;
+	} else {
+		win->game->player->hp->hp += 1;
+		update_hp_bar(win->game->player);
 	}
 }
 
-void button_y(__attribute__((unused)) win_t *win, bool press)
+void button_y(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -61,6 +67,11 @@ void button_y(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
+		win->game->player->hp->hp -= 1;
+		update_hp_bar(win->game->player);
 		pressed = true;
+	} else {
+		win->game->player->hp->hp -= 1;
+		update_hp_bar(win->game->player);
 	}
 }

@@ -93,15 +93,6 @@ static const button_declaration_t buttons_declaration[] = {
 		&close_win
 	},
 	{
-		GAME,
-		(sfIntRect) {64, 0, 64, 64},
-		(sfVector2f) {1879, 1038},
-		"Pause menu",
-		0x26A69AFF,
-		0x26A69ABF,
-		&pause_game
-	},
-	{
 		ALL,
 		(sfIntRect) {0, 0, 0, 0},
 		(sfVector2f) {0, 0},
