@@ -35,7 +35,7 @@ static void update_particle(win_t *win, sfClock *timer, particle_t *particle)
 		particle->update(win, particle, current_time);
 	if (particle->gravity)
 		particle->pos.y += (current_time /
-		(float) particle->lifetime_ms) * 1000 * win->dt;
+		(float) particle->lifetime_ms) * 1000.f * win->dt;
 	update_particle_position(win, particle);
 	particle->color.a = get_particle_alpha(particle->fade_in,
 		particle->fade_out, current_time, particle->lifetime_ms);
