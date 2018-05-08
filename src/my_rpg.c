@@ -17,6 +17,7 @@
 #include "fps.h"
 #include "options.h"
 #include "music_management.h"
+#include "enemies.h"
 #include "hud.h"
 
 static void update_clock(win_t *win)
@@ -39,6 +40,7 @@ static bool update(win_t *win)
 		break;
 	case GAME:
 		update_player(win, win->game->player);
+		update_enemies(win->game->enemy_list);
 		break;
 	case TITLE:
 		update_title_page(win);
@@ -60,6 +62,7 @@ static void render_game(win_t *win)
 	switch (win->game_state) {
 		case GAME:
 			draw_level(win->sf_win, win->game->level, win);
+			draw_enemies(win->sf_win, win->game->enemy_list);
 			draw_player(win, win->game->player);
 			render_transition(win);
 			break;
@@ -72,8 +75,7 @@ static void render_game(win_t *win)
 	draw_slider(win, win->game->ui->slider);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
-	render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->overlay);
+	render_object(win->sf_win, SPRITE, win->game->ui->title_page->overlay);
 	if (win->game_state == GAME)
 			display_hp_bar(win);
 	draw_popups(win, win->game->ui->popup_list);

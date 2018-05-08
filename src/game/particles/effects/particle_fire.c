@@ -14,7 +14,8 @@
 #include "particle_manager.h"
 #include "color_utils.h"
 
-void update_fire_particle(particle_t *particle, uint64_t current_time)
+void update_fire_particle(__attribute__((unused)) win_t *win,
+			particle_t *particle, uint64_t current_time)
 {
 	const double lifetime_ratio = (double) current_time /
 					(double) particle->lifetime_ms;

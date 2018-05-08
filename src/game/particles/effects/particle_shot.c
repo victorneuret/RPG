@@ -11,7 +11,31 @@
 #include "nb_utils.h"
 #include "render_window.h"
 #include "particle.h"
+#include "enemies.h"
 #include "particle_manager.h"
+#include "particle_explosion.h"
+
+void update_particle_shot(win_t *win, particle_t *particle,
+			__attribute__((unused)) uint64_t current_time)
+{
+	enemy_list_t *current = win->game->enemy_list;
+	sfFloatRect enemy_rect;
+	const sfFloatRect particle_rect =
+		sfRectangleShape_getGlobalBounds(particle->shape);
+
+	while (current) {
+		if (!current->enemy)
+			return;
+		enemy_rect = sfRectangleShape_getGlobalBounds(
+			current->enemy->shape);
+		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
+			particle->alive = false;
+			create_explosion(win, 5, particle->pos, sfRed);
+			current->enemy->hp -= 25;
+		}
+		current = current->next;
+	}
+}
 
 static particle_t *create_particle(sfVector2f origin, sfColor color,
 				float angle)
@@ -28,6 +52,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color,
 	particle->fade_in = false;
 	particle->fade_out = true;
 	particle->lifetime_ms = 3333;
+	particle->update = &update_particle_shot;
 	particle->size = rand_int(10, 15);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
 					sin(angle) * speed};
