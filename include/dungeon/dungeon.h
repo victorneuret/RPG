@@ -35,7 +35,7 @@ typedef struct room {
 typedef struct dungeon {
 	int8_t **rooms;
 	uint8_t nb_rooms;
-	uint8_t act_room;
+	int8_t act_room;
 	bool door_open;
 	sfRectangleShape *shade;
 	bool transition;

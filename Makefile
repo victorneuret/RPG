@@ -13,6 +13,8 @@ SRC	=	src/args.c                                                                
 		src/dungeon/set_room.c										    \
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
+		src/enemies/enemies.c                                                                               \
+		src/enemies/enemy_list.c                                                                            \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
@@ -44,6 +46,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \
+		src/game/menu/slider_parallax.c									    \
 		src/game/particles/effects/particle_shot.c                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
@@ -53,8 +56,12 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
 		src/game/ui/hud/hp_bar.c									    \
+		src/game/ui/hud/xp_bar.c									    \
+		src/game/ui/hud/init_hud.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
+		src/game/ui/button/init_slider.c								    \
+		src/game/ui/button/slider_click.c								    \
 		src/game/ui/button/init_checkbox.c                                                                  \
 		src/game/ui/button/checkbox_functions.c                                                             \
 		src/game/ui/button/button_animation.c                                                               \
@@ -123,6 +130,7 @@ CPPFLAGS+=	-Wall -Wextra
 
 CPPFLAGS+=	-I./include                                                                                         \
 		-I./include/dungeon                                                                                 \
+		-I./include/enemies                                                                                 \
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \
@@ -167,7 +175,7 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
-		@echo -en "Compiling $(NAME) ..."
+		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
 

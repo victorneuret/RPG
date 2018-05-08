@@ -16,4 +16,6 @@ typedef struct {
 	bool display_help;
 	bool display_fps;
 	bool fullscreen;
+	bool skip_intro;
+	bool no_sound;
 } settings_t;

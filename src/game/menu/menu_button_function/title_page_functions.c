@@ -12,6 +12,7 @@
 #include "render_window.h"
 #include "level.h"
 #include "music.h"
+#include "enemies.h"
 
 void start_game(win_t *win)
 {

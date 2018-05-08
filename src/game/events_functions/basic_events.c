@@ -37,6 +37,7 @@ void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
 	mouse_moved(win, event);
 	button_click_pressed(win, event);
 	checkbox_click_pressed(win, event);
+	slider_click_pressed(win, event);
 }
 
 void mouse_click_released(win_t *win, sfEvent *event)

@@ -8,7 +8,11 @@
 #include "joystick.h"
 #include "events.h"
 #include "render_window.h"
+<<<<<<< HEAD
 #include "key_pressed_functions.h"
+=======
+#include "hud.h"
+>>>>>>> master
 
 void button_a(win_t *win, bool press)
 {
@@ -44,7 +48,7 @@ void button_b(win_t *win, bool press)
 	}
 }
 
-void button_x(__attribute__((unused)) win_t *win, bool press)
+void button_x(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -52,11 +56,16 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
+		win->game->player->xp->value += 1;
+		update_xp_bar(win->game->player, win);
 		pressed = true;
+	} else {
+		win->game->player->xp->value += 1;
+		update_xp_bar(win->game->player, win);
 	}
 }
 
-void button_y(__attribute__((unused)) win_t *win, bool press)
+void button_y(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -64,8 +73,16 @@ void button_y(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
+		win->game->player->xp->value -= 1;
+		update_xp_bar(win->game->player, win);
 		pressed = true;
+<<<<<<< HEAD
 		if (win->game_state == GAME)
 			drop_gun(win);
+=======
+	} else {
+		win->game->player->xp->value -= 1;
+		update_xp_bar(win->game->player, win);
+>>>>>>> master
 	}
 }

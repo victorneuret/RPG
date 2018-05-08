@@ -62,6 +62,8 @@ static void play_music(music_t *music)
 
 void music_management(sounds_t *sounds, game_status game_state)
 {
+	if (sounds->no_sound)
+		return;
 	for (size_t i = 0; sounds->music[i].music; i++) {
 		if (sounds->music[i].game_state & game_state &&
 				!is_music_playing(sounds)) {

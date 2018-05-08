@@ -17,6 +17,7 @@
 #include "fps.h"
 #include "options.h"
 #include "music_management.h"
+#include "enemies.h"
 #include "hud.h"
 #include "inventory.h"
 
@@ -40,6 +41,8 @@ static bool update(win_t *win)
 		break;
 	case GAME:
 		update_player(win, win->game->player);
+		update_enemies(win->game->enemy_list,
+					&win->game->dungeon->door_open);
 		break;
 	case TITLE:
 		update_title_page(win);
@@ -61,6 +64,7 @@ static void render_game(win_t *win)
 	switch (win->game_state) {
 		case GAME:
 			draw_level(win->sf_win, win->game->level, win);
+			draw_enemies(win->sf_win, win->game->enemy_list);
 			draw_player(win, win->game->player);
 			draw_inventory(win, win->game->player->inventory->item);
 			render_transition(win);
@@ -71,12 +75,14 @@ static void render_game(win_t *win)
 	draw_particles(win);
 	draw_buttons(win);
 	draw_checkbox(win);
+	draw_slider(win, win->game->ui->slider);
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
-	render_object(win->sf_win, SPRITE,
-					win->game->ui->title_page->overlay);
-	if (win->game_state == GAME)
-			display_hp_bar(win);
+	render_object(win->sf_win, SPRITE, win->game->ui->title_page->overlay);
+	if (win->game_state == GAME) {
+		display_hp_bar(win);
+		display_xp_bar(win);
+	}
 	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);

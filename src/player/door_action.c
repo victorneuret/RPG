@@ -22,6 +22,7 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			win->game->dungeon->act_room = map[i + y][j + x];
 			win->game->dungeon->door_open = false;
 			win->game->dungeon->transition = true;
+			create_enemy_group(&win->game->enemy_list);
 			break;
 		}
 		if (j + 1 >= NB_ROOMS_WIDTH) {
@@ -35,16 +36,16 @@ static void set_sprite_pos(sfVector2f *pos, uint8_t dir, sounds_t *sounds)
 {
 	switch (dir) {
 	case LEFT:
-		pos->x = WIN_MAX_W - WALL_SIZE - PLAYER_W;
+		pos->x = WIN_MAX_W - WALL_SIZE - PLAYER_W - 16;
 		break;
 	case RIGHT:
-		pos->x = WALL_SIZE;
+		pos->x = WALL_SIZE + 16;
 		break;
 	case TOP:
 		pos->y = WIN_MAX_H - WALL_SIZE - PLAYER_H - 16;
 		break;
 	case BOTTOM:
-		pos->y = WALL_SIZE;
+		pos->y = WALL_SIZE + 16;
 		break;
 	default:
 		pos->y = WIN_MAX_H / 2 + PLAYER_H / 2;

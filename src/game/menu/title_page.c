@@ -50,7 +50,7 @@ title_page_t *init_title_page(textures_t *texture)
 	return title_page;
 }
 
-float get_paralax_speed(game_status state)
+float get_parallax_speed(game_status state)
 {
 	switch (state) {
 		case TITLE: return TITLE_SPEED;
@@ -59,10 +59,10 @@ float get_paralax_speed(game_status state)
 	}
 }
 
-void buttons_paralax(win_t *win)
+void buttons_parallax(win_t *win)
 {
 	sfVector2f mouse = get_mouse_pos(win);
-	int speed = get_paralax_speed(win->game_state);
+	int speed = get_parallax_speed(win->game_state);
 
 	for (buttons_t *tmp = win->game->ui->buttons; tmp; tmp = tmp->next) {
 		if (tmp->game_state == win->game_state) {
@@ -78,6 +78,7 @@ void buttons_paralax(win_t *win)
 				mouse.y / speed * -1 + tmp->pos.y});
 		}
 	}
+	slider_parallax(win, speed, mouse);
 }
 
 void update_title_page(win_t *win)
@@ -89,5 +90,5 @@ void update_title_page(win_t *win)
 	(sfVector2f) {mouse.x / 75 * -1 + 960, mouse.y / 75 * -1 + 540});
 	sfSprite_setPosition(win->game->ui->title_page->background,
 	(sfVector2f) {mouse.x / 150 * -1 + 960, mouse.y / 150 * -1 + 540});
-	buttons_paralax(win);
+	buttons_parallax(win);
 }
