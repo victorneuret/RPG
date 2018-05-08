@@ -11,5 +11,7 @@
 
 void play_sfx(sounds_t *sounds, sfx_type sfx)
 {
+	if (sounds->no_sound)
+		return;
 	sfMusic_play(sounds->sfx[sfx].music);
 }

@@ -9,6 +9,7 @@
 #include <SFML/Audio.h>
 
 #include "music.h"
+#include "settings.h"
 
 void free_music_struct(sounds_t *sounds)
 {
@@ -66,7 +67,7 @@ static bool init_sounds_music(music_t *music)
 	return true;
 }
 
-sounds_t *init_music()
+sounds_t *init_music(settings_t *settings)
 {
 	sounds_t *sounds = malloc(sizeof(sounds_t));
 
@@ -76,9 +77,11 @@ sounds_t *init_music()
 	sounds->sfx = malloc(sizeof(music_t) * music_len(sfx_declaration));
 	if (!sounds->music || !sounds->sfx)
 		return NULL;
-	sounds->sfx_vol = default_sfx_vol;
-	sounds->music_vol = default_music_vol;
+	sounds->no_sound = settings->no_sound;
+	sounds->sfx_vol = DEFAULT_SFX_VOL;
+	sounds->music_vol = DEFAULT_MUSIC_VOL;
 	if (!init_sounds_music(sounds->music) || !init_sounds_sfx(sounds->sfx))
 		return NULL;
+
 	return sounds;
 }

@@ -26,6 +26,19 @@ static bool get_fps_limit(char const *arg, settings_t *settings)
 	return true;
 }
 
+static bool get_additional_arg(char *arg, settings_t *settings)
+{
+	if (str_eq(arg, ARG_NO_SOUND)) {
+		settings->no_sound = true;
+		return true;
+	}
+	if (str_eq(arg, ARG_SKIP_INTRO)) {
+		settings->skip_intro = true;
+		return true;
+	}
+	return false;
+}
+
 static bool get_arg(char *arg, settings_t *settings, bool *valid_args)
 {
 	if (!my_strncmp(arg, ARG_FPS_LIMIT, my_strlen(ARG_FPS_LIMIT))) {
@@ -44,7 +57,7 @@ static bool get_arg(char *arg, settings_t *settings, bool *valid_args)
 		settings->fullscreen = true;
 		return true;
 	}
-	return false;
+	return get_additional_arg(arg, settings);
 }
 
 static void init_settings(settings_t *settings)

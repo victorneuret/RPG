@@ -13,3 +13,6 @@ static const char *ARG_HELP_SHORT = "-h";
 static const char *ARG_FULLSCREEN = "--fullscreen";
 static const char *ARG_SHOW_FPS = "--fps";
 static const char *ARG_FPS_LIMIT = "--fps-limit=";
+
+static const char *ARG_NO_SOUND = "--nosound";
+static const char *ARG_SKIP_INTRO = "--skipintro";
