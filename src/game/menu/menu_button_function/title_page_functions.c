@@ -18,9 +18,6 @@ void start_game(win_t *win)
 {
 	change_state(win, GAME);
 	load_level(&win->game->level, DUNGEON, win);
-	create_enemy(&win->game->enemy_list, (sfVector2f) {600, 500});
-	create_enemy(&win->game->enemy_list, (sfVector2f) {500, 400});
-	create_enemy(&win->game->enemy_list, (sfVector2f) {800, 500});
 }
 
 void error_test(win_t *win)

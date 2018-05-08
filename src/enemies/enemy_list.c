@@ -5,8 +5,6 @@
 ** enemy_list
 */
 
-// TODO remove stdio.h
-#include <stdio.h>
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 

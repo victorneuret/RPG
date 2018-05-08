@@ -9,6 +9,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef struct enemy {
 	sfRectangleShape *shape;
@@ -23,9 +24,10 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
-void update_enemies(enemy_list_t *enemy_list);
+void update_enemies(enemy_list_t *enemy_list, bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos);
+void create_enemy_group(enemy_list_t **enemy_list);
 
 void add_enemy_to_list(enemy_list_t **enemy_list, enemy_t *enemy);
 void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy);

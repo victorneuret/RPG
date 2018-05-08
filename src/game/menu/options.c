@@ -42,5 +42,5 @@ void update_options_page(win_t *win)
 	sfSprite_setPosition(win->game->ui->title_page->options,
 	(sfVector2f) {mouse.x / 25 * -1, mouse.y / 25 * -1});
 	options_animation(win->game->ui->title_page->options, win);
-	buttons_paralax(win);
+	buttons_parallax(win);
 }

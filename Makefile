@@ -45,6 +45,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \
+		src/game/menu/slider_parallax.c									    \
 		src/game/particles/effects/particle_shot.c                                                          \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
@@ -58,6 +59,8 @@ SRC	=	src/args.c                                                                
 		src/game/ui/hud/init_hud.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
+		src/game/ui/button/init_slider.c								    \
+		src/game/ui/button/slider_click.c								    \
 		src/game/ui/button/init_checkbox.c                                                                  \
 		src/game/ui/button/checkbox_functions.c                                                             \
 		src/game/ui/button/button_animation.c                                                               \
