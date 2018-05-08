@@ -14,6 +14,7 @@
 #include "change_state.h"
 #include "player.h"
 #include "music.h"
+#include "hud.h"
 
 static bool init_ui(win_t *win)
 {

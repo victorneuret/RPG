@@ -17,6 +17,7 @@
 #include "fps.h"
 #include "options.h"
 #include "music_management.h"
+#include "hud.h"
 
 static void update_clock(win_t *win)
 {
@@ -72,6 +73,8 @@ static void render_game(win_t *win)
 	draw_text_area(win);
 	render_object(win->sf_win, SPRITE,
 					win->game->ui->title_page->overlay);
+	if (win->game_state == GAME)
+			display_hp_bar(win);
 	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);
