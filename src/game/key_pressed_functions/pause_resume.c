@@ -12,8 +12,8 @@
 
 void pause_game(win_t *win)
 {
-	if (win->game_state == PAUSE)
+	if (win->game_state == OPTION)
 		change_state(win, GAME);
 	else if (win->game_state == GAME)
-		change_state(win, PAUSE);
+		change_state(win, OPTION);
 }

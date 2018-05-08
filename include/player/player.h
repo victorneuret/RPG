@@ -31,6 +31,7 @@ typedef struct player {
 	sfSprite *sprite;
 	float speed;
 	uint8_t level;
+	uint16_t basic_hp;
 	uint16_t hp;
 	float hp_mult;
 	uint16_t xp;
