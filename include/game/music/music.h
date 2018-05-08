@@ -101,6 +101,4 @@ static const music_declaration_t sfx_declaration[] = {
 sounds_t *init_music();
 void free_music_struct(sounds_t *sounds);
 void play_sfx(sounds_t *sounds, sfx_type sfx);
-void manage_sfx(win_t *win, uint8_t value);
-void manage_music(win_t *win, uint8_t value);
 void set_global_volume(sounds_t *sounds);
