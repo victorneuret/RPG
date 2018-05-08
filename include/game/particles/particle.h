@@ -12,6 +12,8 @@
 
 #include "render_window.h"
 
+typedef struct render_window win_t;
+
 typedef struct particle particle_t;
 typedef struct particle_group particle_group_t;
 typedef struct particle_manager particle_manager_t;
@@ -28,7 +30,7 @@ struct particle {
 	bool fade_in;
 	bool fade_out;
 	bool screen_collision;
-	void (*update)(particle_t *particle, uint64_t current_time);
+	void (*update)(win_t *win, particle_t *particle, uint64_t current_time);
 };
 
 struct particle_group {

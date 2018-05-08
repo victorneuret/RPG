@@ -32,7 +32,7 @@ static void update_particle(win_t *win, sfClock *timer, particle_t *particle)
 	if (!particle->alive)
 		return;
 	if (particle->update)
-		particle->update(particle, current_time);
+		particle->update(win, particle, current_time);
 	if (particle->gravity)
 		particle->pos.y += (current_time /
 		(float) particle->lifetime_ms) * 1000 * win->dt;
