@@ -30,6 +30,7 @@ void draw_player(win_t *win, player_t *player)
 
 static void init_player_aim(player_t *player)
 {
+	player->aim_angle = 45;
 	sfSprite_setOrigin(player->aim, (sfVector2f) {25, 25});
 	sfSprite_setRotation(player->aim, 45.f);
 	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
@@ -49,7 +50,6 @@ player_t *init_player(win_t *win)
 	player->aim = create_sprite(
 		get_texture(win->game->textures, "aim")->texture);
 	player->timer = sfClock_create();
-	player->aim_angle = 45;
 	if (!player->sprite || !player->aim || !player->timer)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,

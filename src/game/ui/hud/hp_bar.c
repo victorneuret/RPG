@@ -28,7 +28,8 @@ bool init_hud(player_t *player)
 	rect = sfRectangleShape_getGlobalBounds(player->hud->hp_bar);
 	sfRectangleShape_setOrigin(player->hud->hp_bar, (sfVector2f)
 				{rect.width, rect.top});
-	sfRectangleShape_setPosition(player->hud->hp_bar, (sfVector2f) {1900, 20});
+	sfRectangleShape_setPosition(player->hud->hp_bar,
+					(sfVector2f) {1900, 20});
 	sfRectangleShape_setFillColor(player->hud->hp_bar,
 				hex_to_rgb(0xFF0000));
 	return true;
