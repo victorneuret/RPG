@@ -18,6 +18,7 @@
 #include "options.h"
 #include "music_management.h"
 #include "hud.h"
+#include "inventory.h"
 
 static void update_clock(win_t *win)
 {
@@ -61,6 +62,7 @@ static void render_game(win_t *win)
 		case GAME:
 			draw_level(win->sf_win, win->game->level, win);
 			draw_player(win, win->game->player);
+			draw_inventory(win, win->game->player->inventory->item);
 			render_transition(win);
 			break;
 		case OPTION: break;

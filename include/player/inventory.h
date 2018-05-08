@@ -13,8 +13,8 @@
 
 #include "render_window.h"
 
-static const int INVENTORY_NB = 4;
-static const int NB_ITEMS = 4;
+static const uint8_t INVENTORY_NB = 3;
+static const uint8_t NB_ITEMS = 4;
 
 static const char *item_list[] __attribute__((unused)) = {
 	"gun",
@@ -33,8 +33,19 @@ typedef struct item {
 } item_t;
 
 typedef struct inventory {
-	item_t *item[3];
+	item_t *item;
 	item_t *item_list;
 } inventory_t;
 
+typedef enum item_type {
+	GUN,
+	SHOTGUN,
+	FLAMETHROWER,
+	EMPTY
+} item_type;
+
 inventory_t *init_inventory(win_t *win);
+void drop_item(inventory_t *inventory, uint8_t place);
+void draw_inventory(win_t *win, item_t *item);
+void add_item_to_inventory(inventory_t *inventory, uint8_t place,
+							item_type item_nb);

@@ -19,7 +19,8 @@ static bool parse_xml_item(xmlNode *root, item_t *item,
 	xmlNode *weapon_node = get_node_by_name(root, item_name);
 	textures_t *tmp = texture;
 
-	if (!weapon_node)
+
+	if (!weapon_node || !item)
 		return false;
 	for (; tmp && !str_eq(tmp->name, item_name); tmp = tmp->next);
 	item->name = get_node_string(weapon_node, "name");
@@ -35,16 +36,16 @@ bool xml_item(item_t *item, textures_t *texture)
 {
 	xmlDoc *document = load_xml_file("config/weapons.xml");
 	xmlNode *root;
+	size_t i = 0;
 
 	if (!document)
 		return false;
 	root = load_xml_node(document);
 	if (!root)
 		return false;
-	for (size_t i = 0; item_list[i]; i++) {
+	for (i = 0; item_list[i]; i++) {
 		if (!parse_xml_item(root, &item[i], texture, item_list[i]))
 			return false;
-		item[i + 1].name = NULL;
 	}
 	xmlFreeDoc(document);
 	return true;
