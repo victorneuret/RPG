@@ -23,6 +23,7 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
+void update_enemies(enemy_list_t *enemy_list);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos);
 

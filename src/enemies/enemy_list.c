@@ -5,6 +5,8 @@
 ** enemy_list
 */
 
+// TODO remove stdio.h
+#include <stdio.h>
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 
@@ -39,19 +41,21 @@ static void del_enemy(enemy_t *enemy)
 	free(enemy);
 }
 
-static void rm_first(enemy_list_t **enemy_list, enemy_t *enemy)
+static void rm_first(enemy_list_t **enemy_list)
 {
 	enemy_list_t *save;
 
 	if (!(*enemy_list)->next) {
-		free((*enemy_list)->enemy);
+		del_enemy((*enemy_list)->enemy);
 		(*enemy_list)->enemy = NULL;
+		(*enemy_list)->next = NULL;
 		return;
 	}
+	del_enemy((*enemy_list)->enemy);
+	(*enemy_list)->enemy = (*enemy_list)->next->enemy;
 	save = (*enemy_list)->next;
-	del_enemy(enemy);
-	free(*enemy_list);
-	*enemy_list = save;
+	(*enemy_list)->next = (*enemy_list)->next->next;
+	free(save);
 }
 
 void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy)
@@ -62,7 +66,7 @@ void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy)
 	if (!current || !enemy)
 		return;
 	if (current->enemy == enemy)
-		return rm_first(enemy_list, enemy);
+		return rm_first(enemy_list);
 	while (current) {
 		if (current->enemy == enemy) {
 			previous->next = current->next;

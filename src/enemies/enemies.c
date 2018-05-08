@@ -31,8 +31,23 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 {
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *enemy = enemy_list; enemy; enemy = enemy->next)
-		render_object(win, RECTANGLE, enemy->enemy->shape);
+	for (enemy_list_t *current = enemy_list; current;
+						current = current->next)
+		if (current->enemy)
+			render_object(win, RECTANGLE, current->enemy->shape);
+}
+
+void update_enemies(enemy_list_t *enemy_list)
+{
+	if (!enemy_list)
+		return;
+	for (enemy_list_t *current = enemy_list; current;
+						current = current->next) {
+		if (current->enemy && current->enemy->hp <= 0) {
+			rm_enemy_from_list(&enemy_list, current->enemy);
+			break;
+		}
+	}
 }
 
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)

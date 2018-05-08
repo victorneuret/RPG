@@ -24,12 +24,14 @@ void update_particle_shot(win_t *win, particle_t *particle,
 		sfRectangleShape_getGlobalBounds(particle->shape);
 
 	while (current) {
+		if (!current->enemy)
+			return;
 		enemy_rect = sfRectangleShape_getGlobalBounds(
 			current->enemy->shape);
 		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
 			particle->alive = false;
 			create_explosion(win, 5, particle->pos, sfRed);
-			// TODO: Damage enemy
+			current->enemy->hp -= 25;
 		}
 		current = current->next;
 	}
