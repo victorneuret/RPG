@@ -15,6 +15,7 @@
 #include "player.h"
 #include "music.h"
 #include "slider.h"
+#include "hud.h"
 
 static bool init_ui(win_t *win)
 {

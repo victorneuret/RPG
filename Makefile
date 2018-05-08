@@ -51,6 +51,7 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_drawer.c                                                                \
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
+		src/game/ui/hud/hp_bar.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
 		src/game/ui/button/init_slider.c								    \
@@ -106,7 +107,8 @@ SRC	=	src/args.c                                                                
 		src/xml/get_node_by_name.c                                                                          \
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
-		src/xml/xml_exemple.c
+		src/xml/xml_exemple.c										    \
+		src/xml/parse_xml_player.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \
@@ -129,6 +131,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/particles                                                                          \
 		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
+		-I./include/game/ui/hud										    \
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
