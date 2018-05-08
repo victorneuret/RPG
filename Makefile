@@ -85,6 +85,7 @@ SRC	=	src/args.c                                                                
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
+		src/player/inventory.c								   		    \
 		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
@@ -106,7 +107,8 @@ SRC	=	src/args.c                                                                
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
 		src/xml/xml_exemple.c										    \
-		src/xml/parse_xml_player.c
+		src/xml/parse_xml_player.c									    \
+		src/xml/parse_xml_item.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \

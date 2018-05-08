@@ -9,6 +9,7 @@
 #include "player.h"
 #include "render_window.h"
 #include "my_calloc.h"
+#include "inventory.h"
 #include "xml.h"
 
 void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
@@ -59,6 +60,7 @@ player_t *init_player(win_t *win)
 	if (!xml_player(player) || !init_hud(player))
 		return false;
 	init_player_aim(player);
+	init_inventory(win);
 	return player;
 }
 
