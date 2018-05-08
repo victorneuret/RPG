@@ -8,10 +8,23 @@
 #include "render_window.h"
 #include "inventory.h"
 
-void plus(win_t *win)
+uint8_t get_next_inventory(inventory_t *inventory, int negative)
+{
+	uint8_t select = inventory->selected;
+
+	select = (select + 1) % 3;
+	while (select != inventory->selected) {
+		if (inventory->item[select] && !inventory->item[select]->droped)
+			break;
+		select = (select + (1 * negative)) % 3;
+	}
+	return select;
+}
+
+void switch_inventory(win_t *win)
 {
 	win->game->player->inventory->selected =
-			(win->game->player->inventory->selected + 1) % 3;
+			get_next_inventory(win->game->player->inventory, 1);
 }
 
 void add_gun(win_t *win)

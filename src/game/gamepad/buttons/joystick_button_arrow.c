@@ -9,16 +9,15 @@
 #include "events.h"
 #include "render_window.h"
 
-
 void button_left(win_t *win)
 {
 	win->game->player->inventory->selected =
-		(win->game->player->inventory->selected + 1) % INVENTORY_NB;
+		get_next_inventory(win->game->player->inventory, -1);
 
 }
 
 void button_right(win_t *win)
 {
 	win->game->player->inventory->selected =
-		(win->game->player->inventory->selected + 1) % INVENTORY_NB;
+	get_next_inventory(win->game->player->inventory, 1);
 }

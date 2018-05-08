@@ -94,6 +94,7 @@ SRC	=	src/args.c                                                                
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
+		src/player/draw_inventory.c                                                                         \
 		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \

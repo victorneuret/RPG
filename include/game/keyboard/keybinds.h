@@ -23,7 +23,7 @@ typedef struct {
 
 void add_gun(win_t *win);
 void drop_gun(win_t *win);
-void plus(win_t *win);
+void switch_inventory(win_t *win);
 
 static const keybind_t keybinds[] = {
 	{ALL,	sfKeyDelete,	&to_title_page},
@@ -42,6 +42,6 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyP,		&open_door},
 	{GAME, 	sfKeyI, 	&add_gun},
 	{GAME,	sfKeyO, 	&drop_gun},
-	{GAME,	sfKeyN,		&plus},
+	{GAME,	sfKeyN,		&switch_inventory},
 	{0,	0,		NULL}
 };

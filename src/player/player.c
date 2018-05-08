@@ -68,5 +68,6 @@ void destroy_player(player_t *player)
 {
 	sfSprite_destroy(player->sprite);
 	sfClock_destroy(player->timer);
+	free_inventory(player->inventory);
 	free(player);
 }
