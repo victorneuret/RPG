@@ -41,4 +41,5 @@ typedef struct title_page {
 
 title_page_t *init_title_page(textures_t *texture);
 void update_title_page(win_t *win);
-void buttons_paralax(win_t *win);
+void buttons_parallax(win_t *win);
+void slider_parallax(win_t *win, int speed, sfVector2f mouse);
