@@ -54,6 +54,7 @@ SRC	=	src/args.c                                                                
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
 		src/game/ui/button/init_slider.c								    \
+		src/game/ui/button/slider_click.c								    \
 		src/game/ui/button/init_checkbox.c                                                                  \
 		src/game/ui/button/checkbox_functions.c                                                             \
 		src/game/ui/button/button_animation.c                                                               \
