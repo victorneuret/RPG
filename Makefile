@@ -167,7 +167,7 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
-		@echo -en "Compiling $(NAME) ..."
+		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
 
