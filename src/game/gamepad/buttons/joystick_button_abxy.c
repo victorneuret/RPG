@@ -50,12 +50,12 @@ void button_x(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->player->hp->hp += 1;
-		update_hp_bar(win->game->player);
+		win->game->player->xp->value += 1;
+		update_xp_bar(win->game->player, win);
 		pressed = true;
 	} else {
-		win->game->player->hp->hp += 1;
-		update_hp_bar(win->game->player);
+		win->game->player->xp->value += 1;
+		update_xp_bar(win->game->player, win);
 	}
 }
 
@@ -67,11 +67,11 @@ void button_y(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->player->hp->hp -= 1;
-		update_hp_bar(win->game->player);
+		win->game->player->xp->value -= 1;
+		update_xp_bar(win->game->player, win);
 		pressed = true;
 	} else {
-		win->game->player->hp->hp -= 1;
-		update_hp_bar(win->game->player);
+		win->game->player->xp->value -= 1;
+		update_xp_bar(win->game->player, win);
 	}
 }

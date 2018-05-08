@@ -54,6 +54,7 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
 		src/game/ui/hud/hp_bar.c									    \
+		src/game/ui/hud/xp_bar.c									    \
 		src/game/ui/hud/init_hud.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
