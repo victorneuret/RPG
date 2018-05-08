@@ -41,6 +41,8 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 
 void update_enemies(enemy_list_t *enemy_list, sounds_t *sounds, bool *door_open)
 {
+	static bool doors = false;
+
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *current = enemy_list; current;
@@ -52,6 +54,11 @@ void update_enemies(enemy_list_t *enemy_list, sounds_t *sounds, bool *door_open)
 		}
 	}
 	*door_open = enemy_list->enemy == NULL;
+	if (*door_open && !doors) {
+		play_sfx(sounds, OPEN);
+		doors = true;
+	} else if (!*door_open)
+		doors = false;
 }
 
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
