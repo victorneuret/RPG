@@ -18,9 +18,9 @@ static bool parse_xml_player(xmlNode *root, player_t *player)
 
 	if (!hp_node || !xp_node)
 		return false;
-	player->hp = get_node_int(hp_node, "start");
-	player->basic_hp = get_node_int(hp_node, "start");
-	player->hp_mult = get_node_float(hp_node, "multiplicator");
+	player->hp->hp = get_node_int(hp_node, "start");
+	player->hp->max_hp = get_node_int(hp_node, "start");
+	player->hp->hp_mult = get_node_float(hp_node, "multiplicator");
 	player->xp = get_node_int(xp_node, "start");
 	player->xp_multi = get_node_float(xp_node, "multiplicator");
 	return true;
@@ -28,10 +28,11 @@ static bool parse_xml_player(xmlNode *root, player_t *player)
 
 bool xml_player(player_t *player)
 {
+	player->hp = malloc(sizeof(hp_t));
 	xmlDoc *document = load_xml_file("config/player.xml");
 	xmlNode *root;
 
-	if (!document)
+	if (!document || !player->hp)
 		return false;
 	root = load_xml_node(document);
 	if (!root)

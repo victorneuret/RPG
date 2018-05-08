@@ -5,32 +5,44 @@
 ** init_hud
 */
 
+#include <SFML/Graphics.h>
+
 #include <stdbool.h>
 
 #include "player.h"
 #include "hud.h"
 #include "color_utils.h"
+#include "str_utils.h"
+#include "text_utils.h"
+
+static bool init_hp_bar(sfRectangleShape **bar, player_t *player)
+{
+	sfFont *font =
+		sfFont_createFromFile("res/fonts/space_mono_regular.ttf");
+
+	if (!font)
+		return false;
+	player->hp->text = init_text(font, int_to_str(player->hp->hp),
+				(sfVector2f) {50, 958}, 40);
+	if (!player->hp->text)
+		return false;
+	sfText_setStyle(player->hp->text, sfTextBold);
+	*bar = sfRectangleShape_create();
+	if (!bar)
+		return false;
+	sfRectangleShape_setSize(*bar, (sfVector2f) {HP_WIDTH, HP_HEIGHT});
+	sfRectangleShape_setScale(*bar, (sfVector2f) {1, 1});
+	sfRectangleShape_setPosition(*bar, (sfVector2f) {40, 1008});
+	return true;
+}
 
 bool init_hud(player_t *player)
 {
-	player->hud = malloc(sizeof(hud_t));
-	sfFloatRect rect;
-
-	if (!player->hud)
+	if (!init_hp_bar(&player->hp->hp_bar, player)
+		|| !init_hp_bar(&player->hp->hp_back_bar, player))
 		return false;
-	player->hud->hp_bar = sfRectangleShape_create();
-	if (!player->hud->hp_bar)
-		return false;
-	sfRectangleShape_setSize(player->hud->hp_bar, (sfVector2f)
-		{player->hp * (player->level * player->hp_mult) * HP_WIDTH_MULT,
-		HP_HEIGHT});
-	sfRectangleShape_setScale(player->hud->hp_bar, (sfVector2f) {1, 1});
-	rect = sfRectangleShape_getGlobalBounds(player->hud->hp_bar);
-	sfRectangleShape_setOrigin(player->hud->hp_bar, (sfVector2f)
-				{rect.width, rect.top});
-	sfRectangleShape_setPosition(player->hud->hp_bar,
-					(sfVector2f) {1900, 20});
-	sfRectangleShape_setFillColor(player->hud->hp_bar,
-				hex_to_rgb(0xFF0000));
+	sfRectangleShape_setFillColor(player->hp->hp_bar, hex_to_rgb(0xF44336));
+	sfRectangleShape_setFillColor(player->hp->hp_back_bar,
+					hex_to_rgba(0xFFFFFF55));
 	return true;
 }
