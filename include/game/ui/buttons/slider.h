@@ -27,7 +27,7 @@ typedef struct slider {
 	float max_value;
 	float value;
 	bool hover;
-	void (*func)(win_t *win, slider_t *slider);
+	void (*func)(win_t *win, uint8_t value);
 	struct slider *next;
 } slider_t;
 
@@ -39,8 +39,11 @@ typedef struct slider_declaration {
 	uint8_t size;
 	uint64_t elements;
 	float max_value;
-	void (*func)(win_t *win, slider_t *slider);
+	void (*func)(win_t *win, uint8_t value);
 } slider_declaration_t;
+
+void manage_sfx(win_t *win, uint8_t value);
+void manage_music(win_t *win, uint8_t value);
 
 static const slider_declaration_t slider_declaration[] = {
 	{
@@ -51,7 +54,7 @@ static const slider_declaration_t slider_declaration[] = {
 		200,
 		8,
 		100,
-		NULL
+		&manage_sfx
 	},
 	{
 		OPTION,
@@ -61,7 +64,7 @@ static const slider_declaration_t slider_declaration[] = {
 		200,
 		8,
 		100,
-		NULL
+		&manage_music
 	},
 	{
 		0,

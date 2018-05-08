@@ -84,6 +84,7 @@ static bool fill_slider_list(const slider_declaration_t list, slider_t *slider)
 	if (!set_slider_text(tmp))
 		return false;
 	tmp->game_state = list.game_state;
+	tmp->value = list.max_value;
 	tmp->max_value = list.max_value;
 	tmp->func = list.func;
 	tmp->hover = false;

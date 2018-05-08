@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include "slider.h"
+#include "music.h"
 #include "render_window.h"
 
 static void slider_click_pressed_action(win_t *win, slider_t *tmp)
@@ -28,8 +29,22 @@ static void slider_click_pressed_action(win_t *win, slider_t *tmp)
 		if (i != 0)
 			str = get_string_from_char('\'', i);
 		sfText_setString(tmp->selected, str);
+		tmp->value = (float) (tmp->max_value /
+			(float) tmp->elements) * i;
 		free(str);
 	}
+}
+
+void manage_sfx(win_t *win, uint8_t value)
+{
+	win->game->sounds->sfx_vol = value;
+	set_global_volume(win->game->sounds);
+}
+
+void manage_music(win_t *win, uint8_t value)
+{
+	win->game->sounds->music_vol = value;
+	set_global_volume(win->game->sounds);
 }
 
 void slider_click_pressed(win_t *win, const sfEvent *event)
