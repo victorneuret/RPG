@@ -36,18 +36,8 @@ static bool init_hp_bar(sfRectangleShape **bar, player_t *player)
 	return true;
 }
 
-static bool init_xp_bar(sfRectangleShape **bar, player_t *player)
+static bool init_xp_bar(sfRectangleShape **bar)
 {
-	sfFont *font =
-		sfFont_createFromFile("res/fonts/space_mono_regular.ttf");
-
-	if (!font)
-		return false;
-	player->xp->text = init_text(font, int_to_str(player->xp->value),
-				(sfVector2f) {10, 10}, 20);
-	if (!player->xp->text)
-		return false;
-	sfText_setStyle(player->xp->text, sfTextBold);
 	*bar = sfRectangleShape_create();
 	if (!bar)
 		return false;
@@ -65,8 +55,8 @@ bool init_hud(player_t *player)
 	sfRectangleShape_setFillColor(player->hp->bar, hex_to_rgb(0xF44336));
 	sfRectangleShape_setFillColor(player->hp->back_bar,
 					hex_to_rgba(0xFFFFFF55));
-	if (!init_xp_bar(&player->xp->bar, player)
-		|| !init_xp_bar(&player->xp->back_bar, player))
+	if (!init_xp_bar(&player->xp->bar)
+		|| !init_xp_bar(&player->xp->back_bar))
 		return false;
 	sfRectangleShape_setFillColor(player->xp->bar, hex_to_rgb(0xFFEB3B));
 	sfRectangleShape_setFillColor(player->xp->back_bar,
