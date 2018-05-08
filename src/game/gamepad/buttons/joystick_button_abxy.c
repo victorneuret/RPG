@@ -20,10 +20,6 @@ void button_a(win_t *win, bool press)
 		if (win->game_state == INTRO)
 			exit_intro(win, NULL);
 		button_click_released(win, &event);
-		// if (press && win->game_state == GAME && (
-		// 	sfSprite_getPosition(win->game->player->sprite).y +
-		// 	sfSprite_getGlobalBounds(win->game->player->sprite)
-		// 	.height >= WIN_MAX_H - 10))
 		pressed = true;
 	}
 }
