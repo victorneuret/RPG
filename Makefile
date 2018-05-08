@@ -13,6 +13,8 @@ SRC	=	src/args.c                                                                
 		src/dungeon/set_room.c										    \
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
+		src/enemies/enemies.c                                                                               \
+		src/enemies/enemy_list.c                                                                            \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
@@ -121,6 +123,7 @@ CPPFLAGS+=	-Wall -Wextra
 
 CPPFLAGS+=	-I./include                                                                                         \
 		-I./include/dungeon                                                                                 \
+		-I./include/enemies                                                                                 \
 		-I./include/game                                                                                    \
 		-I./include/game/display                                                                            \
 		-I./include/game/keyboard                                                                           \
@@ -165,7 +168,7 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
-		@echo -en "Compiling $(NAME) ..."
+		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
 

@@ -16,6 +16,7 @@
 #include "dungeon.h"
 #include "level.h"
 #include "music.h"
+#include "enemies.h"
 
 typedef struct textures textures_t;
 typedef struct render_window win_t;
@@ -37,6 +38,7 @@ typedef struct game {
 	dungeon_t *dungeon;
 	room_t **rooms;
 	level_t *level;
+	enemy_list_t *enemy_list;
 } game_t;
 
 bool init_game(win_t *win);
