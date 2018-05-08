@@ -21,6 +21,7 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 		if (map[i][j] == room->id) {
 			win->game->dungeon->act_room = map[i + y][j + x];
 			win->game->dungeon->door_open = false;
+			win->game->dungeon->transition = true;
 			break;
 		}
 		if (j + 1 >= NB_ROOMS_WIDTH) {
@@ -28,7 +29,6 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			i++;
 		}
 	}
-	win->game->dungeon->transition = true;
 }
 
 static void set_sprite_pos(sfVector2f *pos, uint8_t dir, sounds_t *sounds)
@@ -41,7 +41,7 @@ static void set_sprite_pos(sfVector2f *pos, uint8_t dir, sounds_t *sounds)
 		pos->x = WALL_SIZE;
 		break;
 	case TOP:
-		pos->y = WIN_MAX_H - WALL_SIZE - PLAYER_H;
+		pos->y = WIN_MAX_H - WALL_SIZE - PLAYER_H - 16;
 		break;
 	case BOTTOM:
 		pos->y = WALL_SIZE;

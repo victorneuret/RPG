@@ -7,6 +7,7 @@
 
 #include "joystick.h"
 #include "events.h"
+#include "render_window.h"
 
 void button_a(win_t *win, bool press)
 {
@@ -24,16 +25,20 @@ void button_a(win_t *win, bool press)
 	}
 }
 
-void button_b(__attribute__((unused)) win_t *win, bool press)
+void button_b(win_t *win, bool press)
 {
 	static bool pressed = false;
 
 	if (!press && pressed) {
 		pressed = false;
 		return;
-	}
-	if (!pressed && press)
+	} else if (!pressed && press) {
+		if (win->game_state == OPTION)
+			win->game_state = TITLE;
+		else if (win->game_state == PAUSE)
+			win->game_state = GAME;
 		pressed = true;
+	}
 }
 
 void button_x(__attribute__((unused)) win_t *win, bool press)
