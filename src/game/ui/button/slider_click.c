@@ -32,16 +32,17 @@ static void slider_click_pressed_action(win_t *win, slider_t *tmp)
 		tmp->value = (float) (tmp->max_value /
 			(float) tmp->elements) * i;
 		free(str);
+		tmp->func(win, tmp->value);
 	}
 }
 
-void manage_sfx(win_t *win, uint8_t value)
+void manage_sfx(win_t *win, float value)
 {
 	win->game->sounds->sfx_vol = value;
 	set_global_volume(win->game->sounds);
 }
 
-void manage_music(win_t *win, uint8_t value)
+void manage_music(win_t *win, float value)
 {
 	win->game->sounds->music_vol = value;
 	set_global_volume(win->game->sounds);
