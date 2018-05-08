@@ -5,6 +5,8 @@
 ** init_game
 */
 
+#include <SFML/Graphics.h>
+
 #include "game.h"
 #include "weather.h"
 #include "my_calloc.h"
@@ -12,6 +14,7 @@
 #include "change_state.h"
 #include "player.h"
 #include "music.h"
+#include "hud.h"
 
 static bool init_ui(win_t *win)
 {

@@ -1,0 +1,11 @@
+<player>
+	<hp>
+		<start>300</start>
+		<multiplicator>1.25</multiplicator>
+	</hp>
+	<xp>
+		<start>15</start>
+		<multiplicator>1.5</multiplicator>
+	</xp>
+	<speed>900</speed>
+</player>

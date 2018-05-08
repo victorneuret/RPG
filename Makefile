@@ -36,6 +36,7 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/dir_arrow.c                                                          \
 		src/game/key_pressed_functions/pause_resume.c                                                       \
 		src/game/key_pressed_functions/toggles.c                                                            \
+		src/game/key_pressed_functions/special_actions.c                                                    \
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
@@ -52,6 +53,7 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_drawer.c                                                                \
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
+		src/game/ui/hud/hp_bar.c									    \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
 		src/game/ui/button/init_checkbox.c                                                                  \
@@ -80,6 +82,7 @@ SRC	=	src/args.c                                                                
 		src/level/level.c                                                                                   \
 		src/player/actions.c										    \
 		src/player/door_action.c									    \
+		src/player/door_transition.c                                                                        \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
@@ -104,7 +107,8 @@ SRC	=	src/args.c                                                                
 		src/xml/get_node_by_name.c                                                                          \
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
-		src/xml/xml_exemple.c
+		src/xml/xml_exemple.c										    \
+		src/xml/parse_xml_player.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \
@@ -128,6 +132,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/particles                                                                          \
 		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
+		-I./include/game/ui/hud										    \
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \

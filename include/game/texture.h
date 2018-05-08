@@ -20,10 +20,6 @@ static const textures_path_t textures_path[] = {
 		"res/textures/ui.png"
 	},
 	{
-		"title_page",
-		"res/textures/title.png"
-	},
-	{
 		"player",
 		"res/textures/new_player.png"
 	},

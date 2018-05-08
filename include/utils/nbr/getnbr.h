@@ -8,3 +8,4 @@
 #pragma once
 
 int getnbr(char const *str);
+float str_to_float(char *str);

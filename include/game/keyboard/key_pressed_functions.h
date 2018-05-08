@@ -18,3 +18,5 @@ void toggle_fps(win_t *win);
 
 void pause_game(win_t *win);
 void to_title_page(win_t *win);
+
+void open_door(win_t *win);

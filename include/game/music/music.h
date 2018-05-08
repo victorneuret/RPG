@@ -14,10 +14,6 @@
 static const float default_sfx_vol = 100;
 static const float default_music_vol = 100;
 
-typedef enum sfx {
-	SWITCH_TITLE
-} sfx_type;
-
 typedef struct music {
 	game_status game_state;
 	sfMusic *music;
@@ -55,10 +51,44 @@ static const music_declaration_t music_declaration[] = {
 	}
 };
 
+typedef enum sfx {
+	SWITCH_TITLE,
+	CLICK,
+	DEATH,
+	SHOOT,
+	HIT,
+	UNLOCKED
+} sfx_type;
+
 static const music_declaration_t sfx_declaration[] = {
 	{
-		GAME,
+		TITLE | OPTION,
 		"res/sounds/sfx/switch_title.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/click.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/death.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/shoot.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/hit.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/unlocked.ogg",
 		100
 	},
 	{

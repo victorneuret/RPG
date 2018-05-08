@@ -27,8 +27,7 @@ void button_rb(__attribute__((unused)) win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	}
-	if (!pressed && press) {
+	} else if (!pressed && press) {
 		if (win->game_state == GAME)
 			player_shoot(win, win->game->player);
 		pressed = true;

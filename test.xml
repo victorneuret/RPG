@@ -1,7 +1,0 @@
-<test>
-	<player desc="banana">
-		<name>Scentist</name>
-		<level>2</level>
-		<health>42</health>
-	</player>
-</test>

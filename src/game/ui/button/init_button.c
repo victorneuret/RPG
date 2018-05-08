@@ -46,6 +46,7 @@ static bool fill_buttons_list(const button_declaration_t list,
 	sfSprite_setPosition(tmp->sprite, list.pos);
 	tmp->color = hex_to_rgba(list.color);
 	tmp->hover_color = hex_to_rgba(list.hover_color);
+	tmp->pos = list.pos;
 	sfSprite_setColor(tmp->sprite, tmp->color);
 	tmp->text_hover = list.text_hover;
 	tmp->func = list.func;

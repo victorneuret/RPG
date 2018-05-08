@@ -37,6 +37,8 @@ typedef struct dungeon {
 	uint8_t nb_rooms;
 	uint8_t act_room;
 	bool door_open;
+	sfRectangleShape *shade;
+	bool transition;
 } dungeon_t;
 
 
@@ -47,3 +49,6 @@ bool init_rooms(win_t *win);
 void place_rooms(dungeon_t *dungeon);
 
 void print_dungeon(dungeon_t *dungeon);
+
+void door_transition(dungeon_t *dungeon);
+void render_transition(win_t *win);

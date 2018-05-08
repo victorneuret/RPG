@@ -21,7 +21,6 @@ static bool check_text_box_hit_box(text_area_t *text_area, win_t *win)
 	return false;
 }
 
-
 static void reset_box_size(text_area_t *text_area)
 {
 	int i = 0;
