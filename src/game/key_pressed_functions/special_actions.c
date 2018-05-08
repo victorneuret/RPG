@@ -12,7 +12,6 @@ void plus(win_t *win)
 {
 	win->game->player->inventory->selected =
 			(win->game->player->inventory->selected + 1) % 3;
-	printf("%d\n", win->game->player->inventory->selected);
 }
 
 void add_gun(win_t *win)
@@ -27,7 +26,6 @@ void add_gun(win_t *win)
 
 void drop_gun(win_t *win)
 {
-	printf("%d\n", win->game->player->inventory->selected);
 	drop_item(win, win->game->player->inventory,
 				win->game->player->inventory->selected);
 }

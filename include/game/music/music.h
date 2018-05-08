@@ -87,7 +87,7 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/hit.ogg",
-		100
+		50
 	},
 	{
 		GAME,
