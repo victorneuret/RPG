@@ -9,10 +9,11 @@
 
 #include <SFML/Audio/Types.h>
 
+#include "settings.h"
 #include "render_window.h"
 
-static const float default_sfx_vol = 100;
-static const float default_music_vol = 100;
+static const float DEFAULT_SFX_VOL = 100;
+static const float DEFAULT_MUSIC_VOL = 100;
 
 typedef struct music {
 	game_status game_state;
@@ -31,6 +32,7 @@ typedef struct sounds {
 	float music_vol;
 	music_t *music;
 	music_t *sfx;
+	bool no_sound;
 } sounds_t;
 
 static const music_declaration_t music_declaration[] = {
@@ -98,7 +100,7 @@ static const music_declaration_t sfx_declaration[] = {
 	}
 };
 
-sounds_t *init_music();
+sounds_t *init_music(settings_t *settings);
 void free_music_struct(sounds_t *sounds);
 void play_sfx(sounds_t *sounds, sfx_type sfx);
 void set_global_volume(sounds_t *sounds);

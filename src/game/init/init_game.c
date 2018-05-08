@@ -54,7 +54,7 @@ bool init_game(win_t *win)
 	win->game->ui = my_calloc(1, sizeof(ui_t));
 	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
 	win->joystick = my_calloc(1, sizeof(joystick_t));
-	win->game->sounds = init_music();
+	win->game->sounds = init_music(win->settings);
 	if (!win->game->sounds)
 		return false;
 	if (!win->game || !win->game->ui || !win->game->dungeon
@@ -66,7 +66,10 @@ bool init_game(win_t *win)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
-	change_state(win, INTRO);
+	if (win->settings->skip_intro)
+		change_state(win, TITLE);
+	else
+		change_state(win, INTRO);
 	return true;
 }
 
