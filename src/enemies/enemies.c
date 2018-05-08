@@ -11,6 +11,7 @@
 
 #include "render.h"
 #include "enemies.h"
+#include "nb_utils.h"
 #include "my_calloc.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos)
@@ -37,7 +38,7 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 			render_object(win, RECTANGLE, current->enemy->shape);
 }
 
-void update_enemies(enemy_list_t *enemy_list)
+void update_enemies(enemy_list_t *enemy_list, bool *door_open)
 {
 	if (!enemy_list)
 		return;
@@ -48,6 +49,7 @@ void update_enemies(enemy_list_t *enemy_list)
 			break;
 		}
 	}
+	*door_open = enemy_list->enemy == NULL;
 }
 
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
@@ -68,4 +70,11 @@ void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
 		return;
 	}
 	add_enemy_to_list(enemy_list, enemy);
+}
+
+void create_enemy_group(enemy_list_t **enemy_list)
+{
+	for (int i = 0; i < rand_int(4, 6); i++)
+		create_enemy(enemy_list,
+			(sfVector2f) {rand_int(200, 1600), rand_int(200, 800)});
 }
