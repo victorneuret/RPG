@@ -56,21 +56,21 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 		OPTION,
 		(sfIntRect) {0, 0, 300, 70},
 		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 420},
+		(sfVector2f) {1200, 560},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
-		&checkbox_fullscreen
+		&change_resolution
 	},
 	{
 		OPTION,
 		(sfIntRect) {0, 0, 300, 70},
 		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 520},
+		(sfVector2f) {1200, 630},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
-		&change_resolution
+		&checkbox_fullscreen
 	},
 	{
 		0,

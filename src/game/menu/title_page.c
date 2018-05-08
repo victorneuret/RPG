@@ -78,6 +78,7 @@ void buttons_parallax(win_t *win)
 				mouse.y / speed * -1 + tmp->pos.y});
 		}
 	}
+	slider_parallax(win, speed, mouse);
 }
 
 void update_title_page(win_t *win)
