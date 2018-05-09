@@ -16,6 +16,7 @@
 #include "music.h"
 #include "slider.h"
 #include "hud.h"
+#include "npc.h"
 
 static bool init_ui(win_t *win)
 {
@@ -29,10 +30,11 @@ static bool init_ui(win_t *win)
 	win->game->ui->hover_text_button = init_text_button();
 	win->game->ui->title_page = init_title_page(win->game->textures);
 	win->game->ui->popup_list = my_calloc(1, sizeof(popup_list_t));
+	win->game->npc = init_npc();
 	if (!win->game->ui->buttons || !win->game->ui->text_area
 		|| !win->game->ui->hover_text_button
 		|| !win->game->ui->title_page || !win->game->ui->popup_list
-		|| !win->game->ui->slider)
+		|| !win->game->ui->slider || !win->game->npc)
 		return false;
 	return true;
 }

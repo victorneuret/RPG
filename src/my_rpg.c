@@ -20,6 +20,7 @@
 #include "enemies.h"
 #include "hud.h"
 #include "inventory.h"
+#include "npc.h"
 
 static void update_clock(win_t *win)
 {
@@ -66,6 +67,7 @@ static void render_game(win_t *win)
 			draw_level(win->sf_win, win->game->level, win);
 			draw_inventory(win, win->game->player->inventory);
 			draw_enemies(win->sf_win, win->game->enemy_list);
+			draw_npc(win, win->game->npc);
 			draw_player(win, win->game->player);
 			render_transition(win);
 			break;

@@ -95,6 +95,7 @@ SRC	=	src/args.c                                                                
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
 		src/player/draw_inventory.c                                                                         \
+		src/interaction/init_npc.c									    \
 		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
@@ -150,6 +151,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \
+		-I./include/interaction										    \
 		-I./include/level                                                                                   \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \

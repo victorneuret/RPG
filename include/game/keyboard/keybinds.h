@@ -14,6 +14,7 @@
 #include "key_pressed_functions.h"
 #include "dir_arrow.h"
 #include "shoot_arrow.h"
+#include "npc.h"
 
 typedef struct {
 	game_status game_state;
@@ -43,5 +44,6 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyI, 	&add_gun},
 	{GAME,	sfKeyO, 	&drop_gun},
 	{GAME,	sfKeyN,		&switch_inventory},
+	{GAME,	sfKeyX,		&discuss_npc},
 	{0,	0,		NULL}
 };
