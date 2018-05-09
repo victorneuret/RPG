@@ -7,7 +7,8 @@
 
 #pragma once
 
-#include "render_window.h"
 #include <SFML/Audio/Types.h>
+
+#include "render_window.h"
 
 void music_management(sounds_t *sounds, game_status game_state);
