@@ -159,9 +159,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
 		-I./include/window                                                                                  \
-		-I./include/xml
-
-CPPFLAGS +=	$(shell xml2-config --cflags)
+		-I./include/xml											    \
+		-I./include/lib
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -170,7 +169,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm -lc_graph_prog
-LDFLAGS +=	$(shell xml2-config --libs)
+LDFLAGS +=	-L lib -lxml2
 
 all:	$(NAME)
 

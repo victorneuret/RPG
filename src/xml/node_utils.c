@@ -5,8 +5,7 @@
 ** node_utils
 */
 
-#include <libxml/parser.h>
-
+#include "libxml.h"
 #include "xml.h"
 #include "getnbr.h"
 
