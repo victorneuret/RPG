@@ -70,7 +70,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
 {
-	static uint32_t multiplicator = 1.0f;
+	static float multiplicator = 1.0f;
 	enemy_t *enemy = my_calloc(1, sizeof(enemy_t));
 
 	if (!enemy)
@@ -80,7 +80,7 @@ void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
 	enemy->hp_max = enemy->hp;
 	enemy->attack = 20 * multiplicator;
 	enemy->shape = create_enemy_shape(pos);
-	multiplicator += 0.1f;
+	multiplicator += 0.01f;
 	if (!enemy->shape) {
 		free(enemy);
 		return;
