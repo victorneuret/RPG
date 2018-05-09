@@ -24,6 +24,7 @@ typedef struct {
 void add_gun(win_t *win);
 void drop_gun(win_t *win);
 void switch_inventory(win_t *win);
+void get_nearest_item(win_t *win);
 
 static const keybind_t keybinds[] = {
 	{ALL,	sfKeyDelete,	&to_title_page},
@@ -40,7 +41,8 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyRight,	&shoot_right},
 	{GAME, 	sfKeyLeft,	&shoot_left},
 	{GAME, 	sfKeyP,		&open_door},
-	{GAME, 	sfKeyI, 	&add_gun},
+	{GAME, 	sfKeyU, 	&add_gun},
+	{GAME,	sfKeyI,		&get_nearest_item},
 	{GAME,	sfKeyO, 	&drop_gun},
 	{GAME,	sfKeyN,		&switch_inventory},
 	{0,	0,		NULL}

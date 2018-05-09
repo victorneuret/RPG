@@ -20,7 +20,7 @@ static const uint8_t NB_ITEMS = 4;
 static const char *INVENTORY_FONT __attribute__((unused)) =
 					"res/fonts/isaac_sans.ttf";
 static const char *INVENTORY_MESSAGE  __attribute__((unused)) =
-					"Press E to pick up item";
+					"Press I to pick up item";
 
 static const char *item_list[] __attribute__((unused)) = {
 	"gun",
@@ -61,4 +61,4 @@ void add_item(inventory_t *inventory, uint8_t place, item_type item_nb);
 void draw_inventory(win_t *win, inventory_t *inventory);
 uint8_t get_next_inventory(inventory_t *inventory, int8_t negative);
 void free_inventory(inventory_t *inventory);
-void get_item(sfSprite *player, inventory_t *inventory);
+void get_item(sfSprite *player, inventory_t *inventory, bool pick_up);

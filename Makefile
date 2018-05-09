@@ -97,6 +97,7 @@ SRC	=	src/args.c                                                                
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
+		src/player/init_inventory.c                                                                         \
 		src/player/draw_inventory.c                                                                         \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
