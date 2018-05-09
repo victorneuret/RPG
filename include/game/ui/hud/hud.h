@@ -33,7 +33,5 @@ typedef struct bar {
 
 void display_hp_bar(win_t *win);
 bool init_hud(player_t *player);
-void update_hp_bar(player_t *player);
 
 void display_xp_bar(win_t *win);
-void update_xp_bar(player_t *player, win_t *win);

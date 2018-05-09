@@ -20,6 +20,15 @@ void center_text(sfText *text, float x)
 	sfText_setPosition(text, (sfVector2f) {1920 / 2, x});
 }
 
+void text_right(sfText *text, float x, float y)
+{
+	sfFloatRect rect;
+
+	rect = sfText_getLocalBounds(text);
+	sfText_setOrigin(text, (sfVector2f) {rect.left + rect.width, rect.top});
+	sfText_setPosition(text, (sfVector2f) {x, y});
+}
+
 sfText *init_text(sfFont *font, char const *string, sfVector2f pos,
 		uint8_t font_size)
 {
