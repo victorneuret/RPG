@@ -97,6 +97,7 @@ SRC	=	src/args.c                                                                
 		src/player/inventory.c								   		    \
 		src/player/draw_inventory.c                                                                         \
 		src/render.c                                                                                        \
+		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \
