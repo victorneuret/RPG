@@ -44,6 +44,6 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyI, 	&add_gun},
 	{GAME,	sfKeyO, 	&drop_gun},
 	{GAME,	sfKeyN,		&switch_inventory},
-	{GAME,	sfKeyX,		&discuss_npc},
+	{GAME,	sfKeyX,		&npc_interaction},
 	{0,	0,		NULL}
 };

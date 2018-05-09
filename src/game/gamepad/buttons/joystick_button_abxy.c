@@ -10,6 +10,7 @@
 #include "render_window.h"
 #include "key_pressed_functions.h"
 #include "hud.h"
+#include "npc.h"
 
 void button_a(win_t *win, bool press)
 {
@@ -25,6 +26,7 @@ void button_a(win_t *win, bool press)
 		else if (win->game_state == GAME)
 			add_gun(win);
 		button_click_released(win, &event);
+		npc_interaction(win);
 		pressed = true;
 	}
 }

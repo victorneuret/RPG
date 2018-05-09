@@ -7,20 +7,21 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "text_utils.h"
 #include "render_window.h"
 #include "render.h"
 #include "npc.h"
-
-static const char *FONT_PATH = "res/fonts/space_mono_regular.ttf";
+#include "textbox.h"
 
 npc_t *init_npc(void)
 {
 	npc_t *npc = malloc(sizeof(npc_t));
 	sfFont *font = sfFont_createFromFile(FONT_PATH);
 
-	if (!npc || !font)
+	npc->textbox = init_textbox();
+	if (!npc || !font || !npc->textbox)
 		return NULL;
 	npc->pos = (sfVector2f) {1600, 180};
 	npc->skin = sfRectangleShape_create();
@@ -38,7 +39,7 @@ npc_t *init_npc(void)
 	return npc;
 }
 
-void discuss_npc(win_t *win)
+void npc_interaction(win_t *win)
 {
 	sfVector2f pos = sfSprite_getPosition(win->game->player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(win->game->player->sprite);
@@ -47,8 +48,9 @@ void discuss_npc(win_t *win)
 
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > win->game->npc->pos.x - 30
-		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30)
-		create_popup(win->game->ui, "Hi!", INFO);
+		&& pos.y < win->game->npc->pos.y + npc_rect.height + 50)
+		win->game->npc->textbox->state = true;
+
 }
 
 void draw_npc(win_t *win, npc_t *npc)
@@ -61,7 +63,12 @@ void draw_npc(win_t *win, npc_t *npc)
 		return;
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > win->game->npc->pos.x - 30
-		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30)
+		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30) {
 		render_object(win->sf_win, TEXT, npc->talk);
+		if (npc->textbox->state)
+			render_object(win->sf_win, RECTANGLE,
+				win->game->npc->textbox->rect);
+	} else
+		npc->textbox->state = false;
 	render_object(win->sf_win, RECTANGLE, npc->skin);
 }
