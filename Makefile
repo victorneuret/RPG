@@ -48,6 +48,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c									    \
 		src/game/particles/effects/particle_shot.c                                                          \
+		src/game/particles/effects/particle_xp.c                                                        \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
 		src/game/particles/effects/particle_stars.c                                                         \
@@ -97,6 +98,7 @@ SRC	=	src/args.c                                                                
 		src/player/draw_inventory.c                                                                         \
 		src/interaction/init_npc.c									    \
 		src/render.c                                                                                        \
+		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
 		src/utils/csfml/mouse_utils.c                                                                       \

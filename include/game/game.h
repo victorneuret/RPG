@@ -27,7 +27,7 @@ typedef struct player player_t;
 typedef struct dungeon dungeon_t;
 typedef struct room room_t;
 typedef struct enemy_list enemy_list_t;
-typedef struct npc_t npc;
+typedef struct npc npc_t;
 
 static const float GRAVITY = 500;
 

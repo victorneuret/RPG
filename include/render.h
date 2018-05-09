@@ -65,3 +65,4 @@ static const shape_t shape_list[] = {
 };
 
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr);
+void render(win_t *win);

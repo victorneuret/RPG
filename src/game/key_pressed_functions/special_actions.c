@@ -8,15 +8,17 @@
 #include "render_window.h"
 #include "inventory.h"
 
-uint8_t get_next_inventory(inventory_t *inventory, int negative)
+uint8_t get_next_inventory(inventory_t *inventory, int8_t negative)
 {
-	uint8_t select = inventory->selected;
+	int8_t select = inventory->selected;
 
-	select = (select + 1) % 3;
+	select = (select + (1 * negative)) % 3;
+	select = select < 0 ? 2 : select;
 	while (select != inventory->selected) {
 		if (inventory->item[select] && !inventory->item[select]->droped)
 			break;
 		select = (select + (1 * negative)) % 3;
+		select = select < 0 ? 2 : select;
 	}
 	return select;
 }

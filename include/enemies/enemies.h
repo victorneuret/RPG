@@ -14,6 +14,7 @@
 #include "music.h"
 
 typedef struct sounds sounds_t;
+typedef struct render_window win_t;
 
 typedef struct enemy {
 	sfRectangleShape *shape;
@@ -28,7 +29,7 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
-void update_enemies(enemy_list_t *enemy_list, sounds_t *sounds,
+void update_enemies(win_t *win, enemy_list_t *enemy_list, sounds_t *sounds,
 							bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos);
