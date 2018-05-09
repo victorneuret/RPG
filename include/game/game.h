@@ -39,6 +39,7 @@ typedef struct game {
 	room_t **rooms;
 	level_t *level;
 	enemy_list_t *enemy_list;
+	npc_t *ncp;
 } game_t;
 
 bool init_game(win_t *win);
