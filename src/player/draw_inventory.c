@@ -45,11 +45,9 @@ static void draw_selected_item(win_t *win, item_t *item, inventory_t *inventory,
 
 static void draw_item(win_t *win, item_t *item)
 {
-	sfSprite_setColor(item->sprite,
-					sfColor_fromRGBA(255, 255, 255, 90));
+	sfSprite_setColor(item->sprite, sfColor_fromRGBA(255, 255, 255, 90));
 	render_object(win->sf_win, SPRITE, item->sprite);
-	sfSprite_setColor(item->sprite,
-					sfColor_fromRGBA(255, 255, 255, 255));
+	sfSprite_setColor(item->sprite, sfColor_fromRGBA(255, 255, 255, 255));
 }
 
 static void draw_selected(win_t *win, uint8_t i, inventory_t *inventory,

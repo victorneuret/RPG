@@ -104,6 +104,7 @@ void update_player(win_t *win, player_t *player)
 		update_idle(player, dir);
 		sfClock_restart(player->timer);
 	}
+	get_item(win->game->player->sprite, win->game->player->inventory);
 	move_player(win, player);
 	update_aim_orientation(win, player);
 }

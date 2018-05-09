@@ -13,6 +13,22 @@
 #include "xml.h"
 #include "nb_utils.h"
 
+void get_item(sfSprite *player, inventory_t *inventory)
+{
+	const sfFloatRect rect = sfSprite_getGlobalBounds(player);
+	sfFloatRect item_rect;
+	item_t *item_list = inventory->item_list;
+
+	for (uint8_t i = 0; item_list[i].name; i++) {
+		if (!item_list[i].droped && item_list[i].pos.x != 0 &&
+							item_list[i].pos.y != 0)
+			continue;
+		item_rect = sfSprite_getGlobalBounds(item_list[i].sprite);
+		if (sfFloatRect_intersects(&rect, &item_rect, &item_rect) == sfTrue)
+			puts(item_list[i].name);
+	}
+}
+
 void add_item(inventory_t *inventory, uint8_t place,
 			item_type item_nb)
 {
@@ -46,6 +62,7 @@ void drop_item(win_t *win, inventory_t *inventory, uint8_t place)
 						inventory->item[place]->pos);
 	sfSprite_setRotation(inventory->item[place]->sprite, rand_int(0, 360));
 	inventory->item[place] = NULL;
+	inventory->selected = get_next_inventory(inventory, 1);
 }
 
 void free_inventory(inventory_t *inventory)
