@@ -16,7 +16,6 @@ typedef struct textbox {
 	sfColor border_color;
 	sfColor foreground_color;
 	sfText *name;
-	sfText *text;
 	bool state;
 } textbox_t;
 

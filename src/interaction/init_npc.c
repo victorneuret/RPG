@@ -64,10 +64,12 @@ void draw_npc(win_t *win, npc_t *npc)
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > win->game->npc->pos.x - 30
 		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30) {
-		render_object(win->sf_win, TEXT, npc->talk);
-		if (npc->textbox->state)
+		if (npc->textbox->state) {
 			render_object(win->sf_win, RECTANGLE,
 				win->game->npc->textbox->rect);
+			render_object(win->sf_win, TEXT, npc->textbox->name);
+		} else
+			render_object(win->sf_win, TEXT, npc->talk);
 	} else
 		npc->textbox->state = false;
 	render_object(win->sf_win, RECTANGLE, npc->skin);
