@@ -51,5 +51,5 @@ inventory_t *init_inventory(win_t *win);
 void drop_item(win_t *win, inventory_t *inventory, uint8_t place);
 void add_item(inventory_t *inventory, uint8_t place, item_type item_nb);
 void draw_inventory(win_t *win, inventory_t *inventory);
-uint8_t get_next_inventory(inventory_t *inventory, int negative);
+uint8_t get_next_inventory(inventory_t *inventory, int8_t negative);
 void free_inventory(inventory_t *inventory);
