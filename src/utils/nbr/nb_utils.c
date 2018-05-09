@@ -5,6 +5,7 @@
 ** Number utils
 */
 
+#include <SFML/System.h>
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -60,7 +61,7 @@ int rand_int(int min, int max)
 	return rdm;
 }
 
-unsigned int distance(int x1, int y1, int x2, int y2)
+unsigned int distance(sfVector2f a, sfVector2f b)
 {
-	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+	return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
 }

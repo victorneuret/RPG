@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** my_rpg_2017
 ** File description:
-** door_action
+** inventory
 */
 
 #include <stdint.h>
@@ -14,7 +14,7 @@
 #include "nb_utils.h"
 
 void add_item(inventory_t *inventory, uint8_t place,
-							item_type item_nb)
+			item_type item_nb)
 {
 	if (!inventory->item_list[item_nb].droped)
 		return;
@@ -30,28 +30,6 @@ void add_item(inventory_t *inventory, uint8_t place,
 	inventory->item[place]->droped = true;
 	inventory->item_list[item_nb].droped = false;
 	inventory->item[place] = &inventory->item_list[item_nb];
-}
-
-void draw_inventory(win_t *win, inventory_t *inventory)
-{
-	sfVector2f pos = {1000, 1000};
-
-	for (uint8_t i = 0; i < INVENTORY_NB; i++) {
-		if (inventory->item[i] && !inventory->item[i]->droped) {
-			sfSprite_setPosition(inventory->item[i]->sprite, pos);
-			render_object(win->sf_win,
-					SPRITE, inventory->item[i]->sprite);
-		}
-		pos.x += 100;
-	}
-	for (uint8_t i = 0; i < (NB_ITEMS - 1); i++) {
-		if (inventory->item_list[i].droped &&
-				(inventory->item_list[i].pos.x != 0 &&
-				inventory->item_list[i].pos.y != 0)) {
-			render_object(win->sf_win, SPRITE,
-					inventory->item_list[i].sprite);
-		}
-	}
 }
 
 void drop_item(win_t *win, inventory_t *inventory, uint8_t place)
@@ -70,6 +48,18 @@ void drop_item(win_t *win, inventory_t *inventory, uint8_t place)
 	inventory->item[place] = NULL;
 }
 
+void free_inventory(inventory_t *inventory)
+{
+	sfText_destroy(inventory->text);
+	sfFont_destroy(inventory->font);
+
+	for (ssize_t i = 0; i < (INVENTORY_NB - 1); i++)
+		sfSprite_destroy(inventory->item_list[i].sprite);
+	free(inventory->item);
+	free(inventory->item_list);
+	free(inventory);
+}
+
 inventory_t *init_inventory(win_t *win)
 {
 	inventory_t *inventory = malloc(sizeof(inventory_t));
@@ -77,8 +67,12 @@ inventory_t *init_inventory(win_t *win)
 	inventory->item_list = malloc(sizeof(item_t) * NB_ITEMS);
 	inventory->item = malloc(sizeof(item_t*) * INVENTORY_NB);
 	inventory->selected = 0;
-	if (!inventory->item_list || !inventory->item)
+	inventory->text = sfText_create();
+	inventory->font = sfFont_createFromFile("res/fonts/isaac_sans.ttf");
+	if (!inventory->item_list || !inventory->item || !inventory->text ||
+							!inventory->font)
 		return NULL;
+	sfText_setFont(inventory->text, inventory->font);
 	if (!xml_item(inventory->item_list, win->game->textures))
 		return NULL;
 	for (size_t i = 0; i < INVENTORY_NB; i++) {

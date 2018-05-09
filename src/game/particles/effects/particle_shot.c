@@ -54,7 +54,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color,
 	particle->fade_out = true;
 	particle->lifetime_ms = 3333;
 	particle->update = &update_particle_shot;
-	particle->size = rand_int(10, 15);
+	particle->size = rand_int(5, 10);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
 					sin(angle) * speed};
 	particle->shape = create_shape(particle);

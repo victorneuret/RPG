@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <SFML/System.h>
+
 int rand_int(int min, int max);
 double rand_range(void);
-unsigned int distance(int x1, int y1, int x2, int y2);
+unsigned int distance(sfVector2f a, sfVector2f b);

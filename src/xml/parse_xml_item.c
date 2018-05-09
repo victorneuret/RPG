@@ -15,7 +15,7 @@
 #include "texture.h"
 
 static bool parse_xml_item(xmlNode *root, item_t *item,
-	textures_t *texture, const char *item_name)
+			textures_t *texture, const char *item_name)
 {
 	xmlNode *weapon_node = get_node_by_name(root, item_name);
 	textures_t *tmp = texture;
@@ -29,7 +29,8 @@ static bool parse_xml_item(xmlNode *root, item_t *item,
 	item->delay = get_node_float(weapon_node, "delay");
 	item->sprite = create_sprite(tmp->texture);
 	item->pos = (sfVector2f){0, 0};
-	sfSprite_setOrigin(item->sprite, (sfVector2f){ITEM_SIZE / 2, ITEM_SIZE / 2});
+	sfSprite_setOrigin(item->sprite,
+				(sfVector2f){ITEM_SIZE / 2, ITEM_SIZE / 2});
 	item->droped = true;
 	return true;
 }
