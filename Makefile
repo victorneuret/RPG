@@ -48,6 +48,8 @@ SRC	=	src/args.c                                                                
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c									    \
 		src/game/particles/effects/particle_shot.c                                                          \
+		src/game/particles/effects/particle_flame.c                                                          \
+		src/game/particles/effects/particle_shotgun.c                                                          \
 		src/game/particles/effects/particle_xp.c                                                        \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
@@ -161,9 +163,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
 		-I./include/window                                                                                  \
-		-I./include/xml
-
-CPPFLAGS +=	$(shell xml2-config --cflags)
+		-I./include/xml											    \
+		-I./include/lib
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -172,7 +173,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm -lc_graph_prog
-LDFLAGS +=	$(shell xml2-config --libs)
+LDFLAGS +=	-L lib -lxml2
 
 all:	$(NAME)
 

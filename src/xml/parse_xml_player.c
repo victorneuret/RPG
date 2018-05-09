@@ -5,8 +5,7 @@
 ** parse_xml_player
 */
 
-#include <libxml/parser.h>
-
+#include "libxml.h"
 #include "xml.h"
 #include "getnbr.h"
 #include "player.h"
@@ -21,7 +20,7 @@ static bool parse_xml_player(xmlNode *root, player_t *player)
 	player->hp->value = get_node_int(hp_node, "start");
 	player->hp->max_value = get_node_int(hp_node, "start");
 	player->hp->mult = get_node_float(hp_node, "multiplicator");
-	player->xp->value = get_node_int(xp_node, "start");
+	player->xp->value = 0;
 	player->xp->max_value = get_node_int(xp_node, "start");
 	player->xp->mult = get_node_float(xp_node, "multiplicator");
 	return true;

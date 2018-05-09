@@ -55,12 +55,8 @@ void button_x(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->player->xp->value += 1;
-		update_xp_bar(win->game->player, win);
+		win->game->player->xp->value += 2000;
 		pressed = true;
-	} else {
-		win->game->player->xp->value += 1;
-		update_xp_bar(win->game->player, win);
 	}
 }
 
@@ -72,13 +68,8 @@ void button_y(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->player->xp->value -= 1;
-		update_xp_bar(win->game->player, win);
 		pressed = true;
 		if (win->game_state == GAME)
 			drop_gun(win);
-	} else {
-		win->game->player->xp->value -= 1;
-		update_xp_bar(win->game->player, win);
 	}
 }

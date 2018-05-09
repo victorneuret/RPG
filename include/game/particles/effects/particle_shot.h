@@ -8,5 +8,7 @@
 #pragma once
 
 #include "particle.h"
+#include "inventory.h"
 
-void create_shot(win_t *win, sfVector2f origin, sfColor color, float angle);
+void update_particle_shot(win_t *win, particle_t *particle);
+void create_shot(win_t *win, item_t *item, sfVector2f origin, float angle);
