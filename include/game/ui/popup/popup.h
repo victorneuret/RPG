@@ -14,6 +14,7 @@
 typedef enum popup_type {
 	INFO,
 	WARNING,
+	SUCCESS,
 	ERROR
 } popup_type;
 

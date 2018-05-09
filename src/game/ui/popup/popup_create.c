@@ -34,6 +34,7 @@ static sfColor get_popup_color(popup_type type)
 	case INFO: return sfCyan;
 	case WARNING: return sfYellow;
 	case ERROR: return sfRed;
+	case SUCCESS: return sfGreen;
 	}
 	return sfWhite;
 }
@@ -44,6 +45,7 @@ static char *get_popup_text_type(popup_type type)
 	case INFO: return "Info";
 	case WARNING: return "Warning";
 	case ERROR: return "Error";
+	case SUCCESS: return "Success";
 	}
 	return "Other";
 }
