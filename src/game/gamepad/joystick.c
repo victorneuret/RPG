@@ -61,6 +61,10 @@ void update_joystick(win_t *win)
 	update_joystick_pos(win->joystick, win);
 	if (win->joystick->diry >= 60 || win->joystick->diry <= -60)
 		update_ui_joystick(win->joystick, win);
+	if (win->joystick->dirx >= 60)
+		button_left(win);
+	if (win->joystick->dirx <= -60)
+		button_right(win);
 }
 
 void free_joystick(joystick_t *joystick)

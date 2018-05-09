@@ -9,6 +9,8 @@
 
 #include "render_window.h"
 
+static const int ITEM_SIZE = 112;
+
 typedef struct textures_path {
 	char *name;
 	char *path;
@@ -38,6 +40,18 @@ static const textures_path_t textures_path[] = {
 	{
 		"rock",
 		"res/textures/rock.png"
+	},
+	{
+		"gun",
+		"res/textures/items/gun.png"
+	},
+	{
+		"shotgun",
+		"res/textures/items/shotgun.png"
+	},
+	{
+		"flamethrower",
+		"res/textures/items/flamethrower.png"
 	},
 	{NULL, NULL}
 };

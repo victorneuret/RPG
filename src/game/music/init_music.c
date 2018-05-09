@@ -82,6 +82,5 @@ sounds_t *init_music(settings_t *settings)
 	sounds->music_vol = DEFAULT_MUSIC_VOL;
 	if (!init_sounds_music(sounds->music) || !init_sounds_sfx(sounds->sfx))
 		return NULL;
-
 	return sounds;
 }

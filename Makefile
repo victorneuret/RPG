@@ -22,6 +22,7 @@ SRC	=	src/args.c                                                                
 		src/game/events_functions/exit_intro.c                                                              \
 		src/game/events_functions/joystick_events.c                                                         \
 		src/game/gamepad/buttons/joystick_button_abxy.c                                                     \
+		src/game/gamepad/buttons/joystick_button_arrow.c                                                    \
 		src/game/gamepad/buttons/joystick_button_lb_rb.c                                                    \
 		src/game/gamepad/buttons/joystick_button_rt_lt.c                                                    \
 		src/game/gamepad/buttons/joystick_button_special.c                                                  \
@@ -92,6 +93,8 @@ SRC	=	src/args.c                                                                
 		src/player/player.c                                                                                 \
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
+		src/player/inventory.c								   		    \
+		src/player/draw_inventory.c                                                                         \
 		src/render.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
 		src/utils/csfml/coord_utils.c                                                                       \
@@ -113,7 +116,8 @@ SRC	=	src/args.c                                                                
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
 		src/xml/xml_exemple.c										    \
-		src/xml/parse_xml_player.c
+		src/xml/parse_xml_player.c									    \
+		src/xml/parse_xml_item.c
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \

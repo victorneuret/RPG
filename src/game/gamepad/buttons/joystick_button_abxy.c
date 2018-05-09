@@ -8,6 +8,7 @@
 #include "joystick.h"
 #include "events.h"
 #include "render_window.h"
+#include "key_pressed_functions.h"
 #include "hud.h"
 
 void button_a(win_t *win, bool press)
@@ -21,6 +22,8 @@ void button_a(win_t *win, bool press)
 	} else if (!pressed && press) {
 		if (win->game_state == INTRO)
 			exit_intro(win, NULL);
+		else if (win->game_state == GAME)
+			add_gun(win);
 		button_click_released(win, &event);
 		pressed = true;
 	}
@@ -70,6 +73,8 @@ void button_y(win_t *win, bool press)
 		win->game->player->xp->value -= 1;
 		update_xp_bar(win->game->player, win);
 		pressed = true;
+		if (win->game_state == GAME)
+			drop_gun(win);
 	} else {
 		win->game->player->xp->value -= 1;
 		update_xp_bar(win->game->player, win);
