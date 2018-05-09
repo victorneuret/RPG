@@ -29,7 +29,7 @@ static sfColor get_fire_color(void)
 static particle_t *create_particle(item_t *weapon, sfVector2f origin,
 				float angle)
 {
-	const float speed = (float) rand_int(600, 750);
+	const float speed = (float) rand_int(1000, 1250);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
 
 	if (!particle)
@@ -40,7 +40,7 @@ static particle_t *create_particle(item_t *weapon, sfVector2f origin,
 	particle->color = get_fire_color();
 	particle->alive = true;
 	particle->fade_out = true;
-	particle->lifetime_ms = 750;
+	particle->lifetime_ms = 500;
 	particle->weapon = weapon;
 	particle->update_shot = &update_particle_shot;
 	particle->size = rand_int(5, 8);
