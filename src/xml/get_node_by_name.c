@@ -5,8 +5,7 @@
 ** get_node_by_name
 */
 
-#include <libxml/parser.h>
-
+#include "libxml.h"
 #include "str_utils.h"
 
 xmlNode *get_node_by_name(xmlNode *root, const char *name)

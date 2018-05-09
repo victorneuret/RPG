@@ -5,8 +5,7 @@
 ** load_xml
 */
 
-#include <libxml/parser.h>
-
+#include "libxml.h"
 #include "str_utils.h"
 
 xmlDoc *load_xml_file(char *file_name)

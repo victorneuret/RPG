@@ -5,9 +5,9 @@
 ** read_xml
 */
 
-#include <libxml/parser.h>
 #include <stdbool.h>
 
+#include "libxml.h"
 #include "xml.h"
 
 bool parse_player(xmlNode *root)

@@ -5,10 +5,10 @@
 ** parse_xml_inventory
 */
 
-#include <libxml/parser.h>
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
+#include "libxml.h"
 #include "xml.h"
 #include "getnbr.h"
 #include "inventory.h"

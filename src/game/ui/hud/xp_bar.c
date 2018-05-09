@@ -10,6 +10,7 @@
 #include "render_window.h"
 #include "particle_explosion.h"
 #include "color_utils.h"
+#include "popup.h"
 
 static void update_xp_bar(player_t *player)
 {
@@ -39,8 +40,9 @@ static void bar_animation(win_t *win, player_t *player)
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		sfRectangleShape_setSize(player->xp->bar,
 				(sfVector2f) {x_pos, XP_HEIGHT});
-		create_explosion(win, 3, (sfVector2f){x_pos, 1070},
+		create_explosion(win, 200, (sfVector2f){1900, 1070},
 				hex_to_rgb(0xFFEB3B));
+		create_popup(win->game->ui, "Level up !", INFO);
 	}
 }
 

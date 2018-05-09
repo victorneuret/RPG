@@ -5,8 +5,7 @@
 ** parse_xml_player
 */
 
-#include <libxml/parser.h>
-
+#include "libxml.h"
 #include "xml.h"
 #include "getnbr.h"
 #include "player.h"
