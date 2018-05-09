@@ -9,6 +9,7 @@
 
 #include "player.h"
 #include "particle_shot.h"
+#include "particle_flame.h"
 #include "particle_shotgun.h"
 #include "dungeon.h"
 #include "music.h"
@@ -22,7 +23,8 @@ static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 		for (size_t i = 0; i < 20; i++)
 			shotgun(win, weapon, pos, player->aim_angle);
 	if (str_eq(weapon->name, "Flamethrower"))
-		create_shot(win, weapon, pos, player->aim_angle);
+		for (size_t i = 0; i < 15; i++)
+			create_flame(win, weapon, pos, player->aim_angle);
 }
 
 void player_shoot(win_t *win, player_t *player)

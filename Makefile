@@ -48,6 +48,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c									    \
 		src/game/particles/effects/particle_shot.c                                                          \
+		src/game/particles/effects/particle_flame.c                                                          \
 		src/game/particles/effects/particle_shotgun.c                                                          \
 		src/game/particles/effects/particle_xp.c                                                        \
 		src/game/particles/effects/particle_explosion.c                                                     \

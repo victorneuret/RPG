@@ -13,7 +13,7 @@
 	</shotgun>
 	<flamethrower>
 		<name>Flamethrower</name>
-		<damages>2</damages>
+		<damages>1</damages>
 		<delay>0.01</delay>
 		<path>res/textures/weapons/flamethrower.png</path>
 	</flamethrower>
