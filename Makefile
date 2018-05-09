@@ -151,6 +151,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/game/stats_menu									    \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \

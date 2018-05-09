@@ -26,6 +26,7 @@ typedef struct player player_t;
 typedef struct dungeon dungeon_t;
 typedef struct room room_t;
 typedef struct enemy_list enemy_list_t;
+typedef struct stats_menu stats_menu_t;
 
 static const float GRAVITY = 500;
 
@@ -40,6 +41,7 @@ typedef struct game {
 	room_t **rooms;
 	level_t *level;
 	enemy_list_t *enemy_list;
+	stats_menu_t *stats_menu;
 } game_t;
 
 bool init_game(win_t *win);
