@@ -13,6 +13,8 @@
 
 #include "render_window.h"
 
+typedef struct render_window win_t;
+
 static const uint8_t INVENTORY_NB = 3;
 static const uint8_t NB_ITEMS = 4;
 

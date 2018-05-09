@@ -14,6 +14,7 @@
 #include "enemies.h"
 #include "particle_manager.h"
 #include "particle_explosion.h"
+#include "inventory.h"
 
 void update_particle_shot(win_t *win, particle_t *particle,
 			__attribute__((unused)) uint64_t current_time)
@@ -23,6 +24,8 @@ void update_particle_shot(win_t *win, particle_t *particle,
 	const sfFloatRect particle_rect =
 		sfRectangleShape_getGlobalBounds(particle->shape);
 
+	if (!particle->weapon)
+		return;
 	while (current) {
 		if (!current->enemy)
 			return;
@@ -31,28 +34,29 @@ void update_particle_shot(win_t *win, particle_t *particle,
 		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
 			particle->alive = false;
 			create_explosion(win, 5, particle->pos, sfRed);
-			current->enemy->hp -= 25;
+			current->enemy->hp -= particle->weapon->damages;
 			play_sfx(win->game->sounds, HIT);
 		}
 		current = current->next;
 	}
 }
 
-static particle_t *create_particle(sfVector2f origin, sfColor color,
+static particle_t *create_particle(item_t *weapon, sfVector2f origin,
 				float angle)
 {
-	const float speed = (float) rand_int(1200, 1400);
+	const float speed = (float) rand_int(1500, 1750);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
 
 	if (!particle)
 		return NULL;
 	angle = (angle - 45) * (float) M_PI / 180.f;
 	particle->pos = origin;
-	particle->color = color;
+	particle->color = hex_to_rgb(0xaaaaaa);
 	particle->alive = true;
 	particle->fade_in = false;
 	particle->fade_out = true;
 	particle->lifetime_ms = 3333;
+	particle->weapon = weapon;
 	particle->update = &update_particle_shot;
 	particle->size = rand_int(5, 10);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
@@ -61,7 +65,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color,
 	return particle;
 }
 
-void create_shot(win_t *win, sfVector2f origin, sfColor color, float angle)
+void create_shot(win_t *win, item_t *weapon, sfVector2f origin, float angle)
 {
 	particle_group_t *group = get_particle_group(win->particle_manager);
 	particle_t **p_list = my_calloc(2, sizeof(particle_t *));
@@ -69,7 +73,7 @@ void create_shot(win_t *win, sfVector2f origin, sfColor color, float angle)
 	if (!p_list || !group)
 		return;
 	group->particles = p_list;
-	p_list[0] = create_particle(origin, color, angle);
+	p_list[0] = create_particle(weapon, origin, angle);
 	if (!p_list[0]) {
 		free(p_list);
 		return;

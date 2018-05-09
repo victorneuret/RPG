@@ -10,8 +10,10 @@
 #include <SFML/Graphics.h>
 #include <stdint.h>
 
+#include "inventory.h"
 #include "render_window.h"
 
+typedef struct item item_t;
 typedef struct render_window win_t;
 
 typedef struct particle particle_t;
@@ -25,6 +27,7 @@ struct particle {
 	uint32_t size;
 	uint64_t lifetime_ms;
 	sfRectangleShape *shape;
+	item_t *weapon;
 	bool alive;
 	bool gravity;
 	bool fade_in;
