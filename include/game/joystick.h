@@ -80,6 +80,8 @@ void button_start(win_t *win, bool press);
 void button_menu(win_t *win, bool press);
 void button_l(win_t *win, bool press);
 void button_r(win_t *win, bool press);
+void button_left(win_t *win);
+void button_right(win_t *win);
 
 void button_lt(win_t *win, bool press);
 void button_rt(win_t *win, bool press);

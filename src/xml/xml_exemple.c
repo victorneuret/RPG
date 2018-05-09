@@ -6,7 +6,6 @@
 */
 
 #include <libxml/parser.h>
-
 #include <stdbool.h>
 
 #include "xml.h"

@@ -20,3 +20,5 @@ void pause_game(win_t *win);
 void to_title_page(win_t *win);
 
 void open_door(win_t *win);
+void add_gun(win_t *win);
+void drop_gun(win_t *win);

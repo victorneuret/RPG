@@ -15,6 +15,7 @@
 static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 {
 	int8_t **map = win->game->dungeon->rooms;
+	item_t *item_list = win->game->player->inventory->item_list;
 	size_t i = 0;
 
 	for (size_t j = 0; j < NB_ROOMS_WIDTH && i < NB_ROOMS_HEIGHT; j++) {
@@ -30,6 +31,9 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			i++;
 		}
 	}
+	for (uint8_t j = 0; j < (NB_ITEMS - 1); j++)
+		if (item_list[j].droped)
+			item_list[j].pos = (sfVector2f){0, 0};
 }
 
 static void set_sprite_pos(sfVector2f *pos, uint8_t dir, sounds_t *sounds)

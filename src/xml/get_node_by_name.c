@@ -9,7 +9,7 @@
 
 #include "str_utils.h"
 
-xmlNode *get_node_by_name(xmlNode *root, char *name)
+xmlNode *get_node_by_name(xmlNode *root, const char *name)
 {
 	for (xmlNode *node = root->children; node; node = node->next) {
 		if (str_eq((char *) node->name, name))

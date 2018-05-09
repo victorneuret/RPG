@@ -25,6 +25,7 @@ typedef struct ui ui_t;
 typedef struct player player_t;
 typedef struct dungeon dungeon_t;
 typedef struct room room_t;
+typedef struct enemy_list enemy_list_t;
 
 static const float GRAVITY = 500;
 

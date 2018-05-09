@@ -32,6 +32,7 @@ void update_particle_shot(win_t *win, particle_t *particle,
 			particle->alive = false;
 			create_explosion(win, 5, particle->pos, sfRed);
 			current->enemy->hp -= 25;
+			play_sfx(win->game->sounds, HIT);
 		}
 		current = current->next;
 	}

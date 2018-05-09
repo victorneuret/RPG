@@ -14,6 +14,7 @@
 #include "nb_utils.h"
 #include "my_calloc.h"
 #include "particle_xp.h"
+#include "music.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos)
 {
@@ -42,8 +43,11 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 			render_object(win, RECTANGLE, current->enemy->shape);
 }
 
-void update_enemies(win_t *win, enemy_list_t *enemy_list, bool *door_open)
+void update_enemies(win_t *win, enemy_list_t *enemy_list,
+		sounds_t *sounds, bool *door_open)
 {
+	static bool doors = false;
+
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *current = enemy_list; current;
@@ -51,11 +55,17 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list, bool *door_open)
 		if (current->enemy && current->enemy->hp <= 0) {
 			particle_xp(win, 50, current->enemy->pos,
 					hex_to_rgb(0xFFEB3B));
+			play_sfx(sounds, DEATH);
 			rm_enemy_from_list(&enemy_list, current->enemy);
 			break;
 		}
 	}
 	*door_open = enemy_list->enemy == NULL;
+	if (*door_open && !doors) {
+		play_sfx(sounds, OPEN);
+		doors = true;
+	} else if (!*door_open)
+		doors = false;
 }
 
 void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)

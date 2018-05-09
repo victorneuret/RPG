@@ -19,15 +19,21 @@ typedef struct player player_t;
 static const uint16_t HP_HEIGHT = 32;
 static const uint16_t HP_WIDTH = 400;
 
-typedef struct hp {
-	uint16_t max_hp;
-	int16_t hp;
-	float hp_mult;
-	sfRectangleShape *hp_bar;
-	sfRectangleShape *hp_back_bar;
+static const uint16_t XP_HEIGHT = 10;
+static const uint16_t XP_WIDTH = 1920;
+
+typedef struct bar {
+	uint16_t max_value;
+	int16_t value;
+	float mult;
+	sfRectangleShape *bar;
+	sfRectangleShape *back_bar;
 	sfText *text;
-} hp_t;
+} bar_t;
 
 void display_hp_bar(win_t *win);
 bool init_hud(player_t *player);
 void update_hp_bar(player_t *player);
+
+void display_xp_bar(win_t *win);
+void update_xp_bar(player_t *player, win_t *win);
