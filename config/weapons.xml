@@ -2,12 +2,12 @@
 	<gun>
 		<name>Bubble</name>
 		<damages>20</damages>
-		<delay>0.42</delay>
+		<delay>0.25</delay>
 		<path>res/textures/weapons/bubble.png</path>
 	</gun>
 	<shotgun>
 		<name>The Shotgun</name>
-		<damages>3</damages>
+		<damages>7</damages>
 		<delay>1</delay>
 		<path>res/textures/weapons/shotgun.png</path>
 	</shotgun>

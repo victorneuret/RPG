@@ -34,6 +34,7 @@ struct particle {
 	bool fade_out;
 	bool screen_collision;
 	void (*update)(win_t *win, particle_t *particle, uint64_t current_time);
+	void (*update_shot)(win_t *win, particle_t *particle);
 };
 
 struct particle_group {

@@ -10,4 +10,5 @@
 #include "particle.h"
 #include "inventory.h"
 
+void update_particle_shot(win_t *win, particle_t *particle);
 void create_shot(win_t *win, item_t *item, sfVector2f origin, float angle);
