@@ -26,6 +26,7 @@ typedef struct npc {
 	uint8_t elem;
 	sfVector2f pos;
 	sfSprite *skin;
+	sfClock *timer;
 	sfText *talk;
 	quest_t *quest;
 	textbox_t *textbox;

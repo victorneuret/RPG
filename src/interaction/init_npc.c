@@ -33,8 +33,9 @@ npc_t *init_npc(textures_t *textures)
 	npc->textbox = init_textbox();
 	npc->quest = init_quest();
 	npc->talk = sfText_create();
+	npc->timer = sfClock_create();
 	if (!npc || !font || !npc->textbox || !npc->quest
-		|| !npc->skin || !npc->talk || !npc->skin)
+		|| !npc->skin || !npc->talk || !npc->skin || !npc->timer)
 		return NULL;
 	npc->pos = (sfVector2f) {1600, 180};
 	npc->quest_id = 0;

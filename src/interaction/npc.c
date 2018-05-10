@@ -41,13 +41,24 @@ void npc_interaction(win_t *win)
 
 static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 {
+	sfIntRect rect = sfSprite_getTextureRect(npc->skin);
+
+	rect.left = 0;
 	if (npc->textbox->state && npc->elem != 0
 		&& npc->elem <= npc->quest[id].diag_elem) {
 		render_object(win->sf_win, RECTANGLE,
 			win->game->npc->textbox->rect);
 		render_object(win->sf_win, TEXT, npc->textbox->name);
 		render_object(win->sf_win, TEXT, npc->quest[id].text);
+		if (sfClock_getElapsedTime(npc->timer).microseconds > 200000) {
+			animate_sprite(npc->skin,
+				sfSprite_getGlobalBounds(npc->skin).width, 2);
+			sfClock_restart(npc->timer);
+		}
 	} else {
+
+		sfSprite_setTextureRect(npc->skin, rect);
+		render_object(win->sf_win, SPRITE, npc->skin);
 		render_object(win->sf_win, TEXT, npc->talk);
 		npc->elem = 0;
 	}
