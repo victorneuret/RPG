@@ -80,6 +80,7 @@ void render(win_t *win)
 		break;
 	case STATS:
 		draw_stat_menu(win, win->game->stats_menu);
+		draw_skill_tree(win, win->game->stats_menu);
 		break;
 	default: break;
 	}

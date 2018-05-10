@@ -55,8 +55,8 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 	stats->level_text = init_text(ft, "Level ", (sfVector2f) {0, 0}, 100);
 	stats->level = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
 	stats->sp = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
-	if (!stats->player || !stats->slash || !stats->hp || !stats->hp_max
-		|| !stats->xp || !stats->xp_max || !stats->level
+	if (!stats->slash || !stats->hp || !stats->hp_max || !stats->xp
+		|| !stats->xp_max || !stats->level || !stats->level_text
 		|| !stats->sp || !init_stats_sprite(stats, textures))
 		return false;
 	sfFont_destroy(ft);
@@ -69,10 +69,10 @@ static bool init_rectangle_stats(stats_menu_t *menu)
 {
 	sfRectangleShape_setSize(menu->background,
 				(sfVector2f){WIN_MAX_W, WIN_MAX_H});
-	sfRectangleShape_setFillColor(menu->background, hex_to_rgb(0x455A64));
+	sfRectangleShape_setFillColor(menu->background, hex_to_rgb(0x000000));
 	sfRectangleShape_setSize(menu->separator, (sfVector2f){1, 880});
 	sfRectangleShape_setPosition(menu->separator, (sfVector2f){600, 100});
-	sfRectangleShape_setFillColor(menu->separator, hex_to_rgb(0x263238));
+	sfRectangleShape_setFillColor(menu->separator, hex_to_rgb(0xFFFFFF));
 	return true;
 }
 

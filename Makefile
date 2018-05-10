@@ -101,6 +101,8 @@ SRC	=	src/args.c                                                                
 		src/interaction/npc.c									   	    \
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
+		src/skill_tree/draw_skill_tree.c								    \
+		src/skill_tree/init_skill_tree.c								    \
 		src/stats_menu/draw_stat_menu.c									    \
 		src/stats_menu/init_stat_menu.c									    \
 		src/stats_menu/update_stat_menu.c								    \

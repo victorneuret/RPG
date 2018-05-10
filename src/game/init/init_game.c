@@ -62,7 +62,8 @@ bool init_game(win_t *win)
 		return false;
 	if (!win->game || !win->game->ui || !win->game->dungeon
 		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
-		|| !init_gamepad(win) || !init_stat_menu(win))
+		|| !init_gamepad(win) || !init_stat_menu(win)
+		|| !init_skill_tree(win->game->stats_menu, win->game))
 		return false;
 	win->game->player = init_player(win);
 	if (!win->game->player)
