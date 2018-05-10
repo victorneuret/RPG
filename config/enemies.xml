@@ -1,17 +1,17 @@
 <enemies>
-	<bob>
-		<name>Bob</name>
-		<health>42</health>
-		<damages>12</damages>
-	</bob>
-	<tank>
-		<name>Tank</name>
-		<health>121</health>
-		<damages>4</damages>
-	</tank>
-	<sbires>
-		<name>Sbire</name>
-		<health>12</health>
-		<damages>6</damages>
-	</tank>
+	<light>
+		<health>50</health>
+		<speed>150</speed>
+		<damages>100</damages>
+	</light>
+	<balanced>
+		<health>100</health>
+		<speed>75</speed>
+		<damages>75</damages>
+	</balanced>
+	<heavy>
+		<health>200</health>
+		<speed>25</speed>
+		<damages>50</damages>
+	</heavy>
 </enemies>
