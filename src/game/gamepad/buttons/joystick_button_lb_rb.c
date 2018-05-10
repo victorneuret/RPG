@@ -7,6 +7,7 @@
 
 #include "player.h"
 #include "joystick.h"
+#include "enemies.h"
 
 void button_lb(__attribute__((unused)) win_t *win, bool press)
 {
@@ -16,8 +17,10 @@ void button_lb(__attribute__((unused)) win_t *win, bool press)
 		pressed = false;
 		return;
 	}
-	if (!pressed && press)
+	if (!pressed && press) {
 		pressed = true;
+		nuke_enemies(win->game->enemy_list);
+	}
 }
 
 void button_rb(__attribute__((unused)) win_t *win, bool press)

@@ -16,6 +16,9 @@
 #include "music.h"
 #include "slider.h"
 #include "hud.h"
+#include "npc.h"
+#include "stats_menu.h"
+#include "xml.h"
 
 static bool init_ui(win_t *win)
 {
@@ -29,10 +32,11 @@ static bool init_ui(win_t *win)
 	win->game->ui->hover_text_button = init_text_button();
 	win->game->ui->title_page = init_title_page(win->game->textures);
 	win->game->ui->popup_list = my_calloc(1, sizeof(popup_list_t));
+	win->game->npc = init_npc();
 	if (!win->game->ui->buttons || !win->game->ui->text_area
 		|| !win->game->ui->hover_text_button
 		|| !win->game->ui->title_page || !win->game->ui->popup_list
-		|| !win->game->ui->slider)
+		|| !win->game->ui->slider || !win->game->npc)
 		return false;
 	return true;
 }
@@ -48,21 +52,19 @@ static bool init_gamepad(win_t *win)
 	return true;
 }
 
-bool init_game(win_t *win)
+static bool init_game_struct(win_t *win)
 {
-	win->game = my_calloc(1, sizeof(game_t));
-	win->game->ui = my_calloc(1, sizeof(ui_t));
-	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
-	win->joystick = my_calloc(1, sizeof(joystick_t));
 	win->game->sounds = init_music(win->settings);
 	if (!win->game->sounds)
 		return false;
 	if (!win->game || !win->game->ui || !win->game->dungeon
 		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
-		|| !init_gamepad(win))
+		|| !init_gamepad(win) || !init_stat_menu(win))
 		return false;
 	win->game->player = init_player(win);
-	if (!win->game->player)
+	win->game->enemies_declaration =
+				xml_enemies(win->game->enemies_declaration);
+	if (!win->game->player || !win->game->enemies_declaration)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
@@ -70,6 +72,19 @@ bool init_game(win_t *win)
 		change_state(win, TITLE);
 	else
 		change_state(win, INTRO);
+	return true;
+}
+
+bool init_game(win_t *win)
+{
+	win->game = my_calloc(1, sizeof(game_t));
+	if (!win->game)
+		return false;
+	win->game->ui = my_calloc(1, sizeof(ui_t));
+	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
+	win->joystick = my_calloc(1, sizeof(joystick_t));
+	if (!init_game_struct(win))
+		return false;
 	return true;
 }
 

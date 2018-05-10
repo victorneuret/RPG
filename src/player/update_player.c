@@ -84,6 +84,7 @@ static void move_player(win_t *win, player_t *player)
 	check_obstacle(&pos, win);
 	pos.x += rect.width / 2.f;
 	pos.y += rect.height / 2.f;
+	player->pos = pos;
 	sfSprite_setPosition(player->sprite, pos);
 	sfSprite_setPosition(player->aim, pos);
 }
@@ -96,7 +97,7 @@ void update_player(win_t *win, player_t *player)
 		sfClock_getElapsedTime(player->timer).microseconds > 60000) {
 		dir = get_direction(win->joystick->lx, win->joystick->ly);
 		switch_direction(player->sprite, dir);
-		animate_sprite(player,
+		animate_sprite(player->sprite,
 			sfSprite_getGlobalBounds(player->sprite).width, 10);
 		sfClock_restart(player->timer);
 	} else if (sfClock_getElapsedTime(player->timer).microseconds

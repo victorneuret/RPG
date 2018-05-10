@@ -14,6 +14,7 @@ SRC	=	src/args.c                                                                
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
 		src/enemies/enemies.c                                                                               \
+		src/enemies/enemy_ai.c                                                                               \
 		src/enemies/enemy_list.c                                                                            \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
@@ -94,11 +95,18 @@ SRC	=	src/args.c                                                                
 		src/player/door_transition.c                                                                        \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
+		src/player/player_utils.c                                                                           \
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
 		src/player/init_inventory.c                                                                         \
 		src/player/draw_inventory.c                                                                         \
+		src/interaction/npc.c									   	    \
+		src/interaction/textbox.c									    \
+		src/interaction/quest.c										    \
+		src/stats_menu/draw_stat_menu.c									    \
+		src/stats_menu/init_stat_menu.c									    \
+		src/stats_menu/update_stat_menu.c								    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
@@ -122,7 +130,9 @@ SRC	=	src/args.c                                                                
 		src/xml/node_utils.c                                                                                \
 		src/xml/xml_exemple.c										    \
 		src/xml/parse_xml_player.c									    \
-		src/xml/parse_xml_item.c
+		src/xml/parse_xml_item.c									    \
+		src/xml/parse_xml_enemies.c
+
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \
@@ -152,9 +162,11 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/stats_menu										    \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \
+		-I./include/interaction										    \
 		-I./include/level                                                                                   \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \

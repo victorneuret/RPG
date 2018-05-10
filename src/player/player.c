@@ -12,15 +12,15 @@
 #include "inventory.h"
 #include "xml.h"
 
-void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val)
+void animate_sprite(sfSprite *sprite, uint16_t offset, uint8_t max_val)
 {
-	sfIntRect rect = sfSprite_getTextureRect(player->sprite);
+	sfIntRect rect = sfSprite_getTextureRect(sprite);
 
 	if (rect.left < (max_val - 1) * offset)
 		rect.left += offset;
 	else
 		rect.left = 0;
-	sfSprite_setTextureRect(player->sprite, rect);
+	sfSprite_setTextureRect(sprite, rect);
 }
 
 void draw_player(win_t *win, player_t *player)
@@ -51,8 +51,9 @@ player_t *init_player(win_t *win)
 	for (; text && !str_eq(text->name, "player"); text = text->next);
 	player->sprite = get_sprite_texture_rect(text->texture, &rect);
 	player->timer = sfClock_create();
+	player->immu = sfClock_create();
 	init_player_aim(player, win);
-	if (!player->sprite || !player->aim || !player->timer)
+	if (!player->sprite || !player->aim || !player->timer || !player->immu)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});

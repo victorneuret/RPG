@@ -20,12 +20,15 @@ static void update_xp_bar(player_t *player)
 
 static void reset_bar(player_t *player, float x_pos, win_t *win)
 {
+	play_sfx(win->game->sounds, LEVEL_UP);
 	sfRectangleShape_setSize(player->xp->bar,
 			(sfVector2f) {x_pos, XP_HEIGHT});
 	create_explosion(win, 3, (sfVector2f){x_pos, 1070},
 			hex_to_rgb(0xFFEB3B));
-	create_popup(win->game->ui, "Level up!", INFO);
+	if (win->game_state == GAME)
+		create_popup(win->game->ui, "Level up!", INFO);
 	player->level += 1;
+	player->skill_point += 1;
 	sfText_setString(player->xp->text, int_to_str(player->level));
 	text_right(player->xp->text, WIN_MAX_W - 20, 1030);
 }
@@ -36,6 +39,7 @@ static void bar_animation(win_t *win, player_t *player)
 	static uint16_t xp = 0;
 
 	if (xp < player->xp->value && xp < player->xp->max_value) {
+		play_sfx(win->game->sounds, XP);
 		xp += 2 * player->level;
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		sfRectangleShape_setSize(player->xp->bar,

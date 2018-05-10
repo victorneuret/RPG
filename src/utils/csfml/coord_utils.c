@@ -5,7 +5,10 @@
 ** coord_equal
 */
 
-#include "render_window.h"
+#include <SFML/Graphics.h>
+#include <stdbool.h>
+
+#include "macros.h"
 
 bool is_coord_equal(sfVector2f one, sfVector2f two)
 {
@@ -33,4 +36,18 @@ sfVector2f vec2i_to_2f(sfVector2i coord)
 sfVector2i vec2f_to_2i(sfVector2f coord)
 {
 	return ((sfVector2i) {coord.x, coord.y});
+}
+
+sfVector2f get_direction(sfVector2f from, sfVector2f to)
+{
+	float total = 0.0;
+	sfVector2f absolute_dir = {0.0, 0.0};
+	sfVector2f relative_dir = {0.0, 0.0};
+
+	absolute_dir.x = from.x - to.x;
+	absolute_dir.y = from.y - to.y;
+	total = ABS(absolute_dir.x) + ABS(absolute_dir.y);
+	relative_dir.x = absolute_dir.x / total;
+	relative_dir.y = absolute_dir.y / total;
+	return relative_dir;
 }

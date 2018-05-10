@@ -14,6 +14,7 @@
 #include "hud.h"
 
 typedef struct inventory inventory_t;
+typedef struct bar bar_t;
 
 static const float X_SPEED = 900.f;
 static const uint8_t WALL_SIZE = 140;
@@ -29,10 +30,13 @@ typedef enum {
 } direction_t;
 
 typedef struct player {
+	sfVector2f pos;
 	sfClock *timer;
+	sfClock *immu;
 	sfSprite *sprite;
 	float speed;
 	uint8_t level;
+	uint16_t skill_point;
 	bar_t *hp;
 	bar_t *xp;
 	sfSprite *aim;
@@ -48,7 +52,7 @@ typedef struct room room_t;
 player_t *init_player(win_t *win);
 void update_player(win_t *win, player_t *player);
 void update_idle(player_t *player, uint8_t dir);
-void animate_sprite(player_t *player, uint16_t offset, uint8_t max_val);
+void animate_sprite(sfSprite *sprite, uint16_t offset, uint8_t max_val);
 void draw_player(win_t *win, player_t *player);
 void destroy_player(player_t *player);
 void check_obstacle(sfVector2f *pos, win_t *win);
@@ -56,3 +60,5 @@ void check_obstacle(sfVector2f *pos, win_t *win);
 void player_shoot(win_t *win, player_t *player);
 void player_door(win_t *win, sfVector2f *pos, room_t *room);
 void door_action(win_t *win, sfVector2f *pos, room_t *room);
+
+bool is_player_immune(sfClock *timer);

@@ -6,6 +6,7 @@
 */
 
 #include "joystick.h"
+#include "change_state.h"
 
 void button_select(win_t *win, bool press)
 {
@@ -15,8 +16,7 @@ void button_select(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->dungeon->door_open =
-			(win->game->dungeon->door_open) ? false : true;
+		stats_game(win);
 		pressed = true;
 	}
 }
@@ -29,8 +29,8 @@ void button_start(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		pressed = true;
 		pause_game(win);
+		pressed = true;
 	}
 }
 

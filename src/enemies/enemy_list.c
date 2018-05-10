@@ -11,6 +11,16 @@
 #include "enemies.h"
 #include "my_calloc.h"
 
+void nuke_enemies(enemy_list_t *enemy_list)
+{
+	if (!enemy_list)
+		return;
+	for (enemy_list_t *current = enemy_list; current;
+							current = current->next)
+		if (current->enemy)
+			current->enemy->hp = 0;
+}
+
 void add_enemy_to_list(enemy_list_t **enemy_list, enemy_t *enemy)
 {
 	enemy_list_t *current;
