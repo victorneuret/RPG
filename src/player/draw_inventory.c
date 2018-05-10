@@ -17,8 +17,7 @@ static void draw_droped_items(win_t *win, inventory_t *inventory)
 {
 	for (uint8_t i = 0; i < (NB_ITEMS - 1); i++) {
 		if (inventory->item_list[i].droped &&
-				(inventory->item_list[i].pos.x != 0 &&
-				inventory->item_list[i].pos.y != 0)) {
+				inventory->item_list[i].pos.x != 0) {
 			render_object(win->sf_win, SPRITE,
 					inventory->item_list[i].sprite);
 		}
@@ -45,11 +44,9 @@ static void draw_selected_item(win_t *win, item_t *item, inventory_t *inventory,
 
 static void draw_item(win_t *win, item_t *item)
 {
-	sfSprite_setColor(item->sprite,
-					sfColor_fromRGBA(255, 255, 255, 90));
+	sfSprite_setColor(item->sprite, sfColor_fromRGBA(255, 255, 255, 90));
 	render_object(win->sf_win, SPRITE, item->sprite);
-	sfSprite_setColor(item->sprite,
-					sfColor_fromRGBA(255, 255, 255, 255));
+	sfSprite_setColor(item->sprite, sfColor_fromRGBA(255, 255, 255, 255));
 }
 
 static void draw_selected(win_t *win, uint8_t i, inventory_t *inventory,
@@ -63,7 +60,7 @@ static void draw_selected(win_t *win, uint8_t i, inventory_t *inventory,
 
 void draw_inventory(win_t *win, inventory_t *inventory)
 {
-	sfVector2f pos = {1500, 1010};
+	sfVector2f pos = {1400, 1010};
 
 	for (uint8_t i = 0; i < INVENTORY_NB; i++) {
 		if (inventory->item[i] && !inventory->item[i]->droped) {
@@ -73,4 +70,6 @@ void draw_inventory(win_t *win, inventory_t *inventory)
 		pos.x += 150;
 	}
 	draw_droped_items(win, inventory);
+	if (inventory->display_message)
+		render_object(win->sf_win, TEXT, inventory->message);
 }

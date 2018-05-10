@@ -15,16 +15,23 @@
 #include "my_calloc.h"
 #include "particle_xp.h"
 #include "music.h"
+#include "quest.h"
+#include "xml.h"
 
-static sfRectangleShape *create_enemy_shape(sfVector2f pos)
+static sfRectangleShape *create_enemy_shape(sfVector2f pos, uint8_t type)
 {
 	const sfVector2f size = (sfVector2f) {100, 100};
 	sfRectangleShape *shape = sfRectangleShape_create();
+	sfColor color = sfCyan;
 
 	if (!shape)
 		return NULL;
 	sfRectangleShape_setPosition(shape, pos);
-	sfRectangleShape_setFillColor(shape, sfCyan);
+	switch (type) {
+	case BALANCED: color = sfYellow; break;
+	case HEAVY: color = sfRed; break;
+	}
+	sfRectangleShape_setFillColor(shape, color);
 	sfRectangleShape_setSize(shape, size);
 	sfRectangleShape_setOrigin(shape,
 				(sfVector2f) {size.x / 2.f, size.y / 2.f});
@@ -37,10 +44,9 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 {
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *current = enemy_list; current;
-						current = current->next)
-		if (current->enemy)
-			render_object(win, RECTANGLE, current->enemy->shape);
+	for (enemy_list_t *node = enemy_list; node; node = node->next)
+		if (node->enemy)
+			render_object(win, RECTANGLE, node->enemy->shape);
 }
 
 void update_enemies(win_t *win, enemy_list_t *enemy_list,
@@ -50,15 +56,18 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *current = enemy_list; current;
-						current = current->next) {
-		if (current->enemy && current->enemy->hp <= 0) {
-			particle_xp(win, 50, current->enemy->pos,
-					hex_to_rgb(0xFFEB3B));
+	for (enemy_list_t *node = enemy_list; node; node = node->next) {
+		if (node->enemy && node->enemy->hp <= 0) {
+			particle_xp(win, node->enemy->hp_max, node->enemy->pos,
+							hex_to_rgb(0xFFEB3B));
 			play_sfx(sounds, DEATH);
-			rm_enemy_from_list(&enemy_list, current->enemy);
+			enemy_drop_item(node->enemy->pos,
+				win->game->player->inventory->item_list);
+			win->game->npc->quest[win->game->npc->quest_id].kill--;
+			rm_enemy_from_list(&enemy_list, node->enemy);
 			break;
 		}
+		update_enemy_ai(win, node->enemy, win->game->player);
 	}
 	*door_open = enemy_list->enemy == NULL;
 	if (*door_open && !doors) {
@@ -68,19 +77,20 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 		doors = false;
 }
 
-void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
+void create_enemy(enemy_list_t **enemy_list, enemy_t *random_enemy)
 {
-	static float multiplicator = 1.0f;
 	enemy_t *enemy = my_calloc(1, sizeof(enemy_t));
 
-	if (!enemy)
+	if (!enemy || !random_enemy)
 		return;
-	enemy->pos = pos;
-	enemy->hp = 100 * multiplicator;
-	enemy->hp_max = enemy->hp;
-	enemy->attack = 20 * multiplicator;
-	enemy->shape = create_enemy_shape(pos);
-	multiplicator += 0.01f;
+	enemy->type = random_enemy->type;
+	enemy->attack = random_enemy->attack;
+	enemy->hp = random_enemy->hp;
+	enemy->hp_max = random_enemy->hp_max;
+	enemy->attack = random_enemy->attack;
+	enemy->speed = random_enemy->speed;
+	enemy->pos = (sfVector2f) {rand_int(200, 1600), rand_int(200, 800)};
+	enemy->shape = create_enemy_shape(enemy->pos, enemy->type);
 	if (!enemy->shape) {
 		free(enemy);
 		return;
@@ -88,9 +98,9 @@ void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
 	add_enemy_to_list(enemy_list, enemy);
 }
 
-void create_enemy_group(enemy_list_t **enemy_list)
+void create_enemy_group(enemy_list_t **enemy_list, enemy_t **enemy_declaration)
 {
 	for (int i = 0; i < rand_int(4, 6); i++)
 		create_enemy(enemy_list,
-			(sfVector2f) {rand_int(200, 1600), rand_int(200, 800)});
+				enemy_declaration[rand_int(0, ENEMIES_NB)]);
 }

@@ -51,12 +51,13 @@ player_t *init_player(win_t *win)
 	for (; text && !str_eq(text->name, "player"); text = text->next);
 	player->sprite = get_sprite_texture_rect(text->texture, &rect);
 	player->timer = sfClock_create();
+	player->immu = sfClock_create();
 	init_player_aim(player, win);
-	if (!player->sprite || !player->aim || !player->timer)
+	if (!player->sprite || !player->aim || !player->timer || !player->immu)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
-	sfSprite_setPosition(player->sprite, (sfVector2f) {200, 200});
+	sfSprite_setPosition(player->sprite, (sfVector2f) {400, 400});
 	player->level = 1;
 	player->inventory = init_inventory(win);
 	if (!xml_player(player) || !init_hud(player) || !player->inventory)

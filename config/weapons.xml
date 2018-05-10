@@ -3,18 +3,18 @@
 		<name>Bubble</name>
 		<damages>20</damages>
 		<delay>0.25</delay>
-		<path>res/textures/weapons/bubble.png</path>
+		<rate>100</rate>
 	</gun>
 	<shotgun>
 		<name>The Shotgun</name>
 		<damages>7</damages>
 		<delay>1</delay>
-		<path>res/textures/weapons/shotgun.png</path>
+		<rate>8</rate>
 	</shotgun>
 	<flamethrower>
 		<name>Flamethrower</name>
 		<damages>1</damages>
 		<delay>0.01</delay>
-		<path>res/textures/weapons/flamethrower.png</path>
+		<rate>1</rate>
 	</flamethrower>
 </weapons>

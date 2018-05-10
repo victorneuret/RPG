@@ -23,7 +23,8 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			win->game->dungeon->act_room = map[i + y][j + x];
 			win->game->dungeon->door_open = false;
 			win->game->dungeon->transition = true;
-			create_enemy_group(&win->game->enemy_list);
+			create_enemy_group(&win->game->enemy_list,
+						win->game->enemies_declaration);
 			break;
 		}
 		if (j + 1 >= NB_ROOMS_WIDTH) {
@@ -75,6 +76,7 @@ static bool check_x_door(sfVector2f *pos)
 
 void door_action(win_t *win, sfVector2f *pos, room_t *room)
 {
+	*pos = (sfVector2f) {pos->x - PLAYER_W / 2.f, pos->y - PLAYER_H / 2.f};
 	if (room->door_left && pos->x < WALL_SIZE && check_y_door(pos)) {
 		move_room(win, room, -1, 0);
 		set_sprite_pos(pos, LEFT, win->game->sounds);
@@ -93,4 +95,5 @@ void door_action(win_t *win, sfVector2f *pos, room_t *room)
 		move_room(win, room, 0, 1);
 		set_sprite_pos(pos, BOTTOM, win->game->sounds);
 	}
+	*pos = (sfVector2f) {pos->x + PLAYER_W / 2.f, pos->y + PLAYER_H / 2.f};
 }
