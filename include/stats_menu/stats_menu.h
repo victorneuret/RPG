@@ -26,6 +26,23 @@ typedef struct stats {
 	sfText *sp;
 } stats_t;
 
+// typedef enum {
+// 	UNLOCKED,
+// 	LOCKED,
+// 	DISABLED
+// } skill_status_t;
+
+// typedef struct skill {
+// 	uint16_t x_pos;
+// 	uint8_t y_pos[3];
+// 	skill_status_t status[3];
+// 	uint8_t level;
+// } skill_t;
+
+typedef struct skill_tree {
+
+} skill_tree_t;
+
 typedef struct stats_menu {
 	sfRectangleShape *background;
 	sfRectangleShape *separator;

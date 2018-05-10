@@ -65,6 +65,17 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 	return true;
 }
 
+static bool init_rectangle_stats(stats_menu_t *menu)
+{
+	sfRectangleShape_setSize(menu->background,
+				(sfVector2f){WIN_MAX_W, WIN_MAX_H});
+	sfRectangleShape_setFillColor(menu->background, hex_to_rgb(0x455A64));
+	sfRectangleShape_setSize(menu->separator, (sfVector2f){1, 880});
+	sfRectangleShape_setPosition(menu->separator, (sfVector2f){600, 100});
+	sfRectangleShape_setFillColor(menu->separator, hex_to_rgb(0x263238));
+	return true;
+}
+
 bool init_stat_menu(win_t *win)
 {
 	win->game->stats_menu = malloc(sizeof(stats_menu_t));
@@ -80,6 +91,8 @@ bool init_stat_menu(win_t *win)
 		|| !win->game->stats_menu->separator)
 		return false;
 	if (!init_stats(win->game->stats_menu, win->game->textures))
+		return false;
+	if (!init_rectangle_stats(win->game->stats_menu))
 		return false;
 	return true;
 }
