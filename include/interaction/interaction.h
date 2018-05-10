@@ -17,3 +17,4 @@ static const uint16_t TEXTBOX_W = 900;
 static const uint16_t TEXTBOX_H = 100;
 static const uint16_t TEXTBOX_POS_X = (WIN_MAX_W / 2) - (TEXTBOX_W / 2);
 static const uint16_t TEXTBOX_POS_Y = WIN_MAX_H - TEXTBOX_H - 150;
+static const uint8_t NB_QUEST_STRUCT = 3;

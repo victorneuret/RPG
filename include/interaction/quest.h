@@ -12,7 +12,15 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+typedef enum {
+	KILL,
+	WEAPON,
+	NONE
+} quest_type_t;
+
 typedef struct quest {
+	quest_type_t quest_type;
+	int8_t kill;
 	uint8_t quest_id;
 	uint8_t diag_elem;
 	char **dialog;
@@ -21,6 +29,8 @@ typedef struct quest {
 } quest_t;
 
 typedef struct {
+	quest_type_t quest_type;
+	int8_t kill;
 	uint8_t quest_id;
 	uint8_t diag_elem;
 	char **dialog;
@@ -31,19 +41,33 @@ typedef struct {
 
 static const quest_declaration_t quest_declaration[] = {
 	{
+		NONE,
+		0,
 		0,
 		3,
 		dialog_array[0],
-		false
+		true
 	},
 	{
+		KILL,
+		10,
 		1,
 		3,
 		dialog_array[1],
 		false
 	},
 	{
+		NONE,
+		0,
 		2,
+		2,
+		dialog_array[2],
+		false
+	},
+	{
+		NONE,
+		0,
+		3,
 		0,
 		NULL,
 		false

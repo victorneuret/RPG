@@ -15,6 +15,7 @@
 #include "my_calloc.h"
 #include "particle_xp.h"
 #include "music.h"
+#include "quest.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos)
 {
@@ -56,6 +57,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 			particle_xp(win, 50, current->enemy->pos,
 					hex_to_rgb(0xFFEB3B));
 			play_sfx(sounds, DEATH);
+			win->game->npc->quest[win->game->npc->quest_id].kill--;
 			rm_enemy_from_list(&enemy_list, current->enemy);
 			break;
 		}
