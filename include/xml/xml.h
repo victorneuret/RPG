@@ -14,6 +14,7 @@
 #include "libxml.h"
 #include "player.h"
 #include "inventory.h"
+#include "enemies.h"
 #include "texture.h"
 
 xmlDoc *load_xml_file(char *file_name);
@@ -27,3 +28,4 @@ bool parse_player(xmlNode *root);
 bool xml_exemple(void);
 bool xml_player(player_t *player);
 bool xml_item(item_t *item, textures_t *texture);
+enemy_t **xml_enemies(enemy_t **enemies);

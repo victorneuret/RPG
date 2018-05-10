@@ -18,6 +18,7 @@
 #include "hud.h"
 #include "npc.h"
 #include "stats_menu.h"
+#include "xml.h"
 
 static bool init_ui(win_t *win)
 {
@@ -51,12 +52,8 @@ static bool init_gamepad(win_t *win)
 	return true;
 }
 
-bool init_game(win_t *win)
+static bool init_game_struct(win_t *win)
 {
-	win->game = my_calloc(1, sizeof(game_t));
-	win->game->ui = my_calloc(1, sizeof(ui_t));
-	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
-	win->joystick = my_calloc(1, sizeof(joystick_t));
 	win->game->sounds = init_music(win->settings);
 	if (!win->game->sounds)
 		return false;
@@ -65,7 +62,9 @@ bool init_game(win_t *win)
 		|| !init_gamepad(win) || !init_stat_menu(win))
 		return false;
 	win->game->player = init_player(win);
-	if (!win->game->player)
+	win->game->enemies_declaration =
+				xml_enemies(win->game->enemies_declaration);
+	if (!win->game->player || !win->game->enemies_declaration)
 		return false;
 	win->game->weather_type = CLEAR;
 	win->game->weather_intensity = NORMAL;
@@ -73,6 +72,19 @@ bool init_game(win_t *win)
 		change_state(win, TITLE);
 	else
 		change_state(win, INTRO);
+	return true;
+}
+
+bool init_game(win_t *win)
+{
+	win->game = my_calloc(1, sizeof(game_t));
+	if (!win->game)
+		return false;
+	win->game->ui = my_calloc(1, sizeof(ui_t));
+	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
+	win->joystick = my_calloc(1, sizeof(joystick_t));
+	if (!init_game_struct(win))
+		return false;
 	return true;
 }
 
