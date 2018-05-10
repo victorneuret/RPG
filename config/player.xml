@@ -1,7 +1,7 @@
 <player>
 	<hp>
 		<start>300</start>
-		<multiplicator>1.25</multiplicator>
+		<multiplicator>1.10</multiplicator>
 	</hp>
 	<xp>
 		<start>200</start>

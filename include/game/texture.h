@@ -55,7 +55,7 @@ static const textures_path_t textures_path[] = {
 	},
 	{
 		"player_icon",
-		"res/textures/player_icon.png"
+		"res/textures/skills.png"
 	},
 	{NULL, NULL}
 };
