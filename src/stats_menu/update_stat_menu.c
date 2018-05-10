@@ -12,22 +12,6 @@
 #include "stats_menu.h"
 #include "player.h"
 
-static bool init_sprite(stats_t *stats, player_t *player)
-{
-	stats->player = sfSprite_copy(player->sprite);
-	sfIntRect rect;
-
-	if (!stats->player)
-		return false;
-
-	rect = sfSprite_getTextureRect(player->sprite);
-	rect.top = 924;
-	rect.left = 0;
-	sfSprite_setTextureRect(player->sprite, rect);
-	sfSprite_setPosition(stats->player, (sfVector2f){150, 150});
-	return true;
-}
-
 static bool set_text_pos(stats_t *stats)
 {
 	sfFloatRect rect;
@@ -50,8 +34,6 @@ static bool set_text_pos(stats_t *stats)
 
 bool update_stat_menu(stats_menu_t *menu, player_t *player)
 {
-	// if (!init_sprite(menu->stats, player))
-	// 	return false;
 	sfText_setString(menu->stats->hp, int_to_str(player->hp->value));
 	sfText_setString(menu->stats->hp_max,
 			int_to_str(player->hp->max_value));
