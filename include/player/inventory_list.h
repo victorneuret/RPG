@@ -15,7 +15,7 @@
 #include "inventory.h"
 #include "music.h"
 
-typedef struct item_list {
+typedef struct item_actions {
 	char *name;
 	char *display_name;
 	uint8_t sfx;
@@ -23,7 +23,7 @@ typedef struct item_list {
 	float delay;
 	void (*func)(win_t *win, item_t *weapon, sfVector2f origin,
 								float angle);
-} item_list_t;
+} item_actions_t;
 
 void create_shot(win_t *win, item_t *item, sfVector2f origin, float angle);
 void rifle(win_t *win, item_t *weapon, sfVector2f origin, float angle);
@@ -31,7 +31,7 @@ void shotgun(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void create_flame(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void particle_ak(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 
-static const item_list_t item_actions[] __attribute__((unused)) = {
+static const item_actions_t item_actions[] __attribute__((unused)) = {
 	{"gun", "Bubble", WP_GUN, 1, 0, &create_shot},
 	{"shotgun", "The Shotgun", WP_SHOTGUN, 20, 0, &shotgun},
 	{"flamethrower", "Flamethrower", WP_FLAMETHROWER, 15, 350.f,

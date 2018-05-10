@@ -22,7 +22,7 @@ void get_item(win_t *win, inventory_t *inventory,
 
 	if (!item_list)
 		return;
-	for (uint8_t i = 0; item_list[i].name; i++) {
+	for (int8_t i = 0; i < (NB_ITEMS - 1); i++) {
 		if (!item_list[i].droped || item_list[i].pos.x == 0)
 			continue;
 		item_rect = sfSprite_getGlobalBounds(item_list[i].sprite);

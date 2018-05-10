@@ -32,7 +32,7 @@ static particle_t *create_particle(item_t *weapon, sfVector2f origin,
 	particle->lifetime_ms = 3333;
 	particle->weapon = weapon;
 	particle->update_shot = &update_particle_shot;
-	particle->size = rand_int(7, 10);
+	particle->size = rand_int(6, 8);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
 					sin(angle) * speed};
 	particle->shape = create_shape(particle);
