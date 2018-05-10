@@ -9,11 +9,13 @@
 
 #include "player.h"
 #include "particle_shot.h"
+#include "particle_rifle.h"
 #include "particle_flame.h"
 #include "particle_shotgun.h"
 #include "dungeon.h"
 #include "music.h"
 #include "inventory.h"
+#include "inventory_list.h"
 
 static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 {
@@ -23,22 +25,16 @@ static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 
 	if (!timer)
 		timer = sfClock_create();
-	if (str_eq(weapon->name, "Bubble")) {
-		play_sfx(win->game->sounds, WP_GUN);
-		create_shot(win, weapon, pos, player->aim_angle);
-	}
-	if (str_eq(weapon->name, "The Shotgun")) {
-		play_sfx(win->game->sounds, WP_SHOTGUN);
-		for (size_t i = 0; i < 20; i++)
-			shotgun(win, weapon, pos, player->aim_angle);
-	}
-	if (str_eq(weapon->name, "Flamethrower")) {
-		if (current_time > 350.f) {
-			play_sfx(win->game->sounds, WP_FLAMETHROWER);
+	for (uint8_t i = 0; item_actions[i].name; i++) {
+		if (!str_eq(weapon->name, item_actions[i].display_name))
+			continue;
+		if (current_time > item_actions[i].delay) {
+			play_sfx(win->game->sounds, item_actions[i].sfx);
 			sfClock_restart(timer);
 		}
-		for (size_t i = 0; i < 15; i++)
-			create_flame(win, weapon, pos, player->aim_angle);
+		for (uint8_t j = 0; j < item_actions[i].repeat; j++)
+			item_actions[i].func(win, weapon, pos,
+							player->aim_angle);
 	}
 }
 

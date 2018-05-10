@@ -13,7 +13,8 @@
 #include "xml.h"
 #include "nb_utils.h"
 
-void get_item(sfSprite *player, inventory_t *inventory, bool pick_up)
+void get_item(win_t *win, inventory_t *inventory,
+						sfSprite *player, bool pick_up)
 {
 	const sfFloatRect rect = sfSprite_getGlobalBounds(player);
 	item_t *item_list = inventory->item_list;
@@ -29,13 +30,14 @@ void get_item(sfSprite *player, inventory_t *inventory, bool pick_up)
 			continue;
 		inventory->display_message = true;
 		if (pick_up)
-			add_item(inventory, inventory->selected, i);
+			add_item(win, inventory, inventory->selected, i);
 		return;
 	}
 	inventory->display_message = false;
 }
 
-void add_item(inventory_t *inventory, uint8_t place, item_type item_nb)
+void add_item(win_t *win, inventory_t *inventory, uint8_t place,
+							item_type item_nb)
 {
 	if (!inventory->item_list[item_nb].droped)
 		return;
@@ -52,6 +54,9 @@ void add_item(inventory_t *inventory, uint8_t place, item_type item_nb)
 	if (str_eq(inventory->item[place]->name, "Bubble"))
 		return;
 	inventory->item[place]->droped = true;
+	inventory->item[place]->pos = win->game->player->pos;
+	sfSprite_setPosition(inventory->item[place]->sprite,
+						inventory->item[place]->pos);
 	inventory->item_list[item_nb].droped = false;
 	inventory->item[place] = &inventory->item_list[item_nb];
 }

@@ -62,7 +62,7 @@ inventory_t *init_inventory(win_t *win)
 		return NULL;
 	if (!xml_item(inventory->item_list, win->game->textures))
 		return NULL;
-	for (size_t i = 0; i < INVENTORY_NB; i++) {
+	for (ssize_t i = 0; i < (INVENTORY_NB - 1); i++) {
 		inventory->item[i] = malloc(sizeof(item_t));
 		inventory->item[i]->droped = true;
 		inventory->item[i]->name = NULL;

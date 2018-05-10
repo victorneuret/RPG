@@ -9,7 +9,7 @@
 		<name>The Shotgun</name>
 		<damages>7</damages>
 		<delay>1</delay>
-		<rate>8</rate>
+		<rate>10</rate>
 	</shotgun>
 	<flamethrower>
 		<name>Flamethrower</name>
@@ -17,4 +17,10 @@
 		<delay>0.01</delay>
 		<rate>1</rate>
 	</flamethrower>
+	<uzi>
+		<name>Uzi</name>
+		<damages>15</damages>
+		<delay>0.1</delay>
+		<rate>60</rate>
+	</uzi>
 </weapons>

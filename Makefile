@@ -10,11 +10,11 @@ NAME	=	my_rpg
 SRC	=	src/args.c                                                                                          \
 		src/dungeon/free_dungeon.c                                                                          \
 		src/dungeon/init_dungeon.c                                                                          \
-		src/dungeon/set_room.c										    \
+		src/dungeon/set_room.c                                                                              \
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
 		src/enemies/enemies.c                                                                               \
-		src/enemies/enemy_ai.c                                                                               \
+		src/enemies/enemy_ai.c                                                                              \
 		src/enemies/enemy_list.c                                                                            \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
@@ -42,16 +42,17 @@ SRC	=	src/args.c                                                                
 		src/game/key_pressed_functions/to_title_page.c                                                      \
 		src/game/key_pressed_functions/window_actions.c                                                     \
 		src/game/levels/display_door.c                                                                      \
-		src/game/levels/obstacle.c									    \
-		src/game/key_pressed_functions/shoot_arrow.c							    \
+		src/game/levels/obstacle.c                                                                          \
+		src/game/key_pressed_functions/shoot_arrow.c                                                        \
 		src/game/menu/menu_button_function/title_page_functions.c                                           \
 		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \
-		src/game/menu/slider_parallax.c									    \
+		src/game/menu/slider_parallax.c                                                                     \
 		src/game/particles/effects/particle_shot.c                                                          \
-		src/game/particles/effects/particle_flame.c                                                          \
-		src/game/particles/effects/particle_shotgun.c                                                          \
-		src/game/particles/effects/particle_xp.c                                                        \
+		src/game/particles/effects/particle_flame.c                                                         \
+		src/game/particles/effects/particle_shotgun.c                                                       \
+		src/game/particles/effects/particle_rifle.c                                                         \
+		src/game/particles/effects/particle_xp.c                                                            \
 		src/game/particles/effects/particle_explosion.c                                                     \
 		src/game/particles/effects/particle_fire.c                                                          \
 		src/game/particles/effects/particle_stars.c                                                         \
@@ -59,13 +60,13 @@ SRC	=	src/args.c                                                                
 		src/game/particles/particle_drawer.c                                                                \
 		src/game/particles/particle_manager.c                                                               \
 		src/game/particles/particle_updater.c                                                               \
-		src/game/ui/hud/hp_bar.c									    \
-		src/game/ui/hud/xp_bar.c									    \
-		src/game/ui/hud/init_hud.c									    \
+		src/game/ui/hud/hp_bar.c                                                                            \
+		src/game/ui/hud/xp_bar.c                                                                            \
+		src/game/ui/hud/init_hud.c                                                                          \
 		src/game/ui/button/checkbox_animation.c                                                             \
 		src/game/ui/button/checkbox_click.c                                                                 \
-		src/game/ui/button/init_slider.c								    \
-		src/game/ui/button/slider_click.c								    \
+		src/game/ui/button/init_slider.c                                                                    \
+		src/game/ui/button/slider_click.c                                                                   \
 		src/game/ui/button/init_checkbox.c                                                                  \
 		src/game/ui/button/checkbox_functions.c                                                             \
 		src/game/ui/button/button_animation.c                                                               \
@@ -90,27 +91,27 @@ SRC	=	src/args.c                                                                
 		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
-		src/player/actions.c										    \
-		src/player/door_action.c									    \
+		src/player/actions.c                                                                                \
+		src/player/door_action.c                                                                            \
 		src/player/door_transition.c                                                                        \
-		src/player/idle.c										    \
+		src/player/idle.c                                                                                   \
 		src/player/player.c                                                                                 \
 		src/player/player_utils.c                                                                           \
 		src/player/update_player.c                                                                          \
-		src/player/check_obstacle.c									    \
-		src/player/inventory.c								   		    \
+		src/player/check_obstacle.c                                                                         \
+		src/player/inventory.c                                                                              \
 		src/player/drop_inventory.c                                                                         \
 		src/player/init_inventory.c                                                                         \
 		src/player/draw_inventory.c                                                                         \
-		src/interaction/npc.c									   	    \
-		src/interaction/textbox.c									    \
-		src/interaction/quest.c										    \
-		src/skill_tree/draw_skill_tree.c								    \
-		src/skill_tree/init_skill_tree.c								    \
-		src/stats_menu/draw_stat_menu.c									    \
-		src/stats_menu/init_stat_menu.c									    \
-		src/stats_menu/update_stat_menu.c								    \
-		src/interaction/init_npc.c									    \
+		src/interaction/npc.c                                                                               \
+		src/interaction/textbox.c                                                                           \
+		src/interaction/quest.c                                                                             \
+		src/skill_tree/draw_skill_tree.c                                                                    \
+		src/skill_tree/init_skill_tree.c                                                                    \
+		src/stats_menu/draw_stat_menu.c                                                                     \
+		src/stats_menu/init_stat_menu.c                                                                     \
+		src/stats_menu/update_stat_menu.c                                                                   \
+		src/interaction/init_npc.c                                                                          \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
@@ -132,9 +133,9 @@ SRC	=	src/args.c                                                                
 		src/xml/get_node_by_name.c                                                                          \
 		src/xml/load_xml.c                                                                                  \
 		src/xml/node_utils.c                                                                                \
-		src/xml/xml_exemple.c										    \
-		src/xml/parse_xml_player.c									    \
-		src/xml/parse_xml_item.c									    \
+		src/xml/xml_exemple.c                                                                               \
+		src/xml/parse_xml_player.c                                                                          \
+		src/xml/parse_xml_item.c                                                                            \
 		src/xml/parse_xml_enemies.c
 
 
@@ -166,18 +167,18 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
-		-I./include/stats_menu										    \
+		-I./include/stats_menu                                                                              \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \
-		-I./include/interaction										    \
+		-I./include/interaction                                                                             \
 		-I./include/level                                                                                   \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
 		-I./include/window                                                                                  \
-		-I./include/xml											    \
+		-I./include/xml                                                                                      \
 		-I./include/lib
 
 OBJ	=	$(SRC:.c=.o)
