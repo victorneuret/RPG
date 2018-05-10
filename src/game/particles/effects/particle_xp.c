@@ -14,20 +14,7 @@
 #include "render_window.h"
 #include "particle.h"
 #include "particle_manager.h"
-
-static sfVector2f get_direction(sfVector2f player_pos, sfVector2f particle_pos)
-{
-	float total = 0.0;
-	sfVector2f absolute_dir = {0.0, 0.0};
-	sfVector2f relative_dir = {0.0, 0.0};
-
-	absolute_dir.x = player_pos.x - particle_pos.x;
-	absolute_dir.y = player_pos.y - particle_pos.y;
-	total = ABS(absolute_dir.x) + ABS(absolute_dir.y);
-	relative_dir.x = absolute_dir.x / total;
-	relative_dir.y = absolute_dir.y / total;
-	return relative_dir;
-}
+#include "coord_utils.h"
 
 void update_particle_xp(win_t *win,
 			particle_t *particle, uint64_t current_time)
@@ -50,7 +37,7 @@ void update_particle_xp(win_t *win,
 static particle_t *create_particle(sfVector2f origin, sfColor color)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
-	const float speed = (float) rand_int(250, 350);
+	const float speed = (float) rand_int(200, 350);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
 
 	if (!particle)

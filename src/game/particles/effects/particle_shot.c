@@ -32,7 +32,7 @@ void update_particle_shot(win_t *win, particle_t *particle)
 			current->enemy->shape);
 		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
 			particle->alive = false;
-			create_explosion(win, 5, particle->pos, sfRed);
+			create_explosion(win, 3, particle->pos, sfRed);
 			current->enemy->hp -= particle->weapon->damages;
 			play_sfx(win->game->sounds, HIT);
 		}

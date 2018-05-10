@@ -84,6 +84,7 @@ static void move_player(win_t *win, player_t *player)
 	check_obstacle(&pos, win);
 	pos.x += rect.width / 2.f;
 	pos.y += rect.height / 2.f;
+	player->pos = pos;
 	sfSprite_setPosition(player->sprite, pos);
 	sfSprite_setPosition(player->aim, pos);
 }
@@ -104,6 +105,7 @@ void update_player(win_t *win, player_t *player)
 		update_idle(player, dir);
 		sfClock_restart(player->timer);
 	}
+	get_item(player->sprite, win->game->player->inventory, false);
 	move_player(win, player);
 	update_aim_orientation(win, player);
 }
