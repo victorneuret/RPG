@@ -33,13 +33,27 @@ static void reset_bar(player_t *player, float x_pos, win_t *win)
 	text_right(player->xp->text, WIN_MAX_W - 20, 1030);
 }
 
+static void play_bar_sound(win_t *win)
+{
+	static sfClock *timer;
+	uint32_t current_time = timer ? sfTime_asMilliseconds(
+				sfClock_getElapsedTime(timer)) : 0;
+
+	if (!timer)
+		timer = sfClock_create();
+	if (current_time > 800.f) {
+		play_sfx(win->game->sounds, XP);
+		sfClock_restart(timer);
+	}
+}
+
 static void bar_animation(win_t *win, player_t *player)
 {
 	float x_pos;
 	static uint16_t xp = 0;
 
 	if (xp < player->xp->value && xp < player->xp->max_value) {
-		play_sfx(win->game->sounds, XP);
+		play_bar_sound(win);
 		xp += 2 * player->level;
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		sfRectangleShape_setSize(player->xp->bar,

@@ -19,6 +19,8 @@ void get_item(sfSprite *player, inventory_t *inventory, bool pick_up)
 	item_t *item_list = inventory->item_list;
 	sfFloatRect item_rect;
 
+	if (!item_list)
+		return;
 	for (uint8_t i = 0; item_list[i].name; i++) {
 		if (!item_list[i].droped || item_list[i].pos.x == 0)
 			continue;
