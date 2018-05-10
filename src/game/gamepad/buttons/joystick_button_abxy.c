@@ -47,7 +47,7 @@ void button_b(win_t *win, bool press)
 	}
 }
 
-void button_x(win_t *win, bool press)
+void button_x(__attribute__((unused)) win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -55,7 +55,6 @@ void button_x(win_t *win, bool press)
 		pressed = false;
 		return;
 	} else if (!pressed && press) {
-		win->game->player->xp->value += 2000;
 		pressed = true;
 	}
 }

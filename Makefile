@@ -101,6 +101,9 @@ SRC	=	src/args.c                                                                
 		src/interaction/npc.c									   	    \
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
+		src/stats_menu/draw_stat_menu.c									    \
+		src/stats_menu/init_stat_menu.c									    \
+		src/stats_menu/update_stat_menu.c								    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
@@ -154,6 +157,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/stats_menu										    \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \

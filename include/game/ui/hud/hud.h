@@ -13,6 +13,7 @@
 
 #include "player.h"
 #include "render_window.h"
+#include "color_utils.h"
 
 typedef struct player player_t;
 
@@ -21,6 +22,10 @@ static const uint16_t HP_WIDTH = 400;
 
 static const uint16_t XP_HEIGHT = 10;
 static const uint16_t XP_WIDTH = 1920;
+
+#define XP_COLOR hex_to_rgb(0xFFEB3B)
+#define HP_COLOR hex_to_rgb(0xF44336)
+#define BACK_BAR_COLOR hex_to_rgba(0xFFFFFF55)
 
 typedef struct bar {
 	uint16_t max_value;
