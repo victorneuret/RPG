@@ -24,7 +24,8 @@ void button_a(win_t *win, bool press)
 		if (win->game_state == INTRO)
 			exit_intro(win, NULL);
 		else if (win->game_state == GAME)
-			add_gun(win);
+			get_item(win->game->player->sprite,
+					win->game->player->inventory, true);
 		button_click_released(win, &event);
 		npc_interaction(win);
 		pressed = true;
