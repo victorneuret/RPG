@@ -13,7 +13,6 @@
 
 typedef struct stats {
 	sfSprite *player;
-	sfRectangleShape *rect;
 	sfText *slash;
 	sfSprite *hp_sprite;
 	sfText *hp;
@@ -30,3 +29,6 @@ typedef struct stats_menu {
 	sfRectangleShape *separator;
 	stats_t *stats;
 } stats_menu_t;
+
+bool init_stat_menu(win_t *win);
+void draw_stat_menu(win_t *win, stats_menu_t *menu);

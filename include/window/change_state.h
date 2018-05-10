@@ -10,3 +10,4 @@
 #include "render_window.h"
 
 void change_state(win_t *win, game_status state);
+void stats_game(win_t *win);

@@ -98,6 +98,8 @@ SRC	=	src/args.c                                                                
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
 		src/player/draw_inventory.c                                                                         \
+		src/stats_menu/draw_stat_menu.c									    \
+		src/stats_menu/init_stat_menu.c									    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \
@@ -151,7 +153,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
-		-I./include/game/stats_menu									    \
+		-I./include/stats_menu										    \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
 		-I./include/player                                                                                  \

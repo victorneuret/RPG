@@ -14,6 +14,7 @@
 #include "hud.h"
 
 typedef struct inventory inventory_t;
+typedef struct bar bar_t;
 
 static const float X_SPEED = 900.f;
 static const uint8_t WALL_SIZE = 140;

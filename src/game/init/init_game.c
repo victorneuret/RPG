@@ -16,6 +16,7 @@
 #include "music.h"
 #include "slider.h"
 #include "hud.h"
+#include "stats_menu.h"
 
 static bool init_ui(win_t *win)
 {
@@ -59,7 +60,7 @@ bool init_game(win_t *win)
 		return false;
 	if (!win->game || !win->game->ui || !win->game->dungeon
 		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
-		|| !init_gamepad(win))
+		|| !init_gamepad(win) || !init_stat_menu(win))
 		return false;
 	win->game->player = init_player(win);
 	if (!win->game->player)
