@@ -17,16 +17,16 @@ static void check_cell_horizontal(sfVector2f *pos, uint8_t y_pos, uint8_t x_pos)
 	uint16_t y = y_pos * ROCK_H + WALL_SIZE_ROCK;
 
 	if (pos->x + 32 > x && pos->x + 32 < x + ROCK_W
-		&& ((pos->y + PLAYER_H / 2 > y
-		&& pos->y + PLAYER_H / 2 < y + ROCK_H)
+		&& ((pos->y + PLAYER_H / 2.f > y
+		&& pos->y + PLAYER_H / 2.f < y + ROCK_H)
 		|| (pos->y + PLAYER_H > y && pos->y + PLAYER_H < y + ROCK_H))) {
 		pos->x = x + ROCK_W - 31;
 	}
 	if (pos->x + PLAYER_W - 32 > x && pos->x + PLAYER_W - 32 < x + ROCK_W
-		&& ((pos->y + PLAYER_H / 2 > y
-		&& pos->y + PLAYER_H / 2 < y + ROCK_H)
+		&& ((pos->y + PLAYER_H / 2.f > y
+		&& pos->y + PLAYER_H / 2.f < y + ROCK_H)
 		|| (pos->y + PLAYER_H > y && pos->y + PLAYER_H < y + ROCK_H))) {
-		pos->x = x - PLAYER_W + 32;
+		pos->x = x - PLAYER_W + 31;
 	}
 }
 
@@ -35,7 +35,7 @@ static void check_cell_vertical(sfVector2f *pos, uint8_t y_pos, uint8_t x_pos)
 	uint16_t x = x_pos * ROCK_W + WALL_SIZE_ROCK;
 	uint16_t y = y_pos * ROCK_H + WALL_SIZE_ROCK;
 
-	if (pos->y + PLAYER_H / 2 < y + ROCK_H && pos->y + PLAYER_H / 2 > y
+	if (pos->y + PLAYER_H / 2.f < y + ROCK_H && pos->y + PLAYER_H / 2.f > y
 		&& ((pos->x + 32 > x && pos->x + 32 < x + ROCK_W)
 		|| (pos->x + PLAYER_W - 32 > x
 		&& pos->x + PLAYER_W - 32 < x + ROCK_W))) {
@@ -78,8 +78,11 @@ void check_obstacle(sfVector2f *pos, win_t *win)
 {
 	char **map = win->game->rooms[win->game->dungeon->act_room]->cells;
 
+	pos->x -= PLAYER_W / 2.f;
+	pos->y -= PLAYER_H / 2.f;
 	for (size_t i = 0; map[i]; i++)
 		for (size_t j = 0; map[i][j]; j++)
 			is_obstacle(win, pos, map, (sfVector2i) {j, i});
-
+	pos->x += PLAYER_W / 2.f;
+	pos->y += PLAYER_H / 2.f;
 }
