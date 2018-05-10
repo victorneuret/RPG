@@ -15,9 +15,15 @@
 static bool init_sprite(stats_t *stats, player_t *player)
 {
 	stats->player = sfSprite_copy(player->sprite);
+	sfIntRect rect;
 
 	if (!stats->player)
 		return false;
+
+	rect = sfSprite_getTextureRect(player->sprite);
+	rect.top = 924;
+	rect.left = 0;
+	sfSprite_setTextureRect(player->sprite, rect);
 	sfSprite_setPosition(stats->player, (sfVector2f){150, 150});
 	return true;
 }
@@ -44,11 +50,8 @@ static bool set_text_pos(stats_t *stats)
 
 bool update_stat_menu(stats_menu_t *menu, player_t *player)
 {
-	static bool first = true;
-
-	if (first)
-		if (!init_sprite(menu->stats, player))
-			return false;
+	// if (!init_sprite(menu->stats, player))
+	// 	return false;
 	sfText_setString(menu->stats->hp, int_to_str(player->hp->value));
 	sfText_setString(menu->stats->hp_max,
 			int_to_str(player->hp->max_value));
@@ -58,6 +61,5 @@ bool update_stat_menu(stats_menu_t *menu, player_t *player)
 	sfText_setString(menu->stats->level, int_to_str(player->level));
 	sfText_setString(menu->stats->sp, int_to_str(player->skill_point));
 	set_text_pos(menu->stats);
-	first = false;
 	return true;
 }

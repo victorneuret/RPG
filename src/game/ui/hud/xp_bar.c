@@ -24,7 +24,8 @@ static void reset_bar(player_t *player, float x_pos, win_t *win)
 			(sfVector2f) {x_pos, XP_HEIGHT});
 	create_explosion(win, 3, (sfVector2f){x_pos, 1070},
 			hex_to_rgb(0xFFEB3B));
-	create_popup(win->game->ui, "Level up!", INFO);
+	if (win->game_state == GAME)
+		create_popup(win->game->ui, "Level up!", INFO);
 	player->level += 1;
 	player->skill_point += 1;
 	sfText_setString(player->xp->text, int_to_str(player->level));

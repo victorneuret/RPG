@@ -18,9 +18,12 @@
 static bool init_stats_sprite(stats_t *stats, textures_t *textures)
 {
 	sfTexture *texture = get_texture(textures, "player_icon")->texture;
+	sfTexture *tx_player = get_texture(textures, "player")->texture;
 
-	if (!texture)
+	if (!texture || !tx_player)
 		return false;
+	stats->player = get_sprite_texture_rect(tx_player,
+				&(sfIntRect){0, 530, 128, 138});
 	stats->xp_sprite = get_sprite_texture_rect(texture,
 				&(sfIntRect){384, 0, 128, 128});
 	stats->hp_sprite = get_sprite_texture_rect(texture,
@@ -57,6 +60,7 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 		|| !stats->sp || !init_stats_sprite(stats, textures))
 		return false;
 	sfFont_destroy(ft);
+	sfSprite_setPosition(stats->player, (sfVector2f){90, 90});
 	menu->stats = stats;
 	return true;
 }
