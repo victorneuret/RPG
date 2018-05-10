@@ -104,12 +104,12 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/flamethrower.ogg",
-		100
+		80
 	},
 	{
 		GAME,
 		"res/sounds/sfx/shotgun.ogg",
-		40
+		35
 	},
 	{
 		0,
