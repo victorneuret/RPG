@@ -57,7 +57,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 		return;
 	for (enemy_list_t *node = enemy_list; node; node = node->next) {
 		if (node->enemy && node->enemy->hp <= 0) {
-			particle_xp(win, 50, node->enemy->pos,
+			particle_xp(win, node->enemy->hp_max, node->enemy->pos,
 							hex_to_rgb(0xFFEB3B));
 			play_sfx(sounds, DEATH);
 			rm_enemy_from_list(&enemy_list, node->enemy);

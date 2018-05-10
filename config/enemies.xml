@@ -1,17 +1,17 @@
 <enemies>
 	<light>
-		<health>50</health>
+		<health>100</health>
 		<speed>150</speed>
-		<damages>100</damages>
+		<damages>50</damages>
 	</light>
 	<balanced>
-		<health>100</health>
-		<speed>75</speed>
-		<damages>75</damages>
+		<health>125</health>
+		<speed>125</speed>
+		<damages>100</damages>
 	</balanced>
 	<heavy>
-		<health>200</health>
-		<speed>25</speed>
-		<damages>50</damages>
+		<health>250</health>
+		<speed>100</speed>
+		<damages>150</damages>
 	</heavy>
 </enemies>

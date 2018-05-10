@@ -37,7 +37,7 @@ void update_particle_xp(win_t *win,
 static particle_t *create_particle(sfVector2f origin, sfColor color)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
-	const float speed = (float) rand_int(250, 350);
+	const float speed = (float) rand_int(200, 350);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
 
 	if (!particle)
