@@ -23,7 +23,7 @@ void npc_interaction(win_t *win)
 	npc_t *npc = win->game->npc;
 	sfVector2f pos = sfSprite_getPosition(win->game->player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(win->game->player->sprite);
-	sfFloatRect npc_rect = sfRectangleShape_getGlobalBounds(npc->skin);
+	sfFloatRect npc_rect = sfSprite_getGlobalBounds(npc->skin);
 
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > npc->pos.x - 30
@@ -73,7 +73,7 @@ void draw_npc(win_t *win, npc_t *npc)
 {
 	sfVector2f pos = sfSprite_getPosition(win->game->player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(win->game->player->sprite);
-	sfFloatRect npc_rect = sfRectangleShape_getGlobalBounds(npc->skin);
+	sfFloatRect npc_rect = sfSprite_getGlobalBounds(npc->skin);
 	uint8_t id = npc->quest_id;
 
 	check_current_quest(win, npc);
@@ -85,5 +85,5 @@ void draw_npc(win_t *win, npc_t *npc)
 		manage_npc_interaction(id, npc, win);
 	} else
 		npc->textbox->state = false;
-	render_object(win->sf_win, RECTANGLE, npc->skin);
+	render_object(win->sf_win, SPRITE, npc->skin);
 }
