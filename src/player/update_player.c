@@ -71,14 +71,15 @@ static void move_player(win_t *win, player_t *player)
 	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
 	pos.y += X_SPEED * (win->joystick->ly / 100.f) * win->dt;
 	player_door(win, &pos, win->game->rooms[win->game->dungeon->act_room]);
-	if (pos.x + rect.width > WIN_MAX_W - WALL_SIZE)
-		pos.x = WIN_MAX_W - rect.width - WALL_SIZE;
-	if (pos.x < WALL_SIZE)
-		pos.x = WALL_SIZE;
-	if (pos.y + rect.height > WIN_MAX_H - WALL_SIZE - 16)
-		pos.y = WIN_MAX_H - rect.height - WALL_SIZE - 16;
-	if (pos.y < WALL_SIZE)
-		pos.y = WALL_SIZE;
+	if (pos.x - PLAYER_W / 2.f + rect.width > WIN_MAX_W - WALL_SIZE)
+		pos.x = WIN_MAX_W - rect.width - WALL_SIZE + PLAYER_H / 2.f;
+	if (pos.x - PLAYER_W / 2.f < WALL_SIZE)
+		pos.x = WALL_SIZE + PLAYER_H / 2.f;
+	if (pos.y - PLAYER_H / 2.f + rect.height > WIN_MAX_H - WALL_SIZE - 16)
+		pos.y = WIN_MAX_H - rect.height - WALL_SIZE - 16
+						+ PLAYER_H / 2.f;
+	if (pos.y - PLAYER_H / 2.f < WALL_SIZE)
+		pos.y = WALL_SIZE + PLAYER_H / 2.f;
 	check_obstacle(&pos, win);
 	player->pos = pos;
 	sfSprite_setPosition(player->sprite, pos);

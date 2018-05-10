@@ -17,8 +17,7 @@ static void draw_droped_items(win_t *win, inventory_t *inventory)
 {
 	for (uint8_t i = 0; i < (NB_ITEMS - 1); i++) {
 		if (inventory->item_list[i].droped &&
-				(inventory->item_list[i].pos.x != 0 &&
-				inventory->item_list[i].pos.y != 0)) {
+				inventory->item_list[i].pos.x != 0) {
 			render_object(win->sf_win, SPRITE,
 					inventory->item_list[i].sprite);
 		}

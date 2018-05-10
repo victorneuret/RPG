@@ -36,6 +36,7 @@ typedef struct item {
 	bool droped;
 	float damages;
 	float delay;
+	uint8_t rate;
 } item_t;
 
 typedef struct inventory {
@@ -62,3 +63,4 @@ void draw_inventory(win_t *win, inventory_t *inventory);
 uint8_t get_next_inventory(inventory_t *inventory, int8_t negative);
 void free_inventory(inventory_t *inventory);
 void get_item(sfSprite *player, inventory_t *inventory, bool pick_up);
+void enemy_drop_item(sfVector2f enemy_pos, item_t *item_list);
