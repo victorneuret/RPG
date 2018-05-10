@@ -15,6 +15,7 @@ typedef struct textbox {
 	sfRectangleShape *rect;
 	sfColor border_color;
 	sfColor foreground_color;
+	sfColor name_color;
 	sfText *name;
 	bool state;
 } textbox_t;

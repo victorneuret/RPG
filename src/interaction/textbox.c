@@ -12,25 +12,24 @@
 
 #include "render_window.h"
 #include "text_utils.h"
+#include "color_utils.h"
 #include "textbox.h"
+#include "interaction.h"
 #include "npc.h"
-
-static const uint16_t TEXTBOX_W = 900;
-static const uint16_t TEXTBOX_H = 100;
-static const uint16_t TEXTBOX_POS_X = (WIN_MAX_W / 2) - (TEXTBOX_W / 2);
-static const uint16_t TEXTBOX_POS_Y = WIN_MAX_H - TEXTBOX_H - 50;
 
 void set_textbox_elements(textbox_t *tb, sfFont *font)
 {
 	sfRectangleShape_setPosition(tb->rect, tb->pos);
 	sfRectangleShape_setFillColor(tb->rect, tb->foreground_color);
 	sfRectangleShape_setOutlineColor(tb->rect, tb->border_color);
-	sfRectangleShape_setOutlineThickness(tb->rect, 4);
+	sfRectangleShape_setOutlineThickness(tb->rect, 2);
 	sfRectangleShape_setSize(tb->rect, (sfVector2f) {TEXTBOX_W, TEXTBOX_H});
 	sfText_setString(tb->name, "Satoru Iwata:");
+	sfText_setColor(tb->name, tb->name_color);
 	sfText_setFont(tb->name, font);
+	sfText_setStyle(tb->name, sfTextBold);
 	sfText_setPosition(tb->name,
-		(sfVector2f) {TEXTBOX_POS_X + 5, TEXTBOX_POS_Y});
+		(sfVector2f) {TEXTBOX_POS_X + 10, TEXTBOX_POS_Y + 5});
 	sfText_setCharacterSize(tb->name, 20);
 }
 
@@ -46,6 +45,7 @@ textbox_t *init_textbox(void)
 	tb->pos = (sfVector2f) {TEXTBOX_POS_X, TEXTBOX_POS_Y};
 	tb->border_color = sfColor_fromRGBA(255, 255, 255, 255);
 	tb->foreground_color = sfColor_fromRGBA(0, 0, 0, 150);
+	tb->name_color = hex_to_rgb(0x64b5f6);
 	tb->state = false;
 	set_textbox_elements(tb, font);
 	return tb;

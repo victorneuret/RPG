@@ -98,8 +98,9 @@ SRC	=	src/args.c                                                                
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
 		src/player/draw_inventory.c                                                                         \
-		src/interaction/init_npc.c									    \
+		src/interaction/npc.c									   	    \
 		src/interaction/textbox.c									    \
+		src/interaction/quest.c										    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \

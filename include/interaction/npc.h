@@ -8,24 +8,21 @@
 #pragma once
 
 #include <SFML/Graphics.h>
+
 #include <stdint.h>
 #include <stdbool.h>
 
 #include "render_window.h"
-#include "textbox.h"
 
-static const char *FONT_PATH __attribute__((unused)) =
-	"res/fonts/space_mono_regular.ttf";
+#include "textbox.h"
+#include "quest.h"
 
 typedef struct textbox textbox_t;
-
-typedef struct quest {
-	uint8_t quest_id;
-	sfText *discuss;
-	bool state;
-} quest_t;
+typedef struct quest quest_t;
 
 typedef struct npc {
+	uint8_t quest_id;
+	uint8_t elem;
 	sfVector2f pos;
 	sfRectangleShape *skin;
 	sfText *talk;
