@@ -121,7 +121,9 @@ SRC	=	src/args.c                                                                
 		src/xml/node_utils.c                                                                                \
 		src/xml/xml_exemple.c										    \
 		src/xml/parse_xml_player.c									    \
-		src/xml/parse_xml_item.c
+		src/xml/parse_xml_item.c									    \
+		src/xml/parse_xml_enemies.c
+
 
 SRC_UNIT=	$(filter-out src/main.c, $(SRC)) \
 		tests/test_getnbr.c                                                                                 \
