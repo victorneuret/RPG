@@ -57,10 +57,12 @@ typedef enum sfx {
 	SWITCH_TITLE,
 	CLICK,
 	DEATH,
-	SHOOT,
+	WP_GUN,
 	HIT,
 	UNLOCKED,
-	OPEN
+	OPEN,
+	WP_FLAMETHROWER,
+	WP_SHOTGUN
 } sfx_type;
 
 static const music_declaration_t sfx_declaration[] = {
@@ -98,6 +100,16 @@ static const music_declaration_t sfx_declaration[] = {
 		GAME,
 		"res/sounds/sfx/open.ogg",
 		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/flamethrower.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/shotgun.ogg",
+		40
 	},
 	{
 		0,

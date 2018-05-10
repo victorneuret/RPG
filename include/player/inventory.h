@@ -18,7 +18,7 @@ typedef struct render_window win_t;
 static const uint8_t INVENTORY_NB = 3;
 static const uint8_t NB_ITEMS = 4;
 static const char *INVENTORY_FONT __attribute__((unused)) =
-					"res/fonts/isaac_sans.ttf";
+					"res/fonts/space_mono_regular.ttf";
 static const char *INVENTORY_MESSAGE  __attribute__((unused)) =
 					"Press I to pick up item";
 
