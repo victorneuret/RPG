@@ -22,6 +22,7 @@ typedef struct enemy {
 	int32_t hp;
 	int32_t hp_max;
 	int32_t attack;
+	float speed;
 } enemy_t;
 
 typedef struct enemy_list {
@@ -29,6 +30,7 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
+void update_enemy_ai(float dt, enemy_t *enemy, sfVector2f player_pos);
 void update_enemies(win_t *win, enemy_list_t *enemy_list, sounds_t *sounds,
 							bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);

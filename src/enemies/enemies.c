@@ -37,10 +37,9 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 {
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *current = enemy_list; current;
-						current = current->next)
-		if (current->enemy)
-			render_object(win, RECTANGLE, current->enemy->shape);
+	for (enemy_list_t *node = enemy_list; node; node = node->next)
+		if (node->enemy)
+			render_object(win, RECTANGLE, node->enemy->shape);
 }
 
 void update_enemies(win_t *win, enemy_list_t *enemy_list,
@@ -50,15 +49,15 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *current = enemy_list; current;
-						current = current->next) {
-		if (current->enemy && current->enemy->hp <= 0) {
-			particle_xp(win, 50, current->enemy->pos,
-					hex_to_rgb(0xFFEB3B));
+	for (enemy_list_t *node = enemy_list; node; node = node->next) {
+		if (node->enemy && node->enemy->hp <= 0) {
+			particle_xp(win, 50, node->enemy->pos,
+							hex_to_rgb(0xFFEB3B));
 			play_sfx(sounds, DEATH);
-			rm_enemy_from_list(&enemy_list, current->enemy);
+			rm_enemy_from_list(&enemy_list, node->enemy);
 			break;
 		}
+		update_enemy_ai(win->dt, node->enemy, win->game->player->pos);
 	}
 	*door_open = enemy_list->enemy == NULL;
 	if (*door_open && !doors) {
@@ -76,6 +75,7 @@ void create_enemy(enemy_list_t **enemy_list, sfVector2f pos)
 	if (!enemy)
 		return;
 	enemy->pos = pos;
+	enemy->speed = 100;
 	enemy->hp = 100 * multiplicator;
 	enemy->hp_max = enemy->hp;
 	enemy->attack = 20 * multiplicator;
