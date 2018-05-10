@@ -11,15 +11,20 @@
 
 static char *dialog_array[5][60] = {
 	{
-		"Welcome to this super game !",
-		"My name is Satoru Iwata.. I will help you to progress !",
-		"You can press Y to get some help",
+		"Welcome to this super game!",
+		"My name is Satoru Iwata.. I will help you to progress!",
+		"Press Y to learn basic commands.",
 		NULL
 	},
 	{
-		"Antoine have to validate his Stumper before doing a quest !",
-		"But.. it remains only one Stumper..",
-		"I hope he will win this time !",
+		"Are you ready for your first quest ?",
+		"Yeeeeeees! So, you have to kill 10 enemies..",
+		"Come back to me when once you are done.",
+		NULL
+	},
+	{
+		"Perfect! You finished the first quest!",
+		"Come back later to have another one.",
 		NULL
 	},
 	{

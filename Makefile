@@ -101,6 +101,7 @@ SRC	=	src/args.c                                                                
 		src/interaction/npc.c									   	    \
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
+		src/interaction/init_npc.c									    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \

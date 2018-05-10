@@ -15,7 +15,7 @@
 
 quest_t *init_quest(void)
 {
-	quest_t *quest = malloc(sizeof(quest_t) * 2);
+	quest_t *quest = malloc(sizeof(quest_t) * NB_QUEST_STRUCT);
 	sfFont *font = sfFont_createFromFile(FONT_PATH);
 
 	if (!quest || !font)
@@ -24,6 +24,8 @@ quest_t *init_quest(void)
 		quest[i].text = sfText_create();
 		if (!quest[i].text)
 			return NULL;
+		quest[i].quest_type = quest_declaration[i].quest_type;
+		quest[i].kill = quest_declaration[i].kill;
 		quest[i].quest_id = quest_declaration[i].quest_id;
 		quest[i].diag_elem = quest_declaration[i].diag_elem;
 		quest[i].dialog = quest_declaration[i].dialog;
