@@ -15,7 +15,6 @@
 #include "color_utils.h"
 #include "textbox.h"
 #include "interaction.h"
-#include "npc.h"
 
 void set_textbox_elements(textbox_t *tb, sfFont *font)
 {

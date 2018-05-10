@@ -19,6 +19,10 @@ static void set_room_cells(room_t *room)
 
 	while (rooms_setup[nb_generated_maps][0])
 		nb_generated_maps++;
+	if (room->id == 0) {
+		room->cells = (char **) rooms_setup[0];
+		return;
+	}
 	room->cells = (char **) rooms_setup[rand_int(0, nb_generated_maps - 1)];
 }
 
