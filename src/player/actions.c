@@ -17,14 +17,29 @@
 
 static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 {
-	if (str_eq(weapon->name, "Bubble"))
+	static sfClock *timer;
+	uint32_t current_time = timer ? sfTime_asMilliseconds(
+				sfClock_getElapsedTime(timer)) : 0;
+
+	if (!timer)
+		timer = sfClock_create();
+	if (str_eq(weapon->name, "Bubble")) {
+		play_sfx(win->game->sounds, WP_GUN);
 		create_shot(win, weapon, pos, player->aim_angle);
-	if (str_eq(weapon->name, "The Shotgun"))
+	}
+	if (str_eq(weapon->name, "The Shotgun")) {
+		play_sfx(win->game->sounds, WP_SHOTGUN);
 		for (size_t i = 0; i < 20; i++)
 			shotgun(win, weapon, pos, player->aim_angle);
-	if (str_eq(weapon->name, "Flamethrower"))
+	}
+	if (str_eq(weapon->name, "Flamethrower")) {
+		if (current_time > 350.f) {
+			play_sfx(win->game->sounds, WP_FLAMETHROWER);
+			sfClock_restart(timer);
+		}
 		for (size_t i = 0; i < 15; i++)
 			create_flame(win, weapon, pos, player->aim_angle);
+	}
 }
 
 void player_shoot(win_t *win, player_t *player)
@@ -43,7 +58,6 @@ void player_shoot(win_t *win, player_t *player)
 		return;
 	if (sfTime_asSeconds(sfClock_getElapsedTime(delay)) < weapon->delay)
 		return;
-	play_sfx(win->game->sounds, SHOOT);
 	shoot(win, weapon, player, pl_pos);
 	sfClock_restart(delay);
 }
