@@ -9,6 +9,7 @@
 
 #include "stats_menu.h"
 #include "render_window.h"
+#include "stats_menu.h"
 
 static void print_slash(win_t *win, stats_t *stats)
 {
@@ -25,6 +26,7 @@ static void print_slash(win_t *win, stats_t *stats)
 
 void draw_stat_menu(win_t *win, stats_menu_t *menu)
 {
+	update_stat_menu(menu, win->game->player);
 	sfRenderWindow_drawRectangleShape(win->sf_win, menu->background, 0);
 	sfRenderWindow_drawSprite(win->sf_win, menu->stats->xp_sprite, 0);
 	sfRenderWindow_drawSprite(win->sf_win, menu->stats->hp_sprite, 0);
@@ -44,4 +46,5 @@ void draw_stat_menu(win_t *win, stats_menu_t *menu)
 			sfSprite_getGlobalBounds(menu->stats->player).width, 2);
 		sfClock_restart(win->game->player->timer);
 	}
+	display_xp_bar(win);
 }
