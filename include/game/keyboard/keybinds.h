@@ -15,6 +15,7 @@
 #include "dir_arrow.h"
 #include "shoot_arrow.h"
 #include "npc.h"
+#include "change_state.h"
 
 typedef struct {
 	game_status game_state;
@@ -31,6 +32,7 @@ static const keybind_t keybinds[] = {
 	{ALL,	sfKeyF11,	&toggle_fullscreen},
 	{ALL,	sfKeyF12,	&toggle_fps},
 	{PAUSE,	sfKeyEscape,	&pause_game},
+	{STATS, sfKeyP,		&stats_game},
 	{GAME,	sfKeyEscape,	&pause_game},
 	{GAME,	sfKeyZ,		&arrow_up},
 	{GAME,	sfKeyS,		&arrow_down},
@@ -40,7 +42,7 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyDown,	&shoot_down},
 	{GAME, 	sfKeyRight,	&shoot_right},
 	{GAME, 	sfKeyLeft,	&shoot_left},
-	{GAME, 	sfKeyP,		&open_door},
+	{GAME, 	sfKeyP,		&stats_game},
 	{GAME, 	sfKeyI, 	&add_gun},
 	{GAME,	sfKeyO, 	&drop_gun},
 	{GAME,	sfKeyN,		&switch_inventory},

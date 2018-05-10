@@ -63,15 +63,13 @@ bool init_hud(player_t *player)
 	if (!init_hp_bar(&player->hp->bar, player)
 		|| !init_hp_bar(&player->hp->back_bar, player))
 		return false;
-	sfRectangleShape_setFillColor(player->hp->bar, hex_to_rgb(0xF44336));
-	sfRectangleShape_setFillColor(player->hp->back_bar,
-					hex_to_rgba(0xFFFFFF55));
+	sfRectangleShape_setFillColor(player->hp->bar, HP_COLOR);
+	sfRectangleShape_setFillColor(player->hp->back_bar, BACK_BAR_COLOR);
 	if (!init_xp_bar(&player->xp->bar, player)
 		|| !init_xp_bar(&player->xp->back_bar, player))
 		return false;
-	sfRectangleShape_setFillColor(player->xp->bar, hex_to_rgb(0xFFEB3B));
-	sfRectangleShape_setFillColor(player->xp->back_bar,
-					hex_to_rgba(0xFFFFFF55));
+	sfRectangleShape_setFillColor(player->xp->bar, XP_COLOR);
+	sfRectangleShape_setFillColor(player->xp->back_bar, BACK_BAR_COLOR);
 	sfRectangleShape_setSize(player->xp->bar, (sfVector2f) {0, XP_HEIGHT});
 	return true;
 }
