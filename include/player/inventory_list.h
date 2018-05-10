@@ -29,6 +29,7 @@ void create_shot(win_t *win, item_t *item, sfVector2f origin, float angle);
 void rifle(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void shotgun(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void create_flame(win_t *win, item_t *weapon, sfVector2f origin, float angle);
+void particle_ak(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 
 static const item_list_t item_actions[] __attribute__((unused)) = {
 	{"gun", "Bubble", WP_GUN, 1, 0, &create_shot},
@@ -36,5 +37,6 @@ static const item_list_t item_actions[] __attribute__((unused)) = {
 	{"flamethrower", "Flamethrower", WP_FLAMETHROWER, 15, 350.f,
 								&create_flame},
 	{"uzi", "Uzi", WP_GUN, 1, 0, &rifle},
+	{"ak47", "Ak-47", WP_AK, 1, 100.f, &particle_ak},
 	{NULL, NULL, 0, 0, 0, NULL}
 };

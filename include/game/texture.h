@@ -58,6 +58,10 @@ static const textures_path_t textures_path[] = {
 		"res/textures/items/uzi.png"
 	},
 	{
+		"ak47",
+		"res/textures/items/ak47.png"
+	},
+	{
 		"player_icon",
 		"res/textures/skills.png"
 	},

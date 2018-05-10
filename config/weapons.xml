@@ -23,4 +23,10 @@
 		<delay>0.1</delay>
 		<rate>60</rate>
 	</uzi>
+	<ak47>
+		<name>Ak-47</name>
+		<damages>25</damages>
+		<delay>0.12</delay>
+		<rate>20</rate>
+	</ak47>
 </weapons>

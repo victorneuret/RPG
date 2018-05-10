@@ -49,6 +49,7 @@ SRC	=	src/args.c                                                                
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c                                                                     \
 		src/game/particles/effects/particle_shot.c                                                          \
+		src/game/particles/effects/particle_ak.c                                                            \
 		src/game/particles/effects/particle_flame.c                                                         \
 		src/game/particles/effects/particle_shotgun.c                                                       \
 		src/game/particles/effects/particle_rifle.c                                                         \
@@ -161,7 +162,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/particles                                                                          \
 		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
-		-I./include/game/ui/hud										    \
+		-I./include/game/ui/hud                                                                             \
 		-I./include/game/ui/buttons                                                                         \
 		-I./include/game/ui/popup                                                                           \
 		-I./include/game/ui/text_area                                                                       \
