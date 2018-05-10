@@ -23,7 +23,7 @@ typedef struct stats {
 	sfText *level_text;
 	sfText *level;
 	sfSprite *sp_sprite;
-	sfText *skill_point;
+	sfText *sp;
 } stats_t;
 
 typedef struct stats_menu {

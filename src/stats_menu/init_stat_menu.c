@@ -51,10 +51,10 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 	stats->xp_max = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
 	stats->level_text = init_text(ft, "Level ", (sfVector2f) {0, 0}, 100);
 	stats->level = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
-	stats->skill_point = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->sp = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
 	if (!stats->player || !stats->slash || !stats->hp || !stats->hp_max
 		|| !stats->xp || !stats->xp_max || !stats->level
-		|| !stats->skill_point || !init_stats_sprite(stats, textures))
+		|| !stats->sp || !init_stats_sprite(stats, textures))
 		return false;
 	sfFont_destroy(ft);
 	menu->stats = stats;

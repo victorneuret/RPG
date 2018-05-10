@@ -38,6 +38,7 @@ static bool set_text_pos(stats_t *stats)
 	rect = sfText_getGlobalBounds(stats->level_text);
 	sfText_setPosition(stats->level, (sfVector2f)
 					{rect.left + rect.width, 100});
+	sfText_setPosition(stats->sp, (sfVector2f) {260, 700});
 	return true;
 }
 
@@ -55,7 +56,7 @@ bool update_stat_menu(stats_menu_t *menu, player_t *player)
 	sfText_setString(menu->stats->xp_max,
 			int_to_str(player->xp->max_value));
 	sfText_setString(menu->stats->level, int_to_str(player->level));
-	// sfText_setString(menu->stats->sp, int_to_str(player->xp->value));
+	sfText_setString(menu->stats->sp, int_to_str(player->skill_point));
 	set_text_pos(menu->stats);
 	first = false;
 	return true;

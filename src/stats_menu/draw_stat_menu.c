@@ -36,6 +36,7 @@ void draw_stat_menu(win_t *win, stats_menu_t *menu)
 	sfRenderWindow_drawText(win->sf_win, menu->stats->xp_max, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->level, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->level_text, 0);
+	sfRenderWindow_drawText(win->sf_win, menu->stats->sp, 0);
 	print_slash(win, menu->stats);
 	if (sfClock_getElapsedTime(win->game->player->timer).microseconds
 							> 500000) {
