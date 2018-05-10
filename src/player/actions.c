@@ -54,4 +54,5 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 	if (!win->game->dungeon->door_open)
 		return;
 	door_action(win, pos, room);
+	sfClock_restart(win->game->player->immu);
 }

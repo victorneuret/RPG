@@ -57,7 +57,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 			rm_enemy_from_list(&enemy_list, node->enemy);
 			break;
 		}
-		update_enemy_ai(win->dt, node->enemy, win->game->player->pos);
+		update_enemy_ai(win, node->enemy, win->game->player);
 	}
 	*door_open = enemy_list->enemy == NULL;
 	if (*door_open && !doors) {

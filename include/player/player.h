@@ -31,6 +31,7 @@ typedef enum {
 typedef struct player {
 	sfVector2f pos;
 	sfClock *timer;
+	sfClock *immu;
 	sfSprite *sprite;
 	float speed;
 	uint8_t level;
@@ -57,3 +58,5 @@ void check_obstacle(sfVector2f *pos, win_t *win);
 void player_shoot(win_t *win, player_t *player);
 void player_door(win_t *win, sfVector2f *pos, room_t *room);
 void door_action(win_t *win, sfVector2f *pos, room_t *room);
+
+bool is_player_immune(sfClock *timer);

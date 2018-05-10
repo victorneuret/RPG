@@ -95,6 +95,7 @@ SRC	=	src/args.c                                                                
 		src/player/door_transition.c                                                                        \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
+		src/player/player_utils.c                                                                           \
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
