@@ -12,8 +12,11 @@
 #include <stdbool.h>
 
 #include "music.h"
+#include "player.h"
+#include "render_window.h"
 
 typedef struct sounds sounds_t;
+typedef struct player player_t;
 typedef struct render_window win_t;
 
 static const uint16_t ENEMIES_NB = 3;
@@ -46,6 +49,7 @@ typedef struct enemy_list {
 	struct enemy_list *next;
 } enemy_list_t;
 
+void update_enemy_ai(win_t *win, enemy_t *enemy, player_t *player);
 void update_enemies(win_t *win, enemy_list_t *enemy_list, sounds_t *sounds,
 							bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);

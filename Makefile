@@ -14,6 +14,7 @@ SRC	=	src/args.c                                                                
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
 		src/enemies/enemies.c                                                                               \
+		src/enemies/enemy_ai.c                                                                               \
 		src/enemies/enemy_list.c                                                                            \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
@@ -94,6 +95,7 @@ SRC	=	src/args.c                                                                
 		src/player/door_transition.c                                                                        \
 		src/player/idle.c										    \
 		src/player/player.c                                                                                 \
+		src/player/player_utils.c                                                                           \
 		src/player/update_player.c                                                                          \
 		src/player/check_obstacle.c									    \
 		src/player/inventory.c								   		    \
