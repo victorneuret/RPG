@@ -63,10 +63,12 @@ void npc_interaction(win_t *win)
 		&& pos.x + rect.width > win->game->npc->pos.x - 30
 		&& pos.y < win->game->npc->pos.y + npc_rect.height + 50) {
 		win->game->npc->textbox->state = true;
-		if (win->game->npc->quest[id].dialog[elem])
+		if (win->game->npc->quest[id].dialog[elem]) {
 			sfText_setString(win->game->npc->quest[id].text,
 				win->game->npc->quest[id].dialog[elem]);
-	}
+		}
+	} else
+		win->game->npc->elem--;
 	if (elem >= win->game->npc->quest->diag_elem)
 		win->game->npc->quest_id = 1;
 }
