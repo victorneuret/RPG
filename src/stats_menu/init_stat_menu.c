@@ -23,10 +23,17 @@ static bool init_stats_sprite(stats_t *stats, textures_t *textures)
 		return false;
 	stats->xp_sprite = get_sprite_texture_rect(texture,
 				&(sfIntRect){384, 0, 128, 128});
-	if (!stats->xp_sprite)
+	stats->hp_sprite = get_sprite_texture_rect(texture,
+				&(sfIntRect){0, 0, 128, 128});
+	stats->sp_sprite = get_sprite_texture_rect(texture,
+				&(sfIntRect){512, 0, 128, 128});
+	if (!stats->xp_sprite || !stats->hp_sprite || !stats->sp_sprite)
 		return false;
 	sfSprite_setColor(stats->xp_sprite, XP_COLOR);
-	sfSprite_setPosition(stats->xp_sprite, (sfVector2f) {300, 300});
+	sfSprite_setColor(stats->hp_sprite, HP_COLOR);
+	sfSprite_setPosition(stats->hp_sprite, (sfVector2f) {80, 300});
+	sfSprite_setPosition(stats->xp_sprite, (sfVector2f) {80, 500});
+	sfSprite_setPosition(stats->sp_sprite, (sfVector2f) {80, 700});
 	return true;
 }
 
@@ -37,15 +44,14 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 
 	if (!stats || !ft)
 		return false;
-	// stats->player = NULL;
-	stats->slash = init_text(ft, "/", (sfVector2f) {0, 0}, 40);
-	// stats->hp_sprite =
-	stats->hp = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
-	stats->hp_max = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
-	stats->xp = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
-	stats->xp_max = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
-	stats->level = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
-	stats->skill_point = init_text(ft, "0", (sfVector2f) {0, 0}, 40);
+	stats->slash = init_text(ft, "/", (sfVector2f) {0, 0}, 100);
+	stats->hp = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->hp_max = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->xp = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->xp_max = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->level_text = init_text(ft, "Level ", (sfVector2f) {0, 0}, 100);
+	stats->level = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
+	stats->skill_point = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
 	if (!stats->player || !stats->slash || !stats->hp || !stats->hp_max
 		|| !stats->xp || !stats->xp_max || !stats->level
 		|| !stats->skill_point || !init_stats_sprite(stats, textures))

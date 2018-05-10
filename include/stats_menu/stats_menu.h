@@ -20,7 +20,9 @@ typedef struct stats {
 	sfSprite *xp_sprite;
 	sfText *xp;
 	sfText *xp_max;
+	sfText *level_text;
 	sfText *level;
+	sfSprite *sp_sprite;
 	sfText *skill_point;
 } stats_t;
 
@@ -32,3 +34,4 @@ typedef struct stats_menu {
 
 bool init_stat_menu(win_t *win);
 void draw_stat_menu(win_t *win, stats_menu_t *menu);
+bool update_stat_menu(stats_menu_t *menu, player_t *player);

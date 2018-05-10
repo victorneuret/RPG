@@ -26,6 +26,6 @@ void update_idle(player_t *player, uint8_t dir)
 		break;
 	}
 	sfSprite_setTextureRect(player->sprite, rect);
-	animate_sprite(player,
+	animate_sprite(player->sprite,
 			sfSprite_getGlobalBounds(player->sprite).width, 2);
 }
