@@ -92,6 +92,8 @@ SRC	=	src/args.c                                                                
 		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
+		src/pause/init_pause.c										    \
+		src/pause/render_pause.c									    \
 		src/player/actions.c                                                                                \
 		src/player/door_action.c                                                                            \
 		src/player/door_transition.c                                                                        \
@@ -177,6 +179,7 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/player                                                                                  \
 		-I./include/interaction                                                                             \
 		-I./include/level                                                                                   \
+		-I./include/pause										    \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
