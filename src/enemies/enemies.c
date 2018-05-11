@@ -58,8 +58,8 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 		return;
 	for (enemy_list_t *node = enemy_list; node; node = node->next) {
 		if (node->enemy && node->enemy->hp <= 0) {
-			particle_xp(win, node->enemy->hp_max, node->enemy->pos,
-							hex_to_rgb(0xFFEB3B));
+			particle_xp(win, node->enemy->hp_max / 3.f,
+				node->enemy->pos, hex_to_rgb(0xFFEB3B));
 			enemy_drop_item(node->enemy->pos, win);
 			win->game->npc->quest[win->game->npc->quest_id].kill--;
 			rm_enemy_from_list(&enemy_list, node->enemy);
@@ -102,9 +102,20 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 }
 
 void create_enemy_group(player_t *player, enemy_list_t **enemy_list,
-						enemy_t **enemy_declaration)
+						enemy_t **enemy_types)
 {
-	for (int i = 0; i < rand_int(4, 6); i++)
-		create_enemy(player, enemy_list,
-				enemy_declaration[rand_int(0, ENEMIES_NB)]);
+	const int enemy_count = rand_int(4, 6);
+	float rand_enemy;
+	size_t enemy_index = 0;
+
+	for (int i = 0; i < enemy_count; i++) {
+		rand_enemy = (float) rand_int(0, 100);
+		if (rand_enemy <= PROB_TANK)
+			enemy_index = 2;
+		else if (rand_enemy <= PROB_BALANCED)
+			enemy_index = 1;
+		else
+			enemy_index = 0;
+		create_enemy(player, enemy_list, enemy_types[enemy_index]);
+	}
 }
