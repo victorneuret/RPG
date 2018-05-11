@@ -101,13 +101,15 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 	add_enemy_to_list(enemy_list, enemy);
 }
 
-void create_enemy_group(player_t *player, enemy_list_t **enemy_list,
-						enemy_t **enemy_types)
+void create_enemy_group(win_t *win, player_t *player,
+			enemy_list_t **enemy_list, enemy_t **enemy_types)
 {
 	const int enemy_count = rand_int(4, 6);
 	float rand_enemy;
 	size_t enemy_index = 0;
 
+	if (win->game->dungeon->act_room == 0)
+		return;
 	for (int i = 0; i < enemy_count; i++) {
 		rand_enemy = (float) rand_int(0, 100);
 		if (rand_enemy <= PROB_TANK)
