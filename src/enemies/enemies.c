@@ -75,7 +75,8 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 		doors = false;
 }
 
-void create_enemy(enemy_list_t **enemy_list, enemy_t *random_enemy)
+void create_enemy(player_t *player, enemy_list_t **enemy_list,
+							enemy_t *random_enemy)
 {
 	enemy_t *enemy = my_calloc(1, sizeof(enemy_t));
 
@@ -83,10 +84,13 @@ void create_enemy(enemy_list_t **enemy_list, enemy_t *random_enemy)
 		return;
 	enemy->type = random_enemy->type;
 	enemy->attack = random_enemy->attack;
-	enemy->hp = random_enemy->hp;
 	enemy->hp_max = random_enemy->hp_max;
+	enemy->hp_max += (random_enemy->hp_max / 5) * player->level;
+	enemy->hp = enemy->hp_max;
 	enemy->attack = random_enemy->attack;
+	enemy->attack += (enemy->attack / 5) * player->level;
 	enemy->speed = random_enemy->speed;
+	enemy->speed += (enemy->speed / 5) * player->level;
 	enemy->pos = (sfVector2f) {rand_int(200, 1600), rand_int(200, 800)};
 	enemy->shape = create_enemy_shape(enemy->pos, enemy->type);
 	if (!enemy->shape) {
@@ -96,9 +100,10 @@ void create_enemy(enemy_list_t **enemy_list, enemy_t *random_enemy)
 	add_enemy_to_list(enemy_list, enemy);
 }
 
-void create_enemy_group(enemy_list_t **enemy_list, enemy_t **enemy_declaration)
+void create_enemy_group(player_t *player, enemy_list_t **enemy_list,
+						enemy_t **enemy_declaration)
 {
 	for (int i = 0; i < rand_int(4, 6); i++)
-		create_enemy(enemy_list,
+		create_enemy(player, enemy_list,
 				enemy_declaration[rand_int(0, ENEMIES_NB)]);
 }

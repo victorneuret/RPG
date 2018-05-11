@@ -23,8 +23,8 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			win->game->dungeon->act_room = map[i + y][j + x];
 			win->game->dungeon->door_open = false;
 			win->game->dungeon->transition = true;
-			create_enemy_group(&win->game->enemy_list,
-						win->game->enemies_declaration);
+			create_enemy_group(win->game->player,
+			&win->game->enemy_list, win->game->enemies_declaration);
 			break;
 		}
 		if (j + 1 >= NB_ROOMS_WIDTH) {
