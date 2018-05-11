@@ -40,6 +40,8 @@ typedef struct player {
 	bar_t *hp;
 	bar_t *xp;
 	sfSprite *aim;
+	bool touched;
+	sfRectangleShape *shade;
 	float aim_angle;
 	inventory_t *inventory;
 } player_t;
@@ -62,3 +64,4 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room);
 void door_action(win_t *win, sfVector2f *pos, room_t *room);
 
 bool is_player_immune(sfClock *timer);
+void player_touched(player_t *player);

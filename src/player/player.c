@@ -25,11 +25,14 @@ void animate_sprite(sfSprite *sprite, uint16_t offset, uint8_t max_val)
 
 void draw_player(win_t *win, player_t *player)
 {
+	player_touched(player);
 	render_object(win->sf_win, SPRITE, player->aim);
 	render_object(win->sf_win, SPRITE, player->sprite);
+	if (player->touched)
+		render_object(win->sf_win, RECTANGLE, player->shade);
 }
 
-static void init_player_aim(player_t *player, win_t *win)
+static bool init_player_aim(player_t *player, win_t *win)
 {
 	player->aim_angle = 45;
 	player->aim = create_sprite(
@@ -38,6 +41,13 @@ static void init_player_aim(player_t *player, win_t *win)
 	sfSprite_setRotation(player->aim, 45.f);
 	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
 	sfSprite_setScale(player->aim, (sfVector2f) {3, 3});
+	player->touched = false;
+	player->shade = sfRectangleShape_create();
+	if (!player->shade)
+		return false;
+	sfRectangleShape_setFillColor(player->shade, hex_to_rgba(0xff000096));
+	sfRectangleShape_setSize(player->shade, (sfVector2f){1920, 1080});
+	return true;
 }
 
 player_t *init_player(win_t *win)
@@ -52,8 +62,8 @@ player_t *init_player(win_t *win)
 	player->sprite = get_sprite_texture_rect(text->texture, &rect);
 	player->timer = sfClock_create();
 	player->immu = sfClock_create();
-	init_player_aim(player, win);
-	if (!player->sprite || !player->aim || !player->timer || !player->immu)
+	if (!init_player_aim(player, win) || !player->sprite || !player->aim ||
+			!player->timer || !player->immu || !player->shade)
 		return NULL;
 	sfSprite_setOrigin(player->sprite, (sfVector2f) {rect.width / 2.f,
 							rect.height / 2.f});
