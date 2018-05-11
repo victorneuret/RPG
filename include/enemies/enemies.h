@@ -21,6 +21,10 @@ typedef struct render_window win_t;
 
 static const uint16_t ENEMIES_NB = 3;
 
+static const float PROB_TANK = 16.666666666666664f;
+static const float PROB_BALANCED = 50.f;
+static const float PROB_LIGHT = 100.f;
+
 static const char *enemies_name[] __attribute__((unused)) = {
 	"light",
 	"balanced",
