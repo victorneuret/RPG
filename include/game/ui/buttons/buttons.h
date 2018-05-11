@@ -124,28 +124,28 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1265, 365},
-		"Damage: level 3\n+1 per bullet",
+		"Damage: level 3\n+8 per bullet",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&weapon_level_three
 	},
 	{
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1265, 565},
-		"Damage: level 2\n+1 per bullet",
+		"Damage: level 2\n+4 per bullet",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&weapon_level_two
 	},
 	{
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1265, 765},
-		"Damage: level 1\n+1 per bullet",
+		"Damage: level 1\n+2 per bullet",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&weapon_level_one
 	},
 	{
 		STATS,

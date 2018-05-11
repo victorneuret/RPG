@@ -12,7 +12,8 @@
 static void draw_tree(sfRenderWindow *win, skill_t *skill, player_t *player)
 {
 	for (size_t i = 0; i < 3; i++) {
-		if (skill->unlock_level[i] > player->level)
+		if (skill->unlock_level[i] > player->level ||
+			skill->level < i)
 			sfSprite_setColor(skill->sprite[i],
 					hex_to_rgb(0xBDBDBD));
 		else if (skill->level >= i + 1)

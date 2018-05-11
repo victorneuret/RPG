@@ -4,8 +4,8 @@
 		<multiplicator>1.10</multiplicator>
 	</hp>
 	<xp>
-		<start>200</start>
-		<multiplicator>1.5</multiplicator>
+		<start>1000</start>
+		<multiplicator>400</multiplicator>
 	</xp>
 	<speed>900</speed>
 </player>

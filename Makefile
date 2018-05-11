@@ -110,6 +110,7 @@ SRC	=	src/args.c                                                                
 		src/skill_tree/draw_skill_tree.c								    \
 		src/skill_tree/init_skill_tree.c								    \
 		src/skill_tree/skill_hp.c									    \
+		src/skill_tree/skill_weapon.c									    \
 		src/stats_menu/draw_stat_menu.c									    \
 		src/stats_menu/init_stat_menu.c									    \
 		src/stats_menu/update_stat_menu.c								    \
