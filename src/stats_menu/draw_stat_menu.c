@@ -24,14 +24,8 @@ static void print_slash(win_t *win, stats_t *stats)
 	sfRenderWindow_drawText(win->sf_win, stats->slash, 0);
 }
 
-void draw_stat_menu(win_t *win, stats_menu_t *menu)
+static void draw_text(win_t *win, stats_menu_t *menu)
 {
-	update_stat_menu(menu, win->game->player);
-	sfRenderWindow_drawRectangleShape(win->sf_win, menu->background, 0);
-	sfRenderWindow_drawSprite(win->sf_win, menu->stats->xp_sprite, 0);
-	sfRenderWindow_drawSprite(win->sf_win, menu->stats->hp_sprite, 0);
-	sfRenderWindow_drawSprite(win->sf_win, menu->stats->sp_sprite, 0);
-	sfRenderWindow_drawSprite(win->sf_win, menu->stats->player, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->hp, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->hp_max, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->xp, 0);
@@ -39,6 +33,18 @@ void draw_stat_menu(win_t *win, stats_menu_t *menu)
 	sfRenderWindow_drawText(win->sf_win, menu->stats->level, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->level_text, 0);
 	sfRenderWindow_drawText(win->sf_win, menu->stats->sp, 0);
+}
+
+void draw_stat_menu(win_t *win, stats_menu_t *menu)
+{
+	update_stat_menu(menu, win->game->player);
+	sfRenderWindow_drawRectangleShape(win->sf_win, menu->background, 0);
+	sfRenderWindow_drawRectangleShape(win->sf_win, menu->separator, 0);
+	sfRenderWindow_drawSprite(win->sf_win, menu->stats->xp_sprite, 0);
+	sfRenderWindow_drawSprite(win->sf_win, menu->stats->hp_sprite, 0);
+	sfRenderWindow_drawSprite(win->sf_win, menu->stats->sp_sprite, 0);
+	sfRenderWindow_drawSprite(win->sf_win, menu->stats->player, 0);
+	draw_text(win, menu);
 	print_slash(win, menu->stats);
 	if (sfClock_getElapsedTime(win->game->player->timer).microseconds
 							> 500000) {

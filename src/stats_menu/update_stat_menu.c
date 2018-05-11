@@ -28,7 +28,7 @@ static bool set_text_pos(stats_t *stats)
 	rect = sfText_getGlobalBounds(stats->level_text);
 	sfText_setPosition(stats->level, (sfVector2f)
 					{rect.left + rect.width, 100});
-	sfText_setPosition(stats->sp, (sfVector2f) {260, 700});
+	sfText_setPosition(stats->sp, (sfVector2f) {260, 690});
 	return true;
 }
 

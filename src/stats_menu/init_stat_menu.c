@@ -25,25 +25,25 @@ static bool init_stats_sprite(stats_t *stats, textures_t *textures)
 	stats->player = get_sprite_texture_rect(tx_player,
 				&(sfIntRect){0, 530, 128, 138});
 	stats->xp_sprite = get_sprite_texture_rect(texture,
-				&(sfIntRect){384, 0, 128, 128});
+				&(sfIntRect){256, 0, 128, 128});
 	stats->hp_sprite = get_sprite_texture_rect(texture,
-				&(sfIntRect){0, 0, 128, 128});
+				&(sfIntRect){0, 640, 128, 128});
 	stats->sp_sprite = get_sprite_texture_rect(texture,
-				&(sfIntRect){512, 0, 128, 128});
+				&(sfIntRect){0, 0, 255, 256});
 	if (!stats->xp_sprite || !stats->hp_sprite || !stats->sp_sprite)
 		return false;
 	sfSprite_setColor(stats->xp_sprite, XP_COLOR);
 	sfSprite_setColor(stats->hp_sprite, HP_COLOR);
 	sfSprite_setPosition(stats->hp_sprite, (sfVector2f) {80, 300});
 	sfSprite_setPosition(stats->xp_sprite, (sfVector2f) {80, 500});
-	sfSprite_setPosition(stats->sp_sprite, (sfVector2f) {80, 700});
+	sfSprite_setPosition(stats->sp_sprite, (sfVector2f) {16, 636});
 	return true;
 }
 
 static bool init_stats(stats_menu_t *menu, textures_t *textures)
 {
 	stats_t *stats = malloc(sizeof(stats_t));
-	sfFont *ft = sfFont_createFromFile("res/fonts/space_mono_regular.ttf");
+	sfFont *ft = sfFont_createFromFile("res/fonts/isaac_sans.ttf");
 
 	if (!stats || !ft)
 		return false;
@@ -55,13 +55,23 @@ static bool init_stats(stats_menu_t *menu, textures_t *textures)
 	stats->level_text = init_text(ft, "Level ", (sfVector2f) {0, 0}, 100);
 	stats->level = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
 	stats->sp = init_text(ft, "0", (sfVector2f) {0, 0}, 100);
-	if (!stats->player || !stats->slash || !stats->hp || !stats->hp_max
-		|| !stats->xp || !stats->xp_max || !stats->level
+	if (!stats->slash || !stats->hp || !stats->hp_max || !stats->xp
+		|| !stats->xp_max || !stats->level || !stats->level_text
 		|| !stats->sp || !init_stats_sprite(stats, textures))
 		return false;
-	sfFont_destroy(ft);
 	sfSprite_setPosition(stats->player, (sfVector2f){90, 90});
 	menu->stats = stats;
+	return true;
+}
+
+static bool init_rectangle_stats(stats_menu_t *menu)
+{
+	sfRectangleShape_setSize(menu->background,
+				(sfVector2f){WIN_MAX_W, WIN_MAX_H});
+	sfRectangleShape_setFillColor(menu->background, hex_to_rgb(0x455A64));
+	sfRectangleShape_setSize(menu->separator, (sfVector2f){1, 880});
+	sfRectangleShape_setPosition(menu->separator, (sfVector2f){700, 100});
+	sfRectangleShape_setFillColor(menu->separator, hex_to_rgb(0xFFFFFF));
 	return true;
 }
 
@@ -80,6 +90,8 @@ bool init_stat_menu(win_t *win)
 		|| !win->game->stats_menu->separator)
 		return false;
 	if (!init_stats(win->game->stats_menu, win->game->textures))
+		return false;
+	if (!init_rectangle_stats(win->game->stats_menu))
 		return false;
 	return true;
 }

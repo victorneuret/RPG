@@ -26,12 +26,29 @@ typedef struct stats {
 	sfText *sp;
 } stats_t;
 
+typedef struct skill {
+	sfSprite *sprite[3];
+	uint8_t level;
+	uint8_t unlock_level[3];
+} skill_t;
+
+typedef struct skill_tree {
+	sfSprite *sp;
+	sfText *nb_sp;
+	sfText *active;
+	sfText *passive;
+	skill_t **skill;
+} skill_tree_t;
+
 typedef struct stats_menu {
 	sfRectangleShape *background;
 	sfRectangleShape *separator;
 	stats_t *stats;
+	skill_tree_t *skill_tree;
 } stats_menu_t;
 
 bool init_stat_menu(win_t *win);
 void draw_stat_menu(win_t *win, stats_menu_t *menu);
 bool update_stat_menu(stats_menu_t *menu, player_t *player);
+bool init_skill_tree(stats_menu_t *menu, game_t *game);
+void draw_skill_tree(win_t *win, stats_menu_t *stats);

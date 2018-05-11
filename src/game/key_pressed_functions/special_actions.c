@@ -16,7 +16,8 @@ void switch_inventory(win_t *win)
 
 void get_nearest_item(win_t *win)
 {
-	get_item(win->game->player->sprite, win->game->player->inventory, true);
+	get_item(win, win->game->player->inventory, win->game->player->sprite,
+									true);
 }
 
 void add_gun(win_t *win)
@@ -24,8 +25,8 @@ void add_gun(win_t *win)
 	static int i = GUN;
 
 	if (!win->game->player->inventory->item_list[i].droped)
-		i = (i + 1) % 3;
-	add_item(win->game->player->inventory,
+		i = (i + 1) % NB_ITEMS;
+	add_item(win, win->game->player->inventory,
 				win->game->player->inventory->selected, i);
 }
 

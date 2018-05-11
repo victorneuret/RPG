@@ -60,9 +60,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 		if (node->enemy && node->enemy->hp <= 0) {
 			particle_xp(win, node->enemy->hp_max, node->enemy->pos,
 							hex_to_rgb(0xFFEB3B));
-			play_sfx(sounds, DEATH);
-			enemy_drop_item(node->enemy->pos,
-				win->game->player->inventory->item_list);
+			enemy_drop_item(node->enemy->pos, win);
 			win->game->npc->quest[win->game->npc->quest_id].kill--;
 			rm_enemy_from_list(&enemy_list, node->enemy);
 			break;

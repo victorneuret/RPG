@@ -62,7 +62,9 @@ void draw_inventory(win_t *win, inventory_t *inventory)
 {
 	sfVector2f pos = {1400, 1010};
 
-	for (uint8_t i = 0; i < INVENTORY_NB; i++) {
+	if (!inventory->item)
+		return;
+	for (int8_t i = 0; i < INVENTORY_NB; i++) {
 		if (inventory->item[i] && !inventory->item[i]->droped) {
 			sfSprite_setPosition(inventory->item[i]->sprite, pos);
 			draw_selected(win, i, inventory, pos);

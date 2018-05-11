@@ -12,6 +12,7 @@
 #include "xml.h"
 #include "getnbr.h"
 #include "inventory.h"
+#include "inventory_list.h"
 #include "texture.h"
 
 static bool parse_xml_item(xmlNode *root, item_t *item,
@@ -51,8 +52,9 @@ bool xml_item(item_t *item, textures_t *texture)
 	root = load_xml_node(document);
 	if (!root)
 		return false;
-	for (i = 0; item_list[i]; i++) {
-		if (!parse_xml_item(root, &item[i], texture, item_list[i]))
+	for (i = 0; item_actions[i].name; i++) {
+		if (!parse_xml_item(root, &item[i], texture,
+							item_actions[i].name))
 			return false;
 	}
 	xmlFreeDoc(document);

@@ -37,7 +37,7 @@ typedef struct sounds {
 
 static const music_declaration_t music_declaration[] = {
 	{
-		INTRO | TITLE | OPTION | PAUSE,
+		INTRO | TITLE | OPTION | PAUSE | STATS,
 		"res/sounds/musics/title.ogg",
 		20
 	},
@@ -64,7 +64,8 @@ typedef enum sfx {
 	WP_FLAMETHROWER,
 	WP_SHOTGUN,
 	XP,
-	LEVEL_UP
+	LEVEL_UP,
+	WP_AK
 } sfx_type;
 
 static const music_declaration_t sfx_declaration[] = {
@@ -122,6 +123,11 @@ static const music_declaration_t sfx_declaration[] = {
 		GAME,
 		"res/sounds/sfx/level_up.ogg",
 		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/ak47.ogg",
+		20
 	},
 	{
 		0,
