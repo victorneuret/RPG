@@ -35,6 +35,8 @@ static void check_impact(win_t *win, enemy_t *enemy, player_t *player)
 	if (sfFloatRect_intersects(&enemy_rect, &player_rect, NULL)) {
 		if (is_player_immune(player->immu))
 			return;
+		player->touched = true;
+		play_sfx(win->game->sounds, PLAYER_HIT);
 		player->hp->value -= enemy->attack;
 		sfClock_restart(player->immu);
 		create_explosion(win, 150, player->pos, sfRed);

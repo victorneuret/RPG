@@ -65,7 +65,8 @@ typedef enum sfx {
 	WP_SHOTGUN,
 	XP,
 	LEVEL_UP,
-	WP_AK
+	WP_AK,
+	PLAYER_HIT
 } sfx_type;
 
 static const music_declaration_t sfx_declaration[] = {
@@ -128,6 +129,11 @@ static const music_declaration_t sfx_declaration[] = {
 		GAME,
 		"res/sounds/sfx/ak47.ogg",
 		20
+	},
+	{
+		GAME,
+		"res/sounds/sfx/player_hit.ogg",
+		100
 	},
 	{
 		0,
