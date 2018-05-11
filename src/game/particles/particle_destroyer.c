@@ -29,17 +29,21 @@ void destroy_particle_manager(particle_manager_t *manager)
 
 void remove_unactives(particle_manager_t *head)
 {
+	particle_manager_t *next = head;
 	particle_manager_t *current = head;
 	particle_manager_t *previous = current;
 
-	for (; current; current = current->next) {
+	while (next) {
+		current = next;
 		if (current->group && !current->group->active
 				&& current != head) {
 			destroy_particle_group(current->group);
 			previous->next = current->next;
+			next = current->next;
 			free(current);
 			continue;
 		}
+		next = current->next;
 		previous = current;
 	}
 }
