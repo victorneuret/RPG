@@ -6,6 +6,24 @@
 */
 
 #include "stats_menu.h"
+#include "render.h"
+#include "color_utils.h"
+
+static void draw_tree(sfRenderWindow *win, skill_t *skill, player_t *player)
+{
+	for (size_t i = 0; i < 3; i++) {
+		if (skill->unlock_level[i] > player->level)
+			sfSprite_setColor(skill->sprite[i],
+					hex_to_rgb(0xBDBDBD));
+		else if (skill->level >= i + 1)
+			sfSprite_setColor(skill->sprite[i],
+					hex_to_rgb(0x4DB6AC));
+		else
+			sfSprite_setColor(skill->sprite[i],
+					hex_to_rgb(0x90CAF9));
+		render_object(win, SPRITE, skill->sprite[i]);
+	}
+}
 
 static void draw_skill_point(win_t *win, skill_tree_t *skill_tree)
 {
@@ -31,4 +49,7 @@ void draw_skill_tree(win_t *win, stats_menu_t *stats)
 	sfRenderWindow_drawText(win->sf_win, stats->skill_tree->active, 0);
 	sfRenderWindow_drawText(win->sf_win, stats->skill_tree->passive, 0);
 	draw_skill_point(win, stats->skill_tree);
+	for (size_t i = 0; i < 4; i++)
+		draw_tree(win->sf_win, stats->skill_tree->skill[i],
+				win->game->player);
 }
