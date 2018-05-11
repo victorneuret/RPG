@@ -96,7 +96,7 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		PAUSE,
 		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {900, 500},
+		(sfVector2f) {950, 500},
 		"",
 		0XBCAAA4FF,
 		0xEFEBE999,
@@ -105,11 +105,20 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		PAUSE,
 		(sfIntRect) {900, 0, 300, 70},
-		(sfVector2f) {900, 660},
+		(sfVector2f) {950, 580},
 		"",
 		0XBCAAA4FF,
 		0xEFEBE999,
 		&pause_game
+	},
+	{
+		PAUSE,
+		(sfIntRect) {900, 0, 300, 70},
+		(sfVector2f) {950, 660},
+		"",
+		0XBCAAA4FF,
+		0xEFEBE999,
+		&to_title_page
 	},
 	{
 		STATS,
