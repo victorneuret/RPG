@@ -30,6 +30,7 @@ typedef struct room {
 	bool door_down;
 	bool door_left;
 	bool door_right;
+	bool cleared;
 } room_t;
 
 typedef struct dungeon {
@@ -39,6 +40,7 @@ typedef struct dungeon {
 	bool door_open;
 	sfRectangleShape *shade;
 	bool transition;
+	bool cleared;
 } dungeon_t;
 
 

@@ -37,7 +37,7 @@ static void check_interaction(win_t *win, npc_t *npc)
 				npc->quest[npc->quest_id].dialog[npc->elem]);
 		npc->elem++;
 		if (npc->quest[npc->quest_id].last_quest) {
-			particle_xp(win, 500 * npc->quest_id, xp_pos, XP_COLOR);
+			particle_xp(win, 500 * npc->quest_id, xp_pos);
 			npc->quest[npc->quest_id].last_quest = false;
 		}
 	}
