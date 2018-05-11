@@ -17,13 +17,16 @@
 #include "npc.h"
 #include "textbox.h"
 #include "quest.h"
+#include "hud.h"
+#include "particle_xp.h"
 
-void npc_interaction(win_t *win)
+static void check_interaction(win_t *win, npc_t *npc)
 {
-	npc_t *npc = win->game->npc;
 	sfVector2f pos = sfSprite_getPosition(win->game->player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(win->game->player->sprite);
 	sfFloatRect npc_rect = sfSprite_getGlobalBounds(npc->skin);
+	sfVector2f xp_pos = {npc->pos.x + npc_rect.width / 2,
+		npc->pos.y + npc_rect.height / 2};
 
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > npc->pos.x - 30
@@ -33,7 +36,24 @@ void npc_interaction(win_t *win)
 			sfText_setString(npc->quest[npc->quest_id].text,
 				npc->quest[npc->quest_id].dialog[npc->elem]);
 		npc->elem++;
+		if (npc->quest[npc->quest_id].last_quest) {
+			particle_xp(win, 500 * npc->quest_id, xp_pos, XP_COLOR);
+			npc->quest[npc->quest_id].last_quest = false;
+		}
 	}
+}
+
+void npc_interaction(win_t *win)
+{
+	npc_t *npc = win->game->npc;
+	uint8_t id = npc->quest_id;
+
+	check_interaction(win, npc);
+	if (npc->elem > npc->quest->diag_elem && !npc->quest[id].quest_popup
+		&& npc->quest[id].quest_type != NONE) {
+			create_popup(win->game->ui, "New quest.", INFO);
+			npc->quest[npc->quest_id].quest_popup = true;
+		}
 	if (npc->elem > npc->quest->diag_elem
 		&& npc->quest[npc->quest_id].state)
 		npc->quest_id++;
@@ -69,6 +89,7 @@ static void check_current_quest(win_t *win, npc_t *npc)
 	case WEAPON:
 		if (npc->quest[npc->quest_id].kill <= 0) {
 			npc->quest[npc->quest_id++].state = true;
+			npc->quest[npc->quest_id].last_quest = true;
 			create_popup(win->game->ui, "Quest finished!", SUCCESS);
 			npc->elem = 0;
 		}
