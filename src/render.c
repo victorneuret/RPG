@@ -14,6 +14,7 @@
 #include "music_management.h"
 #include "stats_menu.h"
 #include "pause.h"
+#include "dungeon.h"
 
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 {
@@ -60,6 +61,7 @@ static void render_game(win_t *win)
 		draw_inventory(win, win->game->player->inventory);
 		draw_npc(win, win->game->npc);
 		draw_enemies(win->sf_win, win->game->enemy_list);
+		draw_portal(win->game->dungeon, win);
 		render_transition(win);
 	}
 	render_general(win);
