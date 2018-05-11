@@ -104,15 +104,16 @@ SRC	=	src/args.c                                                                
 		src/player/drop_inventory.c                                                                         \
 		src/player/init_inventory.c                                                                         \
 		src/player/draw_inventory.c                                                                         \
-		src/interaction/npc.c                                                                               \
-		src/interaction/textbox.c                                                                           \
-		src/interaction/quest.c                                                                             \
-		src/skill_tree/draw_skill_tree.c                                                                    \
-		src/skill_tree/init_skill_tree.c                                                                    \
-		src/stats_menu/draw_stat_menu.c                                                                     \
-		src/stats_menu/init_stat_menu.c                                                                     \
-		src/stats_menu/update_stat_menu.c                                                                   \
-		src/interaction/init_npc.c                                                                          \
+		src/interaction/npc.c									   	    \
+		src/interaction/textbox.c									    \
+		src/interaction/quest.c										    \
+		src/skill_tree/draw_skill_tree.c								    \
+		src/skill_tree/init_skill_tree.c								    \
+		src/skill_tree/skill_hp.c									    \
+		src/stats_menu/draw_stat_menu.c									    \
+		src/stats_menu/init_stat_menu.c									    \
+		src/stats_menu/update_stat_menu.c								    \
+		src/interaction/init_npc.c									    \
 		src/render.c                                                                                        \
 		src/update.c                                                                                        \
 		src/utils/csfml/color_utils.c                                                                       \

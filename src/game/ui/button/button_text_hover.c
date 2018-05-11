@@ -62,8 +62,7 @@ void update_text_hover(text_hover_button_t *hover, win_t *win)
 {
 	sfFloatRect rect = sfRectangleShape_getGlobalBounds(hover->rect);
 	sfVector2f size = sfRectangleShape_getSize(hover->rect);
-	size_t text_size = my_strlen(sfText_getString(hover->text))
-			* (sfText_getCharacterSize(hover->text) / 3 * 2);
+	sfFloatRect t_rect = sfText_getGlobalBounds(hover->text);
 	sfVector2f mouse = get_mouse_pos(win);
 
 	sfRectangleShape_setPosition(hover->rect,
@@ -72,11 +71,8 @@ void update_text_hover(text_hover_button_t *hover, win_t *win)
 	if (!is_over_button(win->game->ui->buttons, win)
 		|| my_strlen(sfText_getString(hover->text)) == 0)
 		return;
-	if (size.x != text_size + 10) {
-		size.x = text_size + 10;
-		sfRectangleShape_setSize(hover->rect,
-				(sfVector2f) {size.x, size.y});
-	}
+	sfRectangleShape_setSize(hover->rect, (sfVector2f)
+				{t_rect.width + 10, t_rect.height * 1.5});
 	update_text_hover_box_position(hover, rect, win);
 	size = sfRectangleShape_getPosition(hover->rect);
 	sfText_setPosition(hover->text,
