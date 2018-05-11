@@ -215,13 +215,13 @@ renolib:	clean $(OBJ)
 clean:
 		@echo -en "Cleaning $(NAME) ..."
 		@rm -f $(OBJ)
-		@make clean -C extern_libs
+		@make clean --no-print-directory -C extern_libs
 		@echo -e " Done"
 
 fclean:		clean
 		@echo -en "FCleaning $(NAME) ..."
 		@rm -f $(NAME) tests_run
-		@make fclean -C extern_libs
+		@make fclean --no-print-directory -C extern_libs
 		@echo -e " Done"
 
 re:		fclean all
