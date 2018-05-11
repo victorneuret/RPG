@@ -67,7 +67,7 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 	sfClock_restart(win->game->player->immu);
 }
 
-void player_dash(bool press)
+void player_dash(player_t *player, bool press)
 {
 	static bool pressed = false;
 

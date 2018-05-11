@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #include "inventory.h"
+#include "player.h"
 #include "hud.h"
 
 typedef struct inventory inventory_t;
@@ -62,4 +63,4 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room);
 void door_action(win_t *win, sfVector2f *pos, room_t *room);
 
 bool is_player_immune(sfClock *timer);
-void player_dash(bool press);
+void player_dash(player_t *player, bool press);
