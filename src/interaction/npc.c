@@ -119,4 +119,5 @@ void draw_npc(win_t *win, npc_t *npc)
 		npc->textbox->state = false;
 	}
 	render_object(win->sf_win, SPRITE, npc->skin);
+	render_object(win->sf_win, SPRITE, npc->help);
 }
