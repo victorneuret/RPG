@@ -12,6 +12,7 @@
 #include "rooms.h"
 
 #include "nb_utils.h"
+#include "my_calloc.h"
 
 static void set_room_cells(room_t *room)
 {
@@ -58,7 +59,7 @@ static void set_neighbor(game_t *game, room_t *room)
 bool init_all_rooms(win_t *win, char **map)
 {
 	for (size_t i = 0; i < win->game->dungeon->nb_rooms; i++) {
-		win->game->rooms[i] = malloc(sizeof(room_t));
+		win->game->rooms[i] = my_calloc(1, sizeof(room_t));
 		if (!win->game->rooms[i])
 			return false;
 		win->game->rooms[i]->cells = map;
@@ -70,6 +71,7 @@ bool init_all_rooms(win_t *win, char **map)
 		set_neighbor(win->game, win->game->rooms[i]);
 		set_room_cells(win->game->rooms[i]);
 	}
+	win->game->rooms[0]->cleared = true;
 	win->game->rooms[win->game->dungeon->nb_rooms] = NULL;
 	return true;
 }

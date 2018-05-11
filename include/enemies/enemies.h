@@ -65,3 +65,5 @@ void create_enemy_group(win_t *win, player_t *player,
 void add_enemy_to_list(enemy_list_t **enemy_list, enemy_t *enemy);
 void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy);
 void nuke_enemies(enemy_list_t *enemy_list);
+
+void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node);
