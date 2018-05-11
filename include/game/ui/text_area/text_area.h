@@ -47,7 +47,7 @@ typedef struct {
 
 static const text_area_declaration_t text_area_declaration[] = {
 	{
-		PAUSE,
+		42,
 		(sfVector2f) {960, 540},
 		(sfVector2f) {300, 30},
 		"res/fonts/telegrama_render.otf",
