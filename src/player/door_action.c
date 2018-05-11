@@ -18,7 +18,7 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 	item_t *item_list = win->game->player->inventory->item_list;
 	size_t i = 0;
 
-	for (size_t j = 0; j < NB_ROOMS_WIDTH && i < NB_ROOMS_HEIGHT; j++) {
+	for (int8_t j = 0; j < NB_ROOMS_WIDTH && i < NB_ROOMS_HEIGHT; j++) {
 		if (map[i][j] == room->id) {
 			win->game->dungeon->act_room = map[i + y][j + x];
 			win->game->dungeon->door_open = false;
@@ -28,7 +28,7 @@ static void move_room(win_t *win, room_t *room, int8_t x, int8_t y)
 			break;
 		}
 		if (j + 1 >= NB_ROOMS_WIDTH) {
-			j = 0;
+			j = -1;
 			i++;
 		}
 	}

@@ -51,6 +51,10 @@ static void set_pos_sprite(uint16_t x_pos, uint16_t nb,
 
 static bool alloc_skill_tree(skill_tree_t *tree)
 {
+	static bool first = true;
+
+	if (!first)
+		return true;
 	tree->skill = malloc(sizeof(skill_t *) * 4);
 	if (!tree->skill)
 		return false;
@@ -59,10 +63,11 @@ static bool alloc_skill_tree(skill_tree_t *tree)
 		if (!tree->skill[i])
 			return false;
 	}
+	first = false;
 	return true;
 }
 
-static bool init_skill(skill_tree_t *tree, textures_t *textures)
+bool init_skill(skill_tree_t *tree, textures_t *textures)
 {
 	uint16_t x_rect = 0;
 	uint16_t x_pos = 1000;

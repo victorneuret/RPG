@@ -44,6 +44,8 @@ void button_b(win_t *win, bool press)
 			win->game_state = TITLE;
 		else if (win->game_state == PAUSE)
 			win->game_state = GAME;
+		if (win->game_state == STATS)
+			win->game_state = GAME;
 		pressed = true;
 	}
 }

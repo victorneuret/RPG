@@ -51,5 +51,6 @@ bool init_stat_menu(win_t *win);
 void draw_stat_menu(win_t *win, stats_menu_t *menu);
 bool update_stat_menu(stats_menu_t *menu, player_t *player);
 bool init_skill_tree(stats_menu_t *menu, game_t *game);
+bool init_skill(skill_tree_t *tree, textures_t *textures);
 void draw_skill_tree(win_t *win, stats_menu_t *stats);
 void update_pos(skill_t **skill, win_t *win);

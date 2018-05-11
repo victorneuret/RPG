@@ -23,16 +23,23 @@ static bool parse_xml_player(xmlNode *root, player_t *player)
 	player->xp->value = 0;
 	player->xp->max_value = get_node_int(xp_node, "start");
 	player->xp->mult = get_node_float(xp_node, "multiplicator");
+	player->level = 1;
+	player->skill_point = 0;
 	return true;
 }
 
 bool xml_player(player_t *player)
 {
-	player->hp = malloc(sizeof(bar_t));
-	player->xp = malloc(sizeof(bar_t));
+	static bool first = true;
 	xmlDoc *document = load_xml_file("config/player.xml");
 	xmlNode *root;
 
+	if (!first) {
+		free(player->xp);
+		free(player->hp);
+	}
+	player->hp = malloc(sizeof(bar_t));
+	player->xp = malloc(sizeof(bar_t));
 	if (!document || !player->hp || !player->xp)
 		return false;
 	root = load_xml_node(document);
@@ -41,5 +48,6 @@ bool xml_player(player_t *player)
 	if (!parse_xml_player(root, player))
 		return false;
 	xmlFreeDoc(document);
+	first = false;
 	return true;
 }
