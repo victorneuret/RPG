@@ -26,6 +26,8 @@ typedef struct quest {
 	char **dialog;
 	sfText *text;
 	bool state;
+	bool last_quest;
+	bool quest_popup;
 } quest_t;
 
 typedef struct {
