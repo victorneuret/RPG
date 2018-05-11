@@ -10,4 +10,7 @@
 !res/**
 !tests/**
 !README.txt
-!lib/lib*
+
+extern_libs/**
+!extern_libs/libxml2-2.7.2.tar.gz
+!extern_libs/Makefile

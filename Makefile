@@ -190,7 +190,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm -lc_graph_prog
-LDFLAGS +=	-L./lib -lxml2
+LDFLAGS +=	-L./extern_libs -lxmllib
 
 all:	$(NAME)
 
@@ -199,6 +199,7 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
+		@make -j -C extern_libs
 		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
@@ -206,11 +207,13 @@ $(NAME):	$(OBJ)
 clean:
 		@echo -en "Cleaning $(NAME) ..."
 		@rm -f $(OBJ)
+		@make clean -C extern_libs
 		@echo -e " Done"
 
 fclean:		clean
 		@echo -en "FCleaning $(NAME) ..."
 		@rm -f $(NAME) tests_run
+		@make fclean -C extern_libs
 		@echo -e " Done"
 
 re:		fclean all
