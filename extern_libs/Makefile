@@ -9,7 +9,11 @@ current_dir = $(shell pwd)
 
 lib_dir = libxml2-2.7.2
 
-all:
+NAME	= lib/libxml2.so
+
+all:	$(NAME)
+
+$(NAME):
 	tar xzf $(lib_dir).tar.gz
 	@cd $(lib_dir);	\
 	echo -e "[\e[34m$(lib_dir)\e[39m] : Configuration";	\
@@ -17,7 +21,7 @@ all:
 	echo -e "[\e[34m$(lib_dir)\e[39m] : Compiling";	\
 	make &> /dev/null;	\
 	make install &> /dev/null
-	cp lib/libxml2.so libxmllib.so
+	cp $(NAME) libxmllib.so
 
 clean:
 	@rm -rf libxml2-2.7.2

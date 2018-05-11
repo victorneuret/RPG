@@ -199,7 +199,7 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
-		@make -j -C extern_libs
+		@make -j --no-print-directory -C extern_libs
 		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
