@@ -190,7 +190,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm -lc_graph_prog
-LDFLAGS +=	-L lib -lxml2
+LDFLAGS +=	-L./lib -lxml2
 
 all:	$(NAME)
 
