@@ -37,7 +37,7 @@ static void update_portal(player_t *player, win_t *win)
 
 	if (sfFloatRect_contains(&rect, WIN_MAX_W / 2, WIN_MAX_H / 2)) {
 		load_level(&win->game->level,
-				rand_int(0, (int) ENV_COUNT), win);
+				rand_int(0, (int) ENV_COUNT - 1), win);
 		win->game->dungeon->cleared = false;
 		win->game->dungeon->transition = true;
 	}
