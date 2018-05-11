@@ -108,8 +108,10 @@ SRC	=	src/args.c                                                                
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
 		src/skill_tree/draw_skill_tree.c								    \
+		src/skill_tree/update_pos.c									    \
 		src/skill_tree/init_skill_tree.c								    \
 		src/skill_tree/skill_hp.c									    \
+		src/skill_tree/skill_weapon.c									    \
 		src/stats_menu/draw_stat_menu.c									    \
 		src/stats_menu/init_stat_menu.c									    \
 		src/stats_menu/update_stat_menu.c								    \
@@ -204,6 +206,11 @@ $(NAME):	$(OBJ)
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
 
+renolib:	clean $(OBJ)
+		@echo -en "Linking $(NAME) ..."
+		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
+		@echo -e " Done"
+
 clean:
 		@echo -en "Cleaning $(NAME) ..."
 		@rm -f $(OBJ)
@@ -230,8 +237,4 @@ tests_run:
 		@echo -e " Done"
 		./tests_run
 
-check_compilation:	re valgrind tests_run
-		@make --no-print-directory clean_coverage
-		@make --no-print-directory fclean
-
-.PHONY:	all clean fclean re tests_run clean_coverage valgrind check_compilation
+.PHONY:	all clean fclean re tests_run clean_coverage valgrind renolib

@@ -12,3 +12,7 @@
 void hp_level_one(win_t *win);
 void hp_level_two(win_t *win);
 void hp_level_three(win_t *win);
+
+void weapon_level_one(win_t *win);
+void weapon_level_two(win_t *win);
+void weapon_level_three(win_t *win);
