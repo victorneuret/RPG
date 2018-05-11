@@ -108,6 +108,7 @@ SRC	=	src/args.c                                                                
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
 		src/skill_tree/draw_skill_tree.c								    \
+		src/skill_tree/update_pos.c									    \
 		src/skill_tree/init_skill_tree.c								    \
 		src/skill_tree/skill_hp.c									    \
 		src/skill_tree/skill_weapon.c									    \

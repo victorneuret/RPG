@@ -29,9 +29,9 @@ static void reset_bar(player_t *player, float x_pos, win_t *win)
 		create_popup(win->game->ui, "Level up!", INFO);
 	player->level += 1;
 	player->skill_point += 1;
-	player->hp->value += player->hp->max_value * player->hp->mult
-				- player->hp->max_value;
-	player->hp->max_value *= player->hp->mult;
+	player->hp->value += + player->hp->mult;
+	if (player->hp->value > player->hp->max_value)
+		player->hp->value = player->hp->max_value;
 	sfText_setString(player->xp->text, int_to_str(player->level));
 	text_right(player->xp->text, WIN_MAX_W - 20, 1030);
 }

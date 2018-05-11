@@ -47,6 +47,7 @@ static void draw_skill_point(win_t *win, skill_tree_t *skill_tree)
 
 void draw_skill_tree(win_t *win, stats_menu_t *stats)
 {
+	update_pos(win->game->stats_menu->skill_tree->skill, win);
 	sfRenderWindow_drawText(win->sf_win, stats->skill_tree->active, 0);
 	sfRenderWindow_drawText(win->sf_win, stats->skill_tree->passive, 0);
 	draw_skill_point(win, stats->skill_tree);

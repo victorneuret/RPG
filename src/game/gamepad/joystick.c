@@ -59,7 +59,8 @@ void update_joystick(win_t *win)
 			gamepad_button_state[i].state = false;
 	}
 	update_joystick_pos(win->joystick, win);
-	if (win->joystick->diry >= 60 || win->joystick->diry <= -60)
+	if (win->game_state != STATS
+		&& (win->joystick->diry >= 60 || win->joystick->diry <= -60))
 		update_ui_joystick(win->joystick, win);
 	if (win->joystick->dirx >= 60)
 		button_left(win);
