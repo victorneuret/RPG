@@ -39,6 +39,7 @@ static void update_portal(player_t *player, win_t *win)
 		load_level(&win->game->level,
 				rand_int(0, (int) ENV_COUNT), win);
 		win->game->dungeon->cleared = false;
+		win->game->dungeon->transition = true;
 	}
 }
 
