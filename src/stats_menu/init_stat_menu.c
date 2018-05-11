@@ -78,7 +78,6 @@ static bool init_rectangle_stats(stats_menu_t *menu)
 bool init_stat_menu(win_t *win)
 {
 	win->game->stats_menu = malloc(sizeof(stats_menu_t));
-
 	if (!win->game->stats_menu)
 		return false;
 	win->game->stats_menu->stats = malloc(sizeof(stats_t));
