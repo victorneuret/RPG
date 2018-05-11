@@ -17,10 +17,10 @@ static void draw_tree(sfRenderWindow *win, skill_t *skill, player_t *player)
 					hex_to_rgb(0xBDBDBD));
 		else if (skill->level >= i + 1)
 			sfSprite_setColor(skill->sprite[i],
-					hex_to_rgb(0x4DB6AC));
+					hex_to_rgb(0x00E676));
 		else
 			sfSprite_setColor(skill->sprite[i],
-					hex_to_rgb(0x90CAF9));
+					hex_to_rgb(0x448AFF));
 		render_object(win, SPRITE, skill->sprite[i]);
 	}
 }

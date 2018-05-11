@@ -54,6 +54,7 @@ typedef struct {
 } button_declaration_t;
 
 #include "menu_button_functions.h"
+#include "skills.h"
 
 static const button_declaration_t buttons_declaration[] = {
 	{
@@ -99,7 +100,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"HP: level 3\n+1200",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&hp_level_three
 	},
 	{
 		STATS,
@@ -108,7 +109,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"HP: level 2\n+600",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&hp_level_two
 	},
 	{
 		STATS,
@@ -117,7 +118,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"HP: level 1\n+250",
 		0x00000000,
 		0xFFEE5844,
-		NULL
+		&hp_level_one
 	},
 	{
 		STATS,

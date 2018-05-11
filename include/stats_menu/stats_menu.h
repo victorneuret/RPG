@@ -26,10 +26,6 @@ typedef struct stats {
 	sfText *sp;
 } stats_t;
 
-typedef struct {
-	sfSprite *sprite;
-} sprite_t;
-
 typedef struct skill {
 	sfSprite *sprite[3];
 	uint8_t level;
