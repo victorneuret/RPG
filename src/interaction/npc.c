@@ -56,9 +56,7 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 			sfClock_restart(npc->timer);
 		}
 	} else {
-
 		sfSprite_setTextureRect(npc->skin, rect);
-		render_object(win->sf_win, SPRITE, npc->skin);
 		render_object(win->sf_win, TEXT, npc->talk);
 		npc->elem = 0;
 	}
@@ -85,16 +83,19 @@ void draw_npc(win_t *win, npc_t *npc)
 	sfVector2f pos = sfSprite_getPosition(win->game->player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(win->game->player->sprite);
 	sfFloatRect npc_rect = sfSprite_getGlobalBounds(npc->skin);
-	uint8_t id = npc->quest_id;
+	sfIntRect skin_rect = sfSprite_getTextureRect(npc->skin);
 
+	skin_rect.left = 0;
 	check_current_quest(win, npc);
 	if (win->game->dungeon->act_room != 0)
 		return;
 	if (win->game->dungeon->act_room == 0
 		&& pos.x + rect.width > win->game->npc->pos.x - 30
 		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30) {
-		manage_npc_interaction(id, npc, win);
-	} else
+		manage_npc_interaction(npc->quest_id, npc, win);
+	} else {
+		sfSprite_setTextureRect(npc->skin, skin_rect);
 		npc->textbox->state = false;
+	}
 	render_object(win->sf_win, SPRITE, npc->skin);
 }
