@@ -71,6 +71,7 @@ void player_dash(player_t *player, bool press)
 {
 	static bool pressed = false;
 
+	(void) player;
 	if (!press && pressed) {
 		write(1, "DASH!", 5);
 		pressed = false;
