@@ -55,10 +55,8 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	} else if (!pressed && press) {
-		win->game->player->xp->value += 50000;
+	} else if (!pressed && press)
 		pressed = true;
-	}
 }
 
 void button_y(win_t *win, bool press)
