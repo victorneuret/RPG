@@ -180,8 +180,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
 		-I./include/window                                                                                  \
-		-I./include/xml                                                                                      \
-		-I./include/lib
+		-I./include/xml                                                                                     \
+		-I./extern_libs
 
 OBJ	=	$(SRC:.c=.o)
 
