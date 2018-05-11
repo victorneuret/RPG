@@ -14,3 +14,4 @@
 extern_libs/**
 !extern_libs/libxml2-2.7.2.tar.gz
 !extern_libs/Makefile
+!extern_libs/libxml.h
