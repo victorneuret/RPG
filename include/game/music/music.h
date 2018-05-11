@@ -128,7 +128,7 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/ak47.ogg",
-		20
+		10
 	},
 	{
 		GAME,
