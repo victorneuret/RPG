@@ -53,11 +53,11 @@ static void play_bar_sound(win_t *win)
 static void bar_animation(win_t *win, player_t *player)
 {
 	float x_pos;
-	static uint16_t xp = 0;
+	static int64_t xp = 0;
 
 	if (xp < player->xp->value && xp < player->xp->max_value) {
 		play_bar_sound(win);
-		xp += 2 * player->level;
+		xp += 2 * (player->level * player->level);
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		sfRectangleShape_setSize(player->xp->bar,
 				(sfVector2f) {x_pos, XP_HEIGHT});
@@ -74,7 +74,7 @@ static void bar_animation(win_t *win, player_t *player)
 
 void display_xp_bar(win_t *win)
 {
-	static int16_t value = 0;
+	static int64_t value = 0;
 
 	if (value != win->game->player->xp->value)
 		update_xp_bar(win->game->player);

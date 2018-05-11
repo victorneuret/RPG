@@ -28,8 +28,8 @@ static const uint16_t XP_WIDTH = 1920;
 #define BACK_BAR_COLOR hex_to_rgba(0xFFFFFF55)
 
 typedef struct bar {
-	uint16_t max_value;
-	int16_t value;
+	int64_t max_value;
+	int64_t value;
 	float mult;
 	sfRectangleShape *bar;
 	sfRectangleShape *back_bar;
