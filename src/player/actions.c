@@ -66,3 +66,19 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 	door_action(win, pos, room);
 	sfClock_restart(win->game->player->immu);
 }
+
+void player_dash(bool press)
+{
+	static bool pressed = false;
+
+	if (!press && pressed) {
+		write(1, "DASH!", 5);
+		pressed = false;
+		return;
+	}
+	if (!press)
+		return;
+	if (!pressed)
+		pressed = true;
+	write(1, ".", 1);
+}
