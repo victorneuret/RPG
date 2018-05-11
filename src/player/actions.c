@@ -67,13 +67,29 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 	sfClock_restart(win->game->player->immu);
 }
 
-void player_dash(player_t *player, bool press)
+#include "particle_explosion.h"
+#include "render.h"
+
+void create_dash(win_t *win, uint16_t count, float angle, sfVector2f pos);
+
+static void dash_movement(win_t *win, player_t *player, sfVector2f pos)
+{
+	player->pos = pos;
+	create_dash(win, 200, player->aim_angle, player->pos);
+	sfSprite_setPosition(player->sprite, player->pos);
+}
+
+void player_dash(win_t *win, player_t *player, bool press)
 {
 	static bool pressed = false;
+	static int distance = 20;
+	sfVector2f pos;
 
-	(void) player;
+	pos.x = X_SPEED * (win->joystick->rx / 100.f * distance) * win->dt;
+	pos.y = X_SPEED * (win->joystick->ry / 100.f * distance) * win->dt;
+
 	if (!press && pressed) {
-		write(1, "DASH!", 5);
+		dash_movement(win, player, pos);
 		pressed = false;
 		return;
 	}
@@ -81,5 +97,6 @@ void player_dash(player_t *player, bool press)
 		return;
 	if (!pressed)
 		pressed = true;
-	write(1, ".", 1);
+	sfSprite_setColor(player->sprite, hex_to_rgba(0xFFFFFFFF));
+	sfSprite_setColor(player->sprite, hex_to_rgba(0xE0EDFF96));
 }

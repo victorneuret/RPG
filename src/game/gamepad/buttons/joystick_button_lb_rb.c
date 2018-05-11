@@ -12,7 +12,7 @@ void button_lb(__attribute__((unused)) win_t *win, bool press)
 {
 	static bool pressed = false;
 
-	player_dash(win->game->player, press);
+	player_dash(win, win->game->player, press);
 	if (!press) {
 		pressed = false;
 		return;
