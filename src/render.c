@@ -52,8 +52,8 @@ static void render_game(win_t *win)
 	case GAME:
 		draw_level(win->sf_win, win->game->level, win);
 		draw_inventory(win, win->game->player->inventory);
-		draw_enemies(win->sf_win, win->game->enemy_list);
 		draw_npc(win, win->game->npc);
+		draw_enemies(win->sf_win, win->game->enemy_list);
 		draw_player(win, win->game->player);
 		render_transition(win);
 		break;
