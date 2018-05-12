@@ -19,5 +19,28 @@ void dash_level_one(win_t *win)
 	play_sfx(win->game->sounds, UNLOCK_SKILL);
 	win->game->stats_menu->skill_tree->dash->unlocked = true;
 	win->game->player->skill_point -= 1;
-	win->game->stats_menu->skill_tree->skill[3]->level++;
+	win->game->stats_menu->skill_tree->skill[2]->level++;
+}
+
+void dash_level_two(win_t *win)
+{
+	if (win->game->player->skill_point < 3
+		|| win->game->stats_menu->skill_tree->skill[2]->level != 1)
+		return;
+	play_sfx(win->game->sounds, UNLOCK_SKILL);
+	win->game->stats_menu->skill_tree->dash->distance += 20;
+	win->game->player->skill_point -= 3;
+	win->game->stats_menu->skill_tree->skill[2]->level++;
+}
+
+void dash_level_three(win_t *win)
+{
+	if (win->game->player->skill_point < 5
+		|| win->game->stats_menu->skill_tree->skill[2]->level != 2)
+		return;
+	play_sfx(win->game->sounds, UNLOCK_SKILL);
+	win->game->stats_menu->skill_tree->dash->distance += 20;
+	win->game->stats_menu->skill_tree->dash->delay -= 2;
+	win->game->player->skill_point -= 5;
+	win->game->stats_menu->skill_tree->skill[2]->level++;
 }
