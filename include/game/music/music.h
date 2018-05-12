@@ -70,7 +70,8 @@ typedef enum sfx {
 	UNLOCK_SKILL,
 	DASH,
 	TELEPORT,
-	PORTAL
+	PORTAL,
+	RELOAD
 } sfx_type;
 
 static const music_declaration_t sfx_declaration[] = {
@@ -157,6 +158,11 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/portal.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/reload.ogg",
 		100
 	},
 	{

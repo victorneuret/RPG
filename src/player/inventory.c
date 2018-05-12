@@ -10,8 +10,10 @@
 #include "render_window.h"
 #include "render.h"
 #include "inventory.h"
+#include "inventory_list.h"
 #include "xml.h"
 #include "nb_utils.h"
+#include "music.h"
 
 void get_item(win_t *win, inventory_t *inventory,
 						sfSprite *player, bool pick_up)
@@ -41,6 +43,7 @@ void add_item(win_t *win, inventory_t *inventory, uint8_t place,
 {
 	if (!inventory->item_list[item_nb].droped)
 		return;
+	play_sfx(win->game->sounds, RELOAD);
 	for (uint8_t i = 0; i < INVENTORY_NB; i++) {
 		if (!inventory->item[i] || inventory->item[i]->droped) {
 			inventory->item[i] = &inventory->item_list[item_nb];
@@ -51,8 +54,6 @@ void add_item(win_t *win, inventory_t *inventory, uint8_t place,
 			return;
 		}
 	}
-	if (str_eq(inventory->item[place]->name, "Bubble"))
-		return;
 	inventory->item[place]->droped = true;
 	inventory->item[place]->pos = win->game->player->pos;
 	sfSprite_setPosition(inventory->item[place]->sprite,
@@ -64,10 +65,16 @@ void add_item(win_t *win, inventory_t *inventory, uint8_t place,
 void drop_item(win_t *win, inventory_t *inventory, uint8_t place)
 {
 	sfVector2f player_pos;
+	uint8_t item_count = 0;
 
-	if (!inventory->item[place] || !inventory->item[place]->name ||
-				str_eq(inventory->item[place]->name, "Bubble"))
-		return;
+	for (uint8_t i = 0; i < INVENTORY_NB; i++) {
+		if (inventory->item[i])
+			item_count++;
+		if (item_count > 1)
+			break;
+		if (i >= (INVENTORY_NB - 1))
+			return;
+	}
 	player_pos = sfSprite_getPosition(win->game->player->sprite);
 	player_pos.y += 66;
 	inventory->item[place]->droped = true;
