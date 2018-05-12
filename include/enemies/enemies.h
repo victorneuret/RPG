@@ -19,11 +19,16 @@ typedef struct sounds sounds_t;
 typedef struct player player_t;
 typedef struct render_window win_t;
 
+static const sfVector2f ENEMY_SIZE = (sfVector2f) {100, 100};
+
 static const uint16_t ENEMIES_NB = 3;
 
 static const float PROB_TANK = 16.666666666666664f;
 static const float PROB_BALANCED = 50.f;
 static const float PROB_LIGHT = 100.f;
+
+static const float BAR_HEIGHT = 20.f;
+static const float BAR_PADDING = 15.f;
 
 static const char *enemies_name[] __attribute__((unused)) = {
 	"light",
@@ -36,11 +41,13 @@ typedef enum enemy_type {
 	LIGHT,
 	BALANCED,
 	HEAVY
-} ENEMY_TYPE;
+} enemy_type_t;
 
 typedef struct enemy {
-	ENEMY_TYPE type;
+	enemy_type_t type;
 	sfRectangleShape *shape;
+	sfRectangleShape *bar_bg;
+	sfRectangleShape *bar_fg;
 	sfVector2f pos;
 	uint64_t hp;
 	uint64_t hp_max;
@@ -67,3 +74,7 @@ void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy);
 void nuke_enemies(enemy_list_t *enemy_list);
 
 void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node);
+
+sfRectangleShape *get_bar(sfVector2f pos, sfVector2f size, sfColor color);
+void draw_bars(sfRenderWindow *win, enemy_t const *enemy);
+void update_bars(enemy_t const *enemy);

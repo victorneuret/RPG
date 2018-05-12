@@ -17,25 +17,26 @@
 #include "music.h"
 #include "quest.h"
 #include "xml.h"
+#include "hud.h"
 
 static sfRectangleShape *create_enemy_shape(sfVector2f pos, uint8_t type)
 {
-	const sfVector2f size = (sfVector2f) {100, 100};
+	const sfVector2f size = ENEMY_SIZE;
 	sfRectangleShape *shape = sfRectangleShape_create();
-	sfColor color = sfCyan;
+	sfColor color = (sfColor) {100, 0, 255, 255};
 
 	if (!shape)
 		return NULL;
 	sfRectangleShape_setPosition(shape, pos);
 	switch (type) {
 	case BALANCED: color = sfYellow; break;
-	case HEAVY: color = sfRed; break;
+	case HEAVY: color = (sfColor) {255, 100, 0, 255}; break;
 	}
 	sfRectangleShape_setFillColor(shape, color);
 	sfRectangleShape_setSize(shape, size);
 	sfRectangleShape_setOrigin(shape,
 				(sfVector2f) {size.x / 2.f, size.y / 2.f});
-	sfRectangleShape_setOutlineColor(shape, sfBlue);
+	sfRectangleShape_setOutlineColor(shape, sfWhite);
 	sfRectangleShape_setOutlineThickness(shape, 2);
 	return shape;
 }
@@ -44,9 +45,12 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 {
 	if (!enemy_list)
 		return;
-	for (enemy_list_t *node = enemy_list; node; node = node->next)
-		if (node->enemy)
+	for (enemy_list_t *node = enemy_list; node; node = node->next) {
+		if (node->enemy) {
 			render_object(win, RECTANGLE, node->enemy->shape);
+			draw_bars(win, node->enemy);
+		}
+	}
 }
 
 void update_enemies(win_t *win, enemy_list_t *enemy_list,
@@ -57,11 +61,14 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *node = enemy_list; node; node = node->next) {
-		if (node->enemy && node->enemy->hp <= 0) {
+		if (!node->enemy)
+			continue;
+		if (node->enemy->hp <= 0) {
 			enemy_killed(win, enemy_list, node);
 			break;
 		}
 		update_enemy_ai(win, node->enemy, win->game->player);
+		update_bars(node->enemy);
 	}
 	*door_open = enemy_list->enemy == NULL;
 	if (*door_open && !doors) {
@@ -72,25 +79,25 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list,
 }
 
 void create_enemy(player_t *player, enemy_list_t **enemy_list,
-							enemy_t *random_enemy)
+							enemy_t *rdm_enemy)
 {
 	enemy_t *enemy = my_calloc(1, sizeof(enemy_t));
 
-	if (!enemy || !random_enemy)
+	if (!enemy || !rdm_enemy)
 		return;
-	enemy->type = random_enemy->type;
-	enemy->attack = random_enemy->attack;
-	enemy->hp_max = random_enemy->hp_max;
-	enemy->hp_max += (random_enemy->hp_max / 5) * player->level;
+	enemy->type = rdm_enemy->type;
+	enemy->hp_max = rdm_enemy->hp_max + (rdm_enemy->hp_max / 5)
+			* player->level;
 	enemy->hp = enemy->hp_max;
-	enemy->attack = random_enemy->attack;
-	enemy->attack += (enemy->attack / 5) * player->level;
-	enemy->speed = random_enemy->speed;
-	enemy->speed += (enemy->speed / 5) *
+	enemy->attack = rdm_enemy->attack +
+			(rdm_enemy->attack / 5) * player->level;
+	enemy->speed += rdm_enemy->speed + (enemy->speed / 5) *
 				(player->level > 6 ? 6 : player->level);
-	enemy->pos = (sfVector2f) {rand_int(200, 1600), rand_int(200, 800)};
+	enemy->pos = (sfVector2f) {rand_int(600, 1400), rand_int(400, 600)};
 	enemy->shape = create_enemy_shape(enemy->pos, enemy->type);
-	if (!enemy->shape) {
+	enemy->bar_fg = get_bar(enemy->pos, ENEMY_SIZE, HP_COLOR);
+	enemy->bar_bg = get_bar(enemy->pos, ENEMY_SIZE, BACK_BAR_COLOR);
+	if (!enemy->shape || !enemy->bar_fg || !enemy->bar_bg) {
 		free(enemy);
 		return;
 	}
