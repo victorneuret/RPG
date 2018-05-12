@@ -11,7 +11,7 @@
 #include "nb_utils.h"
 
 static bool parse_xml_enemies(xmlNode *root, enemy_t *enemy, const char *name,
-			ENEMY_TYPE type)
+			enemy_type_t type)
 {
 	xmlNode *enemy_node = get_node_by_name(root, name);
 

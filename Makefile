@@ -17,6 +17,7 @@ SRC	=	src/args.c                                                                
 		src/enemies/enemies.c                                                                               \
 		src/enemies/enemy_ai.c                                                                              \
 		src/enemies/enemy_list.c                                                                            \
+		src/enemies/enemy_bars.c                                                                            \
 		src/enemies/enemy_death.c                                                                           \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
