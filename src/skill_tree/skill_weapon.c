@@ -25,7 +25,7 @@ void weapon_level_two(win_t *win)
 		|| win->game->stats_menu->skill_tree->skill[1]->level != 1)
 		return;
 	win->game->player->dmg += 10;
-	win->game->player->skill_point -= 4;
+	win->game->player->skill_point -= 2;
 	win->game->stats_menu->skill_tree->skill[1]->level++;
 }
 

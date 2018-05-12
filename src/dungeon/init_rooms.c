@@ -41,8 +41,6 @@ char **create_map(void)
 		map[i] = my_calloc(ROOM_HEIGHT + 1, sizeof(char));
 		if (!map[i])
 			return false;
-		memset(map[i], 'E', ROOM_WIDTH);
-		map[i][ROOM_WIDTH] = '\0';
 	}
 	map[ROOM_HEIGHT] = NULL;
 	return map;
