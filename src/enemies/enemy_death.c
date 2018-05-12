@@ -61,7 +61,6 @@ void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node)
 		game->rooms[game->dungeon->act_room]->cleared = true;
 		if (is_dungeon_cleared(game)) {
 			game->dungeon->cleared = true;
-			particle_xp(win, 1000, (sfVector2f) {100, 100});
 			create_popup(win->game->ui,
 				"Dungeon cleared!", SUCCESS);
 		}

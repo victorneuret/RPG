@@ -28,8 +28,8 @@ void update_particle_shot(win_t *win, particle_t *particle)
 	while (current) {
 		if (!current->enemy)
 			return;
-		enemy_rect = sfRectangleShape_getGlobalBounds(
-			current->enemy->shape);
+		enemy_rect = sfSprite_getGlobalBounds(
+			current->enemy->sprite);
 		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
 			particle->alive = false;
 			create_explosion(win, 3, particle->pos, sfRed);

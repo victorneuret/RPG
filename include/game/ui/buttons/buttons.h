@@ -169,7 +169,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1265, 765},
-		"Damage: level 1\n+2 per bullet\nUnlock at level 1",
+		"Damage: level 1\n+2 per bullet\nUnlock at level 2",
 		0x00000000,
 		0xF5F5F522,
 		&weapon_level_one
@@ -196,7 +196,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1515, 765},
-		"Dash: level 1\nUnlock dash (2meters)\nUnlock at level 1",
+		"Dash: level 1\nUnlock dash (2meters)\nUnlock at level 2",
 		0x00000000,
 		0xF5F5F522,
 		NULL
@@ -223,7 +223,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1715, 765},
-		"Heal: level 1\nUnlock heal (200HP)\nUnlock at level 1",
+		"Heal: level 1\nUnlock heal (200HP)\nUnlock at level 2",
 		0x00000000,
 		0xF5F5F522,
 		NULL
