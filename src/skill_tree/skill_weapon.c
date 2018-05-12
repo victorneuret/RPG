@@ -14,6 +14,7 @@ void weapon_level_one(win_t *win)
 	if (win->game->player->skill_point < 1
 		|| win->game->stats_menu->skill_tree->skill[1]->level != 0)
 		return;
+	play_sfx(win->game->sounds, UNLOCK_SKILL);
 	win->game->player->dmg += 2;
 	win->game->player->skill_point -= 1;
 	win->game->stats_menu->skill_tree->skill[1]->level++;
@@ -24,6 +25,7 @@ void weapon_level_two(win_t *win)
 	if (win->game->player->skill_point < 3
 		|| win->game->stats_menu->skill_tree->skill[1]->level != 1)
 		return;
+	play_sfx(win->game->sounds, UNLOCK_SKILL);
 	win->game->player->dmg += 4;
 	win->game->player->skill_point -= 3;
 	win->game->stats_menu->skill_tree->skill[1]->level++;
@@ -34,6 +36,7 @@ void weapon_level_three(win_t *win)
 	if (win->game->player->skill_point < 5
 		|| win->game->stats_menu->skill_tree->skill[1]->level != 2)
 		return;
+	play_sfx(win->game->sounds, UNLOCK_SKILL);
 	win->game->player->dmg += 8;
 	win->game->player->skill_point -= 5;
 	win->game->stats_menu->skill_tree->skill[1]->level++;
