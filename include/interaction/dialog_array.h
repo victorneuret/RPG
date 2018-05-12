@@ -13,11 +13,11 @@ static char *dialog_array[6][5] = {
 	{
 		"Welcome to this super game!",
 		"My name is Satoru Iwata.. I will help you to progress!",
-		"Press Y to learn basic commands.",
+		"Take the gun over there and come back after.",
 		NULL
 	},
 	{
-		"Are you ready for your first quest ?",
+		"Are you ready for your first quest?",
 		"Yeah! So, you have to kill 5 enemies..",
 		"Come back to me when once you are done.",
 		NULL
@@ -35,7 +35,7 @@ static char *dialog_array[6][5] = {
 		NULL
 	},
 	{
-		"WOW! You finished the game ! You can now do what you want.",
+		"WOW! You finished the game! You can now do what you want.",
 		NULL
 	},
 	{
