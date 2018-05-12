@@ -49,6 +49,7 @@ typedef struct enemy {
 	sfRectangleShape *bar_bg;
 	sfRectangleShape *bar_fg;
 	sfVector2f pos;
+	sfClock *enemy_clock;
 	uint64_t hp;
 	uint64_t hp_max;
 	uint64_t attack;
@@ -64,6 +65,7 @@ void update_enemy_ai(win_t *win, enemy_t *enemy, player_t *player);
 void update_enemies(win_t *win, enemy_list_t *enemy_list, sounds_t *sounds,
 							bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
+void animate_enemy(enemy_t *enemy);
 void create_enemy(player_t *player, enemy_list_t **enemy_list,
 				enemy_t *random_enemy, textures_t *textures);
 void create_enemy_group(win_t *win, player_t *player,

@@ -33,12 +33,12 @@ void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 static void render_general(win_t *win)
 {
 	draw_particles(win);
-	render_pause(win, win->game->pause);
 	if (win->game_state == STATS) {
 		draw_stat_menu(win, win->game->stats_menu);
 		draw_skill_tree(win, win->game->stats_menu);
+	} else if (win->game_state == PAUSE)
 		draw_player(win, win->game->player);
-	}
+	render_pause(win, win->game->pause);
 	draw_buttons(win);
 	draw_checkbox(win);
 	draw_slider(win, win->game->ui->slider);

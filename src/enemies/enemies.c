@@ -41,7 +41,7 @@
 // 	return shape;
 // }
 
-static sfSprite *create_enemy_sprite(sfVector2f pos, uint8_t type,
+static sfSprite *create_enemy_sprite(enemy_t *enemy, uint8_t type,
 				textures_t *textures)
 {
 	const sfIntRect rect = {0, 0, ENEMY_SIZE.x, ENEMY_SIZE.y};
@@ -53,17 +53,16 @@ static sfSprite *create_enemy_sprite(sfVector2f pos, uint8_t type,
 	sprite = get_sprite_texture_rect(texture, &rect);
 	if (!sprite)
 		return NULL;
-	switch (type) {
-	case BALANCED:
+	if (type == BALANCED)
 		sfSprite_setColor(sprite, hex_to_rgb(0x9E9E9E));
-		break;
-	case HEAVY:
+	else if (type == HEAVY)
 		sfSprite_setColor(sprite, hex_to_rgb(0x757575));
-		break;
-	}
 	sfSprite_setOrigin(sprite, (sfVector2f)
 			{ENEMY_SIZE.x / 2.f, ENEMY_SIZE.y / 2.f});
-	sfSprite_setPosition(sprite, pos);
+	sfSprite_setPosition(sprite, enemy->pos);
+	enemy->enemy_clock = sfClock_create();
+	if (!enemy->enemy_clock)
+		return false;
 	return sprite;
 }
 
@@ -73,6 +72,7 @@ void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
 		return;
 	for (enemy_list_t *node = enemy_list; node; node = node->next) {
 		if (node->enemy) {
+			animate_enemy(node->enemy);
 			render_object(win, SPRITE, node->enemy->sprite);
 			draw_bars(win, node->enemy);
 		}
@@ -120,7 +120,7 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 	enemy->speed += rdm_enemy->speed + (enemy->speed / 5) *
 				(player->level > 6 ? 6 : player->level);
 	enemy->pos = (sfVector2f) {rand_int(600, 1400), rand_int(400, 600)};
-	enemy->sprite = create_enemy_sprite(enemy->pos, enemy->type, textures);
+	enemy->sprite = create_enemy_sprite(enemy, enemy->type, textures);
 	enemy->bar_fg = get_bar(enemy->pos, ENEMY_SIZE, HP_COLOR);
 	enemy->bar_bg = get_bar(enemy->pos, ENEMY_SIZE, BACK_BAR_COLOR);
 	if (!enemy->sprite || !enemy->bar_fg || !enemy->bar_bg) {
