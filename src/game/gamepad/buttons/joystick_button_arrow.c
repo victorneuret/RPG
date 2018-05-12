@@ -19,8 +19,9 @@ void button_left(win_t *win)
 		timer = sfClock_create();
 	if (current_time < 150.f)
 		return;
-	win->game->player->inventory->selected =
-		get_next_inventory(win->game->player->inventory, 1);
+	if (win->game_state == GAME)
+		win->game->player->inventory->selected =
+			get_next_inventory(win->game->player->inventory, 1);
 	sfClock_restart(timer);
 }
 
@@ -34,7 +35,8 @@ void button_right(win_t *win)
 		timer = sfClock_create();
 	if (current_time < 150.f)
 		return;
-	win->game->player->inventory->selected =
-	get_next_inventory(win->game->player->inventory, -1);
+	if (win->game_state == GAME)
+		win->game->player->inventory->selected =
+		get_next_inventory(win->game->player->inventory, -1);
 	sfClock_restart(timer);
 }

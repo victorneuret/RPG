@@ -35,14 +35,19 @@ void update_pos(skill_t **skill, win_t *win)
 	if (sfClock_getElapsedTime(
 		win->joystick->switch_gamepad->clock).microseconds < 100000)
 		return;
-	if (win->joystick->dirx > 60 && x < 3)
+	if (win->joystick->dirx > 60 && x < 3) {
 		x++;
-	else if (win->joystick->dirx < -60 && x > 0)
+		set_cursor_pos(win, skill[x]->sprite[y]);
+	} else if (win->joystick->dirx < -60 && x > 0) {
 		x--;
-	if (win->joystick->diry > 60 && y > 0)
+		set_cursor_pos(win, skill[x]->sprite[y]);
+	}
+	if (win->joystick->diry > 60 && y > 0) {
 		y--;
-	if (win->joystick->diry < -60 && y < 2)
+		set_cursor_pos(win, skill[x]->sprite[y]);
+	} else if (win->joystick->diry < -60 && y < 2) {
 		y++;
-	set_cursor_pos(win, skill[x]->sprite[y]);
+		set_cursor_pos(win, skill[x]->sprite[y]);
+	}
 	sfClock_restart(win->joystick->switch_gamepad->clock);
 }

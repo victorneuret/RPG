@@ -34,6 +34,7 @@ static void reset_npc(npc_t *npc, quest_t *quest)
 void start_game(win_t *win)
 {
 	change_state(win, GAME);
+	win->game->dungeon->cleared = false;
 	load_level(&win->game->level, DUNGEON, win);
 	xml_player(win->game->player);
 	init_hud(win->game->player);
