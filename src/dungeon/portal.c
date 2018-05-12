@@ -15,6 +15,7 @@
 #include "player.h"
 #include "level.h"
 #include "nb_utils.h"
+#include "music.h"
 
 bool init_portal(dungeon_t *dungeon, game_t *game)
 {
@@ -36,6 +37,7 @@ static void update_portal(player_t *player, win_t *win)
 	sfFloatRect rect = sfSprite_getGlobalBounds(player->sprite);
 
 	if (sfFloatRect_contains(&rect, WIN_MAX_W / 2, WIN_MAX_H / 2)) {
+		play_sfx(win->game->sounds, TELEPORT);
 		load_level(&win->game->level,
 				rand_int(0, (int) ENV_COUNT - 1), win);
 		win->game->dungeon->cleared = false;
@@ -43,10 +45,17 @@ static void update_portal(player_t *player, win_t *win)
 	}
 }
 
+#include <SFML/Audio.h>
+
 void draw_portal(dungeon_t *dungeon, win_t *win)
 {
-	if (dungeon->act_room != 0 || !dungeon->cleared)
+	if (dungeon->act_room != 0 || !dungeon->cleared) {
+		sfMusic_pause(win->game->sounds->sfx[PORTAL].music);
 		return;
+	}
+	if (sfMusic_getStatus(win->game->sounds->sfx[PORTAL].music) !=
+								sfPlaying)
+		play_sfx(win->game->sounds, PORTAL);
 	animate_sprite(dungeon->portal,
 			sfSprite_getGlobalBounds(dungeon->portal).width, 9);
 	sfRenderWindow_drawSprite(win->sf_win, dungeon->portal, 0);

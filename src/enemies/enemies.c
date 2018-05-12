@@ -89,8 +89,8 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 	enemy->hp = enemy->hp_max;
 	enemy->attack = rdm_enemy->attack +
 			(rdm_enemy->attack / 5) * player->level;
-	enemy->speed += rdm_enemy->speed + (enemy->speed / 5) *
-				(player->level > 6 ? 6 : player->level);
+	enemy->speed += rdm_enemy->speed + (enemy->speed / 2) *
+				(player->level > 10 ? 10 : player->level);
 	enemy->pos = (sfVector2f) {rand_int(600, 1400), rand_int(400, 600)};
 	enemy->sprite = create_enemy_sprite(enemy, enemy->type, textures);
 	enemy->bar_fg = get_bar(enemy->pos, ENEMY_SIZE, HP_COLOR);
