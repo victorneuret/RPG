@@ -19,6 +19,7 @@
 #include "npc.h"
 #include "stats_menu.h"
 #include "xml.h"
+#include "pause.h"
 
 static bool init_ui(win_t *win)
 {
@@ -85,6 +86,8 @@ bool init_game(win_t *win)
 	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
 	win->joystick = my_calloc(1, sizeof(joystick_t));
 	if (!init_game_struct(win))
+		return false;
+	if (!init_pause(win->game))
 		return false;
 	return true;
 }

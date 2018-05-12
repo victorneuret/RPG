@@ -62,8 +62,8 @@ static const button_declaration_t buttons_declaration[] = {
 		(sfIntRect) {0, 0, 300, 70},
 		(sfVector2f) {900, 420},
 		"",
-		0x26A69AFF,
-		0x26A69ABF,
+		0XBCAAA4FF,
+		0xEFEBE999,
 		&start_game
 	},
 	{
@@ -71,8 +71,8 @@ static const button_declaration_t buttons_declaration[] = {
 		(sfIntRect) {300, 0, 300, 70},
 		(sfVector2f) {900, 500},
 		"",
-		0x26A69AFF,
-		0x26A69ABF,
+		0XBCAAA4FF,
+		0xEFEBE999,
 		&error_test
 	},
 	{
@@ -80,8 +80,8 @@ static const button_declaration_t buttons_declaration[] = {
 		(sfIntRect) {600, 0, 300, 70},
 		(sfVector2f) {900, 580},
 		"",
-		0x26A69AFF,
-		0x26A69ABF,
+		0XBCAAA4FF,
+		0xEFEBE999,
 		&to_option_menu
 	},
 	{
@@ -89,9 +89,36 @@ static const button_declaration_t buttons_declaration[] = {
 		(sfIntRect) {900, 0, 300, 70},
 		(sfVector2f) {900, 660},
 		"",
-		0x26A69AFF,
-		0x26A69ABF,
+		0XBCAAA4FF,
+		0xEFEBE999,
 		&close_win
+	},
+	{
+		PAUSE,
+		(sfIntRect) {300, 0, 300, 70},
+		(sfVector2f) {950, 500},
+		"",
+		0XBCAAA4FF,
+		0xEFEBE999,
+		&error_test
+	},
+	{
+		PAUSE,
+		(sfIntRect) {900, 0, 300, 70},
+		(sfVector2f) {950, 580},
+		"",
+		0XBCAAA4FF,
+		0xEFEBE999,
+		&pause_game
+	},
+	{
+		PAUSE,
+		(sfIntRect) {900, 0, 300, 70},
+		(sfVector2f) {950, 660},
+		"",
+		0XBCAAA4FF,
+		0xEFEBE999,
+		&to_title_page
 	},
 	{
 		STATS,

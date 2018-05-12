@@ -13,6 +13,8 @@
 #include "particle_drawer.h"
 #include "music_management.h"
 #include "stats_menu.h"
+#include "pause.h"
+#include "dungeon.h"
 
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 {
@@ -31,6 +33,11 @@ void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 static void render_general(win_t *win)
 {
 	draw_particles(win);
+	render_pause(win, win->game->pause);
+	if (win->game_state == STATS) {
+		draw_stat_menu(win, win->game->stats_menu);
+		draw_skill_tree(win, win->game->stats_menu);
+	}
 	draw_buttons(win);
 	draw_checkbox(win);
 	draw_slider(win, win->game->ui->slider);
@@ -40,6 +47,7 @@ static void render_general(win_t *win)
 	if (win->game_state == GAME) {
 		display_hp_bar(win);
 		display_xp_bar(win);
+		draw_player(win, win->game->player);
 	}
 	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
@@ -48,17 +56,13 @@ static void render_general(win_t *win)
 
 static void render_game(win_t *win)
 {
-	switch (win->game_state) {
-	case GAME:
+	if (win->game_state == GAME || win->game_state == PAUSE) {
 		draw_level(win->sf_win, win->game->level, win);
 		draw_inventory(win, win->game->player->inventory);
 		draw_npc(win, win->game->npc);
 		draw_enemies(win->sf_win, win->game->enemy_list);
-		draw_player(win, win->game->player);
+		draw_portal(win->game->dungeon, win);
 		render_transition(win);
-		break;
-	case OPTION: break;
-	default: break;
 	}
 	render_general(win);
 }
@@ -77,10 +81,6 @@ void render(win_t *win)
 		break;
 	case INTRO:
 		render_intro(win, win->intro);
-		break;
-	case STATS:
-		draw_stat_menu(win, win->game->stats_menu);
-		draw_skill_tree(win, win->game->stats_menu);
 		break;
 	default: break;
 	}
