@@ -7,6 +7,7 @@
 
 #include "render_window.h"
 #include "inventory.h"
+#include "inventory_list.h"
 
 void switch_inventory(win_t *win)
 {

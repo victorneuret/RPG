@@ -37,7 +37,7 @@ void get_item(win_t *win, inventory_t *inventory,
 }
 
 void add_item(win_t *win, inventory_t *inventory, uint8_t place,
-							item_type item_nb)
+							uint8_t item_nb)
 {
 	if (!inventory->item_list[item_nb].droped)
 		return;
