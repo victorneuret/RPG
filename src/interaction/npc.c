@@ -53,10 +53,12 @@ void npc_interaction(win_t *win)
 		&& npc->quest[id].quest_type != NONE) {
 			create_popup(win->game->ui, "New quest.", INFO);
 			npc->quest[npc->quest_id].quest_popup = true;
-		}
-	if (npc->elem > npc->quest->diag_elem
-		&& npc->quest[npc->quest_id].state)
+	}
+	if (npc->elem > npc->quest[npc->quest_id].diag_elem
+		&& npc->quest[npc->quest_id].state) {
 		npc->quest_id++;
+		npc->elem = 0;
+	}
 }
 
 static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)

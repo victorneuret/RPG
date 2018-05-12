@@ -13,9 +13,13 @@
 #include <stdint.h>
 
 typedef enum {
-	KILL,
-	WEAPON,
 	NONE
+	KILL_QUEST,
+	GUN_QUEST,
+	SHOTGUN_QUEST,
+	UZI_QUEST,
+	AK_QUEST,
+	FLAMETHROWER_QUEST
 } quest_type_t;
 
 typedef struct quest {
@@ -51,7 +55,7 @@ static const quest_declaration_t quest_declaration[] = {
 		true
 	},
 	{
-		KILL,
+		KILL_QUEST,
 		10,
 		1,
 		3,
@@ -64,6 +68,14 @@ static const quest_declaration_t quest_declaration[] = {
 		2,
 		2,
 		dialog_array[2],
+		true
+	},
+	{
+		GUN_QUEST,
+		10,
+		3,
+		3,
+		dialog_array[3],
 		false
 	},
 	{

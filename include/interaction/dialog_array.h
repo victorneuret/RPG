@@ -9,7 +9,7 @@
 
 #include <stdlib.h>
 
-static char *dialog_array[5][60] = {
+static char *dialog_array[5][255] = {
 	{
 		"Welcome to this super game!",
 		"My name is Satoru Iwata.. I will help you to progress!",
@@ -24,7 +24,15 @@ static char *dialog_array[5][60] = {
 	},
 	{
 		"Perfect! You finished the first quest!",
-		"Come back later to have another one.",
+		"You earn XP when you finished a quest, so" \
+		" come back to me to have\nanother one.",
+		NULL
+	},
+	{
+		"Enemies can drop weapons, you can have 3 weapons" \
+		" in your inventory,\nchoose well.",
+		"Now, try to kill 10 enemies with the Uzi..",
+		"Good luck!",
 		NULL
 	},
 	{
