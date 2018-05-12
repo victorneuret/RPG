@@ -86,6 +86,7 @@ SRC	=	src/args.c                                                                
 		src/game/weather/rain.c                                                                             \
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
+		src/game/save/save.c                                                                                \
 		src/intro/intro.c                                                                                   \
 		src/game/music/init_music.c                                                                         \
 		src/game/music/music_manager.c                                                                      \

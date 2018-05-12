@@ -18,6 +18,7 @@
 #include "music.h"
 #include "enemies.h"
 #include "npc.h"
+#include "save.h"
 
 typedef struct textures textures_t;
 typedef struct render_window win_t;
@@ -30,6 +31,7 @@ typedef struct enemy_list enemy_list_t;
 typedef struct npc npc_t;
 typedef struct stats_menu stats_menu_t;
 typedef struct enemy enemy_t;
+typedef struct save save_t;
 
 static const float GRAVITY = 500;
 
@@ -47,6 +49,7 @@ typedef struct game {
 	npc_t *npc;
 	stats_menu_t *stats_menu;
 	enemy_t **enemies_declaration;
+	save_t *save;
 } game_t;
 
 bool init_game(win_t *win);
