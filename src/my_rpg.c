@@ -23,10 +23,17 @@ static void update_clock(win_t *win)
 	win->dt = sfTime_asSeconds(sfClock_restart(frame_clock));
 }
 
+#include "save.h"
+
 bool my_rpg_loop(win_t *win)
 {
 	if (!init_game(win))
 		return false;
+	if (save_exist(win->game->save)) {
+		puts("Found save");
+		if (!open_save(win, win->game->save))
+			puts("Corrupted save");
+	}
 	while (sfRenderWindow_isOpen(win->sf_win)) {
 		sfRenderWindow_clear(win->sf_win, sfBlack);
 		if (!update(win))
@@ -37,6 +44,7 @@ bool my_rpg_loop(win_t *win)
 		update_clock(win);
 	}
 	unload_level(win->game->level);
+	create_save(win, win->game->save);
 	free_game(win->game);
 	return true;
 }

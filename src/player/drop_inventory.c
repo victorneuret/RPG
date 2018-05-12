@@ -11,6 +11,7 @@
 #include "inventory.h"
 #include "nb_utils.h"
 #include "music.h"
+#include "inventory_list.h"
 
 void enemy_drop_item(sfVector2f enemy_pos, win_t *win)
 {
