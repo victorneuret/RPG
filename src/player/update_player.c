@@ -65,11 +65,12 @@ static void update_aim_orientation(win_t *win, player_t *player)
 
 static void move_player(win_t *win, player_t *player)
 {
+	const float nerf = player->shooting ? 0.25f : 1.f;
 	sfVector2f pos = sfSprite_getPosition(player->sprite);
 	sfFloatRect rect = sfSprite_getGlobalBounds(player->sprite);
 
-	pos.x += X_SPEED * (win->joystick->lx / 100.f) * win->dt;
-	pos.y += X_SPEED * (win->joystick->ly / 100.f) * win->dt;
+	pos.x += X_SPEED * (win->joystick->lx / 100.f) * nerf * win->dt;
+	pos.y += X_SPEED * (win->joystick->ly / 100.f) * nerf * win->dt;
 	player_door(win, &pos, win->game->rooms[win->game->dungeon->act_room]);
 	if (pos.x - PLAYER_W / 2.f + rect.width > WIN_MAX_W - WALL_SIZE)
 		pos.x = WIN_MAX_W - rect.width - WALL_SIZE + PLAYER_H / 2.f;
@@ -89,9 +90,11 @@ static void move_player(win_t *win, player_t *player)
 void update_player(win_t *win, player_t *player)
 {
 	static uint8_t dir = TOP;
+	const float shooting = player->shooting ? 1.25f : 1.f;
 
 	if ((win->joystick->lx != 0 || win->joystick->ly != 0) &&
-		sfClock_getElapsedTime(player->timer).microseconds > 60000) {
+		sfClock_getElapsedTime(player->timer).microseconds > 60000
+					* shooting) {
 		dir = get_direction(win->joystick->lx, win->joystick->ly);
 		switch_direction(player->sprite, dir);
 		animate_sprite(player->sprite,

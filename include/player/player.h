@@ -43,6 +43,7 @@ typedef struct player {
 	uint16_t dmg;
 	sfSprite *aim;
 	bool touched;
+	bool shooting;
 	sfRectangleShape *shade;
 	float aim_angle;
 	inventory_t *inventory;

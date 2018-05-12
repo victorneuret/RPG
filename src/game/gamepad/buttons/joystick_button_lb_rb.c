@@ -8,7 +8,7 @@
 #include "player.h"
 #include "joystick.h"
 
-void button_lb(__attribute__((unused)) win_t *win, bool press)
+void button_lb(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -20,10 +20,11 @@ void button_lb(__attribute__((unused)) win_t *win, bool press)
 		pressed = true;
 }
 
-void button_rb(__attribute__((unused)) win_t *win, bool press)
+void button_rb(win_t *win, bool press)
 {
 	static bool pressed = false;
 
+	win->game->player->shooting = press;
 	if (press && win->game_state == GAME)
 		player_shoot(win, win->game->player);
 	if (!press) {
