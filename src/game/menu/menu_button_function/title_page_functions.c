@@ -33,6 +33,8 @@ static void reset_npc(npc_t *npc, quest_t *quest)
 
 void start_game(win_t *win)
 {
+	inventory_t *inventory = win->game->player->inventory;
+
 	change_state(win, GAME);
 	win->game->dungeon->cleared = false;
 	win->game->dungeon->door_open = false;
@@ -41,7 +43,11 @@ void start_game(win_t *win)
 	init_hud(win->game->player);
 	init_skill(win->game->stats_menu->skill_tree, win->game->textures);
 	for (uint8_t i = 0; i < INVENTORY_NB; i++)
-		win->game->player->inventory->item[i] = NULL;
+		inventory->item[i] = NULL;
+	for (uint8_t i = 0; i < NB_ITEMS; i++) {
+		inventory->item_list[i].pos = (sfVector2f){0, 0};
+		inventory->item_list[i].droped = true;
+	}
 	reset_npc(win->game->npc, win->game->npc->quest);
 }
 
