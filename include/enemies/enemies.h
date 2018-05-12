@@ -45,7 +45,7 @@ typedef enum enemy_type {
 
 typedef struct enemy {
 	enemy_type_t type;
-	sfRectangleShape *shape;
+	sfSprite *sprite;
 	sfRectangleShape *bar_bg;
 	sfRectangleShape *bar_fg;
 	sfVector2f pos;
@@ -65,7 +65,7 @@ void update_enemies(win_t *win, enemy_list_t *enemy_list, sounds_t *sounds,
 							bool *door_open);
 void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list);
 void create_enemy(player_t *player, enemy_list_t **enemy_list,
-							enemy_t *random_enemy);
+				enemy_t *random_enemy, textures_t *textures);
 void create_enemy_group(win_t *win, player_t *player,
 			enemy_list_t **enemy_list, enemy_t **enemy_types);
 

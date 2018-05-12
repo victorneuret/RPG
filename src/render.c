@@ -37,6 +37,7 @@ static void render_general(win_t *win)
 	if (win->game_state == STATS) {
 		draw_stat_menu(win, win->game->stats_menu);
 		draw_skill_tree(win, win->game->stats_menu);
+		draw_player(win, win->game->player);
 	}
 	draw_buttons(win);
 	draw_checkbox(win);

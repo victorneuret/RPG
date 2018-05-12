@@ -37,7 +37,7 @@ void update_bars(enemy_t const *enemy)
 {
 	const double ratio = (double) enemy->hp / (double) enemy->hp_max;
 	const sfVector2f size_max = sfRectangleShape_getSize(enemy->bar_bg);
-	const sfVector2f pos = sfRectangleShape_getPosition(enemy->shape);
+	const sfVector2f pos = sfSprite_getPosition(enemy->sprite);
 	const sfVector2f new_pos = (sfVector2f) {pos.x - ENEMY_SIZE.x / 2.f,
 		pos.y - ENEMY_SIZE.x / 2.f - BAR_HEIGHT - BAR_PADDING};
 
