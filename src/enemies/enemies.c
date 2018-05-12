@@ -92,7 +92,7 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 	enemy->attack = rdm_enemy->attack +
 			(rdm_enemy->attack / 5) * player->level;
 	enemy->speed += rdm_enemy->speed + (enemy->speed / 5) *
-				(player->level > 6 ? 6 : player->level);
+		(player->level > 6 ? 6 : player->level) + rand_int(0, 50);
 	enemy->pos = (sfVector2f) {rand_int(600, 1400), rand_int(400, 600)};
 	enemy->shape = create_enemy_shape(enemy->pos, enemy->type);
 	enemy->bar_fg = get_bar(enemy->pos, ENEMY_SIZE, HP_COLOR);
