@@ -15,6 +15,16 @@
 #include "particle_manager.h"
 #include "particle_explosion.h"
 #include "inventory.h"
+#include "inventory_list.h"
+
+void spit_blood(win_t *win, sfVector2f pos)
+{
+	const inventory_t *inventory = win->game->player->inventory;
+
+	if (inventory->item[inventory->selected]->type == FLAMETHROWER)
+		return;
+	create_explosion(win, 3, pos, sfRed);
+}
 
 void update_particle_shot(win_t *win, particle_t *particle)
 {
@@ -32,7 +42,7 @@ void update_particle_shot(win_t *win, particle_t *particle)
 			current->enemy->sprite);
 		if (sfFloatRect_intersects(&enemy_rect, &particle_rect, NULL)) {
 			particle->alive = false;
-			create_explosion(win, 3, particle->pos, sfRed);
+			spit_blood(win, particle->pos);
 			current->enemy->hp -= particle->weapon->damages
 					+ win->game->player->dmg;
 			play_sfx(win->game->sounds, HIT);
