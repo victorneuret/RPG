@@ -19,27 +19,15 @@
 #include "xml.h"
 #include "hud.h"
 
-// static sfRectangleShape *create_enemy_shape(sfVector2f pos, uint8_t type)
-// {
-// 	const sfVector2f size = ENEMY_SIZE;
-// 	sfRectangleShape *shape = sfRectangleShape_create();
-// 	sfColor color = (sfColor) {100, 0, 255, 255};
-
-// 	if (!shape)
-// 		return NULL;
-// 	sfRectangleShape_setPosition(shape, pos);
-// 	switch (type) {
-// 	case BALANCED: color = sfYellow; break;
-// 	case HEAVY: color = (sfColor) {255, 100, 0, 255}; break;
-// 	}
-// 	sfRectangleShape_setFillColor(shape, color);
-// 	sfRectangleShape_setSize(shape, size);
-// 	sfRectangleShape_setOrigin(shape,
-// 				(sfVector2f) {size.x / 2.f, size.y / 2.f});
-// 	sfRectangleShape_setOutlineColor(shape, sfWhite);
-// 	sfRectangleShape_setOutlineThickness(shape, 2);
-// 	return shape;
-// }
+void apply_type(sfSprite *sprite, uint8_t type)
+{
+	sfSprite_setColor(sprite, hex_to_rgba(0xFFFFFFFF));
+	if (type == BALANCED) {
+		sfSprite_setScale(sprite, (sfVector2f) {1.3, 1.3});
+		sfSprite_setColor(sprite, hex_to_rgba(0x616161FF));
+	} else if (type == HEAVY)
+		sfSprite_setScale(sprite, (sfVector2f) {2, 2});
+}
 
 static sfSprite *create_enemy_sprite(enemy_t *enemy, uint8_t type,
 				textures_t *textures)
@@ -53,10 +41,7 @@ static sfSprite *create_enemy_sprite(enemy_t *enemy, uint8_t type,
 	sprite = get_sprite_texture_rect(texture, &rect);
 	if (!sprite)
 		return NULL;
-	if (type == BALANCED)
-		sfSprite_setColor(sprite, hex_to_rgb(0x9E9E9E));
-	else if (type == HEAVY)
-		sfSprite_setColor(sprite, hex_to_rgb(0x757575));
+	apply_type(sprite, type);
 	sfSprite_setOrigin(sprite, (sfVector2f)
 			{ENEMY_SIZE.x / 2.f, ENEMY_SIZE.y / 2.f});
 	sfSprite_setPosition(sprite, enemy->pos);
@@ -64,19 +49,6 @@ static sfSprite *create_enemy_sprite(enemy_t *enemy, uint8_t type,
 	if (!enemy->enemy_clock)
 		return false;
 	return sprite;
-}
-
-void draw_enemies(sfRenderWindow *win, enemy_list_t *enemy_list)
-{
-	if (!enemy_list)
-		return;
-	for (enemy_list_t *node = enemy_list; node; node = node->next) {
-		if (node->enemy) {
-			animate_enemy(node->enemy);
-			render_object(win, SPRITE, node->enemy->sprite);
-			draw_bars(win, node->enemy);
-		}
-	}
 }
 
 void update_enemies(win_t *win, enemy_list_t *enemy_list,

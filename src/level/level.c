@@ -76,7 +76,7 @@ bool load_level(level_t **level, env_name_t env_name, win_t *win)
 		return false;
 	place_rooms(win->game->dungeon);
 	win->game->dungeon->act_room = 0;
-	win->game->dungeon->door_open = true;
+	win->game->dungeon->door_open = false;
 	if (!init_rooms(win))
 		return false;
 	return load_sprites(texture, *level, env_name);
