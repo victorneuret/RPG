@@ -52,19 +52,6 @@ SRC	=	src/args.c                                                                
 		src/game/menu/options.c                                                                             \
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c                                                                     \
-		src/game/particles/effects/particle_shot.c                                                          \
-		src/game/particles/effects/particle_ak.c                                                            \
-		src/game/particles/effects/particle_flame.c                                                         \
-		src/game/particles/effects/particle_shotgun.c                                                       \
-		src/game/particles/effects/particle_rifle.c                                                         \
-		src/game/particles/effects/particle_xp.c                                                            \
-		src/game/particles/effects/particle_explosion.c                                                     \
-		src/game/particles/effects/particle_fire.c                                                          \
-		src/game/particles/effects/particle_stars.c                                                         \
-		src/game/particles/particle_destroyer.c                                                             \
-		src/game/particles/particle_drawer.c                                                                \
-		src/game/particles/particle_manager.c                                                               \
-		src/game/particles/particle_updater.c                                                               \
 		src/game/ui/hud/hp_bar.c                                                                            \
 		src/game/ui/hud/xp_bar.c                                                                            \
 		src/game/ui/hud/init_hud.c                                                                          \
@@ -96,6 +83,19 @@ SRC	=	src/args.c                                                                
 		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
+		src/particles/effects/particle_shot.c                                                               \
+		src/particles/effects/particle_ak.c                                                                 \
+		src/particles/effects/particle_flame.c                                                              \
+		src/particles/effects/particle_shotgun.c                                                            \
+		src/particles/effects/particle_rifle.c                                                              \
+		src/particles/effects/particle_xp.c                                                                 \
+		src/particles/effects/particle_explosion.c                                                          \
+		src/particles/effects/particle_fire.c                                                               \
+		src/particles/effects/particle_stars.c                                                              \
+		src/particles/particle_destroyer.c                                                                  \
+		src/particles/particle_drawer.c                                                                     \
+		src/particles/particle_manager.c                                                                    \
+		src/particles/particle_updater.c                                                                    \
 		src/pause/init_pause.c										    \
 		src/pause/render_pause.c									    \
 		src/player/actions.c                                                                                \
@@ -171,8 +171,6 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/level                                                                              \
 		-I./include/game/menu                                                                               \
 		-I./include/game/music                                                                              \
-		-I./include/game/particles                                                                          \
-		-I./include/game/particles/effects                                                                  \
 		-I./include/game/ui                                                                                 \
 		-I./include/game/ui/hud                                                                             \
 		-I./include/game/ui/buttons                                                                         \
@@ -180,6 +178,8 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/game/ui/text_area                                                                       \
 		-I./include/game/ui/title_screen                                                                    \
 		-I./include/game/weather                                                                            \
+		-I./include/particles                                                                               \
+		-I./include/particles/effects                                                                       \
 		-I./include/stats_menu                                                                              \
 		-I./include/intro                                                                                   \
 		-I./include/game/music                                                                              \
