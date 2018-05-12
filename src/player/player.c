@@ -8,9 +8,11 @@
 #include "render.h"
 #include "player.h"
 #include "render_window.h"
+#include "stats_menu.h"
 #include "my_calloc.h"
 #include "inventory.h"
 #include "xml.h"
+#include "dash.h"
 
 void animate_sprite(sfSprite *sprite, uint16_t offset, uint8_t max_val)
 {
@@ -25,6 +27,7 @@ void animate_sprite(sfSprite *sprite, uint16_t offset, uint8_t max_val)
 
 void draw_player(win_t *win, player_t *player)
 {
+	draw_dash(win, player);
 	player_touched(player);
 	render_object(win->sf_win, SPRITE, player->aim);
 	render_object(win->sf_win, SPRITE, player->sprite);

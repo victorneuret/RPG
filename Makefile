@@ -49,7 +49,6 @@ SRC	=	src/args.c                                                                
 		src/game/menu/title_page.c                                                                          \
 		src/game/menu/slider_parallax.c                                                                     \
 		src/game/particles/effects/particle_shot.c                                                          \
-		src/game/particles/effects/particle_dash.c                                                          \
 		src/game/particles/effects/particle_ak.c                                                            \
 		src/game/particles/effects/particle_flame.c                                                         \
 		src/game/particles/effects/particle_shotgun.c                                                       \
@@ -94,6 +93,7 @@ SRC	=	src/args.c                                                                
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
 		src/player/actions.c                                                                                \
+		src/player/draw_dash.c                                                                              \
 		src/player/door_action.c                                                                            \
 		src/player/door_transition.c                                                                        \
 		src/player/idle.c                                                                                   \

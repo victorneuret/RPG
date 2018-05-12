@@ -16,6 +16,9 @@
 #include "music.h"
 #include "inventory.h"
 #include "inventory_list.h"
+#include "particle_explosion.h"
+#include "stats_menu.h"
+#include "music.h"
 
 static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 {
@@ -67,36 +70,37 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 	sfClock_restart(win->game->player->immu);
 }
 
-#include "particle_explosion.h"
-#include "render.h"
-
-void create_dash(win_t *win, uint16_t count, float angle, sfVector2f pos);
-
-static void dash_movement(win_t *win, player_t *player, sfVector2f pos)
+static void dash_movement(win_t *win, player_t *player, float distance)
 {
+	sfVector2f pos = player->pos;
+
+	pos.x += X_SPEED * (win->joystick->rx / 100.f * distance) * win->dt;
+	pos.y += X_SPEED * (win->joystick->ry / 100.f * distance) * win->dt;
 	player->pos = pos;
-	create_dash(win, 200, player->aim_angle, player->pos);
+	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
+	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
 	sfSprite_setPosition(player->sprite, player->pos);
 }
 
-void player_dash(win_t *win, player_t *player, bool press)
+void player_dash(win_t *win, player_t *player, bool press, bool pressed)
 {
-	static bool pressed = false;
-	static int distance = 20;
-	sfVector2f pos;
+	static sfClock *timer;
+	dash_t *dash = win->game->stats_menu->skill_tree->dash;
 
-	pos.x = X_SPEED * (win->joystick->rx / 100.f * distance) * win->dt;
-	pos.y = X_SPEED * (win->joystick->ry / 100.f * distance) * win->dt;
-
+	dash->current_time = timer ? sfTime_asSeconds(
+				sfClock_getElapsedTime(timer)) : 0;
+	if (!timer)
+		timer = sfClock_create();
+	if (dash->current_time < dash->delay || !dash->unlocked)
+		return;
+	sfSprite_setColor(dash->sprite, hex_to_rgba(0x75FFE7FF));
 	if (!press && pressed) {
-		dash_movement(win, player, pos);
-		pressed = false;
+		play_sfx(win->game->sounds, DASH);
+		dash_movement(win, player, dash->distance);
+		dash->display = true;
+		sfClock_restart(timer);
 		return;
 	}
-	if (!press)
-		return;
-	if (!pressed)
-		pressed = true;
-	sfSprite_setColor(player->sprite, hex_to_rgba(0xFFFFFFFF));
-	sfSprite_setColor(player->sprite, hex_to_rgba(0xE0EDFF96));
+	if (press)
+		dash->display = true;
 }

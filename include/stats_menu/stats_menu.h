@@ -32,12 +32,22 @@ typedef struct skill {
 	uint8_t unlock_level[3];
 } skill_t;
 
+typedef struct dash {
+	float delay;
+	float distance;
+	bool display;
+	bool unlocked;
+	sfSprite *sprite;
+	uint32_t current_time;
+} dash_t;
+
 typedef struct skill_tree {
 	sfSprite *sp;
 	sfText *nb_sp;
 	sfText *active;
 	sfText *passive;
 	skill_t **skill;
+	dash_t *dash;
 } skill_tree_t;
 
 typedef struct stats_menu {

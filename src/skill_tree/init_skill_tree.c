@@ -8,6 +8,7 @@
 #include "stats_menu.h"
 #include "sprite_utils.h"
 #include "texture.h"
+#include "dash.h"
 
 static sfSprite *init_skill_sprite(uint16_t x_rect, uint8_t nb,
 		textures_t *textures, size_t i)
@@ -52,6 +53,11 @@ static void set_pos_sprite(uint16_t x_pos, uint16_t nb,
 static bool alloc_skill_tree(skill_tree_t *tree)
 {
 	tree->skill = malloc(sizeof(skill_t *) * 4);
+	tree->dash = malloc(sizeof(dash_t));
+	tree->dash->display = false;
+	tree->dash->unlocked = true;
+	tree->dash->distance = 20;
+	tree->dash->delay = 10;
 	if (!tree->skill)
 		return false;
 	for (size_t i = 0; i < 4; i++) {
@@ -104,8 +110,9 @@ bool init_skill_tree(stats_menu_t *menu, game_t *game)
 				(sfVector2f) {1055, 180}, 70);
 	skill_tree->passive = init_text(ft, "Active",
 				(sfVector2f) {1535, 180}, 70);
-	if (!init_skill(skill_tree, game->textures))
-		return false;
 	menu->skill_tree = skill_tree;
+	if (!init_skill(skill_tree, game->textures) ||
+					!init_dash_sprite(skill_tree, tex))
+		return false;
 	return true;
 }

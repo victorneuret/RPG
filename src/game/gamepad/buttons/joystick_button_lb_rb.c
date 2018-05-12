@@ -12,14 +12,12 @@ void button_lb(__attribute__((unused)) win_t *win, bool press)
 {
 	static bool pressed = false;
 
-	player_dash(win, win->game->player, press);
-	if (!press) {
+	if (win->game_state == GAME)
+		player_dash(win, win->game->player, press, pressed);
+	if (!press)
 		pressed = false;
-		return;
-	}
-	if (!pressed && press) {
+	if (!pressed && press)
 		pressed = true;
-	}
 }
 
 void button_rb(__attribute__((unused)) win_t *win, bool press)
