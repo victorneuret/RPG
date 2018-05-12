@@ -71,7 +71,9 @@ typedef enum sfx {
 	DASH,
 	TELEPORT,
 	PORTAL,
-	RELOAD
+	RELOAD,
+	NEW_QUEST,
+	END_QUEST
 } sfx_type;
 
 static const music_declaration_t sfx_declaration[] = {
@@ -133,7 +135,7 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/ak47.ogg",
-		10
+		15
 	},
 	{
 		GAME,
@@ -163,6 +165,16 @@ static const music_declaration_t sfx_declaration[] = {
 	{
 		GAME,
 		"res/sounds/sfx/reload.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/new_quest.ogg",
+		100
+	},
+	{
+		GAME,
+		"res/sounds/sfx/end_quest.ogg",
 		100
 	},
 	{

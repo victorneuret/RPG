@@ -50,9 +50,10 @@ void npc_interaction(win_t *win)
 
 	check_interaction(win, npc);
 	if (npc->elem > npc->quest[id].diag_elem && !npc->quest[id].quest_popup
-		&& npc->quest[id].weapon_quest != NONE_WEAPON_QUEST) {
-			create_popup(win->game->ui, "New quest.", INFO);
-			npc->quest[id].quest_popup = true;
+			&& npc->quest[id].weapon_quest != NONE_WEAPON_QUEST) {
+		create_popup(win->game->ui, "New quest.", INFO);
+		play_sfx(win->game->sounds, NEW_QUEST);
+		npc->quest[id].quest_popup = true;
 	}
 	if (npc->elem > npc->quest[id].diag_elem && id == 0) {
 		item_list[0].pos = (sfVector2f){1920 / 2, 1080 / 2};
@@ -102,6 +103,7 @@ static void check_current_quest(win_t *win, npc_t *npc)
 		npc->quest[npc->quest_id++].state = true;
 		npc->quest[npc->quest_id].last_quest = true;
 		create_popup(win->game->ui, "Quest complete!", SUCCESS);
+		play_sfx(win->game->sounds, END_QUEST);
 		npc->elem = 0;
 	}
 }
