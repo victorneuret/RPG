@@ -49,8 +49,8 @@ void npc_interaction(win_t *win)
 	uint8_t id = npc->quest_id;
 
 	check_interaction(win, npc);
-	if (npc->elem > npc->quest->diag_elem && !npc->quest[id].quest_popup
-		&& npc->quest[id].quest_type != NONE) {
+	if (npc->elem > npc->quest[id].diag_elem && !npc->quest[id].quest_popup
+		&& npc->quest[id].weapon_quest != NONE_WEAPON_QUEST) {
 			create_popup(win->game->ui, "New quest.", INFO);
 			npc->quest[npc->quest_id].quest_popup = true;
 	}
@@ -86,11 +86,11 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 
 static void check_current_quest(win_t *win, npc_t *npc)
 {
-	if (npc->quest[npc->quest_id].quest_type != NONE
+	if (npc->quest[npc->quest_id].weapon_quest != NONE_WEAPON_QUEST
 		&& npc->quest[npc->quest_id].kill <= 0) {
 			npc->quest[npc->quest_id++].state = true;
 			npc->quest[npc->quest_id].last_quest = true;
-			create_popup(win->game->ui, "Quest finished!", SUCCESS);
+			create_popup(win->game->ui, "Quest complete!", SUCCESS);
 			npc->elem = 0;
 	}
 }

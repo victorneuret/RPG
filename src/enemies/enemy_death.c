@@ -11,10 +11,35 @@
 
 #include "game.h"
 #include "quest.h"
+#include "inventory_list.h"
 #include "popup.h"
 #include "enemies.h"
 #include "particle_xp.h"
 #include "render_window.h"
+
+static void enemy_quest_state(win_t *win, enemy_list_t *node)
+{
+	npc_t *npc = win->game->npc;
+	quest_t *quest = win->game->npc->quest;
+	inventory_t *inventory = win->game->player->inventory;
+	uint8_t type = node->enemy->type;
+
+	switch (quest[npc->quest_id].weapon_quest) {
+	case NONE_WEAPON_QUEST: break;
+	case KILL_WEAPON_QUEST:
+		if (type == quest[npc->quest_id].enemy_quest
+			|| quest[npc->quest_id].enemy_quest == NONE_ENEMY_QUEST)
+			quest[npc->quest_id].kill--;
+		break;
+	default:
+		if (quest[npc->quest_id].weapon_quest ==
+			inventory->item[inventory->selected]->type &&
+			(type == quest[npc->quest_id].enemy_quest ||
+			quest[npc->quest_id].enemy_quest == NONE_ENEMY_QUEST))
+			npc->quest[npc->quest_id].kill--;
+		break;
+	}
+}
 
 static bool is_dungeon_cleared(game_t const *game)
 {
@@ -30,7 +55,7 @@ void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node)
 
 	particle_xp(win, node->enemy->hp_max, node->enemy->pos);
 	enemy_drop_item(node->enemy->pos, win);
-	game->npc->quest[game->npc->quest_id].kill--;
+	enemy_quest_state(win, node);
 	rm_enemy_from_list(&enemy_list, node->enemy);
 	if (!enemy_list->enemy) {
 		game->rooms[game->dungeon->act_room]->cleared = true;

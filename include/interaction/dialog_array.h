@@ -18,7 +18,7 @@ static char *dialog_array[6][5] = {
 	},
 	{
 		"Are you ready for your first quest ?",
-		"Yeeeeeees! So, you have to kill 10 enemies..",
+		"Yeah! So, you have to kill 5 enemies..",
 		"Come back to me when once you are done.",
 		NULL
 	},
@@ -31,13 +31,11 @@ static char *dialog_array[6][5] = {
 	{
 		"Enemies can drop weapons, you can have 3 weapons" \
 		" in your inventory,\nchoose well.",
-		"Now, try to kill 10 enemies with the Uzi..",
-		"Good luck!",
+		"Now, try to kill 10 enemies with the UZI.. Good luck!",
 		NULL
 	},
 	{
-		"You finished the game !",
-		"You can now do what you want.",
+		"WOW! You finished the game ! You can now do what you want.",
 		NULL
 	},
 	{

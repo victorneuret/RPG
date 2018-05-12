@@ -35,7 +35,8 @@ quest_t *init_quest(void)
 			return NULL;
 		quest[i].last_quest = false;
 		quest[i].quest_popup = false;
-		quest[i].quest_type = quest_declaration[i].quest_type;
+		quest[i].weapon_quest = quest_declaration[i].weapon_quest;
+		quest[i].enemy_quest = quest_declaration[i].enemy_quest;
 		quest[i].kill = quest_declaration[i].kill;
 		quest[i].quest_id = quest_declaration[i].quest_id;
 		quest[i].diag_elem = quest_declaration[i].diag_elem;
