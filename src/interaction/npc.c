@@ -10,14 +10,13 @@
 #include <stdbool.h>
 
 #include "text_utils.h"
-
 #include "render_window.h"
 #include "render.h"
-
 #include "npc.h"
 #include "textbox.h"
 #include "quest.h"
 #include "hud.h"
+#include "music.h"
 #include "particle_xp.h"
 
 static void check_interaction(win_t *win, npc_t *npc)
@@ -94,8 +93,9 @@ static void check_current_quest(win_t *win, npc_t *npc)
 	if (npc->quest[npc->quest_id].weapon_quest == NONE_WEAPON_QUEST
 		&& npc->quest_id == 0
 		&& win->game->player->inventory->item[0]) {
-			open_door(win);
-			npc->quest[npc->quest_id++].state = true;
+		play_sfx(win->game->sounds, OPEN);
+		open_door(win);
+		npc->quest[npc->quest_id++].state = true;
 	}
 	if (npc->quest[npc->quest_id].weapon_quest != NONE_WEAPON_QUEST
 		&& npc->quest[npc->quest_id].kill <= 0) {

@@ -20,7 +20,7 @@ static const uint8_t NB_ITEMS = 6;
 static const char *INVENTORY_FONT __attribute__((unused)) =
 					"res/fonts/space_mono_regular.ttf";
 static const char *INVENTORY_MESSAGE __attribute__((unused)) =
-					"Press I to pick up item";
+					"Press A to pick up item";
 
 typedef struct item {
 	const char *name;
