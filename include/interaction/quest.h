@@ -62,7 +62,7 @@ static const quest_declaration_t quest_declaration[] = {
 		0,
 		3,
 		dialog_array[0],
-		true
+		false
 	},
 	{
 		KILL_WEAPON_QUEST,

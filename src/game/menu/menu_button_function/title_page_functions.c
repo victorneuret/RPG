@@ -35,14 +35,13 @@ void start_game(win_t *win)
 {
 	change_state(win, GAME);
 	win->game->dungeon->cleared = false;
+	win->game->dungeon->door_open = false;
 	load_level(&win->game->level, DUNGEON, win);
 	xml_player(win->game->player);
 	init_hud(win->game->player);
 	init_skill(win->game->stats_menu->skill_tree, win->game->textures);
 	for (uint8_t i = 0; i < INVENTORY_NB; i++)
 		win->game->player->inventory->item[i] = NULL;
-	win->game->player->inventory->item[0] =
-				&win->game->player->inventory->item_list[0];
 	reset_npc(win->game->npc, win->game->npc->quest);
 }
 
