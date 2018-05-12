@@ -23,7 +23,7 @@ static bool parse_xml_enemies(xmlNode *root, enemy_t *enemy, const char *name,
 	enemy->speed = get_node_float(enemy_node, "speed");
 	enemy->hp = enemy->hp_max;
 	enemy->pos = (sfVector2f) {0, 0};
-	enemy->shape = NULL;
+	enemy->sprite = NULL;
 	return true;
 }
 

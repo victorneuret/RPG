@@ -45,7 +45,7 @@ void add_enemy_to_list(enemy_list_t **enemy_list, enemy_t *enemy)
 
 static void del_enemy(enemy_t *enemy)
 {
-	sfRectangleShape_destroy(enemy->shape);
+	sfSprite_destroy(enemy->sprite);
 	sfRectangleShape_destroy(enemy->bar_bg);
 	sfRectangleShape_destroy(enemy->bar_fg);
 	free(enemy);
