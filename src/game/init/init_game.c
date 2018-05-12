@@ -20,7 +20,6 @@
 #include "stats_menu.h"
 #include "xml.h"
 #include "pause.h"
-#include "save.h"
 
 static bool init_ui(win_t *win)
 {
@@ -57,9 +56,8 @@ static bool init_gamepad(win_t *win)
 static bool init_game_struct(win_t *win)
 {
 	win->game->sounds = init_music(win->settings);
-	win->game->save = malloc(sizeof(save_t));
-	if (!win->game || !win->game->sounds || !win->game->save
-		|| !win->game->ui || !win->game->dungeon || !win->joystick
+	if (!win->game || !win->game->sounds || !win->game->ui
+		|| !win->game->dungeon || !win->joystick
 		|| !init_ui(win) || !init_dungeon(win) || !init_gamepad(win)
 		|| !init_stat_menu(win)
 		|| !init_skill_tree(win->game->stats_menu, win->game))

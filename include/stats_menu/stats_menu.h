@@ -10,6 +10,7 @@
 #include <SFML/Graphics.h>
 
 #include "hud.h"
+#include "dash.h"
 
 typedef struct stats {
 	sfSprite *player;
@@ -31,15 +32,6 @@ typedef struct skill {
 	uint8_t level;
 	uint8_t unlock_level[3];
 } skill_t;
-
-typedef struct dash {
-	float delay;
-	float distance;
-	bool display;
-	bool unlocked;
-	sfSprite *sprite;
-	uint32_t current_time;
-} dash_t;
 
 typedef struct skill_tree {
 	sfSprite *sp;

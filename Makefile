@@ -89,7 +89,6 @@ SRC	=	src/args.c                                                                
 		src/game/weather/rain.c                                                                             \
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
-		src/game/save/save.c                                                                                \
 		src/intro/intro.c                                                                                   \
 		src/game/music/init_music.c                                                                         \
 		src/game/music/music_manager.c                                                                      \
@@ -99,7 +98,7 @@ SRC	=	src/args.c                                                                
 		src/pause/init_pause.c										    \
 		src/pause/render_pause.c									    \
 		src/player/actions.c                                                                                \
-		src/player/draw_dash.c                                                                              \
+		src/player/dash.c                                                                                   \
 		src/player/door_action.c                                                                            \
 		src/player/door_transition.c                                                                        \
 		src/player/idle.c                                                                                   \

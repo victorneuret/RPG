@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
+#include <stdint.h>
 
 #include "player.h"
 #include "particle_shot.h"
@@ -16,9 +17,6 @@
 #include "music.h"
 #include "inventory.h"
 #include "inventory_list.h"
-#include "particle_explosion.h"
-#include "stats_menu.h"
-#include "music.h"
 
 static void shoot(win_t *win, item_t *weapon, player_t *player, sfVector2f pos)
 {
@@ -68,39 +66,4 @@ void player_door(win_t *win, sfVector2f *pos, room_t *room)
 		return;
 	door_action(win, pos, room);
 	sfClock_restart(win->game->player->immu);
-}
-
-static void dash_movement(win_t *win, player_t *player, float distance)
-{
-	sfVector2f pos = player->pos;
-
-	pos.x += X_SPEED * (win->joystick->rx / 100.f * distance) * win->dt;
-	pos.y += X_SPEED * (win->joystick->ry / 100.f * distance) * win->dt;
-	player->pos = pos;
-	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
-	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
-	sfSprite_setPosition(player->sprite, player->pos);
-}
-
-void player_dash(win_t *win, player_t *player, bool press, bool pressed)
-{
-	static sfClock *timer;
-	dash_t *dash = win->game->stats_menu->skill_tree->dash;
-
-	dash->current_time = timer ? sfTime_asSeconds(
-				sfClock_getElapsedTime(timer)) : 0;
-	if (!timer)
-		timer = sfClock_create();
-	if (dash->current_time < dash->delay || !dash->unlocked)
-		return;
-	sfSprite_setColor(dash->sprite, hex_to_rgba(0x75FFE7FF));
-	if (!press && pressed) {
-		play_sfx(win->game->sounds, DASH);
-		dash_movement(win, player, dash->distance);
-		dash->display = true;
-		sfClock_restart(timer);
-		return;
-	}
-	if (press)
-		dash->display = true;
 }

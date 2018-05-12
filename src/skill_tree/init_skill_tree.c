@@ -60,8 +60,8 @@ static bool alloc_skill_tree(skill_tree_t *tree)
 	tree->dash = malloc(sizeof(dash_t));
 	tree->dash->display = false;
 	tree->dash->unlocked = true;
-	tree->dash->distance = 20;
-	tree->dash->delay = 10;
+	tree->dash->distance = DASH_DISTANCE;
+	tree->dash->delay = DASH_DELAY;
 	if (!tree->skill)
 		return false;
 	for (size_t i = 0; i < 4; i++) {

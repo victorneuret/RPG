@@ -6,12 +6,51 @@
 */
 
 #include <SFML/Graphics.h>
+#include <stdbool.h>
 
 #include "player.h"
 #include "music.h"
 #include "render.h"
 #include "render_window.h"
+#include "particle_explosion.h"
 #include "stats_menu.h"
+#include "music.h"
+#include "dash.h"
+
+static void dash_movement(win_t *win, player_t *player, float distance)
+{
+	sfVector2f pos = player->pos;
+
+	pos.x += X_SPEED * (win->joystick->rx / 100.f * distance) * DASH_MULT;
+	pos.y += X_SPEED * (win->joystick->ry / 100.f * distance) * DASH_MULT;
+	player->pos = pos;
+	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
+	create_explosion(win, 10, player->pos, hex_to_rgba(0x75FFE7FF));
+	sfSprite_setPosition(player->sprite, player->pos);
+}
+
+void player_dash(win_t *win, player_t *player, bool press, bool pressed)
+{
+	static sfClock *timer;
+	dash_t *dash = win->game->stats_menu->skill_tree->dash;
+
+	dash->current_time = timer ? sfTime_asSeconds(
+				sfClock_getElapsedTime(timer)) : 0;
+	if (!timer)
+		timer = sfClock_create();
+	if (dash->current_time < dash->delay || !dash->unlocked)
+		return;
+	sfSprite_setColor(dash->sprite, hex_to_rgba(0x75FFE7FF));
+	if (!press && pressed) {
+		play_sfx(win->game->sounds, DASH);
+		dash_movement(win, player, dash->distance);
+		dash->display = true;
+		sfClock_restart(timer);
+		return;
+	}
+	if (press)
+		dash->display = true;
+}
 
 bool init_dash_sprite(skill_tree_t *skill_tree, sfTexture *tex)
 {
@@ -34,9 +73,9 @@ void draw_dash(win_t *win, player_t *player)
 	if (!dash->display)
 		return;
 	pos.x += X_SPEED * (win->joystick->rx / 100.f * dash->distance) *
-									win->dt;
+								DASH_MULT;
 	pos.y += X_SPEED * (win->joystick->ry / 100.f * dash->distance) *
-									win->dt;
+								DASH_MULT;
 	sfSprite_setColor(player->sprite, hex_to_rgba(0xE0EDFF96));
 	sfSprite_setPosition(player->sprite, pos);
 	render_object(win->sf_win, SPRITE, player->sprite);
