@@ -55,7 +55,9 @@ void npc_interaction(win_t *win)
 			npc->quest[npc->quest_id].quest_popup = true;
 	}
 	if (npc->elem > npc->quest[npc->quest_id].diag_elem
-		&& npc->quest[npc->quest_id].state) {
+		&& npc->quest[npc->quest_id].state
+		&& win->game->player->inventory->item[0]) {
+		open_door(win);
 		npc->quest_id++;
 		npc->elem = 0;
 	}
