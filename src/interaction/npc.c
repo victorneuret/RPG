@@ -28,9 +28,9 @@ static void check_interaction(win_t *win, npc_t *npc)
 		npc->pos.y + npc_rect.height / 2};
 
 	if (win->game->dungeon->act_room == 0
-		&& pos.x + rect.width > npc->pos.x - 30
-		&& pos.y < npc->pos.y + npc_rect.height + 50) {
-		win->game->npc->textbox->state = true;
+			&& pos.x + rect.width > npc->pos.x - 30
+			&& pos.y < npc->pos.y + npc_rect.height + 50) {
+		npc->textbox->state = true;
 		if (npc->quest[npc->quest_id].dialog[npc->elem])
 			sfText_setString(npc->quest[npc->quest_id].text,
 				npc->quest[npc->quest_id].dialog[npc->elem]);
@@ -60,7 +60,7 @@ void npc_interaction(win_t *win)
 		sfSprite_setPosition(item_list[0].sprite, item_list[0].pos);
 	}
 	if (npc->elem > npc->quest[id].diag_elem
-		&& npc->quest[id].state) {
+			&& npc->quest[id].state) {
 		npc->quest_id++;
 		npc->elem = 0;
 	}
@@ -72,9 +72,8 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 
 	rect.left = 0;
 	if (npc->textbox->state && npc->elem != 0
-		&& npc->elem <= npc->quest[id].diag_elem) {
-		render_object(win->sf_win, RECTANGLE,
-			win->game->npc->textbox->rect);
+			&& npc->elem <= npc->quest[id].diag_elem) {
+		render_object(win->sf_win, RECTANGLE, npc->textbox->rect);
 		render_object(win->sf_win, TEXT, npc->textbox->name);
 		render_object(win->sf_win, TEXT, npc->quest[id].text);
 		if (sfClock_getElapsedTime(npc->timer).microseconds > 200000) {
@@ -92,14 +91,14 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 static void check_current_quest(win_t *win, npc_t *npc)
 {
 	if (npc->quest[npc->quest_id].weapon_quest == NONE_WEAPON_QUEST
-		&& npc->quest_id == 0
-		&& win->game->player->inventory->item[0]) {
+			&& npc->quest_id == 0
+			&& win->game->player->inventory->item[0]) {
 		play_sfx(win->game->sounds, OPEN);
 		open_door(win);
 		npc->quest[npc->quest_id++].state = true;
 	}
 	if (npc->quest[npc->quest_id].weapon_quest != NONE_WEAPON_QUEST
-		&& npc->quest[npc->quest_id].kill <= 0) {
+			&& npc->quest[npc->quest_id].kill <= 0) {
 		npc->quest[npc->quest_id++].state = true;
 		npc->quest[npc->quest_id].last_quest = true;
 		create_popup(win->game->ui, "Quest complete!", SUCCESS);
@@ -120,8 +119,8 @@ void draw_npc(win_t *win, npc_t *npc)
 	if (win->game->dungeon->act_room != 0)
 		return;
 	if (win->game->dungeon->act_room == 0
-		&& pos.x + rect.width > win->game->npc->pos.x - 30
-		&& pos.y < win->game->npc->pos.y + npc_rect.height + 30) {
+			&& pos.x + rect.width > npc->pos.x - 30
+			&& pos.y < npc->pos.y + npc_rect.height + 30) {
 		manage_npc_interaction(npc->quest_id, npc, win);
 	} else {
 		sfSprite_setTextureRect(npc->skin, skin_rect);
