@@ -14,7 +14,7 @@
 
 void enemy_drop_item(sfVector2f enemy_pos, win_t *win)
 {
-	uint8_t item_nb = rand_int(SHOTGUN, NB_ITEMS - 1);
+	uint8_t item_nb = rand_int(SHOTGUN, (NB_ITEMS - 2));
 	uint8_t random = rand_int(0, 100);
 	item_t *item_list = win->game->player->inventory->item_list;
 
