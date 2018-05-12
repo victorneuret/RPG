@@ -24,13 +24,13 @@ $(NAME):
 	cp $(NAME) libxmllib.so
 
 clean:
-	@rm -rf libxml2-2.7.2
 	@rm -rf include
 	@rm -rf bin
 	@rm -rf lib
 	@rm -rf share
 
 fclean:	clean
+	@rm -rf libxml2-2.7.2
 	@rm -f libxmllib.so
 
 re:	fclean all
