@@ -36,7 +36,7 @@ static const item_actions_t item_actions[] __attribute__((unused)) = {
 	{"shotgun", "The Shotgun", WP_SHOTGUN, 20, 0, &shotgun},
 	{"flamethrower", "Flamethrower", WP_FLAMETHROWER, 15, 350.f,
 								&create_flame},
-	{"uzi", "Uzi", WP_GUN, 1, 0, &rifle},
+	{"uzi", "Uzi", WP_GUN, 1, 100.f, &rifle},
 	{"ak47", "Ak-47", WP_AK, 1, 100.f, &particle_ak},
 	{NULL, NULL, 0, 0, 0, NULL}
 };

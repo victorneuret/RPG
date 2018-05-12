@@ -19,13 +19,13 @@
 	</flamethrower>
 	<uzi>
 		<name>Uzi</name>
-		<damages>10</damages>
-		<delay>0.1</delay>
+		<damages>6</damages>
+		<delay>0.05</delay>
 		<rate>60</rate>
 	</uzi>
 	<ak47>
 		<name>Ak-47</name>
-		<damages>15</damages>
+		<damages>20</damages>
 		<delay>0.15</delay>
 		<rate>20</rate>
 	</ak47>
