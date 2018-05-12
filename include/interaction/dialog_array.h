@@ -9,7 +9,7 @@
 
 #include <stdlib.h>
 
-static char *dialog_array[5][255] = {
+static char *dialog_array[6][5] = {
 	{
 		"Welcome to this super game!",
 		"My name is Satoru Iwata.. I will help you to progress!",
@@ -33,6 +33,11 @@ static char *dialog_array[5][255] = {
 		" in your inventory,\nchoose well.",
 		"Now, try to kill 10 enemies with the Uzi..",
 		"Good luck!",
+		NULL
+	},
+	{
+		"You finished the game !",
+		"You can now do what you want.",
 		NULL
 	},
 	{

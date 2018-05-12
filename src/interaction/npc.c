@@ -86,18 +86,12 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 
 static void check_current_quest(win_t *win, npc_t *npc)
 {
-	switch (npc->quest[npc->quest_id].quest_type) {
-	case KILL:
-	case WEAPON:
-		if (npc->quest[npc->quest_id].kill <= 0) {
+	if (npc->quest[npc->quest_id].quest_type != NONE
+		&& npc->quest[npc->quest_id].kill <= 0) {
 			npc->quest[npc->quest_id++].state = true;
 			npc->quest[npc->quest_id].last_quest = true;
 			create_popup(win->game->ui, "Quest finished!", SUCCESS);
 			npc->elem = 0;
-		}
-		break;
-	default:
-		break;
 	}
 }
 

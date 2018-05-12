@@ -13,7 +13,7 @@
 #include <stdint.h>
 
 typedef enum {
-	NONE
+	NONE,
 	KILL_QUEST,
 	GUN_QUEST,
 	SHOTGUN_QUEST,
@@ -76,6 +76,14 @@ static const quest_declaration_t quest_declaration[] = {
 		3,
 		3,
 		dialog_array[3],
+		false
+	},
+	{
+		NONE,
+		0,
+		4,
+		2,
+		dialog_array[4],
 		false
 	},
 	{
