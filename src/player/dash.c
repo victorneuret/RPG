@@ -58,7 +58,7 @@ bool init_dash_sprite(skill_tree_t *skill_tree, sfTexture *tex)
 		get_sprite_texture_rect(tex, &(sfIntRect){256, 640, 128, 128});
 	if (!skill_tree->dash->sprite)
 		return false;
-	sfSprite_setPosition(skill_tree->dash->sprite, (sfVector2f){1800, 50});
+	sfSprite_setPosition(skill_tree->dash->sprite, (sfVector2f){160, 950});
 	sfSprite_setScale(skill_tree->dash->sprite, (sfVector2f){0.4, 0.4});
 	sfSprite_setColor(skill_tree->dash->sprite, hex_to_rgba(0xCDE6FF96));
 	return true;
