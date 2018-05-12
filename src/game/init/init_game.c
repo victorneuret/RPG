@@ -19,6 +19,8 @@
 #include "npc.h"
 #include "stats_menu.h"
 #include "xml.h"
+#include "pause.h"
+#include "save.h"
 
 static bool init_ui(win_t *win)
 {
@@ -55,11 +57,11 @@ static bool init_gamepad(win_t *win)
 static bool init_game_struct(win_t *win)
 {
 	win->game->sounds = init_music(win->settings);
-	if (!win->game->sounds)
-		return false;
-	if (!win->game || !win->game->ui || !win->game->dungeon
-		|| !win->joystick || !init_ui(win) || !init_dungeon(win)
-		|| !init_gamepad(win) || !init_stat_menu(win)
+	win->game->save = malloc(sizeof(save_t));
+	if (!win->game || !win->game->sounds || !win->game->save
+		|| !win->game->ui || !win->game->dungeon || !win->joystick
+		|| !init_ui(win) || !init_dungeon(win) || !init_gamepad(win)
+		|| !init_stat_menu(win)
 		|| !init_skill_tree(win->game->stats_menu, win->game))
 		return false;
 	win->game->player = init_player(win);
@@ -85,6 +87,8 @@ bool init_game(win_t *win)
 	win->game->dungeon = my_calloc(1, sizeof(dungeon_t));
 	win->joystick = my_calloc(1, sizeof(joystick_t));
 	if (!init_game_struct(win))
+		return false;
+	if (!init_pause(win->game))
 		return false;
 	return true;
 }

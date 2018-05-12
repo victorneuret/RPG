@@ -40,6 +40,7 @@ typedef struct player {
 	uint16_t skill_point;
 	bar_t *hp;
 	bar_t *xp;
+	uint16_t dmg;
 	sfSprite *aim;
 	bool touched;
 	sfRectangleShape *shade;

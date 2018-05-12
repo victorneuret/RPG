@@ -30,6 +30,7 @@ typedef struct room {
 	bool door_down;
 	bool door_left;
 	bool door_right;
+	bool cleared;
 } room_t;
 
 typedef struct dungeon {
@@ -39,6 +40,8 @@ typedef struct dungeon {
 	bool door_open;
 	sfRectangleShape *shade;
 	bool transition;
+	bool cleared;
+	sfSprite *portal;
 } dungeon_t;
 
 
@@ -52,3 +55,6 @@ void print_dungeon(dungeon_t *dungeon);
 
 void door_transition(dungeon_t *dungeon);
 void render_transition(win_t *win);
+
+bool init_portal(dungeon_t *dungeon, game_t *game);
+void draw_portal(dungeon_t *dungeon, win_t *win);

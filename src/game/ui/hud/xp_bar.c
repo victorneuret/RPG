@@ -29,9 +29,9 @@ static void reset_bar(player_t *player, float x_pos, win_t *win)
 		create_popup(win->game->ui, "Level up!", INFO);
 	player->level += 1;
 	player->skill_point += 1;
-	player->hp->value += player->hp->max_value * player->hp->mult
-				- player->hp->max_value;
-	player->hp->max_value *= player->hp->mult;
+	player->hp->value += (player->hp->mult * player->hp->max_value);
+	if (player->hp->value > player->hp->max_value)
+		player->hp->value = player->hp->max_value;
 	sfText_setString(player->xp->text, int_to_str(player->level));
 	text_right(player->xp->text, WIN_MAX_W - 20, 1030);
 }
@@ -57,7 +57,7 @@ static void bar_animation(win_t *win, player_t *player)
 
 	if (xp < player->xp->value && xp < player->xp->max_value) {
 		play_bar_sound(win);
-		xp += 2 * (player->level * player->level);
+		xp += 4 * (player->xp->max_value / 800);
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		sfRectangleShape_setSize(player->xp->bar,
 				(sfVector2f) {x_pos, XP_HEIGHT});
@@ -66,7 +66,7 @@ static void bar_animation(win_t *win, player_t *player)
 	} else if (xp >= player->xp->max_value) {
 		xp = 0;
 		player->xp->value = player->xp->value - player->xp->max_value;
-		player->xp->max_value *= player->xp->mult;
+		player->xp->max_value += player->xp->mult;
 		x_pos = XP_WIDTH / (float) player->xp->max_value * xp;
 		reset_bar(player, x_pos, win);
 	}

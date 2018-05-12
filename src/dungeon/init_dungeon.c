@@ -110,5 +110,7 @@ bool init_dungeon(win_t *win)
 	}
 	for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
 		memset(win->game->dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
+	if (!init_portal(win->game->dungeon, win->game))
+		return false;
 	return true;
 }

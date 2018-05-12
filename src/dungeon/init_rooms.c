@@ -9,6 +9,7 @@
 
 #include "render_window.h"
 #include "rooms.h"
+#include "my_calloc.h"
 
 // static void print_room(game_t *game)
 // {
@@ -32,16 +33,14 @@
 
 char **create_map(void)
 {
-	char **map = malloc(sizeof(char *) * ROOM_HEIGHT + sizeof(char *));
+	char **map = my_calloc(ROOM_HEIGHT + 1, sizeof(char *));
 
 	if (!map)
 		return NULL;
 	for (size_t i = 0; i < ROOM_HEIGHT; i++) {
-		map[i] = malloc(sizeof(char) * ROOM_WIDTH + 1);
+		map[i] = my_calloc(ROOM_HEIGHT + 1, sizeof(char));
 		if (!map[i])
 			return false;
-		memset(map[i], 'E', ROOM_WIDTH);
-		map[i][ROOM_WIDTH] = '\0';
 	}
 	map[ROOM_HEIGHT] = NULL;
 	return map;
@@ -61,8 +60,8 @@ bool init_rooms(win_t *win)
 			free(win->game->rooms[i]);
 		free(win->game->rooms);
 	}
-	win->game->rooms = malloc(sizeof(room_t *)
-			* win->game->dungeon->nb_rooms + sizeof(room_t));
+	win->game->rooms = my_calloc(win->game->dungeon->nb_rooms + 1,
+					sizeof(room_t *));
 	if (!win->game->rooms)
 		return false;
 	win->game->rooms[0] = NULL;

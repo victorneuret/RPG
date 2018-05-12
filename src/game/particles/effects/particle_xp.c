@@ -34,7 +34,7 @@ void update_particle_xp(win_t *win,
 	}
 }
 
-static particle_t *create_particle(sfVector2f origin, sfColor color)
+static particle_t *create_particle(sfVector2f origin)
 {
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
 	const float speed = (float) rand_int(200, 350);
@@ -43,7 +43,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color)
 	if (!particle)
 		return NULL;
 	particle->pos = origin;
-	particle->color = color;
+	particle->color = hex_to_rgb(0xFFEB3B);
 	particle->alive = true;
 	particle->update = &update_particle_xp;
 	particle->lifetime_ms = (uint64_t) -1;
@@ -54,8 +54,7 @@ static particle_t *create_particle(sfVector2f origin, sfColor color)
 	return particle;
 }
 
-void particle_xp(win_t *win, uint16_t count,
-		sfVector2f origin, sfColor color)
+void particle_xp(win_t *win, uint16_t count, sfVector2f origin)
 {
 	particle_group_t *group = get_particle_group(win->particle_manager);
 	particle_t **p_list = my_calloc(count + 1, sizeof(particle_t *));
@@ -64,7 +63,7 @@ void particle_xp(win_t *win, uint16_t count,
 		return;
 	group->particles = p_list;
 	for (size_t i = 0; i < count; i++) {
-		p_list[i] = create_particle(origin, color);
+		p_list[i] = create_particle(origin);
 		if (!p_list[i]) {
 			free(p_list);
 			return;

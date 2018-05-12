@@ -31,6 +31,14 @@ void shotgun(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void create_flame(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 void particle_ak(win_t *win, item_t *weapon, sfVector2f origin, float angle);
 
+enum {
+	GUN,
+	SHOTGUN,
+	FLAMETHROWER,
+	UZI,
+	AK47
+};
+
 static const item_actions_t item_actions[] __attribute__((unused)) = {
 	{"gun", "Bubble", WP_GUN, 1, 0, &create_shot},
 	{"shotgun", "The Shotgun", WP_SHOTGUN, 20, 0, &shotgun},

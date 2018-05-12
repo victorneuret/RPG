@@ -13,9 +13,12 @@ SRC	=	src/args.c                                                                
 		src/dungeon/set_room.c                                                                              \
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
+		src/dungeon/portal.c										    \
 		src/enemies/enemies.c                                                                               \
 		src/enemies/enemy_ai.c                                                                              \
 		src/enemies/enemy_list.c                                                                            \
+		src/enemies/enemy_bars.c                                                                            \
+		src/enemies/enemy_death.c                                                                           \
 		src/game/backgrounds.c                                                                              \
 		src/game/display/fps.c                                                                              \
 		src/game/events.c                                                                                   \
@@ -86,12 +89,15 @@ SRC	=	src/args.c                                                                
 		src/game/weather/rain.c                                                                             \
 		src/game/weather/snow.c                                                                             \
 		src/game/weather/weather.c                                                                          \
+		src/game/save/save.c                                                                                \
 		src/intro/intro.c                                                                                   \
 		src/game/music/init_music.c                                                                         \
 		src/game/music/music_manager.c                                                                      \
 		src/game/music/sfx_manager.c                                                                        \
 		src/my_rpg.c                                                                                        \
 		src/level/level.c                                                                                   \
+		src/pause/init_pause.c										    \
+		src/pause/render_pause.c									    \
 		src/player/actions.c                                                                                \
 		src/player/draw_dash.c                                                                              \
 		src/player/door_action.c                                                                            \
@@ -109,8 +115,10 @@ SRC	=	src/args.c                                                                
 		src/interaction/textbox.c									    \
 		src/interaction/quest.c										    \
 		src/skill_tree/draw_skill_tree.c								    \
+		src/skill_tree/update_pos.c									    \
 		src/skill_tree/init_skill_tree.c								    \
 		src/skill_tree/skill_hp.c									    \
+		src/skill_tree/skill_weapon.c									    \
 		src/stats_menu/draw_stat_menu.c									    \
 		src/stats_menu/init_stat_menu.c									    \
 		src/stats_menu/update_stat_menu.c								    \
@@ -176,13 +184,14 @@ CPPFLAGS+=	-I./include                                                          
 		-I./include/player                                                                                  \
 		-I./include/interaction                                                                             \
 		-I./include/level                                                                                   \
+		-I./include/pause										    \
 		-I./include/player                                                                                  \
 		-I./include/utils                                                                                   \
 		-I./include/utils/csfml                                                                             \
 		-I./include/utils/nbr                                                                               \
 		-I./include/window                                                                                  \
-		-I./include/xml                                                                                      \
-		-I./include/lib
+		-I./include/xml                                                                                     \
+		-I./extern_libs
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -191,7 +200,7 @@ CC	=	gcc
 CFLAGS	+=	-Wall -Wextra
 
 LDFLAGS	+=	-lm -lc_graph_prog
-LDFLAGS +=	-L./lib -lxml2
+LDFLAGS +=	-L./extern_libs -lxmllib
 
 all:	$(NAME)
 
@@ -200,6 +209,12 @@ all:	$(NAME)
 		@$(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@ $<
 
 $(NAME):	$(OBJ)
+		@make -j --no-print-directory -C extern_libs
+		@echo -en "Linking $(NAME) ..."
+		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
+		@echo -e " Done"
+
+renolib:	clean $(OBJ)
 		@echo -en "Linking $(NAME) ..."
 		@$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
 		@echo -e " Done"
@@ -207,11 +222,13 @@ $(NAME):	$(OBJ)
 clean:
 		@echo -en "Cleaning $(NAME) ..."
 		@rm -f $(OBJ)
+		@make clean --no-print-directory -C extern_libs
 		@echo -e " Done"
 
 fclean:		clean
 		@echo -en "FCleaning $(NAME) ..."
 		@rm -f $(NAME) tests_run
+		@make fclean --no-print-directory -C extern_libs
 		@echo -e " Done"
 
 re:		fclean all
@@ -228,8 +245,4 @@ tests_run:
 		@echo -e " Done"
 		./tests_run
 
-check_compilation:	re valgrind tests_run
-		@make --no-print-directory clean_coverage
-		@make --no-print-directory fclean
-
-.PHONY:	all clean fclean re tests_run clean_coverage valgrind check_compilation
+.PHONY:	all clean fclean re tests_run clean_coverage valgrind renolib
