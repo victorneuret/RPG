@@ -30,6 +30,16 @@ void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 	shape_list[type].draw_shape(sf_win, obj_ptr, NULL);
 }
 
+static void render_game_after(win_t *win)
+{
+	if (win->game_state == GAME) {
+		display_hp_bar(win);
+		display_xp_bar(win);
+		draw_player(win, win->game->player);
+		draw_mini_map(win->game->dungeon, win);
+	}
+}
+
 static void render_general(win_t *win)
 {
 	draw_particles(win);
@@ -45,11 +55,7 @@ static void render_general(win_t *win)
 	draw_text_hover_button(win->game->ui->hover_text_button, win);
 	draw_text_area(win);
 	render_object(win->sf_win, SPRITE, win->game->ui->title_page->overlay);
-	if (win->game_state == GAME) {
-		display_hp_bar(win);
-		display_xp_bar(win);
-		draw_player(win, win->game->player);
-	}
+	render_game_after(win);
 	draw_popups(win, win->game->ui->popup_list);
 	if (win->settings->display_fps)
 		draw_fps(win);

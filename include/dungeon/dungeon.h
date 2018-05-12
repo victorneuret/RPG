@@ -35,6 +35,7 @@ typedef struct room {
 
 typedef struct dungeon {
 	int8_t **rooms;
+	sfRectangleShape ***map;
 	uint8_t nb_rooms;
 	int8_t act_room;
 	bool door_open;
@@ -46,6 +47,7 @@ typedef struct dungeon {
 
 
 bool init_dungeon(win_t *win);
+bool init_mini_map(dungeon_t *dungeon);
 void free_dungeon(game_t *game);
 
 bool init_rooms(win_t *win);
@@ -58,3 +60,4 @@ void render_transition(win_t *win);
 
 bool init_portal(dungeon_t *dungeon, game_t *game);
 void draw_portal(dungeon_t *dungeon, win_t *win);
+void draw_mini_map(dungeon_t *dungeon, win_t *win);

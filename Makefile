@@ -14,6 +14,7 @@ SRC	=	src/args.c                                                                
 		src/dungeon/init_rooms.c                                                                            \
 		src/dungeon/print_dungeon.c                                                                         \
 		src/dungeon/portal.c										    \
+		src/dungeon/init_mini_map.c									    \
 		src/enemies/enemies.c                                                                               \
 		src/enemies/enemy_ai.c                                                                              \
 		src/enemies/enemy_list.c                                                                            \
