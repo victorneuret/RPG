@@ -30,11 +30,7 @@ static bool parse_xml_item(xmlNode *root, item_t *item,
 	item->delay = get_node_float(weapon_node, "delay");
 	item->rate = get_node_int(weapon_node, "rate");
 	item->sprite = create_sprite(tmp->texture);
-	if (str_eq(item->name, "Bubble")) {
-		item->pos = (sfVector2f){1920 / 2, 1080 / 2};
-		sfSprite_setPosition(item->sprite, item->pos);
-	} else
-		item->pos = (sfVector2f){0, 0};
+	item->pos = (sfVector2f){0, 0};
 	sfSprite_setOrigin(item->sprite,
 				(sfVector2f){ITEM_SIZE / 2, ITEM_SIZE / 2});
 	item->droped = true;

@@ -42,10 +42,6 @@ void start_game(win_t *win)
 	init_skill(win->game->stats_menu->skill_tree, win->game->textures);
 	for (uint8_t i = 0; i < INVENTORY_NB; i++)
 		win->game->player->inventory->item[i] = NULL;
-	if (win->game->player->inventory->item_list[0].droped) {
-		win->game->player->inventory->item_list[0].pos =
-					(sfVector2f){1920 / 2, 1080 / 2};
-	}
 	reset_npc(win->game->npc, win->game->npc->quest);
 }
 

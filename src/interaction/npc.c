@@ -47,17 +47,20 @@ void npc_interaction(win_t *win)
 {
 	npc_t *npc = win->game->npc;
 	uint8_t id = npc->quest_id;
+	item_t *item_list = win->game->player->inventory->item_list;
 
 	check_interaction(win, npc);
 	if (npc->elem > npc->quest[id].diag_elem && !npc->quest[id].quest_popup
 		&& npc->quest[id].weapon_quest != NONE_WEAPON_QUEST) {
 			create_popup(win->game->ui, "New quest.", INFO);
-			npc->quest[npc->quest_id].quest_popup = true;
+			npc->quest[id].quest_popup = true;
 	}
-	if (npc->elem > npc->quest[npc->quest_id].diag_elem
-		&& npc->quest[npc->quest_id].state
-		&& win->game->player->inventory->item[0]) {
-		open_door(win);
+	if (npc->elem > npc->quest[id].diag_elem && id == 0) {
+		item_list[0].pos = (sfVector2f){1920 / 2, 1080 / 2};
+		sfSprite_setPosition(item_list[0].sprite, item_list[0].pos);
+	}
+	if (npc->elem > npc->quest[id].diag_elem
+		&& npc->quest[id].state) {
 		npc->quest_id++;
 		npc->elem = 0;
 	}
@@ -88,12 +91,18 @@ static void manage_npc_interaction(uint8_t id, npc_t *npc, win_t *win)
 
 static void check_current_quest(win_t *win, npc_t *npc)
 {
+	if (npc->quest[npc->quest_id].weapon_quest == NONE_WEAPON_QUEST
+		&& npc->quest_id == 0
+		&& win->game->player->inventory->item[0]) {
+			open_door(win);
+			npc->quest[npc->quest_id++].state = true;
+	}
 	if (npc->quest[npc->quest_id].weapon_quest != NONE_WEAPON_QUEST
 		&& npc->quest[npc->quest_id].kill <= 0) {
-			npc->quest[npc->quest_id++].state = true;
-			npc->quest[npc->quest_id].last_quest = true;
-			create_popup(win->game->ui, "Quest complete!", SUCCESS);
-			npc->elem = 0;
+		npc->quest[npc->quest_id++].state = true;
+		npc->quest[npc->quest_id].last_quest = true;
+		create_popup(win->game->ui, "Quest complete!", SUCCESS);
+		npc->elem = 0;
 	}
 }
 
