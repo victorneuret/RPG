@@ -88,7 +88,7 @@ void create_enemy(player_t *player, enemy_list_t **enemy_list,
 	enemy->speed = random_enemy->speed;
 	enemy->speed += (enemy->speed / 5) *
 				(player->level > 6 ? 6 : player->level);
-	enemy->pos = (sfVector2f) {rand_int(200, 1600), rand_int(200, 800)};
+	enemy->pos = (sfVector2f) {rand_int(600, 1400), rand_int(400, 600)};
 	enemy->shape = create_enemy_shape(enemy->pos, enemy->type);
 	if (!enemy->shape) {
 		free(enemy);
