@@ -64,7 +64,8 @@ static bool alloc_skill_tree(skill_tree_t *tree)
 	tree->dash->distance = DASH_DISTANCE;
 	tree->dash->delay = DASH_DELAY;
 	tree->heal = (heal_t) {0};
-	if (!tree->skill)
+	tree->heal.timer = sfClock_create();
+	if (!tree->skill || !tree->heal.timer)
 		return false;
 	for (size_t i = 0; i < 4; i++) {
 		tree->skill[i] = malloc(sizeof(skill_t));

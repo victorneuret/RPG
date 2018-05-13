@@ -15,11 +15,6 @@ void heal_player(win_t *win, heal_t *heal)
 {
 	const player_t *player = win->game->player;
 
-	if (!heal->timer) {
-		heal->timer = sfClock_create();
-		if (!heal->timer)
-			return;
-	}
 	if (!heal->unlocked || player->hp->value >= player->hp->max_value)
 		return;
 	if (sfTime_asSeconds(sfClock_getElapsedTime(heal->timer))
