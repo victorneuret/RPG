@@ -11,6 +11,8 @@
 #include "key_pressed_functions.h"
 #include "hud.h"
 #include "npc.h"
+#include "heal.h"
+#include "stats_menu.h"
 
 void button_a(win_t *win, bool press)
 {
@@ -53,7 +55,7 @@ void button_b(win_t *win, bool press)
 	}
 }
 
-void button_x(__attribute__((unused)) win_t *win, bool press)
+void button_x(win_t *win, bool press)
 {
 	static bool pressed = false;
 
@@ -62,6 +64,7 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 		return;
 	} else if (!pressed && press) {
 		pressed = true;
+		heal_player(win, &win->game->stats_menu->skill_tree->heal);
 	}
 }
 

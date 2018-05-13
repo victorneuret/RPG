@@ -19,7 +19,6 @@ typedef struct render_window win_t;
 typedef struct textures textures_t;
 typedef struct checkbox checkbox_t;
 
-/* Functions */
 void checkbox_fullscreen(win_t *win, checkbox_t *checkbox);
 void change_resolution(win_t *win, checkbox_t *checkbox);
 
@@ -54,9 +53,9 @@ typedef struct {
 static const checkbox_declaration_t checkbox_declaration[] = {
 	{
 		OPTION,
-		(sfIntRect) {0, 0, 300, 70},
-		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 560},
+		(sfIntRect) {900, 70, 300, 70},
+		(sfIntRect) {900, 70, 300, 70},
+		(sfVector2f) {1250, 560},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
@@ -64,9 +63,9 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 	},
 	{
 		OPTION,
-		(sfIntRect) {0, 0, 300, 70},
-		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 630},
+		(sfIntRect) {0, 70, 300, 70},
+		(sfIntRect) {300, 70, 300, 70},
+		(sfVector2f) {1250, 630},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
@@ -84,7 +83,6 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 	}
 };
 
-/* Checkbox */
 void checkbox_click_animation(checkbox_t *checkbox);
 void checkbox_click_released(win_t *win, const sfEvent *event);
 void checkbox_click_pressed(win_t *win, const sfEvent *event);

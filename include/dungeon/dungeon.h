@@ -45,7 +45,6 @@ typedef struct dungeon {
 	sfSprite *portal;
 } dungeon_t;
 
-
 bool init_dungeon(win_t *win);
 bool init_mini_map(dungeon_t *dungeon);
 void free_dungeon(game_t *game);

@@ -8,11 +8,11 @@
 NAME	=	my_rpg
 
 SRC	=	src/args.c										\
+		src/custom/custom_player.c								\
 		src/dungeon/free_dungeon.c								\
 		src/dungeon/init_dungeon.c								\
 		src/dungeon/set_room.c									\
 		src/dungeon/init_rooms.c								\
-		src/dungeon/print_dungeon.c								\
 		src/dungeon/portal.c									\
 		src/dungeon/init_mini_map.c								\
 		src/enemies/enemies.c									\
@@ -26,7 +26,6 @@ SRC	=	src/args.c										\
 		src/game/events.c									\
 		src/game/events_functions/basic_events.c						\
 		src/game/events_functions/exit_intro.c							\
-		src/game/events_functions/joystick_events.c						\
 		src/game/gamepad/buttons/joystick_button_abxy.c						\
 		src/game/gamepad/buttons/joystick_button_arrow.c					\
 		src/game/gamepad/buttons/joystick_button_lb_rb.c					\
@@ -75,6 +74,7 @@ SRC	=	src/args.c										\
 		src/game/ui/text_area/init_text_area.c							\
 		src/game/ui/text_area/text_area_click.c							\
 		src/game/ui/text_area/text_area_write.c							\
+		src/game/ui/slider/slider.c								\
 		src/game/weather/rain.c									\
 		src/game/weather/snow.c									\
 		src/game/weather/weather.c								\
@@ -91,6 +91,7 @@ SRC	=	src/args.c										\
 		src/particles/effects/particle_shotgun.c						\
 		src/particles/effects/particle_rifle.c							\
 		src/particles/effects/particle_xp.c							\
+		src/particles/effects/particle_heal.c							\
 		src/particles/effects/particle_explosion.c						\
 		src/particles/effects/particle_fire.c							\
 		src/particles/effects/particle_stars.c							\
@@ -101,6 +102,7 @@ SRC	=	src/args.c										\
 		src/pause/init_pause.c									\
 		src/pause/render_pause.c								\
 		src/player/actions.c									\
+		src/player/heal.c									\
 		src/player/dash.c									\
 		src/player/door_action.c								\
 		src/player/door_transition.c								\

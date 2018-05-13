@@ -16,26 +16,28 @@
 #include "particle_manager.h"
 #include "coord_utils.h"
 
-void update_particle_xp(win_t *win,
+void update_particle_heal(win_t *win,
 			particle_t *particle, uint64_t current_time)
 {
 	const float new_speed = 1700.f;
-	sfVector2f player_pos = sfSprite_getPosition(win->game->player->sprite);
+	sfVector2f bar_pos = sfRectangleShape_getPosition(
+				win->game->player->hp->bar);
 	sfVector2f particle_pos = particle->pos;
 	sfVector2f dir;
 
 	if (current_time < 500)
 		return;
-	dir = get_direction(player_pos, particle_pos);
+	dir = get_direction(bar_pos, particle_pos);
 	particle->speed = (sfVector2f) {dir.x * new_speed, dir.y * new_speed};
-	if (distance(player_pos, particle_pos) < 42) {
+	if (distance(bar_pos, particle_pos) < 42) {
 		particle->lifetime_ms = 0;
-		win->game->player->xp->value += 1;
+		win->game->player->hp->value += 1;
 	}
 }
 
 static particle_t *create_particle(sfVector2f origin)
 {
+	static uint64_t count = 0;
 	const float angle = (float) rand_int(1, 360) * (M_PI / 180.f);
 	const float speed = (float) rand_int(200, 350);
 	particle_t *particle = my_calloc(1, sizeof(particle_t));
@@ -43,9 +45,9 @@ static particle_t *create_particle(sfVector2f origin)
 	if (!particle)
 		return NULL;
 	particle->pos = origin;
-	particle->color = hex_to_rgb(0xFFEB3B);
+	particle->color = ++count % 2 == 0 ? sfWhite : hex_to_rgb(0xFF1111);
 	particle->alive = true;
-	particle->update = &update_particle_xp;
+	particle->update = &update_particle_heal;
 	particle->lifetime_ms = (uint64_t) -1;
 	particle->size = rand_int(3, 6);
 	particle->speed = (sfVector2f) {cos(angle) * speed,
@@ -54,7 +56,7 @@ static particle_t *create_particle(sfVector2f origin)
 	return particle;
 }
 
-void particle_xp(win_t *win, uint16_t count, sfVector2f origin)
+void particle_heal(win_t *win, uint16_t count, sfVector2f origin)
 {
 	particle_group_t *group = get_particle_group(win->particle_manager);
 	particle_t **p_list = my_calloc(count + 1, sizeof(particle_t *));

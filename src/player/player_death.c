@@ -16,7 +16,7 @@
 
 static const char *GAME_OVER_FONT = "res/fonts/isaac_sans.ttf";
 
-sfText *init_game_over(void)
+sfText *init_game_over_text(void)
 {
 	sfText *text = sfText_create();
 	sfFont *font = sfFont_createFromFile(GAME_OVER_FONT);
@@ -31,6 +31,17 @@ sfText *init_game_over(void)
 	return text;
 }
 
+sfRectangleShape *init_game_over_shape(void)
+{
+	sfRectangleShape *shape = sfRectangleShape_create();
+
+	if (!shape)
+		return NULL;
+	sfRectangleShape_setSize(shape, (sfVector2f) {WIN_MAX_W, WIN_MAX_H});
+	sfRectangleShape_setFillColor(shape, sfColor_fromRGBA(0, 0, 0, 150));
+	return shape;
+}
+
 void player_is_alive(win_t *win, bar_t *hp)
 {
 	sfColor color;
@@ -40,7 +51,8 @@ void player_is_alive(win_t *win, bar_t *hp)
 		color = sfRectangleShape_getFillColor(player->shade);
 		color.a = 0;
 		sfRectangleShape_setFillColor(player->shade, color);
-		render_object(win->sf_win, TEXT, win->game->player->game_over);
+		render_object(win->sf_win, SHAPE, player->loose_shape);
+		render_object(win->sf_win, TEXT, player->loose_text);
 		player->alive = false;
 	}
 

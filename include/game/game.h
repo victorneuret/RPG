@@ -33,8 +33,11 @@ typedef struct npc npc_t;
 typedef struct stats_menu stats_menu_t;
 typedef struct enemy enemy_t;
 typedef struct pause pause_t;
+<<<<<<< HEAD
 typedef struct save save_t;
 static const float GRAVITY = 500;
+=======
+>>>>>>> master
 
 typedef struct game {
 	textures_t *textures;

@@ -16,6 +16,7 @@
 #include "stats_menu.h"
 #include "pause.h"
 #include "dungeon.h"
+#include "slide_bar.h"
 
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 {
@@ -86,6 +87,9 @@ void render(win_t *win)
 				win->game->ui->title_page->menu_paper);
 		render_object(win->sf_win, SPRITE,
 				win->game->ui->title_page->options);
+		break;
+	case CUSTOM:
+		render_custom_player(win);
 		break;
 	case INTRO:
 		render_intro(win, win->intro);

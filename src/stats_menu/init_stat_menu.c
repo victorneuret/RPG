@@ -23,7 +23,7 @@ static bool init_stats_sprite(stats_t *stats, textures_t *textures)
 	if (!texture || !tx_player)
 		return false;
 	stats->player = get_sprite_texture_rect(tx_player,
-				&(sfIntRect){0, 530, 128, 138});
+				&(sfIntRect){0, 530, 128, 130});
 	stats->xp_sprite = get_sprite_texture_rect(texture,
 				&(sfIntRect){256, 0, 128, 128});
 	stats->hp_sprite = get_sprite_texture_rect(texture,
