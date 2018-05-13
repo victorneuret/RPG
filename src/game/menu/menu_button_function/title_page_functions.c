@@ -55,11 +55,6 @@ void start_game(win_t *win)
 	reset_npc(win->game->npc, win->game->npc->quest);
 }
 
-void error_test(win_t *win)
-{
-	create_popup(win->game->ui, "This button is useless", ERROR);
-}
-
 void to_option_menu(win_t *win)
 {
 	play_sfx(win->game->sounds, SWITCH_TITLE);

@@ -10,7 +10,6 @@
 #include "render_window.h"
 
 void start_game(win_t *win);
-void error_test(win_t *win);
 void to_option_menu(win_t *win);
 void load_game(win_t *win);
 void custom_to_play(win_t *win);
