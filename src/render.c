@@ -17,6 +17,8 @@
 #include "pause.h"
 #include "dungeon.h"
 #include "slide_bar.h"
+#include "heal.h"
+#include "stats_menu.h"
 
 void render_object(sfRenderWindow *sf_win, shape_type type, void *obj_ptr)
 {
@@ -71,6 +73,7 @@ static void render_game(win_t *win)
 		draw_npc(win, win->game->npc);
 		draw_enemies(win->sf_win, win->game->enemy_list);
 		draw_portal(win->game->dungeon, win);
+		print_heal(win, &win->game->stats_menu->skill_tree->heal);
 		render_transition(win);
 	}
 	render_general(win);
