@@ -37,7 +37,8 @@ void start_game(win_t *win)
 
 	change_state(win, GAME);
 	win->game->dungeon->cleared = false;
-	win->game->dungeon->door_open = false;
+	win->game->player->level = 1;
+	win->game->player->alive = true;
 	load_level(&win->game->level, DUNGEON, win);
 	xml_player(win->game->player);
 	init_hud(win->game->player);

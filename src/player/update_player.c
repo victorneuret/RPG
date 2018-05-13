@@ -92,6 +92,8 @@ void update_player(win_t *win, player_t *player)
 	static uint8_t dir = TOP;
 	const float shooting = player->shooting ? 1.25f : 1.f;
 
+	if (!player->alive)
+		return;
 	if ((win->joystick->lx != 0 || win->joystick->ly != 0) &&
 		sfClock_getElapsedTime(player->timer).microseconds > 60000
 					* shooting) {

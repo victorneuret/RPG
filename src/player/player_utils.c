@@ -14,7 +14,7 @@ void player_touched(player_t *player)
 {
 	sfColor color;
 
-	if (player->touched) {
+	if (player->touched && player->hp->value > 0) {
 		color = sfRectangleShape_getFillColor(player->shade);
 		color.a -= 5;
 		if (color.a <= 5) {
