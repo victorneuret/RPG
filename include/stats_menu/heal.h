@@ -14,6 +14,7 @@
 #include "render_window.h"
 
 typedef struct heal {
+	sfClock *timer;
 	uint16_t delay_sec;
 	float prct;
 } heal_t;
