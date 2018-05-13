@@ -36,7 +36,8 @@ typedef struct player {
 	sfClock *timer;
 	sfClock *immu;
 	sfSprite *sprite;
-	sfText *game_over;
+	sfText *loose_text;
+	sfRectangleShape *loose_shape;
 	float speed;
 	uint8_t level;
 	uint16_t skill_point;
@@ -73,5 +74,6 @@ bool is_player_immune(sfClock *timer);
 void player_dash(win_t *win, player_t *player, bool press, bool pressed);
 void player_touched(player_t *player);
 
-sfText *init_game_over(void);
+sfText *init_game_over_text(void);
+sfRectangleShape *init_game_over_shape(void);
 void player_is_alive(win_t *win, bar_t *hp);
