@@ -31,10 +31,13 @@ void render_custom_player(win_t *win)
 	player_t *player = win->game->player;
 
 	if (set_player) {
-		sfSprite_setPosition(player->sprite, (sfVector2f) {WIN_MAX_W / 2, WIN_MAX_H / 4});
-		sfSprite_setTextureRect(player->sprite, (sfIntRect) {0, 530, 128, 130});
+		sfSprite_setPosition(player->sprite, (sfVector2f)
+				{WIN_MAX_W / 2 - 64, WIN_MAX_H / 4});
 		set_player = false;
 	}
+	sfSprite_setTextureRect(player->sprite, (sfIntRect)
+			{sfSprite_getTextureRect(player->sprite).left, 530,
+			128, 130});
 	render_object(win->sf_win, SHAPE, win->game->ui->custom_shape);
 	if (sfClock_getElapsedTime(player->timer).microseconds > 300000) {
 		animate_sprite(player->sprite,
