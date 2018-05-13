@@ -169,7 +169,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 154, 128, 128},
 		(sfVector2f) {1515, 365},
-		"Dash: level 3\n+2 meters\nUnlock at level 11",
+		"Dash: level 3\n+2 meters\n-2 seconds\nUnlock at level 11",
 		0x00000000,
 		0xF5F5F522,
 		&dash_level_three
