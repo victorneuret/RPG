@@ -26,6 +26,7 @@ typedef struct dash {
 	bool display;
 	bool unlocked;
 	sfSprite *sprite;
+	sfText *text;
 	uint32_t current_time;
 } dash_t;
 
