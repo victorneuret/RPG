@@ -11,8 +11,7 @@
 
 #include "render.h"
 
-static const char *FONT_PATH __attribute__((unused))
-					= "res/fonts/space_mono_regular.ttf";
+static const char FONT_PATH[] = "res/fonts/space_mono_regular.ttf";
 
 static const uint16_t TEXTBOX_W = 900;
 static const uint16_t TEXTBOX_H = 100;
