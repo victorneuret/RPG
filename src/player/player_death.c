@@ -13,6 +13,7 @@
 #include "render.h"
 #include "render_window.h"
 #include "change_state.h"
+#include "save.h"
 #include "text_utils.h"
 
 static const char *GAME_OVER_FONT = "res/fonts/isaac_sans.ttf";
@@ -49,7 +50,7 @@ void player_is_alive(win_t *win, bar_t *hp)
 	player_t *player = win->game->player;
 
 	if (hp->value == 0 && win->game_state == GAME) {
-		remove("rpg.save");
+		remove(SAVE_FILE);
 		color = sfRectangleShape_getFillColor(player->shade);
 		color.a = 0;
 		sfRectangleShape_setFillColor(player->shade, color);
