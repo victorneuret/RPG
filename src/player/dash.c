@@ -54,13 +54,19 @@ void player_dash(win_t *win, player_t *player, bool press, bool pressed)
 
 bool init_dash_sprite(skill_tree_t *skill_tree, sfTexture *tex)
 {
+	sfFont *ft = sfFont_createFromFile("res/fonts/isaac_sans.ttf");
+
 	skill_tree->dash->sprite =
 		get_sprite_texture_rect(tex, &(sfIntRect){256, 640, 128, 128});
-	if (!skill_tree->dash->sprite)
+	if (!skill_tree->dash->sprite || !ft)
 		return false;
 	sfSprite_setPosition(skill_tree->dash->sprite, (sfVector2f){160, 950});
 	sfSprite_setScale(skill_tree->dash->sprite, (sfVector2f){0.4, 0.4});
 	sfSprite_setColor(skill_tree->dash->sprite, hex_to_rgba(0xCDE6FF96));
+	skill_tree->dash->text = init_text(ft, "0", (sfVector2f){175, 920}, 30);
+	if (!skill_tree->dash->text)
+		return false;
+	sfText_setStyle(skill_tree->dash->text, sfTextBold);
 	return true;
 }
 
@@ -69,6 +75,11 @@ void draw_dash(win_t *win, player_t *player)
 	sfVector2f pos = player->pos;
 	dash_t *dash = win->game->stats_menu->skill_tree->dash;
 
+	if (dash->unlocked && dash->current_time < dash->delay) {
+		sfText_setString(dash->text,
+			int_to_str(dash->delay - dash->current_time));
+		sfRenderWindow_drawText(win->sf_win, dash->text, 0);
+	}
 	render_object(win->sf_win, SPRITE, dash->sprite);
 	if (!dash->display)
 		return;
