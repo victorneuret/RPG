@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "hud.h"
 #include "render.h"
@@ -48,6 +49,7 @@ void player_is_alive(win_t *win, bar_t *hp)
 	player_t *player = win->game->player;
 
 	if (hp->value == 0 && win->game_state == GAME) {
+		remove("rpg.save");
 		color = sfRectangleShape_getFillColor(player->shade);
 		color.a = 0;
 		sfRectangleShape_setFillColor(player->shade, color);
