@@ -205,7 +205,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1715, 365},
-		"Heal: level 3\n+200 HP / -2s\nUnlock at level 11",
+		"Heal: level 3\nHeals 40% of max HP\nUnlock at level 11",
 		0x00000000,
 		0xF5F5F522,
 		&heal_level_three
@@ -214,7 +214,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1715, 565},
-		"Heal: level 2\n+200 HP\nUnlock at level 5",
+		"Heal: level 2\nHeals 30% of max HP\nUnlock at level 5",
 		0x00000000,
 		0xF5F5F522,
 		&heal_level_two
@@ -223,7 +223,7 @@ static const button_declaration_t buttons_declaration[] = {
 		STATS,
 		(sfIntRect) {0, 128, 128, 128},
 		(sfVector2f) {1715, 765},
-		"Heal: level 1\nUnlock heal (200 HP)\nUnlock at level 2",
+		"Heal: level 1\nHeals 20% of max HP\nUnlock at level 2",
 		0x00000000,
 		0xF5F5F522,
 		&heal_level_one
