@@ -12,8 +12,7 @@
 
 #include "dungeon.h"
 
-static const char *rooms_setup[ROOM_HEIGHT][ROOM_WIDTH]
-	__attribute__((unused)) = {
+static const char * const rooms_setup[ROOM_HEIGHT][ROOM_WIDTH] = {
 	{
 		"*************",
 		"*************",

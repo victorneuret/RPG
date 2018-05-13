@@ -39,7 +39,7 @@ enum {
 	AK47
 };
 
-static const item_actions_t item_actions[] __attribute__((unused)) = {
+static const item_actions_t item_actions[] = {
 	{"gun", "Bubble", WP_GUN, 1, 0, &create_shot},
 	{"shotgun", "The Shotgun", WP_SHOTGUN, 20, 0, &shotgun},
 	{"flamethrower", "Flamethrower", WP_FLAMETHROWER, 15, 350.f,
