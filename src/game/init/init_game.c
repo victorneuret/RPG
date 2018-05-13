@@ -20,6 +20,7 @@
 #include "stats_menu.h"
 #include "xml.h"
 #include "pause.h"
+#include "slide_bar.h"
 
 static bool init_ui(win_t *win)
 {
@@ -37,7 +38,8 @@ static bool init_ui(win_t *win)
 	if (!win->game->ui->buttons || !win->game->ui->text_area
 		|| !win->game->ui->hover_text_button
 		|| !win->game->ui->title_page || !win->game->ui->popup_list
-		|| !win->game->ui->slider || !win->game->npc)
+		|| !win->game->ui->slider || !win->game->npc
+		|| !init_slide_bar(win->game->ui))
 		return false;
 	return true;
 }

@@ -17,4 +17,4 @@ static const uint16_t TEXTBOX_W = 900;
 static const uint16_t TEXTBOX_H = 100;
 static const uint16_t TEXTBOX_POS_X = 510;
 static const uint16_t TEXTBOX_POS_Y = 830;
-static const uint8_t NB_QUEST_STRUCT = 7;
+static const uint8_t NB_QUEST_STRUCT = 9;

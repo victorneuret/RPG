@@ -10,8 +10,8 @@
 #include "events.h"
 #include "keybinds.h"
 #include "particle_explosion.h"
-
 #include "mouse_utils.h"
+#include "slide_bar.h"
 
 void close_win_evt(win_t *win, __attribute__((unused)) sfEvent *event)
 {
@@ -30,10 +30,11 @@ void key_pressed(win_t *win, sfEvent *event)
 	}
 }
 
-void mouse_click(win_t *win, __attribute__((unused)) sfEvent *event)
+void mouse_click(win_t *win, sfEvent *event)
 {
 	if (text_area_click(win))
 		return;
+	slide_bar_click(win->game->ui->slide_bar, win, 1);
 	mouse_moved(win, event);
 	button_click_pressed(win, event);
 	checkbox_click_pressed(win, event);
@@ -44,6 +45,7 @@ void mouse_click_released(win_t *win, sfEvent *event)
 {
 	button_click_released(win, event);
 	checkbox_click_released(win, event);
+	slide_bar_click(win->game->ui->slide_bar, win, 0);
 }
 
 void on_resize(win_t *win, __attribute__((unused)) sfEvent *event)

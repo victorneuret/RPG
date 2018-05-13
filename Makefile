@@ -75,6 +75,7 @@ SRC	=	src/args.c										\
 		src/game/ui/text_area/init_text_area.c							\
 		src/game/ui/text_area/text_area_click.c							\
 		src/game/ui/text_area/text_area_write.c							\
+		src/game/ui/slider/slider.c								\
 		src/game/weather/rain.c									\
 		src/game/weather/snow.c									\
 		src/game/weather/weather.c								\
