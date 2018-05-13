@@ -17,6 +17,7 @@
 #include "inventory.h"
 #include "quest.h"
 #include "skills.h"
+#include "popup.h"
 
 bool save_exist(save_t *save)
 {
@@ -24,6 +25,7 @@ bool save_exist(save_t *save)
 
 	if (save->fd == -1)
 		return false;
+	close(save->fd);
 	return true;
 }
 
@@ -116,24 +118,26 @@ bool open_save(win_t *win, save_t *save)
 {
 	char *buffer;
 
+	save->fd = open("rpg.save", O_RDWR);
 	if (save->fd == -1)
 		return false;
 	if (read(save->fd, &save->save_elements, sizeof(save_elements_t)) !=
-		SAVE_SIZE || read(save->fd, &buffer, 1) > 0)
+				SAVE_SIZE || read(save->fd, &buffer, 1) > 0)
 		return false;
 	insert_struct(win, &save->save_elements);
 	close(save->fd);
 	return true;
 }
 
-bool create_save(win_t *win, save_t *save)
+void create_save(win_t *win, save_t *save)
 {
 	save->fd = open("rpg.save", O_RDWR | O_TRUNC | O_CREAT, 0644);
 
-	if (save->fd == -1)
-		return false;
+	if (save->fd == -1) {
+		create_popup(win->game->ui, "Can't write save file", ERROR);
+		return;
+	}
 	fill_struct(win, &save->save_elements);
 	write(save->fd, &save->save_elements, sizeof(save_elements_t));
 	close(save->fd);
-	return true;
 }

@@ -37,7 +37,6 @@ bool my_rpg_loop(win_t *win)
 		sfRenderWindow_display(win->sf_win);
 		update_clock(win);
 	}
-	create_save(win, &win->game->save);
 	unload_level(win->game->level);
 	free_game(win->game);
 	return true;

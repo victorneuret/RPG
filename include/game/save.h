@@ -32,5 +32,5 @@ typedef struct save {
 } save_t;
 
 bool save_exist(save_t *save);
-bool create_save(win_t *win, save_t *save);
+void create_save(win_t *win, save_t *save);
 bool open_save(win_t *win, save_t *save);
