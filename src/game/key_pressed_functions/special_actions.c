@@ -26,7 +26,7 @@ void add_gun(win_t *win)
 	static int i = GUN;
 
 	if (!win->game->player->inventory->item_list[i].droped)
-		i = (i + 1) % NB_ITEMS;
+		i = (i + 1) % (NB_ITEMS - 1);
 	add_item(win, win->game->player->inventory,
 				win->game->player->inventory->selected, i);
 }

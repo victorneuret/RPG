@@ -58,8 +58,8 @@ void add_item(win_t *win, inventory_t *inventory, uint8_t place,
 	inventory->item[place]->pos = win->game->player->pos;
 	sfSprite_setPosition(inventory->item[place]->sprite,
 						inventory->item[place]->pos);
-	inventory->item_list[item_nb].droped = false;
 	inventory->item[place] = &inventory->item_list[item_nb];
+	inventory->item[place]->droped = false;
 }
 
 void drop_item(win_t *win, inventory_t *inventory, uint8_t place)
