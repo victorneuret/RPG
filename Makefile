@@ -90,6 +90,7 @@ SRC	=	src/args.c										\
 		src/particles/effects/particle_shotgun.c						\
 		src/particles/effects/particle_rifle.c							\
 		src/particles/effects/particle_xp.c							\
+		src/particles/effects/particle_heal.c							\
 		src/particles/effects/particle_explosion.c						\
 		src/particles/effects/particle_fire.c							\
 		src/particles/effects/particle_stars.c							\
@@ -100,6 +101,7 @@ SRC	=	src/args.c										\
 		src/pause/init_pause.c									\
 		src/pause/render_pause.c								\
 		src/player/actions.c									\
+		src/player/heal.c									\
 		src/player/dash.c									\
 		src/player/door_action.c								\
 		src/player/door_transition.c								\

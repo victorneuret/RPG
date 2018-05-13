@@ -11,6 +11,7 @@
 
 #include "hud.h"
 #include "dash.h"
+#include "heal.h"
 
 typedef struct stats {
 	sfSprite *player;
@@ -40,6 +41,7 @@ typedef struct skill_tree {
 	sfText *passive;
 	skill_t **skill;
 	dash_t *dash;
+	heal_t heal;
 } skill_tree_t;
 
 typedef struct stats_menu {

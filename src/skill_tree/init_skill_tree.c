@@ -9,6 +9,7 @@
 #include "sprite_utils.h"
 #include "texture.h"
 #include "dash.h"
+#include "heal.h"
 
 static sfSprite *init_skill_sprite(uint16_t x_rect, uint8_t nb,
 		textures_t *textures, size_t i)
@@ -62,6 +63,8 @@ static bool alloc_skill_tree(skill_tree_t *tree)
 	tree->dash->unlocked = false;
 	tree->dash->distance = DASH_DISTANCE;
 	tree->dash->delay = DASH_DELAY;
+	tree->heal.prct = 0.15f;
+	tree->heal.delay_sec = 20;
 	if (!tree->skill)
 		return false;
 	for (size_t i = 0; i < 4; i++) {
