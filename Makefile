@@ -112,6 +112,7 @@ SRC	=	src/args.c										\
 		src/player/drop_inventory.c								\
 		src/player/init_inventory.c								\
 		src/player/draw_inventory.c								\
+		src/player/player_death.c								\
 		src/interaction/npc.c									\
 		src/interaction/textbox.c								\
 		src/interaction/quest.c									\

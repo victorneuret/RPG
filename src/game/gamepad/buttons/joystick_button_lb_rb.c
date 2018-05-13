@@ -25,7 +25,7 @@ void button_rb(win_t *win, bool press)
 	static bool pressed = false;
 
 	win->game->player->shooting = press;
-	if (press && win->game_state == GAME)
+	if (press && win->game_state == GAME && win->game->player->alive)
 		player_shoot(win, win->game->player);
 	if (!press) {
 		pressed = false;

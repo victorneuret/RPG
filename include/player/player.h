@@ -9,6 +9,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "inventory.h"
 #include "player.h"
@@ -35,6 +36,7 @@ typedef struct player {
 	sfClock *timer;
 	sfClock *immu;
 	sfSprite *sprite;
+	sfText *game_over;
 	float speed;
 	uint8_t level;
 	uint16_t skill_point;
@@ -44,6 +46,7 @@ typedef struct player {
 	sfSprite *aim;
 	bool touched;
 	bool shooting;
+	bool alive;
 	sfRectangleShape *shade;
 	float aim_angle;
 	inventory_t *inventory;
@@ -69,3 +72,6 @@ void door_action(win_t *win, sfVector2f *pos, room_t *room);
 bool is_player_immune(sfClock *timer);
 void player_dash(win_t *win, player_t *player, bool press, bool pressed);
 void player_touched(player_t *player);
+
+sfText *init_game_over(void);
+void player_is_alive(win_t *win, bar_t *hp);

@@ -6,6 +6,7 @@
 */
 
 #include "npc.h"
+#include "hud.h"
 #include "fps.h"
 #include "intro.h"
 #include "render.h"
@@ -93,4 +94,5 @@ void render(win_t *win)
 	}
 	music_management(win->game->sounds, win->game_state);
 	render_game(win);
+	player_is_alive(win, win->game->player->hp);
 }
