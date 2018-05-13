@@ -16,7 +16,7 @@ void nuke_enemies(enemy_list_t *enemy_list)
 	if (!enemy_list)
 		return;
 	for (enemy_list_t *current = enemy_list; current;
-							current = current->next)
+				current = current->next)
 		if (current->enemy)
 			current->enemy->hp = 0;
 }
@@ -43,7 +43,7 @@ void add_enemy_to_list(enemy_list_t **enemy_list, enemy_t *enemy)
 	}
 }
 
-static void del_enemy(enemy_t *enemy)
+void del_enemy(enemy_t *enemy)
 {
 	sfSprite_destroy(enemy->sprite);
 	sfRectangleShape_destroy(enemy->bar_bg);
