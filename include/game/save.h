@@ -13,6 +13,10 @@
 #include "render_window.h"
 
 static const uint8_t SAVE_SIZE = 40;
+static const char SAVE_FILE[] = "rpg.save";
+static const char CANT_WRITE[] = "Can't write save file";
+static const char CANT_FIND[] = "Can't find save file";
+static const char CORRUPTED[] = "Save file is corrupted";
 
 typedef struct save_elements {
 	uint8_t level;

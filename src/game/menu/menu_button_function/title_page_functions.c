@@ -72,11 +72,11 @@ void to_option_menu(win_t *win)
 void load_game(win_t *win)
 {
 	if (!save_exist(&win->game->save)) {
-		create_popup(win->game->ui, "Can't find save file", ERROR);
+		create_popup(win->game->ui, CANT_FIND, ERROR);
 		return;
 	}
 	if (!open_save(win, &win->game->save)) {
-		create_popup(win->game->ui, "Save file is corrupted", ERROR);
+		create_popup(win->game->ui, CORRUPTED, ERROR);
 		return;
 	}
 	load_level(&win->game->level, DUNGEON, win);
