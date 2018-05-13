@@ -14,6 +14,7 @@
 #include "render_window.h"
 
 typedef struct heal {
+	sfSprite *sprite;
 	sfClock *timer;
 	uint16_t delay_sec;
 	float prct;
@@ -21,3 +22,4 @@ typedef struct heal {
 } heal_t;
 
 void heal_player(win_t *win, heal_t *heal);
+void print_heal(win_t *win, heal_t *heal);

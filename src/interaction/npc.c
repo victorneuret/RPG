@@ -18,6 +18,7 @@
 #include "hud.h"
 #include "music.h"
 #include "particle_xp.h"
+#include "interaction.h"
 
 static void check_interaction(win_t *win, npc_t *npc)
 {
@@ -104,6 +105,12 @@ static void check_current_quest(win_t *win, npc_t *npc)
 		create_popup(win->game->ui, "Quest complete!", SUCCESS);
 		play_sfx(win->game->sounds, END_QUEST);
 		npc->elem = 0;
+	}
+	if (npc->quest_id == (NB_QUEST_STRUCT - 1)
+			&& npc->quest[npc->quest_id].kill == 0
+			&& npc->elem > 0) {
+		create_popup(win->game->ui, "Game finished!", SUCCESS);
+		npc->quest[npc->quest_id].kill += 1;
 	}
 }
 
