@@ -35,7 +35,7 @@ void start_game(win_t *win)
 {
 	inventory_t *inventory = win->game->player->inventory;
 
-	change_state(win, GAME);
+	change_state(win, CUSTOM);
 	win->game->dungeon->cleared = false;
 	win->game->player->level = 1;
 	win->game->player->alive = true;

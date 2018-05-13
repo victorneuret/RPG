@@ -8,6 +8,7 @@
 NAME	=	my_rpg
 
 SRC	=	src/args.c										\
+		src/custom/custom_player.c								\
 		src/dungeon/free_dungeon.c								\
 		src/dungeon/init_dungeon.c								\
 		src/dungeon/set_room.c									\

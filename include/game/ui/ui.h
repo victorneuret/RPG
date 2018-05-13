@@ -28,4 +28,8 @@ typedef struct ui {
 	text_area_t *text_area;
 	title_page_t *title_page;
 	popup_list_t *popup_list;
+	sfRectangleShape *custom_shape;
 } ui_t;
+
+sfRectangleShape *init_custom_shape(void);
+void render_custom_player(win_t *win);

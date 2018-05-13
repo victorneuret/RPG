@@ -87,6 +87,9 @@ void render(win_t *win)
 		render_object(win->sf_win, SPRITE,
 				win->game->ui->title_page->options);
 		break;
+	case CUSTOM:
+		render_custom_player(win);
+		break;
 	case INTRO:
 		render_intro(win, win->intro);
 		break;

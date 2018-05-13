@@ -54,9 +54,9 @@ typedef struct {
 static const checkbox_declaration_t checkbox_declaration[] = {
 	{
 		OPTION,
-		(sfIntRect) {0, 0, 300, 70},
-		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 560},
+		(sfIntRect) {900, 70, 300, 70},
+		(sfIntRect) {900, 70, 300, 70},
+		(sfVector2f) {1250, 560},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
@@ -64,9 +64,9 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 	},
 	{
 		OPTION,
-		(sfIntRect) {0, 0, 300, 70},
-		(sfIntRect) {300, 0, 300, 70},
-		(sfVector2f) {1200, 630},
+		(sfIntRect) {0, 70, 300, 70},
+		(sfIntRect) {300, 70, 300, 70},
+		(sfVector2f) {1250, 630},
 		0x26A69AFF,
 		0x26A69ABF,
 		false,
