@@ -27,7 +27,7 @@ static sfSprite *init_skill_sprite(uint16_t x_rect, uint8_t nb,
 	if (i == 3 || i == 2) {
 		rect.left += 1;
 		rect.width -= 1;
-	}else if (i == 1)
+	} else if (i == 1)
 		rect.width -= 1;
 	sprite = get_sprite_texture_rect(texture, &rect);
 	if (!sprite)

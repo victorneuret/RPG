@@ -62,7 +62,6 @@ typedef enum stick {
 	JOYSTICK_DIRY = sfJoystickPovY
 } stick;
 
-
 typedef struct struct_gamepad_button_state {
 	joystick_button button;
 	bool state;

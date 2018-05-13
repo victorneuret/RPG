@@ -12,7 +12,6 @@ SRC	=	src/args.c										\
 		src/dungeon/init_dungeon.c								\
 		src/dungeon/set_room.c									\
 		src/dungeon/init_rooms.c								\
-		src/dungeon/print_dungeon.c								\
 		src/dungeon/portal.c									\
 		src/dungeon/init_mini_map.c								\
 		src/enemies/enemies.c									\
@@ -26,7 +25,6 @@ SRC	=	src/args.c										\
 		src/game/events.c									\
 		src/game/events_functions/basic_events.c						\
 		src/game/events_functions/exit_intro.c							\
-		src/game/events_functions/joystick_events.c						\
 		src/game/gamepad/buttons/joystick_button_abxy.c						\
 		src/game/gamepad/buttons/joystick_button_arrow.c					\
 		src/game/gamepad/buttons/joystick_button_lb_rb.c					\

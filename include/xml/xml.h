@@ -7,8 +7,6 @@
 
 #pragma once
 
-// #include "parser.h"
-
 #include <stdbool.h>
 
 #include "libxml.h"
