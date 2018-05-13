@@ -208,7 +208,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"Heal: level 3\n+200 HP / -2s\nUnlock at level 11",
 		0x00000000,
 		0xF5F5F522,
-		&heal_level_one
+		&heal_level_three
 	},
 	{
 		STATS,
@@ -226,7 +226,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"Heal: level 1\nUnlock heal (200 HP)\nUnlock at level 2",
 		0x00000000,
 		0xF5F5F522,
-		&heal_level_three
+		&heal_level_one
 	},
 	{
 		ALL,
