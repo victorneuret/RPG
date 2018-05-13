@@ -222,7 +222,7 @@ static const button_declaration_t buttons_declaration[] = {
 	{
 		CUSTOM,
 		(sfIntRect) {600, 70, 300, 70},
-		(sfVector2f) {1040, 500},
+		(sfVector2f) {1040, 750},
 		"",
 		0XBCAAA4FF,
 		0xEFEBE999,

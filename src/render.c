@@ -72,7 +72,6 @@ static void render_game(win_t *win)
 		draw_enemies(win->sf_win, win->game->enemy_list);
 		draw_portal(win->game->dungeon, win);
 		render_transition(win);
-		draw_slide_bar(win->game->ui, win);
 	}
 	render_general(win);
 }

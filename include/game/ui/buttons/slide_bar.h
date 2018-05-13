@@ -26,17 +26,17 @@ typedef struct slide_bar_def {
 
 static const slide_bar_def_t slide_bar_def[] = {
 	{
-		GAME,
+		CUSTOM,
 		(sfVector2f) {832, 500},
 		0xC62828BB
 	},
 	{
-		GAME,
+		CUSTOM,
 		(sfVector2f) {832, 550},
 		0x558B2FBB
 	},
 	{
-		GAME,
+		CUSTOM,
 		(sfVector2f) {832, 600},
 		0x1565C0BB
 	},

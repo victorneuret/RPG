@@ -12,6 +12,7 @@
 #include "player.h"
 #include "change_state.h"
 #include "color_utils.h"
+#include "slide_bar.h"
 
 sfRectangleShape *init_custom_shape(void)
 {
@@ -41,6 +42,7 @@ void render_custom_player(win_t *win)
 		sfClock_restart(player->timer);
 	}
 	render_object(win->sf_win, SPRITE, player->sprite);
+	draw_slide_bar(win->game->ui, win);
 }
 
 void custom_to_play(win_t *win)

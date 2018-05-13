@@ -43,7 +43,7 @@ static void check_slider_hit_box(slide_bar_t *slide_bar, win_t *win)
 	sfVector2f mouse = get_mouse_pos(win);
 	sfVector2f pos = {mouse.x, cursor_pos.y};
 
-	if (win->game_state != GAME)
+	if (win->game_state != CUSTOM)
 		return;
 	if (pos.x < rect.left)
 		pos.x = rect.left;
