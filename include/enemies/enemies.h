@@ -76,6 +76,8 @@ void rm_enemy_from_list(enemy_list_t **enemy_list, enemy_t *enemy);
 void nuke_enemies(enemy_list_t *enemy_list);
 
 void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node);
+void del_enemy(enemy_t *enemy);
+void wipe_enemies(enemy_list_t **enemy_list);
 
 sfRectangleShape *get_bar(sfVector2f pos, sfVector2f size, sfColor color);
 void draw_bars(sfRenderWindow *win, enemy_t const *enemy);

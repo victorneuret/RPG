@@ -68,3 +68,22 @@ void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node)
 		}
 	}
 }
+
+static void clear_list(enemy_list_t *enemy_list)
+{
+	if (!enemy_list)
+		return;
+	if (enemy_list->next)
+		clear_list(enemy_list->next);
+	if (enemy_list->enemy)
+		del_enemy(enemy_list->enemy);
+	free(enemy_list);
+}
+
+void wipe_enemies(enemy_list_t **enemy_list)
+{
+	if (!*enemy_list)
+		return;
+	clear_list(*enemy_list);
+	*enemy_list = NULL;
+}
