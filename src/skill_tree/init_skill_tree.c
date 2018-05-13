@@ -63,7 +63,7 @@ static bool alloc_skill_tree(skill_tree_t *tree)
 	tree->dash->unlocked = false;
 	tree->dash->distance = DASH_DISTANCE;
 	tree->dash->delay = DASH_DELAY;
-	tree->heal = (heal_t) {NULL, 20, 0.15f};
+	tree->heal = (heal_t) {0};
 	if (!tree->skill)
 		return false;
 	for (size_t i = 0; i < 4; i++) {

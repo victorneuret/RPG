@@ -7,11 +7,11 @@
 	<balanced>
 		<health>125</health>
 		<speed>125</speed>
-		<damages>100</damages>
+		<damages>75</damages>
 	</balanced>
 	<heavy>
 		<health>250</health>
 		<speed>100</speed>
-		<damages>150</damages>
+		<damages>100</damages>
 	</heavy>
 </enemies>

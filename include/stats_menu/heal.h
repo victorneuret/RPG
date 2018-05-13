@@ -17,6 +17,7 @@ typedef struct heal {
 	sfClock *timer;
 	uint16_t delay_sec;
 	float prct;
+	bool unlocked;
 } heal_t;
 
 void heal_player(win_t *win, heal_t *heal);

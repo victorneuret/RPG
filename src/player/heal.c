@@ -20,7 +20,7 @@ void heal_player(win_t *win, heal_t *heal)
 		if (!heal->timer)
 			return;
 	}
-	if (player->hp->value >= player->hp->max_value)
+	if (!heal->unlocked || player->hp->value >= player->hp->max_value)
 		return;
 	if (sfTime_asSeconds(sfClock_getElapsedTime(heal->timer))
 						< heal->delay_sec)
