@@ -18,6 +18,8 @@
 #include "stats_menu.h"
 #include "inventory.h"
 #include "quest.h"
+#include "save.h"
+#include "popup.h"
 
 static void reset_npc(npc_t *npc, quest_t *quest)
 {
@@ -36,6 +38,7 @@ void start_game(win_t *win)
 	inventory_t *inventory = win->game->player->inventory;
 
 	change_state(win, CUSTOM);
+	wipe_enemies(&win->game->enemy_list);
 	win->game->dungeon->cleared = false;
 	win->game->player->level = 1;
 	win->game->player->alive = true;
@@ -52,11 +55,6 @@ void start_game(win_t *win)
 	reset_npc(win->game->npc, win->game->npc->quest);
 }
 
-void error_test(win_t *win)
-{
-	create_popup(win->game->ui, "This button is useless", ERROR);
-}
-
 void to_option_menu(win_t *win)
 {
 	play_sfx(win->game->sounds, SWITCH_TITLE);
@@ -65,4 +63,19 @@ void to_option_menu(win_t *win)
 	sfSprite_setColor(win->game->ui->title_page->options,
 					sfColor_fromRGBA(255, 255, 255, 0));
 	change_state(win, OPTION);
+}
+
+void load_game(win_t *win)
+{
+	if (!save_exist(&win->game->save) || !win->game->player->alive) {
+		create_popup(win->game->ui, CANT_FIND, ERROR);
+		return;
+	}
+	if (!open_save(win, &win->game->save)) {
+		create_popup(win->game->ui, CORRUPTED, ERROR);
+		return;
+	}
+	load_level(&win->game->level, DUNGEON, win);
+	change_state(win, GAME);
+	win->game->dungeon->door_open = true;
 }

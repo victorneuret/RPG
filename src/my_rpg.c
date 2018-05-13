@@ -11,6 +11,7 @@
 #include "events.h"
 #include "render.h"
 #include "update.h"
+#include "save.h"
 
 static void update_clock(win_t *win)
 {

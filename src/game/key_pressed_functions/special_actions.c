@@ -34,6 +34,8 @@ void add_gun(win_t *win)
 
 void drop_gun(win_t *win)
 {
+	win->game->player->level += 10;
+	win->game->player->skill_point += 10;
 	drop_item(win, win->game->player->inventory,
 				win->game->player->inventory->selected);
 }
