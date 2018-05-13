@@ -18,6 +18,8 @@
 #include "stats_menu.h"
 #include "inventory.h"
 #include "quest.h"
+#include "save.h"
+#include "popup.h"
 
 static void reset_npc(npc_t *npc, quest_t *quest)
 {
@@ -65,4 +67,19 @@ void to_option_menu(win_t *win)
 	sfSprite_setColor(win->game->ui->title_page->options,
 					sfColor_fromRGBA(255, 255, 255, 0));
 	change_state(win, OPTION);
+}
+
+void load_game(win_t *win)
+{
+	if (!save_exist(&win->game->save)) {
+		create_popup(win->game->ui, CANT_FIND, ERROR);
+		return;
+	}
+	if (!open_save(win, &win->game->save)) {
+		create_popup(win->game->ui, CORRUPTED, ERROR);
+		return;
+	}
+	load_level(&win->game->level, DUNGEON, win);
+	change_state(win, GAME);
+	win->game->dungeon->door_open = true;
 }

@@ -73,7 +73,7 @@ static const button_declaration_t buttons_declaration[] = {
 		"",
 		0XBCAAA4FF,
 		0xEFEBE999,
-		&error_test
+		&load_game
 	},
 	{
 		TITLE,

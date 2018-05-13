@@ -44,3 +44,13 @@ void weapon_level_three(win_t *win)
 	win->game->player->skill_point -= 5;
 	win->game->stats_menu->skill_tree->skill[1]->level++;
 }
+
+void weapon_save(win_t *win, uint8_t level)
+{
+	if (level >= 1)
+		win->game->player->dmg += 2;
+	if (level >= 2)
+		win->game->player->dmg += 4;
+	if (level >= 3)
+		win->game->player->dmg += 8;
+}
