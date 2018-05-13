@@ -58,7 +58,7 @@ static char *dialog_array[10][5] = {
 		NULL
 	},
 	{
-		"GAME IS FINISHED!",
+		"GAME IS FINISHED! You can do whatever you want!",
 		NULL
 	},
 	{
