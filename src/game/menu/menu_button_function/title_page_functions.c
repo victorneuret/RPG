@@ -38,6 +38,7 @@ void start_game(win_t *win)
 	inventory_t *inventory = win->game->player->inventory;
 
 	change_state(win, CUSTOM);
+	wipe_enemies(&win->game->enemy_list);
 	win->game->dungeon->cleared = false;
 	win->game->player->level = 1;
 	win->game->player->alive = true;
@@ -71,7 +72,7 @@ void to_option_menu(win_t *win)
 
 void load_game(win_t *win)
 {
-	if (!save_exist(&win->game->save)) {
+	if (!save_exist(&win->game->save) || !win->game->player->alive) {
 		create_popup(win->game->ui, CANT_FIND, ERROR);
 		return;
 	}
