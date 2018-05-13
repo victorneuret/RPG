@@ -29,7 +29,7 @@ quest_t *init_quest(void)
 
 	if (!quest || !font)
 		return NULL;
-	for (size_t i = 0; quest_declaration[i].dialog; i++) {
+	for (size_t i = 0; i < NB_QUEST_STRUCT; i++) {
 		quest[i].text = sfText_create();
 		if (!quest[i].text)
 			return NULL;

@@ -12,6 +12,7 @@
 #include "slider.h"
 #include "text_area.h"
 #include "title_page.h"
+#include "slide_bar.h"
 
 typedef struct buttons buttons_t;
 typedef struct checkbox checkbox_t;
@@ -19,6 +20,7 @@ typedef struct slider slider_t;
 typedef struct text_area text_area_t;
 typedef struct hover_text_button text_hover_button_t;
 typedef struct title_page title_page_t;
+typedef struct slide_bar slide_bar_t;
 
 typedef struct ui {
 	buttons_t *buttons;
@@ -29,6 +31,7 @@ typedef struct ui {
 	title_page_t *title_page;
 	popup_list_t *popup_list;
 	sfRectangleShape *custom_shape;
+	slide_bar_t **slide_bar;
 } ui_t;
 
 sfRectangleShape *init_custom_shape(void);
