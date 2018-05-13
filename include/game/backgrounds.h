@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "render_window.h"
+
 void update_fireworks(win_t *win);
 void update_stars(win_t *win);
 void update_campfire(win_t *win);

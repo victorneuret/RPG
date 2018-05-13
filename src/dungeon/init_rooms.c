@@ -11,26 +11,6 @@
 #include "rooms.h"
 #include "my_calloc.h"
 
-// static void print_room(game_t *game)
-// {
-// 	for (size_t i = 0; i < game->dungeon->nb_rooms; i++) {
-// 		printf("room: %ld\n", i);
-// 		for (size_t j = 0; game->rooms[i]->cells[j]; j++) {
-// 			putstr(game->rooms[i]->cells[j]);
-// 			putstr("\n");
-// 		}
-// 		if (game->rooms[i]->door_up)
-// 			putstr("door up\n");
-// 		if (game->rooms[i]->door_down)
-// 			putstr("door down\n");
-// 		if (game->rooms[i]->door_left)
-// 			putstr("door left\n");
-// 		if (game->rooms[i]->door_right)
-// 			putstr("door right\n");
-// 		putstr("\n\n");
-// 	}
-// }
-
 char **create_map(void)
 {
 	char **map = my_calloc(ROOM_HEIGHT + 1, sizeof(char *));

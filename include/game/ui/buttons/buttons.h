@@ -239,7 +239,6 @@ static const button_declaration_t buttons_declaration[] = {
 	}
 };
 
-/* Buttons */
 buttons_t *load_buttons(textures_t *textures);
 void free_buttons(buttons_t *buttons);
 void box(win_t *win);

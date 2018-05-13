@@ -30,7 +30,7 @@ void update_particle_heal(win_t *win,
 	dir = get_direction(bar_pos, particle_pos);
 	particle->speed = (sfVector2f) {dir.x * new_speed, dir.y * new_speed};
 	if (distance(bar_pos, particle_pos) < 42) {
-		particle->alive = false;
+		particle->lifetime_ms = 0;
 		win->game->player->hp->value += 1;
 	}
 }

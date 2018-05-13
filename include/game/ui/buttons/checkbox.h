@@ -19,7 +19,6 @@ typedef struct render_window win_t;
 typedef struct textures textures_t;
 typedef struct checkbox checkbox_t;
 
-/* Functions */
 void checkbox_fullscreen(win_t *win, checkbox_t *checkbox);
 void change_resolution(win_t *win, checkbox_t *checkbox);
 
@@ -84,7 +83,6 @@ static const checkbox_declaration_t checkbox_declaration[] = {
 	}
 };
 
-/* Checkbox */
 void checkbox_click_animation(checkbox_t *checkbox);
 void checkbox_click_released(win_t *win, const sfEvent *event);
 void checkbox_click_pressed(win_t *win, const sfEvent *event);
