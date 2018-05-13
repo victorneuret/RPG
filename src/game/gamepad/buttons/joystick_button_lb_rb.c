@@ -12,7 +12,7 @@ void button_lb(win_t *win, bool press)
 {
 	static bool pressed = false;
 
-	if (win->game_state == GAME)
+	if (win->game_state == GAME && win->game->player->alive)
 		player_dash(win, win->game->player, press, pressed);
 	if (!press)
 		pressed = false;

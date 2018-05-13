@@ -43,11 +43,11 @@ static const keybind_t keybinds[] = {
 	{GAME, 	sfKeyDown,	&shoot_down},
 	{GAME, 	sfKeyRight,	&shoot_right},
 	{GAME, 	sfKeyLeft,	&shoot_left},
-	{GAME, 	sfKeyU, 	&add_gun},
+	{GAME, 	sfKeyV, 	&add_gun},
 	{GAME,	sfKeyI,		&get_nearest_item},
 	{GAME, 	sfKeyP,		&stats_game},
 	{GAME,	sfKeyO, 	&drop_gun},
-	{GAME,	sfKeyN,		&switch_inventory},
-	{GAME,	sfKeyX,		&npc_interaction},
+	{GAME,	sfKeyU,		&switch_inventory},
+	{GAME,	sfKeyY,		&npc_interaction},
 	{0,	0,		NULL}
 };

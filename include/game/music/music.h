@@ -37,7 +37,7 @@ typedef struct sounds {
 
 static const music_declaration_t music_declaration[] = {
 	{
-		INTRO | TITLE | OPTION | PAUSE | STATS,
+		INTRO | TITLE | OPTION | PAUSE | STATS | CUSTOM,
 		"res/sounds/musics/title.ogg",
 		20
 	},

@@ -62,7 +62,7 @@ void button_x(win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	} else if (!pressed && press) {
+	} else if (!pressed && press && win->game->player->alive) {
 		pressed = true;
 		heal_player(win, &win->game->stats_menu->skill_tree->heal);
 	}

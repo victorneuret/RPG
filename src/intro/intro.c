@@ -17,10 +17,6 @@
 #include "nb_utils.h"
 #include "text_utils.h"
 
-static const char *INTRO_FONT = "res/fonts/isaac_sans.ttf";
-static const char *TEAM_TEXT = "CROCUS CLAN";
-static const char *PRESENT_TEXT = "PRESENTS";
-
 static float get_time(sfClock *clock)
 {
 	return sfTime_asSeconds(sfClock_getElapsedTime(clock));

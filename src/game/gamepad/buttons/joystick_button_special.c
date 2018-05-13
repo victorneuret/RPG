@@ -15,7 +15,7 @@ void button_select(win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	} else if (!pressed && press) {
+	} else if (!pressed && press && win->game->player->alive) {
 		stats_game(win);
 		pressed = true;
 	}

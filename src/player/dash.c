@@ -70,6 +70,17 @@ bool init_dash_sprite(skill_tree_t *skill_tree, sfTexture *tex)
 	return true;
 }
 
+static void set_dash_element(win_t *win, player_t *player, dash_t *dash,
+								sfVector2f pos)
+{
+	sfSprite_setColor(player->sprite, hex_to_rgba(0xE0EDFF96));
+	sfSprite_setPosition(player->sprite, pos);
+	render_object(win->sf_win, SPRITE, player->sprite);
+	sfSprite_setPosition(player->sprite, player->pos);
+	sfSprite_setColor(dash->sprite, hex_to_rgba(0xE0EDFF96));
+	sfSprite_setColor(player->sprite, hex_to_rgba(0xFFFFFFFF));
+}
+
 void draw_dash(win_t *win, player_t *player)
 {
 	sfVector2f pos = player->pos;
@@ -87,11 +98,6 @@ void draw_dash(win_t *win, player_t *player)
 								DASH_MULT;
 	pos.y += X_SPEED * (win->joystick->ry / 100.f * dash->distance) *
 								DASH_MULT;
-	sfSprite_setColor(player->sprite, hex_to_rgba(0xE0EDFF96));
-	sfSprite_setPosition(player->sprite, pos);
-	render_object(win->sf_win, SPRITE, player->sprite);
-	sfSprite_setPosition(player->sprite, player->pos);
-	sfSprite_setColor(dash->sprite, hex_to_rgba(0xE0EDFF96));
-	sfSprite_setColor(player->sprite, hex_to_rgba(0xFFFFFFFF));
+	set_dash_element(win, player, dash, pos);
 	dash->display = false;
 }
