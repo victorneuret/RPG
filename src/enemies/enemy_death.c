@@ -16,6 +16,7 @@
 #include "enemies.h"
 #include "particle_xp.h"
 #include "render_window.h"
+#include "music.h"
 
 static void enemy_quest_state(win_t *win, enemy_list_t *node)
 {
@@ -61,6 +62,7 @@ void enemy_killed(win_t *win, enemy_list_t *enemy_list, enemy_list_t *node)
 		game->rooms[game->dungeon->act_room]->cleared = true;
 		if (is_dungeon_cleared(game)) {
 			game->dungeon->cleared = true;
+			play_sfx(win->game->sounds, DUNGEON_CLEARED);
 			create_popup(win->game->ui,
 				"Dungeon cleared!", SUCCESS);
 		}

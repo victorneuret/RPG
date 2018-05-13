@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 
+#include <SFML/Audio.h>
 #include <stdbool.h>
 
 #include "dungeon.h"
@@ -44,8 +45,6 @@ static void update_portal(player_t *player, win_t *win)
 		win->game->dungeon->transition = true;
 	}
 }
-
-#include <SFML/Audio.h>
 
 void draw_portal(dungeon_t *dungeon, win_t *win)
 {
