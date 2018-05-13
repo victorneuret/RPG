@@ -26,8 +26,11 @@ void button_a(win_t *win, bool press)
 		else if (win->game_state == GAME)
 			get_item(win, win->game->player->inventory,
 					win->game->player->sprite, true);
-		button_click_released(win, &event);
 		npc_interaction(win);
+		button_click_released(win, &event);
+		if (win->game_state == GAME
+				&& win->game->player->hp->value == 0)
+			win->game_state = TITLE;
 		pressed = true;
 	}
 }
@@ -57,8 +60,9 @@ void button_x(__attribute__((unused)) win_t *win, bool press)
 	if (!press) {
 		pressed = false;
 		return;
-	} else if (!pressed && press)
+	} else if (!pressed && press) {
 		pressed = true;
+	}
 }
 
 void button_y(win_t *win, bool press)
@@ -70,7 +74,7 @@ void button_y(win_t *win, bool press)
 		return;
 	} else if (!pressed && press) {
 		pressed = true;
-		if (win->game_state == GAME)
+		if (win->game_state == GAME && win->game->player->alive)
 			drop_gun(win);
 	}
 }

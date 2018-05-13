@@ -84,7 +84,7 @@ void place_rooms(dungeon_t *dungeon)
 		if (!next_room(&x, &y))
 			break;
 	}
-	if (room_nb < 4) {
+	if (room_nb < 5) {
 		for (size_t i = 0; i < NB_ROOMS_HEIGHT; i++)
 			memset(dungeon->rooms[i], -1, NB_ROOMS_WIDTH);
 		place_rooms(dungeon);

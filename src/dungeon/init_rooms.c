@@ -65,7 +65,7 @@ bool init_rooms(win_t *win)
 	if (!win->game->rooms)
 		return false;
 	win->game->rooms[0] = NULL;
-	if (!init_all_rooms(win, map))
+	if (!init_all_rooms(win, map) || !init_mini_map(win->game->dungeon))
 		return false;
 	return true;
 }

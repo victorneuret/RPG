@@ -45,8 +45,10 @@ static bool init_player_aim(player_t *player, win_t *win)
 	sfSprite_setPosition(player->aim, (sfVector2f) {200, 200});
 	sfSprite_setScale(player->aim, (sfVector2f) {3, 3});
 	player->touched = false;
+	player->alive = true;
 	player->shade = sfRectangleShape_create();
-	if (!player->shade)
+	player->game_over = init_game_over();
+	if (!player->shade || !player->game_over)
 		return false;
 	sfRectangleShape_setFillColor(player->shade, hex_to_rgba(0xff000096));
 	sfRectangleShape_setSize(player->shade, (sfVector2f){1920, 1080});
