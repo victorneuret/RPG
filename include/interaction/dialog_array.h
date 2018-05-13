@@ -35,7 +35,7 @@ static char *dialog_array[10][5] = {
 		NULL
 	},
 	{
-		"It is cool! You are not longer a newbie. Hmm.. so, " \
+		"It is cool! You are no longer a newbie. Hmm.. so, " \
 			"I will increase\nthe difficulty.",
 		"Try to kill 5 big ghosts. Be careful, they do a lot of" \
 			" damage.",

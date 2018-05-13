@@ -47,8 +47,9 @@ static bool init_player_aim(player_t *player, win_t *win)
 	player->touched = false;
 	player->alive = true;
 	player->shade = sfRectangleShape_create();
-	player->game_over = init_game_over();
-	if (!player->shade || !player->game_over)
+	player->loose_text = init_game_over_text();
+	player->loose_shape = init_game_over_shape();
+	if (!player->shade || !player->loose_text || !player->loose_shape)
 		return false;
 	sfRectangleShape_setFillColor(player->shade, hex_to_rgba(0xff000096));
 	sfRectangleShape_setSize(player->shade, (sfVector2f){1920, 1080});
