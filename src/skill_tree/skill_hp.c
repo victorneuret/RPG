@@ -48,3 +48,13 @@ void hp_level_three(win_t *win)
 	win->game->player->skill_point -= 5;
 	win->game->stats_menu->skill_tree->skill[0]->level++;
 }
+
+void hp_save(win_t *win, uint8_t level)
+{
+	if (level >= 1)
+		win->game->player->hp->max_value += 250;
+	if (level >= 2)
+		win->game->player->hp->value += 600;
+	if (level >= 3)
+		win->game->player->hp->max_value += 1200;
+}

@@ -83,6 +83,8 @@ void display_xp_bar(win_t *win)
 		win->game->player->xp->back_bar, 0);
 	sfRenderWindow_drawRectangleShape(win->sf_win,
 		win->game->player->xp->bar, 0);
+	sfText_setString(win->game->player->xp->text,
+			int_to_str(win->game->player->level));
 	sfRenderWindow_drawText(win->sf_win, win->game->player->xp->text, 0);
 	value = win->game->player->xp->value;
 }

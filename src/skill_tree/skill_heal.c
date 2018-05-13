@@ -43,3 +43,13 @@ void heal_level_three(win_t *win)
 	win->game->player->skill_point -= 5;
 	win->game->stats_menu->skill_tree->skill[3]->level++;
 }
+
+void heal_save(win_t *win, uint8_t level)
+{
+	if (level >= 1)
+		heal_level_one(win);
+	if (level >= 2)
+		heal_level_one(win);
+	if (level >= 3)
+		heal_level_three(win);
+}
