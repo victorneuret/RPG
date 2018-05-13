@@ -11,14 +11,14 @@
 
 static char *dialog_array[10][5] = {
 	{
-		"Welcome to this super game!",
-		"My name is Satoru Iwata.. I will help you to progress!",
+		"Welcome to this awesome game!",
+		"My name is Satoru Iwata. I will help you to progress!",
 		"Take the gun over there and come back after.",
 		NULL
 	},
 	{
 		"Are you ready for your first quest?",
-		"Yeah! So, you have to kill 5 enemies..",
+		"Yeah! So, you have to kill 5 enemies.",
 		"Come back to me when once you are done.",
 		NULL
 	},
@@ -30,31 +30,31 @@ static char *dialog_array[10][5] = {
 	},
 	{
 		"Enemies can drop weapons, you can have 3 weapons" \
-			" in your inventory,\nchoose well.",
-		"Now, try to kill 10 enemies with the UZI.. Good luck!",
+			" in your inventory,\nchoose carefully.",
+		"Now, try to kill 10 enemies with the UZI. Good luck!",
 		NULL
 	},
 	{
-		"It is cool! You are no longer a newbie. Hmm.. so, " \
+		"Well played! You are no longer a newbie. Hmm... so, " \
 			"I will increase\nthe difficulty.",
 		"Try to kill 5 big ghosts. Be careful, they do a lot of" \
-			" damage.",
+			" damages.",
 		NULL
 	},
 	{
 		"WOW! You are a real gamer!",
 		"I am scared by medium ghosts, can you kill 15" \
-			" of their for me please?",
+			" of them for me please?",
 		NULL
 	},
 	{
-		"Thank you so much my friend! You save me.",
-		"That is all for now. Come back to see me later.",
+		"Thank you so much my friend! You saved me.",
+		"That is all for now. You can come back later.",
 		NULL
 	},
 	{
 		"Do you already want a new quest? You do not waste your time!",
-		"OK, take or find the shotgun and kill 25 baby ghost.",
+		"OK, take or find the shotgun and kill 25 baby ghosts.",
 		NULL
 	},
 	{
